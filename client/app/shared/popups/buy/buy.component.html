@@ -1,0 +1,12 @@
+<div class="title">
+    <span i18n>GET TOKENS</span>
+    <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
+</div>
+<div class="body">
+    <span>Our ETH address for the token distribution is :</span><br /><br />
+    <input id="eth-address" class="address" type="text" readonly="readonly" value="{{data?.Address}}">
+</div>
+<div class="btns">
+    <button mat-raised-button copy="eth-address" (copied)="copied()" (error)="error()">{{copyBtn}}</button>
+    <button mat-raised-button mat-dialog-close i18n>Done</button>
+</div>

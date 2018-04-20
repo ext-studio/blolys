@@ -1,0 +1,38 @@
+<input type="text" style="display:none">
+<input type="password" style="display:none">
+
+<mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
+    <mat-step [stepControl]="authForm">
+        <form [formGroup]="authForm" autocomplete="off">
+            <div class="title">Admin sign in</div>
+            <div class="board">
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email" type="email" required />
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Password" formControlName="pwd" type="password" required />
+                </mat-form-field>
+            </div>
+            <button mat-raised-button class="btn" color="accent" (click)="fetchCode(stepper)" *ngIf="!fetching">Sign in</button>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="codeForm">
+        <form [formGroup]="codeForm" autocomplete="off">
+            <div class="title">Admin sign in</div>
+            <div class="board">
+                <div style="height: 50px;">
+                    <img *ngIf="!fetching" class="verify-code" [buffer]="verifyImageBuffer" />
+                    <button *ngIf="!fetching" type="button" mat-icon-button (click)="fetchCode()"><mat-icon aria-label="Refresh">refresh</mat-icon></button>
+                    <mat-spinner [diameter]="50" *ngIf="fetching"></mat-spinner>
+                </div>
+    
+                <mat-form-field style="margin-top: 16px;">
+                    <input matInput placeholder="Verify code" formControlName="code" type="text" required />
+                </mat-form-field>
+            </div>
+
+            <button mat-raised-button type="submit" class="btn" color="accent" (click)="auth(stepper)" *ngIf="!authing">Sign in</button>
+            <button mat-button class="btn" color="accent" matStepperPrevious>Previous step</button>
+        </form>
+    </mat-step>
+</mat-horizontal-stepper>

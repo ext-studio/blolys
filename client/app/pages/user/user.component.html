@@ -1,0 +1,25 @@
+<mat-toolbar class="top-nav">
+    <mat-toolbar-row *ngIf="isWide">
+        <span class="wide-title">BLOLYS</span>
+        <span class="flex-1"></span>
+        <div>
+            <button class="menu" [ngClass]="{active: currentPage==='/home'}" mat-button routerLink="/home">Home</button>
+            <button class="menu" [ngClass]="{active: currentPage==='/assets'}" mat-button routerLink="/assets">Assets</button>
+            <button class="menu" [ngClass]="{active: currentPage==='/Transactions'}" mat-button routerLink="/Transactions">Transactions</button>
+            <button class="menu" [ngClass]="{active: currentPage==='/blocks'}" mat-button routerLink="/blocks">Blocks</button>
+            <button class="menu" [ngClass]="{active: currentPage==='/addresses'}" mat-button routerLink="/addresses">Addresses</button>
+        </div>
+        <button mat-button [matMenuTriggerFor]="i18nMenu" style="margin-right: 44px; color: #fefefe;">EN <mat-icon>keyboard_arrow_down</mat-icon></button>
+        <mat-menu #i18nMenu="matMenu">
+            <a mat-menu-item>中文繁体</a>
+            <a mat-menu-item>English</a>
+        </mat-menu>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="!isWide">
+        <span>BLOLYS</span>
+        <div class="flex-1"></div>
+        <mat-icon>menu</mat-icon>
+    </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>
+    
