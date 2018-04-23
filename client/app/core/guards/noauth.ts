@@ -1,6 +1,6 @@
 /**
- * 登录拦截器 防止已登录用户进入
- * 检查本地是否有未过期token 存在则禁止进入
+ * Login interceptor, Prevents logged in users from entering
+ * Check if there are any expired tokens in the local area
  */
 
 import { Injectable } from '@angular/core';

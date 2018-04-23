@@ -14,10 +14,10 @@ export class StorageService {
         window.localStorage.removeItem(key);
     }
     /**
-     * 先判断当前登录角色 并获取token
-     * unauth 未登录
-     * expired 超时
-     * {ID, Token, Expired} 成功
+     * First determine the current login role and obtain token
+     * unauth Not logged in
+     * expired time out
+     * {ID, Token, Expired} success
      */
     public getAuth(): {
         Token: string,

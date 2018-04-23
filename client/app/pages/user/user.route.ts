@@ -3,18 +3,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserAuthGuard } from '../../core';
 
 import { UserComponent } from './user.component';
-import { AssetsComponent } from './assets/assets.component'
+import { AssetsComponent } from './assets/assets.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
     { 
         path: '', 
         component: UserComponent,
         children: [
-            { path: 'assets', component: AssetsComponent }
-            // { path: '', component: UserComponent }
+            { path: '', component: HomeComponent },
+            { path: 'home', component: HomeComponent },
+            { path: 'assets', component: AssetsComponent },
         ] 
-    },
-    { path: 'home', component: UserComponent }
+    }
 ];
 
 @NgModule({

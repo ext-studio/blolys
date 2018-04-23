@@ -1,3 +1,44 @@
-<p>
-  assets works!
-</p>
+<div class="block">
+	<div class="example-header">
+		<mat-form-field>
+			<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+		</mat-form-field>
+	</div>
+	<div class="example-container mat-elevation-z8">
+		<mat-table [dataSource]="dataSource">
+			<!-- ID Column -->
+			<ng-container matColumnDef="ID">
+				<mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+				<mat-cell *matCellDef="let row"> {{row.ID}} </mat-cell>
+			</ng-container>
+			<!-- name Column -->
+			<ng-container matColumnDef="name">
+				<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+				<mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+			</ng-container>
+			<!-- type Column -->
+			<ng-container matColumnDef="type">
+				<mat-header-cell *matHeaderCellDef> Assets </mat-header-cell>
+				<mat-cell *matCellDef="let row"> {{row.type}} </mat-cell>
+			</ng-container>
+			<!-- amount Column -->
+			<ng-container matColumnDef="amount">
+				<mat-header-cell *matHeaderCellDef  class="textRight"> Amount </mat-header-cell>
+				<mat-cell *matCellDef="let row"  class="textRight"> {{row.amount | number}} </mat-cell>
+			</ng-container>
+			<!-- transactions Column -->
+			<ng-container matColumnDef="transactions">
+				<mat-header-cell *matHeaderCellDef  class="textRight"> Transactions </mat-header-cell>
+				<mat-cell *matCellDef="let row"  class="textRight"> {{row.transactions | number}} </mat-cell>
+			</ng-container>
+			<!-- time Column -->
+			<ng-container matColumnDef="time">
+				<mat-header-cell *matHeaderCellDef  class="textRight"> time </mat-header-cell>
+				<mat-cell *matCellDef="let row"  class="textRight"> {{ row.time | date : 'yyyy-MM-dd HH:mm:ss'}} </mat-cell>
+			</ng-container>
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+		<mat-paginator [length]="totalCount" [pageSize]="1" [pageSizeOptions]="[1, 2, 50, 100]"></mat-paginator>
+	</div>
+</div>

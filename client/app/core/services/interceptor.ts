@@ -19,14 +19,14 @@ export class HttpInterceptor implements NgHttpInterceptor {
         //
     }
     public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        // 验证码请求会得到文件流所以单独处理
+        // The verification code request will get the file stream so it is handled separately
         if (req.url.indexOf('verifycode') > 0) {
             return this.verifyCodeHandle(req.clone({
                 headers: req.headers
                 .set("Authorization", 'Basic ZXh0OmV4dHVzZW9ubHk=')
             }), next);
         }
-        // 已登录的话自动带上登录凭据
+        // Automatically bring your login credentials when you are logged in
         let auth = this.storage.getAuth();
         const nReq = req.clone({
             headers: req.headers
@@ -34,7 +34,7 @@ export class HttpInterceptor implements NgHttpInterceptor {
             .set('AuthorizationID', auth['ID'] && auth['ID'].toString() || '')
             .set('AuthorizationToken', auth['Token'] || '')
         });
-        // 普通请求自动处理成功与否
+        // Ordinary request automatically processed successfully or not
         return this.commonHandle(nReq, next);
     }
     private commonHandle(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
