@@ -7,20 +7,20 @@ import { AssetsComponent } from './assets/assets.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-    { 
-        path: '', 
-        component: UserComponent,
-        children: [
-            { path: '', component: HomeComponent },
-            { path: 'home', component: HomeComponent },
-            { path: 'assets', component: AssetsComponent },
-        ] 
-    }
+  { 
+    path: '', 
+    component: UserComponent,
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'home', component: HomeComponent },
+      { path: 'assets', component: AssetsComponent },
+    ] 
+  }
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class UserRoutingModule { }
 

@@ -1,74 +1,74 @@
 .block {
-    padding: 30px 0;
+  padding: 30px 0;
 }
 .example-container {
-    display: flex;
-    flex-direction: column;
-    min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
 }
 .example-header {
-    min-height: 64px;
-    padding: 8px 24px 0;
+  min-height: 64px;
+  padding: 8px 24px 0;
 }
 .mat-form-field {
-    font-size: 14px;
-    width: 100%;
+  font-size: 14px;
+  width: 100%;
 }
 .mat-table {
-    overflow: auto;
-    max-height: 500px;
+  overflow: auto;
+  max-height: 500px;
 }
 .textRight {
-    text-align: right;
+  text-align: right;
 }
 @media screen and (max-width: 600px) {
-    .block{
-        width: 92%;
-        margin: 0 4%;
-    }
+  .block{
+    width: 92%;
+    margin: 0 4%;
+  }
 }
 @media screen and (min-width: 601px) {
-    .block{
-        width: 84%;
-        margin: 0 8%;
-    }
+  .block{
+    width: 84%;
+    margin: 0 8%;
+  }
 }
 :host {
-    display: block;
-    color: #c7d6fd;
+  display: block;
+  color: #c7d6fd;
 }
 ::ng-deep mat-form-field * {
-    color: #a1a2bb;
+  color: #a1a2bb;
 }
 ::ng-deep .mat-form-field-label {
-    color: #a1a2bb;
+  color: #a1a2bb;
 }
 ::ng-deep .mat-input-underline {
-    background-color: #a1a2bb;
+  background-color: #a1a2bb;
 }
 ::ng-deep .mat-form-field-ripple{
-    background-color: #a1a2bb;
+  background-color: #a1a2bb;
 }
 ::ng-deep .mat-table * {
-    background: #252e67;
-    color: #bbbfe4;
+  background: #252e67;
+  color: #bbbfe4;
 }  
 ::ng-deep .mat-focused:not(.mat-form-field-invalid) mat-form-field * {
-    color: #c3c3dd;
+  color: #c3c3dd;
 }
 ::ng-deep .mat-paginator  {
-    background: #252e67;
-    color: #bbbfe4;
+  background: #252e67;
+  color: #bbbfe4;
 }
 ::ng-deep .mat-input-element {
-    caret-color: #a1a2bb;
+  caret-color: #a1a2bb;
 }
 ::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-form-field-label {
-    color: #c3c3dd;
+  color: #c3c3dd;
 }
 ::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-input-underline {
-    background-color: #c3c3dd;
+  background-color: #c3c3dd;
 }
 ::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-form-field-ripple{
-    background-color: #c3c3dd;
+  background-color: #c3c3dd;
 }
