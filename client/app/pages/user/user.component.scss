@@ -1,9 +1,10 @@
 :host {
-  height: 100%;
+  width: 100%;
 }
-mat-toolbar {
-  background: #252e67;
-  color: #fefefe;
+::ng-deep mat-toolbar {
+  width: 100%;
+  background-color: #252e67 !important;
+  color: #fefefe !important;
   .menu {
     font-size: 14px;
     color: #bbbfe4;
@@ -19,12 +20,8 @@ mat-toolbar {
   }
 }
 @media screen and (max-width: 600px) {
-  mat-sidenav {
-    width: 60%;
-  }
+ 
 }
 @media screen and (min-width: 601px) {
-  mat-sidenav {
-    width: 216px;
-  }
+  
 }

@@ -15,17 +15,17 @@ import { StorageService } from './services/storage';
  */
 
 @NgModule({
-    imports: [
-        HttpClientModule, BrowserAnimationsModule
-    ],
-    exports: [],
-    providers: [
-        AdminAuthGuard, UserAuthGuard, NoAuthGuard, GlobalService, StorageService,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: HttpInterceptor,
-            multi: true
-        }
-    ],
+  imports: [
+    HttpClientModule, BrowserAnimationsModule
+  ],
+  exports: [],
+  providers: [
+    AdminAuthGuard, UserAuthGuard, NoAuthGuard, GlobalService, StorageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptor,
+      multi: true
+    }
+  ],
 })
 export class CoreModule { }

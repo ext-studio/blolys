@@ -18,7 +18,7 @@ export class UserComponent implements OnInit {
     private dialog: MatDialog,
     private storage: StorageService
   ) {
-      //
+    //
   }
   public ngOnInit() {
     this.renderMenu();

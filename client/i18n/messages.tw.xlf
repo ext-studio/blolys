@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="24e954d8d340874715afc4df04ec29ddb2b9a9c4" datatype="html">
+        <source>GET TOKENS</source>
+        <target>获取Token</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/popups/buy/buy.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8dd413cee2228118c536f503709329a4d1a395e2" datatype="html">
+        <source>Done</source>
+        <target>Done</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/popups/buy/buy.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="23cb95dbf1c67516b4031368dbb0e29d1b8b7c2c" datatype="html">
+        <source>Tip</source>
+        <target>Tip</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/popups/alert/alert.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0c42dfc2285b395ce9884c6ddb63efe30c084850" datatype="html">
+        <source>Caution</source>
+        <target>Caution</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/shared/popups/alert/alert.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e8ac32575847a0651ec724664116291204532849" datatype="html">
+        <source>BLOLYS</source>
+        <target>区块浏览器</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

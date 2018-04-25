@@ -9,18 +9,18 @@ import { StorageService } from '../services/storage';
 
 @Injectable()
 export class NoAuthGuard implements CanActivate {
-    constructor(
-        private storage: StorageService,
-        private router: Router
-    ) { }
+  constructor(
+    private storage: StorageService,
+    private router: Router
+  ) { }
 
-    public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        let tryGet = this.storage.getAuth();
-        // console.log(tryGet);
-        if (tryGet === 'unauth' || tryGet === 'expired') {
-            return true;
-        }
-        this.router.navigate([`/${this.storage.get('role') || 'user'}/home`]);
-        return false;
+  public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    let tryGet = this.storage.getAuth();
+    // console.log(tryGet);
+    if (tryGet === 'unauth' || tryGet === 'expired') {
+      return true;
     }
+    this.router.navigate([`/${this.storage.get('role') || 'user'}/home`]);
+    return false;
+  }
 }
