@@ -28,41 +28,38 @@
     }
   }
 }
-// @media screen and (max-width: 800px) {
-//   .block{
-//     width: 92%;
-//     margin: 0 4%;
-//     p{
-//       font-size: 14px;
-//       font-weight: 200;
-//     }
-//     span {
-//       font-size: 18px;
-//       font-weight: 400;
-//     }
-//   }
-// }
-// @media screen and (min-width: 801px) {
-//   .block{
-//     width: 84%;
-//     margin: 0 8%;
-//     p{
-//       font-size: 18px;
-//       font-weight: 400;
-//     }
-//     span {
-//       font-size: 28px;
-//       font-weight: 600;
-//     }
-//   }
-// }
+@media screen and (max-width: 800px) {
+  .block{
+    width: 92%;
+    margin: 0 4%;
+    p{
+      font-size: 14px;
+      font-weight: 200;
+    }
+    span {
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+}
+@media screen and (min-width: 801px) {
+  .block{
+    width: 84%;
+    margin: 0 8%;
+    p{
+      font-size: 18px;
+      font-weight: 400;
+    }
+    span {
+      font-size: 28px;
+      font-weight: 600;
+    }
+  }
+}
 :host {
   height: 100%;
   display: block;
   color: #c7d6fd;
-}
-::ng-deep ngx-charts-line-chart text{
-  color: #fff;
 }
 ::ng-deep mat-form-field * {
   color: #a1a2bb;

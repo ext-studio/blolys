@@ -21,7 +21,9 @@
         "styles/var.scss",
         "styles/global.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/echarts/dist/echarts.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

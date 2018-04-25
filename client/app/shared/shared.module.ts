@@ -20,7 +20,7 @@ import { UnixTimePipe } from './pipes/unixtime.pipe';
 import { UnixDatePipe } from './pipes/unixdate.pipe';
 import { CommaPipe } from './pipes/comma.pipe';
 import { CopyDirective } from './directives/copy';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   imports: [
@@ -46,7 +46,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     ShortHashPipe, UnixTimePipe, MatChipsModule,
     MatTooltipModule, MatPaginatorModule, MatTableModule,
     MatTooltipModule, MatRadioModule, MatSelectModule,
-    CopyDirective, NgxChartsModule
+    CopyDirective, NgxEchartsModule
   ],
   declarations: [
     BufferImageDirective, AlertComponent,
