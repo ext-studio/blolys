@@ -4,11 +4,12 @@ import { MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/m
 import { GlobalService } from '../../../core';
 
 @Component({
-  templateUrl: './assets.component.html',
-  styleUrls: ['./assets.component.scss']
+  selector: 'app-addresses',
+  templateUrl: './addresses.component.html',
+  styleUrls: ['./addresses.component.scss']
 })
-export class AssetsComponent implements OnInit {
-  displayedColumns = ['name', 'type', 'amount', 'transactions', 'time'];
+export class AddressesComponent implements OnInit {
+  displayedColumns = ['address', 'createdAt'];
   dataSource: MatTableDataSource<any>;
   pageEvent: PageEvent;
   totalCount: number;
@@ -28,7 +29,7 @@ export class AssetsComponent implements OnInit {
   getIssues(pageIndex, pageSize) {
     // console.log(pageIndex + '  ' + pageSize)
     this.http.post(`${this.global.apiDomain}/api/block`,
-      { 'method': 'getassets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
+      { 'method': 'getaddresses', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
       // console.log(res.result.result)
       this.dataSource = new MatTableDataSource(res.result.data);
       this.totalCount = res.result.total;

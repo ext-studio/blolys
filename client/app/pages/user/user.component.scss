@@ -1,23 +1,68 @@
 :host {
   width: 100%;
 }
+.block {
+  max-width: 1140px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
 ::ng-deep mat-toolbar {
   width: 100%;
-  background-color: #252e67 !important;
-  color: #fefefe !important;
-  .menu {
-    font-size: 14px;
-    color: #bbbfe4;
-  }
-  .menu.active {
-    color: #389ceb;
-  }
+  position: relative;
+  background: #151e40 !important;
+  border-bottom: 1px solid #132f5a;
+  font-size: 16px;
+  color: #134699 !important;
+  margin-bottom: 70px !important;
   .wide-title {
     cursor: default;
-    text-align: center;
-    width: 184px;
-    margin-right: 16px;
+    text-align: left;
+    width: 25%;
+    vertical-align: middle;
+    span {
+      position: relative;
+      top: -6px;
+    }
   }
+  .menu {
+    height: 100%;
+    .menu-item {
+      height: 100%;
+    }
+    .menu-item.active {
+      color: #fff;
+      border-bottom: 1px solid #1770ea;
+    }
+  }
+  .option-right {
+    text-align: right;
+    button:hover {
+      color: #fff;
+    }
+    button.active {
+      color: #fff;
+    }
+  }
+}
+::ng-deep .mat-menu-item {
+  text-align: center !important;
+  padding: 0 !important;
+  color: #134699;
+  &:hover {
+    color: #fff;
+  }
+}
+::ng-deep mat-toolbar-row {
+  padding: 0 !important;
+}
+::ng-deep .mat-menu-panel {
+  background: #18244f;
+  position: absolute;
+  top: 40px;
+  text-align: center;
+}
+::ng-deep .mat-menu-content {
+  text-align: center;
 }
 @media screen and (max-width: 600px) {
  

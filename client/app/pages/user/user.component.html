@@ -1,25 +1,44 @@
-<mat-toolbar class="top-nav">
-  <mat-toolbar-row *ngIf="isWide">
-    <span class="wide-title" i18n>BLOLYS</span>
-    <span class="flex-1"></span>
-    <div>
-      <button class="menu" [ngClass]="{active: currentPage==='/home'}" mat-button routerLink="/home">Home</button>
-      <button class="menu" [ngClass]="{active: currentPage==='/assets'}" mat-button routerLink="/assets">Assets</button>
-      <button class="menu" [ngClass]="{active: currentPage==='/Transactions'}" mat-button routerLink="/Transactions">Transactions</button>
-      <button class="menu" [ngClass]="{active: currentPage==='/blocks'}" mat-button routerLink="/blocks">Blocks</button>
-      <button class="menu" [ngClass]="{active: currentPage==='/addresses'}" mat-button routerLink="/addresses">Addresses</button>
-    </div>
-    <button mat-button [matMenuTriggerFor]="i18nMenu" style="margin-right: 44px; color: #fefefe;">EN <mat-icon>keyboard_arrow_down</mat-icon></button>
-    <mat-menu #i18nMenu="matMenu">
-      <a mat-menu-item>中文繁体</a>
-      <a mat-menu-item>English</a>
-    </mat-menu>
-  </mat-toolbar-row>
-  <mat-toolbar-row *ngIf="!isWide">
-    <span>BLOLYS</span>
-    <div class="flex-1"></div>
-    <mat-icon>menu</mat-icon>
-  </mat-toolbar-row>
-</mat-toolbar>
-<router-outlet></router-outlet>
-    
+<div class="block">
+  <mat-toolbar class="top-nav">
+    <mat-toolbar-row *ngIf="isWide">
+      <div class="wide-title">
+        <img src="/assets/favicon.ico">
+        <span>ExChain</span>
+      </div>
+      <div class="flex-1 menu">
+          <button class="menu-item" [ngClass]="{active: currentPage==='/home'}" mat-button routerLink="/home">home</button>
+          <button class="menu-item" [ngClass]="{active: currentPage==='/blocks'}" mat-button routerLink="/blocks">Blocks</button>
+          <button class="menu-item" [ngClass]="{active: currentPage==='/transactions'}" mat-button routerLink="/transactions">Transactions</button>
+          <button class="menu-item" [ngClass]="{active: currentPage==='/addresses'}" mat-button routerLink="/addresses">Addresses</button>
+          <button class="menu-item" [ngClass]="{active: currentPage==='/assets'}" mat-button routerLink="/assets">Assets</button>
+      </div>
+      <div class="option-right">
+        <button mat-button [matMenuTriggerFor]="i18nMenu">English <mat-icon>keyboard_arrow_down</mat-icon></button>
+        <mat-menu #i18nMenu="matMenu">
+          <a mat-menu-item>English</a>
+          <a mat-menu-item>中文繁体</a>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="netMenu" style="padding-right: 0;">MainNet <mat-icon>keyboard_arrow_down</mat-icon></button>
+        <mat-menu #netMenu="matMenu">
+          <a mat-menu-item>MainNet</a>
+          <a mat-menu-item>TestNet</a>
+        </mat-menu>
+      </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="!isWide">
+      <span>BLOLYS</span>
+      <div class="flex-1"></div>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/home">Home</button>
+        <button mat-menu-item routerLink="/blocks">Blocks</button>
+        <button mat-menu-item routerLink="/transactions">Transactions</button>
+        <button mat-menu-item routerLink="/addresses">Addresses</button>
+        <button mat-menu-item routerLink="/assets">Assets</button>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</div>

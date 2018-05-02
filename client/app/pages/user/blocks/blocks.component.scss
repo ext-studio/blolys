@@ -49,3 +49,18 @@
   background: #252e67;
   color: #bbbfe4;
 }
+::ng-deep .mat-focused:not(.mat-form-field-invalid) mat-form-field * {
+  color: #c3c3dd;
+}
+::ng-deep .mat-input-element {
+  caret-color: #a1a2bb;
+}
+::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-form-field-label {
+  color: #c3c3dd;
+}
+::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-input-underline {
+  background-color: #c3c3dd;
+}
+::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-form-field-ripple{
+  background-color: #c3c3dd;
+}

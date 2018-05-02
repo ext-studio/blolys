@@ -4,11 +4,11 @@ import { MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/m
 import { GlobalService } from '../../../core';
 
 @Component({
-  templateUrl: './assets.component.html',
-  styleUrls: ['./assets.component.scss']
+  templateUrl: './transactions.component.html',
+  styleUrls: ['./transactions.component.scss']
 })
-export class AssetsComponent implements OnInit {
-  displayedColumns = ['name', 'type', 'amount', 'transactions', 'time'];
+export class TransactionsComponent implements OnInit {
+  displayedColumns = ['type', 'txid', 'time'];
   dataSource: MatTableDataSource<any>;
   pageEvent: PageEvent;
   totalCount: number;
@@ -28,8 +28,8 @@ export class AssetsComponent implements OnInit {
   getIssues(pageIndex, pageSize) {
     // console.log(pageIndex + '  ' + pageSize)
     this.http.post(`${this.global.apiDomain}/api/block`,
-      { 'method': 'getassets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
-      // console.log(res.result.result)
+      { 'method': 'gettransactions', 'params': [pageIndex, pageSize, 'all'] }).subscribe((res: any) => {
+      // console.log(res.result.data);
       this.dataSource = new MatTableDataSource(res.result.data);
       this.totalCount = res.result.total;
     }, (err) => {
@@ -41,4 +41,6 @@ export class AssetsComponent implements OnInit {
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
+
+
 }

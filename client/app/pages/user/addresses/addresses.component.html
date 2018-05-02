@@ -1,0 +1,24 @@
+<div class="block">
+	<div class="example-header">
+		<mat-form-field>
+			<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+		</mat-form-field>
+	</div>
+	<div class="example-container mat-elevation-z8">
+		<mat-table [dataSource]="dataSource">
+			<!-- address Column -->
+			<ng-container matColumnDef="address">
+				<mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+				<mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
+			</ng-container>
+			<!-- createdAt Column -->
+			<ng-container matColumnDef="createdAt">
+				<mat-header-cell *matHeaderCellDef> createdAt </mat-header-cell>
+				<mat-cell *matCellDef="let row"> {{row.createdAt}} </mat-cell>
+			</ng-container>
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+		<mat-paginator [length]="totalCount" [pageSize]="1" [pageSizeOptions]="[1, 2, 50, 100]"></mat-paginator>
+	</div>
+</div>

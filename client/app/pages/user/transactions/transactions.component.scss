@@ -23,6 +23,23 @@
 .textRight {
   text-align: right;
 }
+.mat-row, .mat-header-row {
+  padding-right: 0;
+}
+mat-cell {
+  position: relative;
+  height: 56px;
+  line-height: 56px;
+  .txextend {
+    position: absolute;
+    right: 0;
+    border: none;
+    padding: 20px 24px;
+    &:hover {
+      background: #3f3f7c;
+    }
+  }
+}
 @media screen and (max-width: 600px) {
   
 }

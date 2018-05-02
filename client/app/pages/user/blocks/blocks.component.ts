@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit , ViewChild} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/material';
 import { GlobalService } from '../../../core';
 
 @Component({
-  templateUrl: './assets.component.html',
-  styleUrls: ['./assets.component.scss']
+  templateUrl: './blocks.component.html',
+  styleUrls: ['./blocks.component.scss']
 })
-export class AssetsComponent implements OnInit {
-  displayedColumns = ['name', 'type', 'amount', 'transactions', 'time'];
+export class BlocksComponent implements OnInit {
+  displayedColumns = ['index', 'size', 'time'];
   dataSource: MatTableDataSource<any>;
   pageEvent: PageEvent;
   totalCount: number;
@@ -28,7 +28,7 @@ export class AssetsComponent implements OnInit {
   getIssues(pageIndex, pageSize) {
     // console.log(pageIndex + '  ' + pageSize)
     this.http.post(`${this.global.apiDomain}/api/block`,
-      { 'method': 'getassets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
+      { 'method': 'getblocks', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
       // console.log(res.result.result)
       this.dataSource = new MatTableDataSource(res.result.data);
       this.totalCount = res.result.total;
@@ -41,4 +41,5 @@ export class AssetsComponent implements OnInit {
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
+
 }

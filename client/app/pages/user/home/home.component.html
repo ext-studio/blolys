@@ -1,20 +1,65 @@
 <div class="block">
+  <div class="welcome">
+    <div class="line-first">Welcome to ExChain Explorer</div>
+    <div class="line-second">Your home for all NEO related blockchain information</div>
+    <div class="example-container">
+      <mat-form-field >
+        <mat-label>Block Height, Hach, Address or transaction id <img src="/assets/icon_search@2x.png"></mat-label>
+        <input matInput>
+      </mat-form-field>
+    </div>
+  </div>
   <div class="links">
-    <div class="temp">
-      <p>Transactions</p>
-      <span>{{ 1234567890  | number }}</span>
+    <div class="link-item">
+      <p>Total Blocks</p>
+      <span>{{ totalBlocks  | number }}</span>
     </div>
-    <div class="temp">
-      <p>Blocks</p>
-      <span>{{ 1234567890  | number }}</span>
+    <div class="link-item">
+      <p>Total Assets</p>
+      <span>{{ totalAssets  | number }}</span>
     </div>
-    <div class="temp">
-      <p>Addresses</p>
-      <span>{{ 1234567890  | number }}</span>
+    <div class="link-item">
+      <p>Total Transactions</p>
+      <span>{{ totalTransactions  | number }}</span>
     </div>
-    <div class="temp">
-      <p>Assets</p>
-      <span>{{ 1234567890  | number }}</span>
+    <div class="link-item">
+      <p>Total Addresses</p>
+      <span>{{ totalAddresses  | number }}</span>
+    </div>
+  </div>
+  <div class="recent-assets">
+    <p>Recent Assets transactions</p>
+    <mat-table [dataSource]="dataSource">
+      <!-- name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Assets </mat-header-cell>
+        <mat-cell *matCellDef="let row" style="color: #1170ea;"> {{row.name}} </mat-cell>
+      </ng-container>
+      <!-- type Column -->
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.type}} </mat-cell>
+      </ng-container>
+      <!-- amount Column -->
+      <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef  class="textRight"> Amount </mat-header-cell>
+        <mat-cell *matCellDef="let row"  class="textRight"> {{row.amount | number}} </mat-cell>
+      </ng-container>
+      <!-- transactions Column -->
+      <ng-container matColumnDef="transactions">
+        <mat-header-cell *matHeaderCellDef  class="textRight"> Transactions </mat-header-cell>
+        <mat-cell *matCellDef="let row"  class="textRight"> {{row.transactions | number}} </mat-cell>
+      </ng-container>
+      <!-- time Column -->
+      <ng-container matColumnDef="time">
+        <mat-header-cell *matHeaderCellDef  class="textRight"> time </mat-header-cell>
+        <mat-cell *matCellDef="let row"  class="textRight"> {{ row.time | date : 'yyyy-MM-dd HH:mm:ss'}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <div class="view-all">
+      <button mat-raised-button  routerLink="/assets">View All Assetes <img src="/assets/img_nextpage@2x.png"></button>
     </div>
   </div>
   <div echarts [options] = "option" class="demo-chart"></div>
