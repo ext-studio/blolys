@@ -27,11 +27,11 @@ export class UserComponent implements OnInit {
     this.renderMenu();
   }
   private renderMenu() {
-    if (window.innerWidth < 600 && this.isWide) {
+    if (window.innerWidth < 870 && this.isWide) {
       this.isWide = false;
       return;
     }
-    if (window.innerWidth > 600 && !this.isWide) {
+    if (window.innerWidth > 870 && !this.isWide) {
       this.isWide = true;
       return;
     }

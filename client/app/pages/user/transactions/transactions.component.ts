@@ -26,10 +26,8 @@ export class TransactionsComponent implements OnInit {
     });
   }
   getIssues(pageIndex, pageSize) {
-    // console.log(pageIndex + '  ' + pageSize)
     this.http.post(`${this.global.apiDomain}/api/block`,
       { 'method': 'gettransactions', 'params': [pageIndex, pageSize, 'all'] }).subscribe((res: any) => {
-      // console.log(res.result.data);
       this.dataSource = new MatTableDataSource(res.result.data);
       this.totalCount = res.result.total;
     }, (err) => {

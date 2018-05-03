@@ -1,7 +1,7 @@
 <div class="block">
   <mat-toolbar class="top-nav">
     <mat-toolbar-row *ngIf="isWide">
-      <div class="wide-title">
+      <div class="wide-title" routerLink="/home">
         <img src="/assets/favicon.ico">
         <span>ExChain</span>
       </div>
@@ -12,26 +12,41 @@
           <button class="menu-item" [ngClass]="{active: currentPage==='/addresses'}" mat-button routerLink="/addresses">Addresses</button>
           <button class="menu-item" [ngClass]="{active: currentPage==='/assets'}" mat-button routerLink="/assets">Assets</button>
       </div>
-      <div class="option-right">
-        <button mat-button [matMenuTriggerFor]="i18nMenu">English <mat-icon>keyboard_arrow_down</mat-icon></button>
+      <div class="lang-dropdown dropdown">
+        <button class="dropbtn" mat-button>English<mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></button>
+        <div class="dropdown-content lang-dropdown-content">
+          <a href="javascript:;">English</a>
+          <a href="javascript:;">中文繁体</a>
+        </div>
+      </div>
+      <div class="net-dropdown dropdown">
+        <button class="dropbtn" mat-button>MainNet<mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></button>
+        <div class="dropdown-content net-dropdown-content">
+          <a href="javascript:;">MainNet</a>
+          <a href="javascript:;">TestNet</a>
+        </div>
+        <!-- <button mat-button [matMenuTriggerFor]="i18nMenu" style="min-width: 90px; padding: 0;">English <mat-icon>keyboard_arrow_down</mat-icon></button>
         <mat-menu #i18nMenu="matMenu">
           <a mat-menu-item>English</a>
           <a mat-menu-item>中文繁体</a>
-        </mat-menu>
-        <button mat-button [matMenuTriggerFor]="netMenu" style="padding-right: 0;">MainNet <mat-icon>keyboard_arrow_down</mat-icon></button>
+        </mat-menu> -->
+        <!-- <button mat-button [matMenuTriggerFor]="netMenu" style="padding: 0; margin-left: 16px;">MainNet <mat-icon>keyboard_arrow_down</mat-icon></button>
         <mat-menu #netMenu="matMenu">
           <a mat-menu-item>MainNet</a>
           <a mat-menu-item>TestNet</a>
-        </mat-menu>
+        </mat-menu> -->
       </div>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="!isWide">
-      <span>BLOLYS</span>
+      <div class="wide-title" routerLink="/home">
+        <img src="/assets/favicon.ico">
+        <span>ExChain</span>
+      </div>
       <div class="flex-1"></div>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
+      <button mat-button [matMenuTriggerFor]="linkMenu" style="min-width: 110px; text-align: right; padding: 0;">
         <mat-icon>menu</mat-icon>
       </button>
-      <mat-menu #menu="matMenu">
+      <mat-menu #linkMenu="matMenu">
         <button mat-menu-item routerLink="/home">Home</button>
         <button mat-menu-item routerLink="/blocks">Blocks</button>
         <button mat-menu-item routerLink="/transactions">Transactions</button>

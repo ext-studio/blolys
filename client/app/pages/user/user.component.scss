@@ -6,7 +6,60 @@
   padding: 0 20px;
   margin: 0 auto;
 }
-::ng-deep mat-toolbar {
+.dropbtn {
+  color: #134699;
+  padding: 0;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  z-index: 999;
+  display: none;
+  position: absolute;
+  background-color: #18244f;
+  min-width: 90px;
+  border-radius: 3px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  &:before {
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-bottom-color: #18244f;
+    position: absolute;
+    top: -12px;
+    left: 39px; 
+    content: "";
+  }
+}
+.dropdown-content a {
+  color: #134699;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  &:not(:last-child) {
+    border-bottom: 1px solid #132f5a;
+  }
+}
+.lang-dropdown {
+  margin-right: 16px;
+}
+.dropdown-content a:hover {
+  color: #fff;
+}
+.lang-dropdown:hover .lang-dropdown-content {
+  display: block;
+}
+.net-dropdown:hover .net-dropdown-content {
+  display: block;
+}
+.dropdown:hover .dropbtn {
+  color: #fff;
+}
+.top-nav {
   width: 100%;
   position: relative;
   background: #151e40 !important;
@@ -15,17 +68,26 @@
   color: #134699 !important;
   margin-bottom: 70px !important;
   .wide-title {
-    cursor: default;
+    cursor: pointer;
     text-align: left;
     width: 25%;
+    margin-right: 16px;
     vertical-align: middle;
+    img {
+      position: absolute;
+      bottom: 16px;
+    }
     span {
-      position: relative;
-      top: -6px;
+      position: absolute;
+      bottom: 16px;
+      left: 40px;
+      font-weight: 700;
+      font-size: 20px;
     }
   }
   .menu {
     height: 100%;
+    margin-right: 16px;
     .menu-item {
       height: 100%;
     }
@@ -33,23 +95,30 @@
       color: #fff;
       border-bottom: 1px solid #1770ea;
     }
-  }
-  .option-right {
-    text-align: right;
-    button:hover {
-      color: #fff;
-    }
-    button.active {
+    .menu-item:hover {
       color: #fff;
     }
   }
+  // .option-right {
+  //   position: relative;
+  //   right: 0;
+  //   text-align: right;
+  //   button:hover {
+  //     color: #fff;
+  //   }
+  // }
 }
 ::ng-deep .mat-menu-item {
   text-align: center !important;
   padding: 0 !important;
   color: #134699;
+  height: 40px;
+  padding: 0 10px !important;
   &:hover {
     color: #fff;
+  }
+  &:not(:last-child) {
+    border-bottom: 1px solid #132f5a;
   }
 }
 ::ng-deep mat-toolbar-row {
@@ -59,13 +128,15 @@
   background: #18244f;
   position: absolute;
   top: 40px;
+  min-width: 90px !important;
   text-align: center;
 }
 ::ng-deep .mat-menu-content {
   text-align: center;
+  padding: 0 !important;
 }
-@media screen and (max-width: 600px) {
- 
+@media screen and (max-width: 870px) {
+  
 }
 @media screen and (min-width: 601px) {
   
