@@ -1,33 +1,34 @@
 <div class="block">
-	<div class="example-header">
-		<mat-form-field>
-			<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-		</mat-form-field>
-	</div>
-	<div class="example-container mat-elevation-z8">
-		<mat-table [dataSource]="dataSource">
-			<!-- type Column -->
-			<ng-container matColumnDef="type">
-				<mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.TX.type }} </mat-cell>
-			</ng-container>
-			<!-- txid Column -->
-			<ng-container matColumnDef="txid">
-				<mat-header-cell *matHeaderCellDef> Transactions Id </mat-header-cell>
-				<mat-cell *matCellDef="let row"> {{row.TX.txid }} </mat-cell>
-			</ng-container>
-			<!-- time Column -->
-			<ng-container matColumnDef="time">
-				<mat-header-cell *matHeaderCellDef> Time </mat-header-cell>
-				<mat-cell *matCellDef="let row"> 
-          <!-- <span>{{ row.TX.time | date : 'yyyy-MM-dd HH:mm:ss'}}</span> -->
-          <span>2018-10-1 12:23:10</span>
-          <button class="txextend"> > </button>
-        </mat-cell>
-      </ng-container>
-			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-		</mat-table>
-		<mat-paginator [length]="totalCount" [pageSize]="1" [pageSizeOptions]="[1, 2, 50, 100]"></mat-paginator>
-	</div>
+  <div class="tran-list">
+    <div class="row-head">
+      <div class="col col-1">Type</div>
+      <div class="col col-2">Transaction Id</div>
+      <div class="col col-3">Time</div>
+    </div>
+    <div class="warpper" *ngFor="let item of dataSource; index as index">
+      <div class="row">
+        <div class="col col-1">{{ item.TX.type }}</div>
+        <div class="col col-2">{{ item.TX.txid }}</div>
+        <div class="col col-3">2019-1-1 12:10:09</div>
+        <div class="col col-4"><mat-icon style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}">keyboard_arrow_down</mat-icon></div>
+      </div>
+      <div class="tran-info" *ngIf="show[index]">
+        <div class="tran-info-from">
+          <p class="info-title" *ngIf=item.UTXOVout.TxUTXO>Sent from</p>
+          <div  *ngFor="let txUTXO of item.UTXOVout.TxUTXO">
+            <div class="info-address">{{ txUTXO.address }}</div>
+            <div class="info-amount">{{ txUTXO.value }}</div>
+          </div>
+        </div>
+        <div class="tran-info-icon"><span>></span></div>
+        <div class="tran-info-to">
+          <p class="info-title" *ngIf=item.UTXOVout.TxVouts>Sent to</p>
+          <div *ngFor="let txVout of item.UTXOVout.TxVouts">
+            <div class="info-address">{{ txVout.address }}</div>
+            <div class="info-amount">{{ txVout.value }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

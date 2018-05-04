@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/material';
 import { GlobalService } from '../../../core';
 
 @Component({
@@ -8,37 +7,29 @@ import { GlobalService } from '../../../core';
   styleUrls: ['./transactions.component.scss']
 })
 export class TransactionsComponent implements OnInit {
-  displayedColumns = ['type', 'txid', 'time'];
-  dataSource: MatTableDataSource<any>;
-  pageEvent: PageEvent;
+  dataSource: any;
   totalCount: number;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  show: any = [];
 
   constructor(
     private http: HttpClient,
-    private global: GlobalService
+    private global: GlobalService,
   ) { }
 
   ngOnInit() {
-    this.getIssues(1, 1);
-    this.paginator.page.subscribe((page: PageEvent) => {
-      this.getIssues(page.pageIndex + 1, page.pageSize);
-    });
+    this.getIssues(1, 2);
+    this.show = [false, false];
   }
   getIssues(pageIndex, pageSize) {
     this.http.post(`${this.global.apiDomain}/api/block`,
       { 'method': 'gettransactions', 'params': [pageIndex, pageSize, 'all'] }).subscribe((res: any) => {
-      this.dataSource = new MatTableDataSource(res.result.data);
+      this.dataSource = res.result.data;
       this.totalCount = res.result.total;
     }, (err) => {
       console.log(err);
     });
   }
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+  showInfo(index) {
+    this.show[index] = !this.show[index];
   }
-
-
 }

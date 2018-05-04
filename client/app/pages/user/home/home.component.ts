@@ -79,12 +79,6 @@ export class HomeComponent implements OnInit {
       console.log(err);
     });
     this.http.post(`${this.global.apiDomain}/api/block`,
-      { 'method': 'getassets', 'params': [1, 1] }).subscribe((res: any) => {
-      this.totalAssets = res.result.total;
-    }, (err) => {
-      console.log(err);
-    });
-    this.http.post(`${this.global.apiDomain}/api/block`,
       { 'method': 'getaddresses', 'params': [1, 1] }).subscribe((res: any) => {
       this.totalAddresses = res.result.total;
     }, (err) => {
