@@ -6,21 +6,21 @@
         <span>ExChain</span>
       </div>
       <div class="flex-1 menu">
-          <button class="menu-item" [ngClass]="{active: currentPage==='/home'}" mat-button routerLink="/home">home</button>
-          <button class="menu-item" [ngClass]="{active: currentPage==='/blocks'}" mat-button routerLink="/blocks">Blocks</button>
-          <button class="menu-item" [ngClass]="{active: currentPage==='/transactions'}" mat-button routerLink="/transactions">Transactions</button>
-          <button class="menu-item" [ngClass]="{active: currentPage==='/addresses'}" mat-button routerLink="/addresses">Addresses</button>
-          <button class="menu-item" [ngClass]="{active: currentPage==='/assets'}" mat-button routerLink="/assets">Assets</button>
+          <button class="menu-item" [ngClass]="{active: currentPage==='/home'}" routerLink="/home">home</button>
+          <button class="menu-item" [ngClass]="{active: currentPage==='/blocks'}" routerLink="/blocks">Blocks</button>
+          <button class="menu-item" [ngClass]="{active: currentPage==='/transactions'}" routerLink="/transactions">Transactions</button>
+          <button class="menu-item" [ngClass]="{active: currentPage==='/addresses'}" routerLink="/addresses">Addresses</button>
+          <button class="menu-item" [ngClass]="{active: currentPage==='/assets'}" routerLink="/assets">Assets</button>
       </div>
       <div class="lang-dropdown dropdown">
-        <button class="dropbtn" mat-button>English<mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></button>
+        <button class="dropbtn">English<mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></button>
         <div class="dropdown-content lang-dropdown-content">
           <a href="javascript:;">English</a>
           <a href="javascript:;">中文繁体</a>
         </div>
       </div>
       <div class="net-dropdown dropdown">
-        <button class="dropbtn" mat-button>MainNet<mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></button>
+        <button class="dropbtn">MainNet<mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></button>
         <div class="dropdown-content net-dropdown-content">
           <a href="javascript:;">MainNet</a>
           <a href="javascript:;">TestNet</a>
@@ -33,16 +33,16 @@
         <span>ExChain</span>
       </div>
       <div class="flex-1"></div>
-      <button mat-button [matMenuTriggerFor]="linkMenu" style="min-width: 110px; text-align: right; padding: 0;">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <mat-menu #linkMenu="matMenu">
-        <button mat-menu-item routerLink="/home">Home</button>
-        <button mat-menu-item routerLink="/blocks">Blocks</button>
-        <button mat-menu-item routerLink="/transactions">Transactions</button>
-        <button mat-menu-item routerLink="/addresses">Addresses</button>
-        <button mat-menu-item routerLink="/assets">Assets</button>
-      </mat-menu>
+      <div class="dropdown links-dropdown">
+        <button class="dropbtn"><mat-icon>menu</mat-icon></button>
+        <div class="dropdown-content links-dropdown-content">
+          <a href="javascript: ;" routerLink="/home">Home</a>
+          <a href="javascript: ;" routerLink="/blocks">Blocks</a>
+          <a href="javascript: ;" routerLink="/transactions">Transactions</a>
+          <a href="javascript: ;" routerLink="/addresses">Addresses</a>
+          <a href="javascript: ;" routerLink="/assets">Assets</a>
+        </div>
+      </div>
     </mat-toolbar-row>
   </mat-toolbar>
   <router-outlet></router-outlet>
