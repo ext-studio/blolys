@@ -11,9 +11,11 @@ import { GlobalService } from '../../../core';
 export class AddressesComponent implements OnInit {
   displayedColumns = ['address', 'createdAt'];
   dataSource: MatTableDataSource<any>;
-  pageEvent: PageEvent;
   totalCount: number;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  pageNumber: any = 16;  // the transactions count of one page
+  pageShowList: any;
+  lastPage: Number;
+  clickPage: any = 1;
 
   constructor(
     private http: HttpClient,
@@ -21,25 +23,77 @@ export class AddressesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getIssues(1, 1);
-    this.paginator.page.subscribe((page: PageEvent) => {
-      this.getIssues(page.pageIndex + 1, page.pageSize);
-    });
+    this.getIssues(1, this.pageNumber);
+    this.pageShowList = [1, 2, 3];
   }
   getIssues(pageIndex, pageSize) {
-    // console.log(pageIndex + '  ' + pageSize)
     this.http.post(`${this.global.apiDomain}/api/block`,
       { 'method': 'getaddresses', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
-      // console.log(res.result.result)
       this.dataSource = new MatTableDataSource(res.result.data);
       this.totalCount = res.result.total;
+      this.lastPage = Math.ceil(this.totalCount / this.pageNumber);
     }, (err) => {
       console.log(err);
     });
   }
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+  pageGo(num) {
+    if (num === this.lastPage) {
+      this.getIssues(num, this.totalCount - (num - 1) * this.pageNumber);
+    } else {
+      this.getIssues(num, this.pageNumber);
+    }
+    this.clickPage = num;
+  }
+  pagePreList() {
+    if (this.pageShowList[0] - this.pageShowList.length > 0) {
+      for (let i = 0; i < this.pageShowList.length; i++) {
+        this.pageShowList[i] -= this.pageShowList.length;
+      }
+    } else if (this.pageShowList[0] === 2) {
+      for (let i = 0; i < this.pageShowList.length; i++) {
+        this.pageShowList[i]--;
+      }
+    } else if (this.pageShowList[0] === 3) {
+      for (let i = 0; i < this.pageShowList.length; i++) {
+        this.pageShowList[i] -= 2;
+      }
+    }
+  }
+  pageNextList() {
+    if (this.pageShowList[this.pageShowList.length - 1] + this.pageShowList.length <= this.lastPage) {
+      for (let i = 0; i < this.pageShowList.length; i++) {
+        this.pageShowList[i] += this.pageShowList.length;
+      }
+    } else if (this.pageShowList[this.pageShowList.length - 1] + 1 === this.lastPage) {
+      for (let i = 0; i < this.pageShowList.length; i++) {
+        this.pageShowList[i] += 1;
+      }
+    } else if (this.pageShowList[this.pageShowList.length - 1] + 2 === this.lastPage) {
+      for (let i = 0; i < this.pageShowList.length; i++) {
+        this.pageShowList[i] += 2;
+      }
+    }
+  }
+  pagePre() {
+    if (this.clickPage > 1) {
+      this.clickPage -= 1;
+      if (this.pageShowList[0] > this.clickPage) {
+        for (let i = 0; i < this.pageShowList.length; i++) {
+          this.pageShowList[i]--;
+        }
+      }
+      this.getIssues(this.clickPage, this.pageNumber);
+    }
+  }
+  pageNext() {
+    if (this.clickPage < this.lastPage) {
+      this.clickPage += 1;
+      if (this.pageShowList[this.pageShowList.length - 1] < this.clickPage) {
+        for (let i = 0; i < this.pageShowList.length; i++) {
+          this.pageShowList[i]++;
+        }
+      }
+      this.getIssues(this.clickPage, this.pageNumber);
+    }
   }
 }

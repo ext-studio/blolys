@@ -4,7 +4,7 @@
   position: relative;
   .welcome {
     text-align: center;
-    height: 190px;
+    min-height: 190px;
     background: #18244f;
     padding: 30px 127px 0 127px;
     margin-bottom: 70px;
@@ -46,7 +46,7 @@
       height: 190px;
       padding: 65px 0;
       p{
-        color: #769acb;
+        color: #fff;
         font-size: 14px;
         padding-bottom: 20px;
       }

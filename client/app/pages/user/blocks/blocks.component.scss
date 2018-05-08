@@ -3,25 +3,64 @@
   width: 100%;
   position: relative;
 }
+.header-title {
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 10px;
+}
 .example-container {
   display: flex;
   flex-direction: column;
   min-width: 300px;
-}
-.example-header {
-  min-height: 64px;
-  padding: 8px 24px 0;
-}
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
+  margin-bottom: 60px;
 }
 .mat-table {
   overflow: auto;
-  max-height: 500px;
+  text-align: left;
 }
-.textRight {
-  text-align: right;
+.mat-header-row, .mat-row {
+  padding: 0 30px;  
+  min-height: 50px;
+}
+.paginator {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 70px;
+  ul {
+    display: inline;
+  }
+  li {
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    height: 26px;
+    line-height: 26px;
+    background: #1c2b5d;
+    border-radius: 3px;
+    margin-right: 8px;
+    a {
+      text-decoration: none;
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+    }
+    &:hover {
+      background: #1770ea;
+    }
+  }
+  li.active {
+    background: #1770ea;
+  }
+  .pager-left li, .pager-right li{
+    width: 70px;
+  }
+  .pager-right li:last-child {
+    margin-right: 0;
+  }
+  .pager-middle li {
+    width: 26px;
+  }
 }
 @media screen and (max-width: 600px) {
   
@@ -48,19 +87,4 @@
 ::ng-deep .mat-paginator  {
   background: #252e67;
   color: #bbbfe4;
-}
-::ng-deep .mat-focused:not(.mat-form-field-invalid) mat-form-field * {
-  color: #c3c3dd;
-}
-::ng-deep .mat-input-element {
-  caret-color: #a1a2bb;
-}
-::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-form-field-label {
-  color: #c3c3dd;
-}
-::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-input-underline {
-  background-color: #c3c3dd;
-}
-::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-form-field-ripple{
-  background-color: #c3c3dd;
 }

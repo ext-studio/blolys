@@ -7,7 +7,7 @@
   margin: 0 auto;
 }
 .dropbtn {
-  color: #134699;
+  color: #769acb;
   padding: 0;
 }
 .dropdown {
@@ -34,7 +34,7 @@
   }
 }
 .dropdown-content a {
-  color: #134699;
+  color: #769acb;
   height: 45px;
   line-height: 45px;
   text-align: center;
@@ -65,7 +65,7 @@
   background: #151e40 !important;
   border-bottom: 1px solid #132f5a;
   font-size: 16px;
-  color: #134699 !important;
+  color: #769acb !important;
   margin-bottom: 70px !important;
   .wide-title {
     cursor: pointer;
@@ -99,14 +99,9 @@
       color: #fff;
     }
   }
-  // .option-right {
-  //   position: relative;
-  //   right: 0;
-  //   text-align: right;
-  //   button:hover {
-  //     color: #fff;
-  //   }
-  // }
+}
+::ng-deep .mat-button-focus-overlay {
+  background-color: transparent !important;
 }
 ::ng-deep .mat-menu-item {
   text-align: center !important;

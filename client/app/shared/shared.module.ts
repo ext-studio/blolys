@@ -8,6 +8,7 @@ import {
   MatInputModule
 } from '@angular/material';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
     MatPaginatorModule, MatTableModule, MatInputModule,
     NgxEchartsModule, MatIconModule
   ],
-  declarations: [],
+  declarations: [PaginatorComponent],
   entryComponents: [],
   providers: []
 })
