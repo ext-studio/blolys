@@ -1,0 +1,75 @@
+<div class="block">
+  <div class="header-title">
+    <p class="header-title-info">Invocation Transaction</p>
+    <p class="header-title-address">invocation | Hash: txid</p>
+  </div>
+  <div class="tran-info" *ngIf="show[index]">
+    <div class="tran-info-from">
+      <p class="info-title" *ngIf=txInfo.UTXOVout.TxUTXO>Sent from</p>
+      <div  *ngFor="let txUTXO of txInfo.UTXOVout.TxUTXO">
+        <div class="info-address">{{ txUTXO.address }}</div>
+        <div class="info-amount">
+          <span>{{ txUTXO.value }}</span>
+          <span class="info-amount-name">{{ txUTXO.name }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
+    <div class="tran-info-to">
+      <p class="info-title" *ngIf=txInfo.UTXOVout.TxVouts>Sent to</p>
+      <div *ngFor="let txVout of txInfo.UTXOVout.TxVouts">
+        <div class="info-address">{{ txVout.address }}</div>
+        <div class="info-amount">
+          <span>{{ txVout.value }}</span>
+          <span class="info-amount-name">{{ txVout.name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="info-address info">
+    <li>
+      <p>{{ height }}</p>
+      <span>Block Index</span>
+    </li>
+    <li>
+      <p>{{ blockInfo.time * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
+      <span>Created</span>
+    </li>
+    <li>
+      <p>{{ blockInfo.hash }}</p>
+      <span>Hash</span>
+    </li>
+    <li>
+      <p>{{ blockInfo.size }}</p>
+      <span>Network Fee</span>
+    </li>
+    <li>
+      <p>{{ blockInfo.version }}</p>
+      <span>System Fee</span>
+    </li>
+    <li>
+      <p>{{ blockInfo.merkleRoot }}</p>
+      <span>Size</span>
+    </li>
+  </ul>
+  <div class="invocation-script script">
+    <div class="script-title">Invocation Script</div>
+    <div class="script-info">
+      <p>PUSHBYTES64:</p>
+      <p>dhghghj</p>
+      <div class="view-btn">
+        <button>VIEW BYTECODE</button>
+      </div>
+    </div>
+  </div>
+  <div class="verification-script script">
+    <div class="script-title">Verification Script</div>
+    <div class="script-info">
+      <p>PUSHBYTES32: ffff</p>
+      <p>CHECKSIG</p>
+      <div class="view-btn">
+        <button>VIEW OPCODE</button>
+      </div>
+    </div>
+  </div>
+</div>

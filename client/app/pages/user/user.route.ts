@@ -7,8 +7,12 @@ import { AssetsComponent } from './assets/assets.component';
 import { BlocksComponent } from './blocks/blocks.component';
 import { AddressesComponent } from './addresses/addresses.component';
 import { TransactionsComponent } from './transactions/transactions.component';
-import { BlockInfoComponent } from './block-info/block-info.component';
 import { AddressInfoComponent } from './address-info/address-info.component';
+import { AssetInfoComponent } from './asset-info/asset-info.component';
+import { BlockInfoComponent } from './block-info/block-info.component';
+import { TransactionInfoComponent } from './transaction-info/transaction-info.component';
+import { AssetAddressComponent } from './asset-address/asset-address.component';
+import { AssetTransactionComponent } from './asset-transaction/asset-transaction.component';
 
 const routes: Routes = [
   {
@@ -18,11 +22,15 @@ const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
       { path: 'assets', component: AssetsComponent },
+      { path: 'asset/info/:name', component: AssetInfoComponent },
+      { path: 'asset/address/:name', component: AssetAddressComponent },
+      { path: 'asset/transaction/:name', component: AssetTransactionComponent },
       { path: 'blocks', component: BlocksComponent },
       { path: 'block/:index', component: BlockInfoComponent },
       { path: 'addresses', component: AddressesComponent },
       { path: 'address/:address', component: AddressInfoComponent },
       { path: 'transactions', component: TransactionsComponent },
+      { path: 'transaction/:txid', component: TransactionInfoComponent },
     ]
   }
 ];

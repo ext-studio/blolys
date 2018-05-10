@@ -8,8 +8,12 @@ import { SharedModule } from '../../shared';
 import { BlocksComponent } from './blocks/blocks.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { AddressesComponent } from './addresses/addresses.component';
-import { BlockInfoComponent } from './block-info/block-info.component';
 import { AddressInfoComponent } from './address-info/address-info.component';
+import { AssetInfoComponent } from './asset-info/asset-info.component';
+import { BlockInfoComponent } from './block-info/block-info.component';
+import { TransactionInfoComponent } from './transaction-info/transaction-info.component';
+import { AssetAddressComponent } from './asset-address/asset-address.component';
+import { AssetTransactionComponent } from './asset-transaction/asset-transaction.component';
 
 @NgModule({
   imports: [SharedModule, UserRoutingModule],
@@ -17,7 +21,9 @@ import { AddressInfoComponent } from './address-info/address-info.component';
   declarations: [
     UserComponent, AssetsComponent, HomeComponent,
     BlocksComponent, TransactionsComponent, AddressesComponent,
-    BlockInfoComponent, AddressInfoComponent
+    BlockInfoComponent, AddressInfoComponent, AssetInfoComponent,
+    TransactionInfoComponent, AssetAddressComponent,
+    AssetTransactionComponent
   ],
   providers: [],
 })

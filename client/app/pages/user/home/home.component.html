@@ -33,7 +33,7 @@
       <!-- name Column -->
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef> Assets </mat-header-cell>
-        <mat-cell *matCellDef="let row" style="color: #1170ea;"> {{row.name}} </mat-cell>
+        <mat-cell *matCellDef="let row" style="color: #1770ea; cursor: pointer;" routerLink="/asset/{{row.name}}"> {{row.name}} </mat-cell>
       </ng-container>
       <!-- type Column -->
       <ng-container matColumnDef="type">

@@ -1,48 +1,25 @@
 <div class="block">
   <div class="header-title">
-    <p class="header-title-info">Addresses information</p>
+    <p class="header-title-info">Asset information</p>
     <p class="header-title-address">address</p>
   </div>
-  <ul class="info-address info">
-    <li>
-      <p>{{ height }}</p>
-      <span>Block Index</span>
-    </li>
-    <li>
-      <p>{{ blockInfo.time * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
-      <span>Created</span>
-    </li>
-    <li>
-      <p>{{ blockInfo.hash }}</p>
-      <span>Hash</span>
-    </li>
-    <li>
-      <p>{{ blockInfo.size }}</p>
-      <span>Network Fee</span>
-    </li>
-    <li>
-      <p>{{ blockInfo.version }}</p>
-      <span>System Fee</span>
-    </li>
-    <li>
-      <p>{{ blockInfo.merkleRoot }}</p>
-      <span>Size</span>
-    </li>
+  <ul class="info-address">
+    <li class="color-one width-half"><label>Name</label>NEO</li>
+    <li class="color-one width-half"><label>Symbol</label>NEO</li>
+    <li class="color-two width-half"><label>Total Supply</label>NEO</li>
+    <li class="color-two width-half"><label>Issued</label>NEO</li>
+    <li class="color-one width-half"><label>Type</label>NEO</li>
+    <li class="color-one width-half"><label>Created</label><span class="link-btn" routerLink="/asset/transaction/neo">NEO</span></li>
+    <li class="color-two width-half"><label>Blocks</label><span class="link-btn">NEO</span></li>
+    <li class="color-two width-half"><label>transactions</label><span class="link-btn">NEO</span></li>
+    <li class="color-one width-half"><label>Persion</label>NEO</li>
+    <li class="color-one width-half"><label>Addresses</label><span class="link-btn">NEO</span></li>
+    <li class="color-two width-all"><label>Network fee</label>NEO</li>
+    <li class="color-one width-all"><label>Owner</label><span class="link-btn" routerLink="/asset/address/neo">NEO</span></li>
+    <li class="color-two width-all"><label>Hash</label>NEO</li>
+    <li class="color-one width-all"><label>Register</label><span class="link-btn">NEO</span></li>
   </ul>
-  <ul class="info-assets info">
-    <li>
-      <p>{{ blockInfo.scriptVerification }}</p>
-      <span>NEO</span>
-    </li>
-    <li>
-      <p>{{ blockInfo.txNum }}</p>
-      <span>GAS</span>
-    </li>
-    <li>
-      <p>{{ blockInfo.nextConsensus }}</p>
-      <span>QLC</span>
-    </li>
-  </ul>
+  <p class="header-title-info">Recent Transactions</p>
   <div class="tran-list">
     <div class="row-head">
       <div class="col col-1">TXID</div>

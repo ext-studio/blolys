@@ -6,51 +6,36 @@
   margin-bottom: 25px;
   border-left: 3px solid #1770ea;
   padding-left: 8px;
-  .header-title-info {
-    font-size: 30px;
-    margin-bottom: 15px;
-  }
   .header-title-address {
     font-size: 14px;
   }
 }
-.info {
+.header-title-info {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+.info-address {
   width: 100%;
   overflow: hidden;
   margin-bottom: 70px;
+  border-radius: 2px;
+  box-shadow: 3px 3px 25px #060c23;
+  background: #18244f;
+  font-size: 16px;
   li {
     list-style: none;
     display: inline-block;
     box-sizing: border-box;
-    text-align: center;
-    padding-top: 40px;
-    p {
-      word-wrap: break-word;
-      margin-bottom: 10px;
+    text-align: left;
+    padding-left: 30px;
+    height: 50px;
+    line-height: 50px;
+    label {
+      margin-right: 44px;
     }
-    span {
-      font-size: 14px;
-      color: #134699; 
-      &:nth-child(9) {
-        color: #1770ea;
-      }
-    }
-  }
-}
-.info-address {
-  border-radius: 2px;
-  box-shadow: 3px 3px 25px #060c23;
-  background: #18244f;
-}
-.info-assets {
-  height: 150px;
-  li {
-    width: 32.66%;
-    height: 100%;
-    float: left;
-    background: #18244f;
-    &:not(:last-child) {
-      margin-right: 1%;
+    span.link-btn {
+      color: #1770ea;
+      cursor: pointer;
     }
   }
 }
@@ -179,28 +164,32 @@
 }
 @media screen and (min-width: 870px) {
   .info-address {
+    width: 100%;
     li {
-      width: 33.33%;
-      min-height: 135px;
       float: left;
-      &:not(:nth-child(3n)) {
-        border-right: 1px solid #203067;
-      }
-      &:nth-child(-n + 3) {
-        border-bottom: 1px solid #203067;
-      }
-      p {
-        &:nth-child(3n) {
-          font-size: 14px;
-        }
-        &:not(::nth-child(3n)) {
-          font-size: 24px;
-        }
-      }
+    }
+    .color-one {
+      background: #1c2b5d;
+    }
+    .color-two {
+      background: #18244f;
+    }
+    .width-half {
+      width: 50%;
     }
   }
-  .info-assets {
-   
+}
+@media screen and (max-width: 869px) {
+  .info-address {
+    li {
+      width: 100%;
+      &:nth-child(odd) {
+        background: #1c2b5d;
+      }
+      &:nth-child(even) {
+        background: #18244f;
+      }
+    }
   }
 }
 :host {

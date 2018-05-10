@@ -1,0 +1,144 @@
+.block {
+  width: 100%;
+  color: #fff;
+}
+.header-title {
+  margin-bottom: 25px;
+  border-left: 3px solid #27d357;
+  padding-left: 8px;
+  .header-title-info {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+  .header-title-address {
+    font-size: 14px;
+  }
+}
+.info {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 70px;
+  li {
+    list-style: none;
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 40px;
+    p {
+      word-wrap: break-word;
+      margin-bottom: 10px;
+    }
+    span {
+      font-size: 14px;
+      color: #134699; 
+      &:nth-child(9) {
+        color: #1770ea;
+      }
+    }
+  }
+}
+.info-address {
+  border-radius: 2px;
+  box-shadow: 3px 3px 25px #060c23;
+  background: #18244f;
+}
+.tran-info {
+  margin: 0 30px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  .tran-info-from {
+    width: 45%;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .tran-info-icon {
+    width: 10%;
+    text-align: center;
+    position: relative;
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .tran-info-to {
+    width: 45%;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .info-title {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .info-address {
+    font-size: 14px;
+    color: #1770ea;
+    margin-bottom: 20px;
+  }
+  .info-amount {
+    font-size: 18px;
+    margin-bottom: 30px;
+    .info-amount-name {
+      color: #1770ea;      
+    }
+  }
+}
+.script {
+  margin-bottom: 70px;
+  .script-title {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  .script-info {
+    padding: 32px;
+    height: 180px;
+    background: #18244f;
+    box-shadow: 3px 3px 25px #060c23;
+    p {
+      margin-bottom: 15px;
+    }
+    .view-btn {
+      width: 100%;
+      position: relative;
+      button {
+        position: absolute;
+        right: 0;
+        width: 150px;
+        height: 32px;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        background: #1770ea;
+      }
+    }
+  }
+}
+@media screen and (min-width: 870px) {
+  .info-address {
+    li {
+      width: 33.33%;
+      min-height: 135px;
+      float: left;
+      &:not(:nth-child(3n)) {
+        border-right: 1px solid #203067;
+      }
+      &:nth-child(-n + 3) {
+        border-bottom: 1px solid #203067;
+      }
+      p {
+        &:nth-child(3n) {
+          font-size: 14px;
+        }
+        &:not(::nth-child(3n)) {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+:host {
+  display: block;
+}

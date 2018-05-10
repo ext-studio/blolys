@@ -4,7 +4,6 @@ import { MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/m
 import { GlobalService } from '../../../core';
 
 @Component({
-  selector: 'app-addresses',
   templateUrl: './addresses.component.html',
   styleUrls: ['./addresses.component.scss']
 })
