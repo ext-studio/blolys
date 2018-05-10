@@ -1,32 +1,91 @@
 <div class="block">
     <div class="header-title">
-      <p class="block-title">Block information</p>
-      <p class="block-address">address</p>
+      <p class="header-title-info">Addresses information</p>
+      <p class="header-title-address">address</p>
     </div>
-    <ul class="block-info">
+    <ul class="info-address info">
       <li>
-        <p>block Index</p>
-        <span>{{ height }}</span>
+        <p>{{ height }}</p>
+        <span>Block Index</span>
       </li>
       <li>
-        <p>Time</p>
-        <span>{{ dataSource.time * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</span>
+        <p>{{ blockInfo.time * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
+        <span>Created</span>
       </li>
       <li>
-        <p>hash</p>
-        <span>{{ dataSource.hash }}</span>
+        <p>{{ blockInfo.hash }}</p>
+        <span>Hash</span>
       </li>
       <li>
-        <p>size</p>
-        <span>{{ dataSource.size }}</span>
+        <p>{{ blockInfo.size }}</p>
+        <span>Network Fee</span>
       </li>
       <li>
-        <p>version</p>
-        <span>{{ dataSource.version }}</span>
+        <p>{{ blockInfo.version }}</p>
+        <span>System Fee</span>
       </li>
       <li>
-        <p>Merkle Root</p>
-        <span>{{ dataSource.merkleRoot }}</span>
+        <p>{{ blockInfo.merkleRoot }}</p>
+        <span>Size</span>
       </li>
     </ul>
+    <ul class="info-assets info">
+      <li>
+        <p>{{ blockInfo.scriptVerification }}</p>
+        <span>NEO</span>
+      </li>
+      <li>
+        <p>{{ blockInfo.txNum }}</p>
+        <span>GAS</span>
+      </li>
+      <li>
+        <p>{{ blockInfo.nextConsensus }}</p>
+        <span>QLC</span>
+      </li>
+    </ul>
+    <div class="tran-list">
+      <div class="row-head">
+        <div class="col col-1">TXID</div>
+        <div class="col col-2">Type</div>
+        <div class="col col-3">Size</div>
+        <div class="col col-4">Version</div>
+        <div class="col col-5">Time</div>
+      </div>
+      <div class="warpper" *ngFor="let item of blockTransaction; index as index">
+        <div class="row">
+          <div class="col col-1">{{ item.TX.txid | shortHash }}</div>
+          <div class="col col-2">{{ item.TX.type }}</div>
+          <div class="col col-3">{{ item.TX.size }} Bytes</div>
+          <div class="col col-4">{{ item.TX.version }}</div>
+          <div class="col col-5">2018-1-1 12:10:09</div>
+          <div class="col col-6"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
+        </div>
+        <div class="tran-info" *ngIf="show[index]">
+          <div class="tran-info-from">
+            <p class="info-title" *ngIf=item.UTXOVout.TxUTXO>Sent from</p>
+            <div  *ngFor="let txUTXO of item.UTXOVout.TxUTXO">
+              <div class="info-address">{{ txUTXO.address }}</div>
+              <div class="info-amount">
+                <span>{{ txUTXO.value }}</span>
+                <span class="info-amount-name">{{ txUTXO.name }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
+          <div class="tran-info-to">
+            <p class="info-title" *ngIf=item.UTXOVout.TxVouts>Sent to</p>
+            <div *ngFor="let txVout of item.UTXOVout.TxVouts">
+              <div class="info-address">{{ txVout.address }}</div>
+              <div class="info-amount">
+                <span>{{ txVout.value }}</span>
+                <span class="info-amount-name">{{ txVout.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="view-all">
+      <button mat-raised-button  routerLink="/assets">View All</button>
+    </div>
   </div>

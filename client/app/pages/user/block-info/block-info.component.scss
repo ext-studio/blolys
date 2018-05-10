@@ -1,15 +1,16 @@
 .block {
   width: 100%;
-  height: 100%;
   color: #fff;
 }
 .header-title {
-  margin-bottom: 20px;
-  .block-title {
+  margin-bottom: 25px;
+  border-left: 3px solid #1770ea;
+  padding-left: 8px;
+  .header-title-info {
     font-size: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
-  .block-address {
+  .header-title-address {
     font-size: 14px;
   }
 }
@@ -18,10 +19,11 @@
   margin-bottom: 20px;
   button {
     background: #18244f;
-    height: 30px;
+    height: 32px;
     border: 1px solid #1770ea;
-    color: #fff;
-    border-radius: 2px;
+    color: #1770ea;
+    font-size: 16px;
+    border-radius: 5px;
     cursor: pointer;
     &:hover {
       background: #1c2b5d;
@@ -30,21 +32,27 @@
   .option-left {
     display: inline-block;
     button {
-      width: 60px;
+      width: 100px;
     }
   }
   .option-right {
     display: inline-block;
     position: absolute;
     right: 0; 
-    button {
+    .pre-button {
+      width: 150px;
+      margin-right: 26px;
+    }
+    .next-button {
       width: 120px;
+      margin: 0;
     }
   }
 }
-.block-info {
+.info {
+  box-shadow: 3px 3px 25px #060c23;
   width: 100%;
-  background: #1c2b5d;
+  background: #18244f;
   border-radius: 2px;
   overflow: hidden;
   margin-bottom: 70px;
@@ -55,25 +63,164 @@
     text-align: center;
     padding-top: 40px;
     p {
-      margin-bottom: 8px;
+      word-wrap: break-word;
+      margin-bottom: 10px;
     }
     span {
-      word-wrap: break-word;
+      font-size: 14px;
+      color: #134699; 
+      &:nth-child(9) {
+        color: #1770ea;
+      }
+    }
+  }
+}
+.tran-list {
+  width: 100%;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 30px;
+  box-shadow: 3px 3px 25px #060c23;
+  .row-head, .row {
+    height: 50px;
+    line-height: 50px;
+    .col {
+      display: inline-block;
+    }
+    .col-1 {
+      padding-left: 30px;
+      width: 20%;
+    }
+    .col-2 {
+      width: 20%;
+    }
+    .col-3 {
+      width: 15%;
+    }
+    .col-4 {
+      width: 10%;
+    }
+    .col-5 {
+      width: 20%;
+      padding-left: 16px;
+    }
+  }
+  .col-6 {
+    padding-right: 30px;
+    text-align: center;
+    float: right;
+    cursor: pointer;
+    .active {
+      transform: rotate(180deg);
+    }
+  }
+  .row-head {
+    background-color: #1c2b5d;
+  }
+  .warpper {
+    &:nth-child(even) {
+      background: #18244f;
+      .tran-info {
+        border-top: 1px solid #132b5d;
+      }
+    }
+    &:nth-child(odd) {
+      background: #1c2b5d;
+      .tran-info {
+        border-top: 1px solid #151e40;
+      }
+    }
+    .row .col-1 {
+      color: #1770ea;
+      cursor: pointer;
+    }
+    .tran-info {
+      margin: 0 30px;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      .tran-info-from {
+        width: 45%;
+        text-align: center;
+        margin-top: 30px;
+      }
+      .tran-info-icon {
+        width: 10%;
+        text-align: center;
+        position: relative;
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      .tran-info-to {
+        width: 45%;
+        text-align: center;
+        margin-top: 30px;
+      }
+      .info-title {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+      .info-address {
+        font-size: 14px;
+        color: #1770ea;
+        margin-bottom: 20px;
+      }
+      .info-amount {
+        font-size: 18px;
+        margin-bottom: 30px;
+        .info-amount-name {
+          color: #1770ea;
+          
+        }
+      }
+    }
+  }
+}
+.view-all {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 70px;
+  button {
+    background-color: #1770ea;
+    color: #fff;
+    width: 120px;
+    font-size: 14px;
+    height: 32px;
+    line-height: 32px;
+    margin-top: 30px;
+    border-radius: 5px;
+    &:hover {
+      background:  #1c2b5d;
     }
   }
 }
 @media screen and (min-width: 870px) {
-  .block-info {
+  .info {
     li {
       width: 33.33%;
       min-height: 135px;
       float: left;
       &:not(:nth-child(3n)) {
-        border-right: 1px solid #1770ea;
+        border-right: 1px solid #203067;
       }
       &:nth-child(-n + 6) {
-        border-bottom: 1px solid #1770ea;
+        border-bottom: 1px solid #203067;
+      }
+      p {
+        &:nth-child(3n) {
+          font-size: 14px;
+        }
+        &:not(::nth-child(3n)) {
+          font-size: 24px;
+        }
       }
     }
   }
+}
+:host {
+  display: block;
 }

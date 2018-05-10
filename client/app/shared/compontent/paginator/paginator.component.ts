@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { GlobalService } from '../../../core';
@@ -12,11 +12,11 @@ export class PaginatorComponent implements OnInit {
 
   displayedColumns = ['index', 'txNum', 'time', 'size', 'nextConsensus'];
   dataSource: MatTableDataSource<any>;
-  totalCount: number;
-  pageNumber: any = 16;  // the transactions count of one page
-  pageShowList: any;
   lastPage: Number;
   clickPage: any = 1;
+  pageShowList: any;
+  @Input() pageSize: number;
+  @Input() pageLength: number;
 
   constructor(
     private http: HttpClient,
@@ -24,24 +24,24 @@ export class PaginatorComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getIssues(1, this.pageNumber);
+    this.getIssues(1, this.pageSize);
     this.pageShowList = [1, 2, 3];
   }
   getIssues(pageIndex, pageSize) {
     this.http.post(`${this.global.apiDomain}/api/block`,
       { 'method': 'getblocks', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
       this.dataSource = new MatTableDataSource(res.result.data);
-      this.totalCount = res.result.total;
-      this.lastPage = Math.ceil(this.totalCount / this.pageNumber);
+      this.pageLength = res.result.total;
+      this.lastPage = Math.ceil(this.pageLength / this.pageSize);
     }, (err) => {
       console.log(err);
     });
   }
   pageGo(num) {
     if (num === this.lastPage) {
-      this.getIssues(num, this.totalCount - (num - 1) * this.pageNumber);
+      this.getIssues(num, this.pageLength - (num - 1) * this.pageSize);
     } else {
-      this.getIssues(num, this.pageNumber);
+      this.getIssues(num, this.pageSize);
     }
     this.clickPage = num;
   }
@@ -83,7 +83,7 @@ export class PaginatorComponent implements OnInit {
           this.pageShowList[i]--;
         }
       }
-      this.getIssues(this.clickPage, this.pageNumber);
+      this.getIssues(this.clickPage, this.pageSize);
     }
   }
   pageNext() {
@@ -94,7 +94,7 @@ export class PaginatorComponent implements OnInit {
           this.pageShowList[i]++;
         }
       }
-      this.getIssues(this.clickPage, this.pageNumber);
+      this.getIssues(this.clickPage, this.pageSize);
     }
   }
 

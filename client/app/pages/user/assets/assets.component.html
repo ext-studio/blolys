@@ -4,17 +4,17 @@
 		<mat-table [dataSource]="dataSource">
 			<!-- name Column -->
 			<ng-container matColumnDef="name">
-				<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-				<mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+				<mat-header-cell *matHeaderCellDef> Asset </mat-header-cell>
+				<mat-cell *matCellDef="let row" style="color: #1770ea; cursor: pointer;"> {{row.name}} </mat-cell>
 			</ng-container>
 			<!-- type Column -->
 			<ng-container matColumnDef="type">
-				<mat-header-cell *matHeaderCellDef> Assets </mat-header-cell>
+				<mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
 				<mat-cell *matCellDef="let row"> {{row.type}} </mat-cell>
 			</ng-container>
 			<!-- amount Column -->
 			<ng-container matColumnDef="amount">
-				<mat-header-cell *matHeaderCellDef  class="textRight"> Amount </mat-header-cell>
+				<mat-header-cell *matHeaderCellDef  class="textRight"> Supply </mat-header-cell>
 				<mat-cell *matCellDef="let row"  class="textRight"> {{row.amount | number}} </mat-cell>
 			</ng-container>
 			<!-- transactions Column -->

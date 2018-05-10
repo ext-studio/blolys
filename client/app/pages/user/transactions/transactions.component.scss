@@ -5,7 +5,7 @@
   .header-title {
     font-size: 30px;
     color: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   .tran-list {
     width: 100%;
@@ -20,24 +20,27 @@
       }
       .col-1 {
         padding-left: 30px;
-        width: 45%;
+        width: 20%;
       }
       .col-2 {
         width: 20%;
       }
       .col-3 {
-        width: 10%;
+        width: 15%;
       }
       .col-4 {
-        width: 15%;
+        width: 10%;
+      }
+      .col-5 {
+        width: 20%;
         padding-left: 16px;
       }
     }
-    .col-5 {
-      width: 50px;
+    .col-6 {
+      padding-right: 30px;
       text-align: center;
       float: right;
-      border-left: 1px solid #132f5a;
+      cursor: pointer;
       .active {
         transform: rotate(180deg);
       }
@@ -48,51 +51,62 @@
     .warpper {
       &:nth-child(even) {
         background: #18244f;
+        .tran-info {
+          border-top: 1px solid #132b5d;
+        }
       }
       &:nth-child(odd) {
         background: #1c2b5d;
+        .tran-info {
+          border-top: 1px solid #151e40;
+        }
+      }
+      .row .col-1 {
+        color: #1770ea;
+        cursor: pointer;
       }
       .tran-info {
-        width: 100%;
-        padding-top: 20px;
-        background: #336;
+        margin: 0 30px;
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
         .tran-info-from {
-          width: 48%;
+          width: 45%;
           text-align: center;
+          margin-top: 30px;
         }
         .tran-info-icon {
-          width: 4%;
-          margin-bottom: 20px;
-          vertical-align: middle;
+          width: 10%;
           text-align: center;
           position: relative;
-          span {
+          img {
             position: absolute;
             top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
           }
         }
         .tran-info-to {
-          width: 48%;
+          width: 45%;
           text-align: center;
+          margin-top: 30px;
         }
         .info-title {
-          font-size: 18px;
-          font-weight: 800;
-          padding-bottom: 8px;
-          margin-bottom: 15px;
+          font-size: 14px;
+          margin-bottom: 20px;
         }
         .info-address {
           font-size: 14px;
-          font-weight: 400px;
-          text-decoration: underline;
           color: #1770ea;
-          margin-bottom: 6px;
+          margin-bottom: 20px;
         }
         .info-amount {
-          margin-bottom: 20px;
+          font-size: 18px;
+          margin-bottom: 30px;
+          .info-amount-name {
+            color: #1770ea;
+            
+          }
         }
       }
     }

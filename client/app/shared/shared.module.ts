@@ -9,6 +9,9 @@ import {
 } from '@angular/material';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { PaginatorComponent } from './compontent/paginator/paginator.component';
+import { ShortHashPipe } from './pipes/shorthash.pipe';
+import { UnixDatePipe } from './pipes/unixdate.pipe';
+import { UnixTimePipe } from './pipes/unixtime.pipe';
 
 @NgModule({
   imports: [
@@ -22,9 +25,13 @@ import { PaginatorComponent } from './compontent/paginator/paginator.component';
     MatFormFieldModule, MatToolbarModule, MatStepperModule,
     ReactiveFormsModule, FormsModule, MatTooltipModule,
     MatPaginatorModule, MatTableModule, MatInputModule,
-    NgxEchartsModule, MatIconModule, PaginatorComponent
+    NgxEchartsModule, MatIconModule, PaginatorComponent,
+    ShortHashPipe, UnixDatePipe, UnixTimePipe
   ],
-  declarations: [PaginatorComponent],
+  declarations: [
+    PaginatorComponent, ShortHashPipe, UnixDatePipe,
+    UnixTimePipe
+  ],
   entryComponents: [],
   providers: []
 })
