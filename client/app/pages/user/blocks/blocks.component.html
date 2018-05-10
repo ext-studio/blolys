@@ -4,8 +4,8 @@
 		<mat-table [dataSource]="dataSource">
 			<!-- index Column -->
 			<ng-container matColumnDef="index">
-				<mat-header-cell *matHeaderCellDef> Height </mat-header-cell>
-				<mat-cell *matCellDef="let row" style="color: #1770ea; "> {{ row.index | number }} </mat-cell>
+				<mat-header-cell *matHeaderCellDef> Index </mat-header-cell>
+				<mat-cell *matCellDef="let row" style="color: #1770ea; cursor: pointer;" routerLink="/block/{{row.index}}"> {{ row.index | number }} </mat-cell>
 			</ng-container>
 			<!-- txNum Column -->
 			<ng-container matColumnDef="txNum">
@@ -14,8 +14,8 @@
 			</ng-container>
 			<!-- time Column -->
 			<ng-container matColumnDef="time">
-				<mat-header-cell *matHeaderCellDef> time </mat-header-cell>
-				<mat-cell *matCellDef="let row"> {{ row.time | date : 'yyyy-MM-dd HH:mm:ss'}} </mat-cell>
+				<mat-header-cell *matHeaderCellDef> Time </mat-header-cell>
+				<mat-cell *matCellDef="let row"> {{ row.time * 1000 | date : 'yyyy-MM-dd HH:mm:ss'}} </mat-cell>
       </ng-container>
       <!-- size Column -->
 			<ng-container matColumnDef="size">
@@ -25,13 +25,14 @@
       <!-- nextConsensus Column -->
       <ng-container matColumnDef="nextConsensus">
         <mat-header-cell *matHeaderCellDef  style="min-width: 300px;"> Validator </mat-header-cell>
-        <mat-cell *matCellDef="let row"  style="min-width: 300px; color: #1770ea;"> {{ row.nextConsensus }} </mat-cell>
+        <mat-cell *matCellDef="let row"  style="min-width: 300px; color: #1770ea; cursor: pointer;"> {{ row.nextConsensus }} </mat-cell>
       </ng-container>
 			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 		</mat-table>
   </div>
-  <div class="paginator">
+  <app-paginator></app-paginator>
+  <!-- <div class="paginator">
     <ul class="pager pager-left">
       <li><a href="javascript: ;" (click)="pageGo(1)">First Page</a></li>
       <li><a href="javascript: ;" (click)="pagePre()">Previous</a></li>
@@ -45,5 +46,5 @@
       <li><a href="javascript: ;" (click)="pageNext()">Next</a></li>
       <li><a href="javascript: ;" (click)="pageGo(lastPage)">Last Page</a></li>
     </ul>
-  </div>
+  </div> -->
 </div>

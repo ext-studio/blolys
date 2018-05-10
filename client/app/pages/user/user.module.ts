@@ -8,12 +8,16 @@ import { SharedModule } from '../../shared';
 import { BlocksComponent } from './blocks/blocks.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { AddressesComponent } from './addresses/addresses.component';
+import { BlockInfoComponent } from './block-info/block-info.component';
+import { AddressInfoComponent } from './address-info/address-info.component';
 
 @NgModule({
   imports: [SharedModule, UserRoutingModule],
   exports: [],
   declarations: [
-    UserComponent, AssetsComponent, HomeComponent, BlocksComponent, TransactionsComponent, AddressesComponent
+    UserComponent, AssetsComponent, HomeComponent,
+    BlocksComponent, TransactionsComponent, AddressesComponent,
+    BlockInfoComponent, AddressInfoComponent
   ],
   providers: [],
 })

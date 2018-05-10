@@ -1,0 +1,53 @@
+<div class="block">
+  <div class="header-title">
+    <p class="block-title">Block information</p>
+    <p class="block-address">address</p>
+  </div>
+  <div class="option-btn">
+    <div class="option-left">
+      <button>back</button>
+    </div>
+    <div class="option-right">
+      <button>Previous block</button>
+      <button>Next block</button>
+    </div>
+  </div>
+  <ul class="block-info">
+    <li>
+      <p>block Index</p>
+      <span>{{ height }}</span>
+    </li>
+    <li>
+      <p>Time</p>
+      <span>{{ dataSource.time * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</span>
+    </li>
+    <li>
+      <p>hash</p>
+      <span>{{ dataSource.hash }}</span>
+    </li>
+    <li>
+      <p>size</p>
+      <span>{{ dataSource.size }}</span>
+    </li>
+    <li>
+      <p>version</p>
+      <span>{{ dataSource.version }}</span>
+    </li>
+    <li>
+      <p>Merkle Root</p>
+      <span>{{ dataSource.merkleRoot }}</span>
+    </li>
+    <li>
+      <p>confirmations</p>
+      <span>{{ dataSource.scriptVerification }}</span>
+    </li>
+    <li>
+      <p>transactions</p>
+      <span>{{ dataSource.txNum }}</span>
+    </li>
+    <li>
+      <p>Validator</p>
+      <span>{{ dataSource.nextConsensus }}</span>
+    </li>
+  </ul>
+</div>

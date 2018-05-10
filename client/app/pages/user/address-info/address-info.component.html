@@ -1,0 +1,32 @@
+<div class="block">
+    <div class="header-title">
+      <p class="block-title">Block information</p>
+      <p class="block-address">address</p>
+    </div>
+    <ul class="block-info">
+      <li>
+        <p>block Index</p>
+        <span>{{ height }}</span>
+      </li>
+      <li>
+        <p>Time</p>
+        <span>{{ dataSource.time * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</span>
+      </li>
+      <li>
+        <p>hash</p>
+        <span>{{ dataSource.hash }}</span>
+      </li>
+      <li>
+        <p>size</p>
+        <span>{{ dataSource.size }}</span>
+      </li>
+      <li>
+        <p>version</p>
+        <span>{{ dataSource.version }}</span>
+      </li>
+      <li>
+        <p>Merkle Root</p>
+        <span>{{ dataSource.merkleRoot }}</span>
+      </li>
+    </ul>
+  </div>

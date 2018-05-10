@@ -2,16 +2,18 @@
   <p class="header-title">Transactions</p>
   <div class="tran-list">
     <div class="row-head">
-      <div class="col col-1">Type</div>
-      <div class="col col-2">Transaction Id</div>
-      <div class="col col-3">Time</div>
+      <div class="col col-1">TXID</div>
+      <div class="col col-2">Type</div>
+      <div class="col col-3">Size</div>
+      <div class="col col-4">Time</div>
     </div>
     <div class="warpper" *ngFor="let item of dataSource; index as index">
       <div class="row">
-        <div class="col col-1">{{ item.TX.type }}</div>
-        <div class="col col-2">{{ item.TX.txid }}</div>
-        <div class="col col-3">2019-1-1 12:10:09</div>
-        <div class="col col-4"><mat-icon style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}">keyboard_arrow_down</mat-icon></div>
+        <div class="col col-1">{{ item.TX.txid }}</div>
+        <div class="col col-2">{{ item.TX.type }}</div>
+        <div class="col col-3">{{ item.TX.size }}</div>
+        <div class="col col-4">2018-1-1 12:10:09</div>
+        <div class="col col-5"><mat-icon style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}">keyboard_arrow_down</mat-icon></div>
       </div>
       <div class="tran-info" *ngIf="show[index]">
         <div class="tran-info-from">

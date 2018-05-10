@@ -72,25 +72,16 @@ export class HomeComponent implements OnInit {
     }
   };
   ngOnInit() {
-    this.http.post(`${this.global.apiDomain}/api/block`,
-      { 'method': 'getblocks', 'params': [1, 1] }).subscribe((res: any) => {
-      this.totalBlocks = res.result.total;
+    this.http.post(`${this.global.apiDomain}/api/index`,
+      { 'method': 'queryallcounts' }).subscribe((res: any) => {
+      this.totalAssets = res.result.assetCounts;
+      this.totalBlocks = res.result.blockCounts ;
+      this.totalAddresses = res.result.addressCounts;
+      this.totalTransactions = res.result.txCounts;
     }, (err) => {
       console.log(err);
     });
-    this.http.post(`${this.global.apiDomain}/api/block`,
-      { 'method': 'getaddresses', 'params': [1, 1] }).subscribe((res: any) => {
-      this.totalAddresses = res.result.total;
-    }, (err) => {
-      console.log(err);
-    });
-    this.http.post(`${this.global.apiDomain}/api/block`,
-      { 'method': 'gettransactions', 'params': [1, 2, 'all'] }).subscribe((res: any) => {
-      this.totalTransactions = res.result.total;
-    }, (err) => {
-      console.log(err);
-    });
-    this.getAssets(1, 7);
+    this.getAssets(1, 10);
   }
 
   getAssets(pageIndex, pageSize) {
