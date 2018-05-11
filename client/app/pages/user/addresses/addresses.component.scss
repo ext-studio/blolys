@@ -34,6 +34,8 @@
     background: #1c2b5d;
     border-radius: 3px;
     margin-right: 8px;
+    padding: 0 6px;
+    min-width: 26px;
     a {
       text-decoration: none;
       display: inline-block;
@@ -47,14 +49,8 @@
   li.active {
     background: #1770ea;
   }
-  .pager-left li, .pager-right li{
-    width: 70px;
-  }
   .pager-right li:last-child {
     margin-right: 0;
-  }
-  .pager-middle li {
-    width: 26px;
   }
 }
 @media screen and (max-width: 600px) {
@@ -81,7 +77,7 @@
 }  
 ::ng-deep .mat-table {
   overflow: auto;
-  text-align: left;
+  text-align: center;
 }
 ::ng-deep .mat-header-row, .mat-row {
   padding: 0 30px;  

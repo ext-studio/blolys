@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class BlockInfoComponent implements OnInit {
   blockTransaction: any;
   blockInfo: any;
-  height: String = this.router.url.split('/')[2];
+  height: Number = Number(this.router.url.split('/')[2]);
 
   constructor(
     private http: HttpClient,

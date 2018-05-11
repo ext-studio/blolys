@@ -8,13 +8,15 @@ import { GlobalService } from '../../../core';
   styleUrls: ['./assets.component.scss']
 })
 export class AssetsComponent implements OnInit {
-  displayedColumns = ['name', 'type', 'amount', 'transactions', 'time'];
+  displayedColumns = ['name', 'type', 'amount', 'addresses', 'transactions', 'admin'];
   dataSource: MatTableDataSource<any>;
   totalCount: number;
   pageNumber: any = 16;  // the transactions count of one page
   pageShowList: any;
   lastPage: Number;
   clickPage: any = 1;
+  showSortTran: Boolean = false;
+  showSortAddr: Boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -25,8 +27,14 @@ export class AssetsComponent implements OnInit {
     this.getIssues(1, this.pageNumber);
     this.pageShowList = [1, 2, 3];
   }
+  sortTrans() {
+    this.showSortTran = !this.showSortTran;
+  }
+  sortAddr() {
+    this.showSortAddr = !this.showSortAddr;
+  }
   getIssues(pageIndex, pageSize) {
-    this.http.post(`${this.global.apiDomain}/api/block`,
+    this.http.post(`${this.global.apiDomain}/api/asset`,
       { 'method': 'getassets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
       this.dataSource = new MatTableDataSource(res.result.data);
       this.totalCount = res.result.total;

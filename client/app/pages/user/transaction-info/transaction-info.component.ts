@@ -19,7 +19,7 @@ export class TransactionInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.http.post(`${this.global.apiDomain}/api/block`,
+    this.http.post(`${this.global.apiDomain}/api/transactions`,
       {'method': 'gettxbytxid', 'params': [this.txid]}).subscribe((res: any) => {
         this.txInfo = res.result;
         console.log(res);

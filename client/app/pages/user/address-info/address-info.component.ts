@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./address-info.component.scss']
 })
 export class AddressInfoComponent implements OnInit {
-  dataSource: any;
+  addrassets: any;
   address: String = this.router.url.split('/')[2];
 
   constructor(
@@ -19,9 +19,9 @@ export class AddressInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.http.post(`${this.global.apiDomain}/api/block`,
-      {'method': 'getaddressasset', 'params': [this.address]}).subscribe((res: any) => {
-        // this.dataSource = res.result;
+    this.http.post(`${this.global.apiDomain}/api/asset`,
+      {'method': 'getaddrassets', 'params': [this.address]}).subscribe((res: any) => {
+        this.addrassets = res.result;
         console.log(res.result);
     }, (err) => {
       console.log(err);

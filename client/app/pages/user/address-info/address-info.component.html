@@ -1,9 +1,9 @@
 <div class="block">
   <div class="header-title">
     <p class="header-title-info">Addresses information</p>
-    <p class="header-title-address">address</p>
+    <p class="header-title-address">{{ this.address }}</p>
   </div>
-  <ul class="info-address info">
+  <!-- <ul class="info-address info">
     <li>
       <p>{{ height }}</p>
       <span>Block Index</span>
@@ -28,19 +28,11 @@
       <p>{{ blockInfo.merkleRoot }}</p>
       <span>Size</span>
     </li>
-  </ul>
+  </ul> -->
   <ul class="info-assets info">
-    <li>
-      <p>{{ blockInfo.scriptVerification }}</p>
-      <span>NEO</span>
-    </li>
-    <li>
-      <p>{{ blockInfo.txNum }}</p>
-      <span>GAS</span>
-    </li>
-    <li>
-      <p>{{ blockInfo.nextConsensus }}</p>
-      <span>QLC</span>
+    <li *ngFor="let item of addrassets">
+      <p>{{ item.balance }}</p>
+      <span>{{ item.name }}</span>
     </li>
   </ul>
   <p class="header-title-info">Transactions ( 5 )</p>

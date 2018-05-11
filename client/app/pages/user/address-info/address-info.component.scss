@@ -30,7 +30,7 @@
     display: inline-block;
     box-sizing: border-box;
     text-align: center;
-    padding-top: 40px;
+    padding: 40px 0;
     p {
       word-wrap: break-word;
       margin-bottom: 10px;
@@ -50,7 +50,7 @@
   background: #18244f;
 }
 .info-assets {
-  height: 150px;
+  // height: 150px;
   li {
     width: 32.66%;
     height: 100%;
@@ -58,6 +58,10 @@
     background: #18244f;
     &:not(:last-child) {
       margin-right: 1%;
+    }
+    p {
+      font-size: 28px;
+      color: #27d3c5;
     }
   }
 }

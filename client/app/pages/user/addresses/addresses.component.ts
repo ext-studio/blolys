@@ -8,7 +8,7 @@ import { GlobalService } from '../../../core';
   styleUrls: ['./addresses.component.scss']
 })
 export class AddressesComponent implements OnInit {
-  displayedColumns = ['address', 'createdAt'];
+  displayedColumns = ['address', 'createdAt', 'lastTransactionTime', 'transactions'];
   dataSource: MatTableDataSource<any>;
   totalCount: number;
   pageNumber: any = 16;  // the transactions count of one page
@@ -26,7 +26,7 @@ export class AddressesComponent implements OnInit {
     this.pageShowList = [1, 2, 3];
   }
   getIssues(pageIndex, pageSize) {
-    this.http.post(`${this.global.apiDomain}/api/block`,
+    this.http.post(`${this.global.apiDomain}/api/address`,
       { 'method': 'getaddresses', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
       this.dataSource = new MatTableDataSource(res.result.data);
       this.totalCount = res.result.total;

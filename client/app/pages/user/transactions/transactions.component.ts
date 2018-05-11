@@ -28,7 +28,7 @@ export class TransactionsComponent implements OnInit {
     this.pageShowList = [1, 2, 3];
   }
   getIssues(pageIndex, pageSize) {
-    this.http.post(`${this.global.apiDomain}/api/block`,
+    this.http.post(`${this.global.apiDomain}/api/transactions`,
       { 'method': 'gettransactions', 'params': [pageIndex, pageSize, 'ContractTransaction'] }).subscribe((res: any) => {
       this.dataSource = res.result.data;
       this.totalCount = res.result.total;

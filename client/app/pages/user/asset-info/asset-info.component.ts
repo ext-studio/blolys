@@ -19,7 +19,7 @@ export class AssetInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.http.post(`${this.global.apiDomain}/api/block`,
+    this.http.post(`${this.global.apiDomain}/api/asset`,
       {'method': 'getaddressasset', 'params': [this.address]}).subscribe((res: any) => {
         // this.dataSource = res.result;
         console.log(res.result);
