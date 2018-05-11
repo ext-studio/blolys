@@ -2,17 +2,24 @@
   width: 100%;
   color: #fff;
 }
+.header-title-info {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.link-btn {
+  color: #1770ea;
+  cursor: pointer;
+}
 .header-title {
   margin-bottom: 25px;
   border-left: 3px solid #1770ea;
   padding-left: 8px;
+  .header-title-info {
+    margin-bottom: 0;
+  }
   .header-title-address {
     font-size: 14px;
   }
-}
-.header-title-info {
-  font-size: 30px;
-  margin-bottom: 15px;
 }
 .info-address {
   width: 100%;
@@ -93,10 +100,6 @@
       .tran-info {
         border-top: 1px solid #151e40;
       }
-    }
-    .row .col-1 {
-      color: #1770ea;
-      cursor: pointer;
     }
     .tran-info {
       margin: 0 30px;

@@ -1,5 +1,5 @@
 <div class="block">
-  <p class="header-title">Transactions</p>
+  <p class="header-title-info">Transactions</p>
   <div class="tran-list">
     <div class="row-head">
       <div class="col col-1">TXID</div>
@@ -10,7 +10,7 @@
     </div>
     <div class="warpper" *ngFor="let item of dataSource; index as index">
       <div class="row">
-        <div class="col col-1" routerLink="/transaction/{{item.TX.txid}}">{{ item.TX.txid | shortHash }}</div>
+        <div class="col col-1 link-btn" routerLink="/transaction/{{item.TX.txid}}">{{ item.TX.txid | shortHash }}</div>
         <div class="col col-2">{{ item.TX.type }}</div>
         <div class="col col-3">{{ item.TX.size }} Bytes</div>
         <div class="col col-4">{{ item.TX.version }}</div>

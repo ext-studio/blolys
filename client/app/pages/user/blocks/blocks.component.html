@@ -1,11 +1,11 @@
 <div class="block">
-  <p class="header-title">Blocks</p>
+  <p class="header-title-info">Blocks</p>
 	<div class="example-container mat-elevation-z8">
 		<mat-table [dataSource]="dataSource">
 			<!-- index Column -->
 			<ng-container matColumnDef="index">
 				<mat-header-cell *matHeaderCellDef> Index </mat-header-cell>
-				<mat-cell *matCellDef="let row" style="color: #1770ea; cursor: pointer;" routerLink="/block/{{row.index}}"> {{ row.index | number }} </mat-cell>
+				<mat-cell *matCellDef="let row" class="link-btn" routerLink="/block/{{row.index}}"> {{ row.index | number }} </mat-cell>
 			</ng-container>
 			<!-- txNum Column -->
 			<ng-container matColumnDef="txNum">
@@ -24,8 +24,8 @@
       </ng-container>
       <!-- nextConsensus Column -->
       <ng-container matColumnDef="nextConsensus">
-        <mat-header-cell *matHeaderCellDef  style="min-width: 300px;"> Validator </mat-header-cell>
-        <mat-cell *matCellDef="let row"  style="min-width: 300px; color: #1770ea; cursor: pointer;" routerLink="/address/{{row.nextConsensus}}"> {{ row.nextConsensus }} </mat-cell>
+        <mat-header-cell *matHeaderCellDef> Validator </mat-header-cell>
+        <mat-cell *matCellDef="let row"  class="link-btn" routerLink="/address/{{row.nextConsensus}}"> {{ row.nextConsensus }} </mat-cell>
       </ng-container>
 			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

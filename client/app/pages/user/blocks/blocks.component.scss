@@ -3,24 +3,19 @@
   width: 100%;
   position: relative;
 }
-.header-title {
+.link-btn {
+  color: #1770ea; 
+  cursor: pointer; 
+}
+.header-title-info {
   font-size: 30px;
-  color: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .example-container {
   display: flex;
   flex-direction: column;
   min-width: 300px;
   margin-bottom: 60px;
-}
-.mat-table {
-  overflow: auto;
-  text-align: left;
-}
-.mat-header-row, .mat-row {
-  padding: 0 30px;  
-  min-height: 50px;
 }
 .paginator {
   text-align: center;
@@ -84,7 +79,11 @@
   color: #fff;
   font-size: 14px;
 }  
-::ng-deep .mat-paginator  {
-  background: #252e67;
-  color: #bbbfe4;
+::ng-deep .mat-table {
+  overflow: auto;
+  text-align: left;
 }
+::ng-deep .mat-header-row, .mat-row {
+  padding: 0 30px;  
+  min-height: 50px !important;
+} 

@@ -7,12 +7,15 @@
   border-left: 3px solid #27d357;
   padding-left: 8px;
   .header-title-info {
-    font-size: 30px;
     margin-bottom: 15px;
   }
   .header-title-address {
     font-size: 14px;
   }
+}
+.header-title-info {
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 .info {
   width: 100%;
@@ -87,10 +90,6 @@
 }
 .script {
   margin-bottom: 70px;
-  .script-title {
-    font-size: 30px;
-    margin-bottom: 20px;
-  }
   .script-info {
     padding: 32px;
     height: 180px;

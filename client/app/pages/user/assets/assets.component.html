@@ -1,11 +1,11 @@
 <div class="block">
-  <p class="header-title">Assets</p>
+  <p class="header-title-info">Assets</p>
 	<div class="example-container mat-elevation-z8">
 		<mat-table [dataSource]="dataSource">
 			<!-- name Column -->
 			<ng-container matColumnDef="name">
 				<mat-header-cell *matHeaderCellDef> Asset </mat-header-cell>
-				<mat-cell *matCellDef="let row" style="color: #1770ea; cursor: pointer;" routerLink="/asset/info/{{row.name}}"> {{row.name}} </mat-cell>
+				<mat-cell *matCellDef="let row" class="link-btn" routerLink="/asset/info/{{row.name}}"> {{row.name}} </mat-cell>
 			</ng-container>
 			<!-- type Column -->
 			<ng-container matColumnDef="type">
