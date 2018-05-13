@@ -12,6 +12,7 @@ import { PaginatorComponent } from './compontent/paginator/paginator.component';
 import { ShortHashPipe } from './pipes/shorthash.pipe';
 import { UnixDatePipe } from './pipes/unixdate.pipe';
 import { UnixTimePipe } from './pipes/unixtime.pipe';
+import { ColorfulDirective } from './directive/colorful.directive';
 
 @NgModule({
   imports: [
@@ -26,11 +27,11 @@ import { UnixTimePipe } from './pipes/unixtime.pipe';
     ReactiveFormsModule, FormsModule, MatTooltipModule,
     MatPaginatorModule, MatTableModule, MatInputModule,
     NgxEchartsModule, MatIconModule, PaginatorComponent,
-    ShortHashPipe, UnixDatePipe, UnixTimePipe
+    ShortHashPipe, UnixDatePipe, UnixTimePipe, ColorfulDirective
   ],
   declarations: [
     PaginatorComponent, ShortHashPipe, UnixDatePipe,
-    UnixTimePipe
+    UnixTimePipe, ColorfulDirective
   ],
   entryComponents: [],
   providers: []
