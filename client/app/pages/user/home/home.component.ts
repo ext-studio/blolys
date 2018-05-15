@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     assets: Number,
     transactions: Number,
     addresses: Number
-  }
+  };
   searchForm: FormGroup;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   public data: any = [
@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.searchForm = this.builder.group({
       searchName: ['', [Validators.required]]
-    })
+    });
     this.http.post(`${this.global.apiDomain}/api/index`,
       { 'method': 'queryallcounts' }).subscribe((res: any) => {
       this.total.assets = res.result.assetCounts;
@@ -93,7 +93,7 @@ export class HomeComponent implements OnInit {
 
   getAssets(pageIndex, pageSize) {
     this.http.post(`${this.global.apiDomain}/api/transactions`,
-      { 'method': 'gettransactions', 'params': [pageIndex, pageSize, "unit"] }).subscribe((res: any) => {
+      { 'method': 'gettransactions', 'params': [pageIndex, pageSize, 'unit'] }).subscribe((res: any) => {
       this.dataSource = new MatTableDataSource(res.result.data);
     }, (err) => {
       console.log(err);

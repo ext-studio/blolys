@@ -1,9 +1,10 @@
 <div class="paginator">
-  <ul class="pager pager-left">
+  <div class="pager-info">Page <span>{{clickPage}}</span> of <span>{{pageLength}}</span></div>
+  <ul class="pager">
     <li><a href="javascript: ;" (click)="pageGo(1)">First Page</a></li>
     <li><a href="javascript: ;" (click)="pagePre()">Previous</a></li>
   </ul>
-  <ul class="pager pager-middle">
+  <ul>
     <li><a href="javascript: ;" (click)="pagePreList()">&lt;&lt;</a></li>
     <li *ngFor="let num of pageShowList" [ngClass]="{active: clickPage == num}"><a href="javascript: ;" (click)="pageGo(num)">{{ num }}</a></li>
     <li><a href="javascript: ;" (click)="pageNextList()">&gt;&gt;</a></li>

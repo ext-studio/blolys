@@ -5,6 +5,55 @@
   max-width: 1140px;
   margin: 0 auto;
 }
+.top-nav {
+  width: 100%;
+  position: relative;
+  background: #151e40 !important;
+  border-bottom: 1px solid #132f5a;
+  font-size: 16px;
+  color: #769acb !important;
+  .wide-title {
+    cursor: pointer;
+    text-align: left;
+    width: 25%;
+    margin-right: 16px;
+    vertical-align: middle;
+    img {
+      position: absolute;
+      bottom: 16px;
+    }
+    span {
+      position: absolute;
+      bottom: 16px;
+      left: 40px;
+      font-weight: 700;
+      font-size: 20px;
+    }
+  }
+  .menu {
+    height: 100%;
+    margin-right: 16px;
+    .menu-item {
+      height: 100%;
+      min-width: 60px;
+      background: transparent;
+      border: none;
+      font-size: 16px;
+      color: #769acb;
+      cursor: pointer;
+      &:not(:last-child) {
+        margin-right: 30px;
+      }
+    }
+    .menu-item.active {
+      color: #fff;
+      border-bottom: 1px solid #1770ea;
+    }
+    .menu-item:hover {
+      color: #fff;
+    }
+  }
+}
 .dropdown {
   position: relative;
   &:hover .dropbtn {
@@ -109,55 +158,6 @@
 .net2-dropdown:hover .net2-dropdown-content {
   display: block;
 }
-.top-nav {
-  width: 100%;
-  position: relative;
-  background: #151e40 !important;
-  border-bottom: 1px solid #132f5a;
-  font-size: 16px;
-  color: #769acb !important;
-  .wide-title {
-    cursor: pointer;
-    text-align: left;
-    width: 25%;
-    margin-right: 16px;
-    vertical-align: middle;
-    img {
-      position: absolute;
-      bottom: 16px;
-    }
-    span {
-      position: absolute;
-      bottom: 16px;
-      left: 40px;
-      font-weight: 700;
-      font-size: 20px;
-    }
-  }
-  .menu {
-    height: 100%;
-    margin-right: 16px;
-    .menu-item {
-      height: 100%;
-      min-width: 60px;
-      background: transparent;
-      border: none;
-      font-size: 16px;
-      color: #769acb;
-      cursor: pointer;
-      &:not(:last-child) {
-        margin-right: 30px;
-      }
-    }
-    .menu-item.active {
-      color: #fff;
-      border-bottom: 1px solid #1770ea;
-    }
-    .menu-item:hover {
-      color: #fff;
-    }
-  }
-}
 ::ng-deep .mat-button-focus-overlay {
   background-color: transparent !important;
 }
@@ -191,8 +191,10 @@
 @media screen and (max-width: 870px) {
   
 }
-@media screen and (min-width: 601px) {
-  
+@media screen and (max-width: 869px) {
+  .main {
+    padding: 0 10px;
+  }
 }
 @media screen and (min-width: 420px) {
   .top-nav {

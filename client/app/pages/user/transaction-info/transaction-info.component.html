@@ -7,7 +7,7 @@
     <div class="tran-info-from">
       <p class="info-title" *ngIf=txInfo.UTXOVout.TxUTXO>Sent from</p>
       <div  *ngFor="let txUTXO of txInfo.UTXOVout.TxUTXO">
-        <div class="info-address link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</div>
+        <div class="info-address break-word link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</div>
         <div class="info-amount">
           <span>{{ txUTXO.value }}</span>
           <span class="link-btn" routerLink="/asset/info/{{txUTXO.name}}">{{ txUTXO.name }}</span>
@@ -18,7 +18,7 @@
     <div class="tran-info-to">
       <p class="info-title" *ngIf=txInfo.UTXOVout.TxVouts>Sent to</p>
       <div *ngFor="let txVout of txInfo.UTXOVout.TxVouts">
-        <div class="info-address link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
+        <div class="info-address break-word link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
         <div class="info-amount">
           <span>{{ txVout.value }}</span>
           <span class="link-btn" routerLink="/asset/info/{{txVout.name}}">{{ txVout.name }}</span>

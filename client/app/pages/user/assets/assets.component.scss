@@ -15,11 +15,22 @@
   flex-direction: column;
   min-width: 300px;
 }
-@media screen and (max-width: 600px) {
-  
+.icon-sort {
+  vertical-align: middle;
+  font-size: 24px;
+  cursor: pointer;
+  color: #1770ea;
+  transition: all .4s;
 }
-@media screen and (min-width: 601px) {
-  
+.icon-sort.active {
+  transform: rotate(180deg);
+  color: #fff;
+}
+@media screen and (min-width: 800px) {
+
+}
+@media screen and (max-width: 799px) {
+
 }
 @media screen and (min-width: 420px) {
   .example-container {
@@ -64,14 +75,8 @@
   padding: 0 30px;  
   min-height: 50px !important;
 }
-.icon-sort {
-  vertical-align: middle;
-  font-size: 24px;
-  cursor: pointer;
-  color: #1770ea;
-  transition: all .4s;
-}
-.icon-sort.active {
-  transform: rotate(180deg);
-  color: #fff;
+::ng-deep .mat-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

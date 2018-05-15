@@ -24,7 +24,7 @@ export class PaginatorComponent implements OnChanges {
       this.pageShowList = [1, 2, 3];
     } else if (this.pageLength === 2) {
       this.pageShowList = [1, 2];
-    } else if (this.pageShowList === 1) {
+    } else {
       this.pageShowList = [1];
     }
   }
@@ -37,13 +37,9 @@ export class PaginatorComponent implements OnChanges {
       for (let i = 0; i < this.pageShowList.length; i++) {
         this.pageShowList[i] -= this.pageShowList.length;
       }
-    } else if (this.pageShowList[0] === 2) {
+    } else {
       for (let i = 0; i < this.pageShowList.length; i++) {
-        this.pageShowList[i]--;
-      }
-    } else if (this.pageShowList[0] === 3) {
-      for (let i = 0; i < this.pageShowList.length; i++) {
-        this.pageShowList[i] -= 2;
+        this.pageShowList[i] = i + 1;
       }
     }
   }
@@ -52,13 +48,9 @@ export class PaginatorComponent implements OnChanges {
       for (let i = 0; i < this.pageShowList.length; i++) {
         this.pageShowList[i] += this.pageShowList.length;
       }
-    } else if (this.pageShowList[this.pageShowList.length - 1] + 1 === this.pageLength) {
+    } else {
       for (let i = 0; i < this.pageShowList.length; i++) {
-        this.pageShowList[i] += 1;
-      }
-    } else if (this.pageShowList[this.pageShowList.length - 1] + 2 === this.pageLength) {
-      for (let i = 0; i < this.pageShowList.length; i++) {
-        this.pageShowList[i] += 2;
+        this.pageShowList[i] = this.pageLength - this.pageShowList.length + i + 1;
       }
     }
   }

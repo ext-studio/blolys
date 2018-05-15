@@ -16,13 +16,16 @@ export class AssetColorDirective implements OnChanges {
     console.log(this.appAssetColor);
     switch (this.appAssetColor) {
       case 'Token':
-        res = '#ff30cc';
+        res = '#627913';
         break;
       case 'Share':
-        res = '#f97d3a';
+        res = '#693277';
+        break;
+      case 'Nep5':
+        res = '#84670e';
         break;
       default:
-        res = '#3ee9c3';
+        res = '#1187a4';
         break;
     }
     this.el.nativeElement.style.color = res;

@@ -29,8 +29,8 @@
 			</ng-container>
 			<!-- register adress Column -->
 			<ng-container matColumnDef="admin">
-				<mat-header-cell *matHeaderCellDef style="min-width: 300px;"  class="hidden">Registered</mat-header-cell>
-				<mat-cell *matCellDef="let row"  class="link-btn hidden" style="min-width: 300px;" routerLink="/address/{{row.admin}}"> {{ row.admin }} </mat-cell>
+				<mat-header-cell *matHeaderCellDef class="hidden">Registered</mat-header-cell>
+				<mat-cell *matCellDef="let row"  class="link-btn hidden" routerLink="/address/{{row.admin}}"> {{ row.admin }} </mat-cell>
 			</ng-container>
 			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
