@@ -2,6 +2,14 @@
   width: 100%;
   color: #fff;
 }
+.over-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.link-btn {
+  cursor: pointer;
+  color: #1770ea;
+}
 .header-title {
   margin-bottom: 25px;
   border-left: 3px solid #27d357;
@@ -14,13 +22,11 @@
   }
 }
 .header-title-info {
-  font-size: 30px;
   margin-bottom: 20px;
 }
 .info {
   width: 100%;
   overflow: hidden;
-  margin-bottom: 70px;
   li {
     list-style: none;
     display: inline-block;
@@ -40,16 +46,17 @@
     }
   }
 }
-.info-address {
+.block-info-address {
   border-radius: 2px;
-  box-shadow: 3px 3px 25px #060c23;
+  box-shadow: 3px 3px 25px #0a1331;
   background: #18244f;
 }
 .tran-info {
-  margin: 0 30px;
+  padding: 0 30px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  background: #18244f;
   .tran-info-from {
     width: 45%;
     text-align: center;
@@ -77,24 +84,19 @@
   }
   .info-address {
     font-size: 14px;
-    color: #1770ea;
     margin-bottom: 20px;
   }
   .info-amount {
     font-size: 18px;
     margin-bottom: 30px;
-    .info-amount-name {
-      color: #1770ea;      
-    }
   }
 }
 .script {
-  margin-bottom: 70px;
   .script-info {
     padding: 32px;
     height: 180px;
     background: #18244f;
-    box-shadow: 3px 3px 25px #060c23;
+    box-shadow: 3px 3px 25px #0a1331;
     p {
       margin-bottom: 15px;
     }
@@ -116,7 +118,7 @@
   }
 }
 @media screen and (min-width: 870px) {
-  .info-address {
+  .block-info-address {
     li {
       width: 33.33%;
       min-height: 135px;
@@ -136,6 +138,22 @@
         }
       }
     }
+  }
+}
+@media screen and (min-width: 420px) {
+  .info, .tran-info, .script {
+    margin-bottom: 70px;
+  }
+  .header-title-info {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 419px) {
+  .info, .tran-info, .script {
+    margin-bottom: 30px;
+  }
+  .header-title-info {
+    font-size: 22px;
   }
 }
 :host {

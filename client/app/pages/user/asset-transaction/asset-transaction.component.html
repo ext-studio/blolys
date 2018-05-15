@@ -2,7 +2,7 @@
   <div class="header-title">
     <p class="header-title-info">NEO information</p>
   </div>
-  <ul class="info-address">
+  <ul class="address-info">
     <li class="color-one width-half"><label>Name</label>NEO</li>
     <li class="color-one width-half"><label>Symbol</label>NEO</li>
     <li class="color-two width-half"><label>Total Supply</label>NEO</li>
@@ -35,38 +35,38 @@
     <div class="row-head">
       <div class="col col-1">TXID</div>
       <div class="col col-2">Type</div>
-      <div class="col col-3">Size</div>
-      <div class="col col-4">Version</div>
-      <div class="col col-5">Time</div>
+      <div class="col col-3 hidden">Size</div>
+      <div class="col col-4 hidden">Version</div>
+      <div class="col col-5 hidden">Time</div>
     </div>
-    <div class="warpper" *ngFor="let item of blockTransaction; index as index">
+    <div class="warpper" *ngFor="let item of dataSource; index as index">
       <div class="row">
-        <div class="col col-1 link-btn">{{ item.TX.txid | shortHash }}</div>
-        <div class="col col-2">{{ item.TX.type }}</div>
-        <div class="col col-3">{{ item.TX.size }} Bytes</div>
-        <div class="col col-4">{{ item.TX.version }}</div>
-        <div class="col col-5">2018-1-1 12:10:09</div>
-        <div class="col col-6"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
+        <div class="col col-1 link-btn" routerLink="/transaction/{{item.TX.txid}}">{{ item.TX.txid | shortHash }}</div>
+        <div class="col col-2" [appTransColor]="item.TX.type">{{ item.TX.type }}</div>
+        <div class="col col-3 hidden">{{ item.TX.size }} Bytes</div>
+        <div class="col col-4 hidden">{{ item.TX.version }}</div>
+        <div class="col col-5 hidden">2018-1-1 12:10:09</div>
+        <div class="col col-6 hidden"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
       </div>
-      <div class="tran-info" *ngIf="show[index]">
+      <div class="tran-info">
         <div class="tran-info-from">
-          <p class="info-title" *ngIf=item.UTXOVout.TxUTXO>Sent from</p>
-          <div  *ngFor="let txUTXO of item.UTXOVout.TxUTXO">
-            <div class="info-address">{{ txUTXO.address }}</div>
+          <p class="info-title" *ngIf=txInfo.UTXOVout.TxUTXO>Sent from</p>
+          <div  *ngFor="let txUTXO of txInfo.UTXOVout.TxUTXO">
+            <div class="info-address link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</div>
             <div class="info-amount">
               <span>{{ txUTXO.value }}</span>
-              <span class="info-amount-name">{{ txUTXO.name }}</span>
+              <span class="link-btn" routerLink="/asset/info/{{txUTXO.name}}">{{ txUTXO.name }}</span>
             </div>
           </div>
         </div>
         <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
         <div class="tran-info-to">
-          <p class="info-title" *ngIf=item.UTXOVout.TxVouts>Sent to</p>
-          <div *ngFor="let txVout of item.UTXOVout.TxVouts">
-            <div class="info-address">{{ txVout.address }}</div>
+          <p class="info-title" *ngIf=txInfo.UTXOVout.TxVouts>Sent to</p>
+          <div *ngFor="let txVout of txInfo.UTXOVout.TxVouts">
+            <div class="info-address link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
             <div class="info-amount">
               <span>{{ txVout.value }}</span>
-              <span class="info-amount-name">{{ txVout.name }}</span>
+              <span class="link-btn" routerLink="/asset/info/{{txVout.name}}">{{ txVout.name }}</span>
             </div>
           </div>
         </div>

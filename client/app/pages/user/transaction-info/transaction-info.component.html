@@ -1,16 +1,16 @@
 <div class="block">
-  <div class="header-title">
-    <p class="header-title-info">Invocation Transaction</p>
-    <p class="header-title-address">invocation | Hash: txid</p>
+  <div class="header-title" [appTransBorderColor]="txInfo.TX.type">
+    <p class="header-title-info">{{ txInfo.TX.type | transType}} Transaction</p>
+    <p class="header-title-address over-ellipsis">{{ txInfo.TX.type | lowTransType}} | Hash: {{ txInfo.TX.txid }}</p>
   </div>
-  <div class="tran-info" *ngIf="show[index]">
+  <div class="tran-info">
     <div class="tran-info-from">
       <p class="info-title" *ngIf=txInfo.UTXOVout.TxUTXO>Sent from</p>
       <div  *ngFor="let txUTXO of txInfo.UTXOVout.TxUTXO">
-        <div class="info-address">{{ txUTXO.address }}</div>
+        <div class="info-address link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</div>
         <div class="info-amount">
           <span>{{ txUTXO.value }}</span>
-          <span class="info-amount-name">{{ txUTXO.name }}</span>
+          <span class="link-btn" routerLink="/asset/info/{{txUTXO.name}}">{{ txUTXO.name }}</span>
         </div>
       </div>
     </div>
@@ -18,15 +18,15 @@
     <div class="tran-info-to">
       <p class="info-title" *ngIf=txInfo.UTXOVout.TxVouts>Sent to</p>
       <div *ngFor="let txVout of txInfo.UTXOVout.TxVouts">
-        <div class="info-address">{{ txVout.address }}</div>
+        <div class="info-address link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
         <div class="info-amount">
           <span>{{ txVout.value }}</span>
-          <span class="info-amount-name">{{ txVout.name }}</span>
+          <span class="link-btn" routerLink="/asset/info/{{txVout.name}}">{{ txVout.name }}</span>
         </div>
       </div>
     </div>
   </div>
-  <ul class="info-address info">
+  <!-- <ul class="block-info-address info">
     <li>
       <p>{{ height }}</p>
       <span>Block Index</span>
@@ -51,7 +51,7 @@
       <p>{{ blockInfo.merkleRoot }}</p>
       <span>Size</span>
     </li>
-  </ul>
+  </ul> -->
   <div class="invocation-script script">
     <div class="header-title-info">Invocation Script</div>
     <div class="script-info">

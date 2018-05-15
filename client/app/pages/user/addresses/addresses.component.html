@@ -4,8 +4,8 @@
 		<mat-table [dataSource]="dataSource">
 			<!-- address Column -->
 			<ng-container matColumnDef="address">
-				<mat-header-cell *matHeaderCellDef style="min-width: 300px;"> Address </mat-header-cell>
-				<mat-cell *matCellDef="let row" class="link-btn" style="min-width: 300px;" routerLink="/address/{{row.address}}"> {{ row.address }} </mat-cell>
+				<mat-header-cell *matHeaderCellDef class="addr-min-width"> Address </mat-header-cell>
+				<mat-cell *matCellDef="let row" class="link-btn addr-min-width" routerLink="/address/{{row.address}}"> {{ row.address }} </mat-cell>
 			</ng-container>
 			<!-- createdAt Column -->
 			<ng-container matColumnDef="createdAt">
@@ -14,13 +14,13 @@
       </ng-container>
       <!-- lastTransactionTime Column -->
 			<ng-container matColumnDef="lastTransactionTime">
-        <mat-header-cell *matHeaderCellDef> Last Transaction </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{ row.lastTransactionTime | unixTime }} </mat-cell>
+        <mat-header-cell *matHeaderCellDef class="hidden"> Last Transaction </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="hidden"> {{ row.lastTransactionTime | unixTime }} </mat-cell>
       </ng-container>
       <!-- transactions Column -->
       <ng-container matColumnDef="transactions">
-        <mat-header-cell *matHeaderCellDef> Transactions </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{ row.transactions }} </mat-cell>
+        <mat-header-cell *matHeaderCellDef class="hidden"> Transactions </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="hidden"> {{ row.transactions }} </mat-cell>
       </ng-container>
 			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

@@ -4,7 +4,6 @@
   position: relative;
 }
 .header-title-info {
-  font-size: 30px;
   margin-bottom: 20px;
 }
 .link-btn {
@@ -22,7 +21,6 @@
   border-radius: 3px;
   .line-first {
     margin-bottom: 10px;
-    font-size: 30px;
     color: #fff;
   }
   .line-second {
@@ -58,7 +56,6 @@
     }
     span {
       color: #1770ea;
-      font-size: 30px;
       margin-bottom: 25px;
     }
   }
@@ -144,7 +141,7 @@
 @media screen and (max-width: 700px) {
   .welcome {
     .line-first {
-      font-size: 25px !important;
+      font-size: 22px !important;
     }
   }
 }
@@ -181,11 +178,11 @@
       margin-left: 20px;
     }
   }
-  .links {
+  .links, .recent-assets {
     margin-bottom: 70px;
   }
-  .recent-assets {
-    margin-bottom: 70px;
+  .header-title-info, .welcome .line-first, .links .link-item span {
+    font-size: 30px;
   }
 }
 @media screen and (max-width: 419px) {
@@ -196,10 +193,13 @@
       margin-left: 5px;
     }
   }
-  .links {
+  .links, .recent-assets {
     margin-bottom: 30px;
   }
-  .recent-assets {
-    margin-bottom: 30px;
+  .hidden {
+    display: none;
+  }
+  .header-title-info, .welcome .line-first, .links .link-item span {
+    font-size: 22px;
   }
 }

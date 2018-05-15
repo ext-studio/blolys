@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/material';
 import { GlobalService } from '../../../core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './home.component.html',
@@ -11,11 +12,14 @@ export class HomeComponent implements OnInit {
   displayedColumns = ['name', 'type', 'amount', 'transactions', 'time'];
   dataSource: MatTableDataSource<any>;
   pageEvent: PageEvent;
-  totalCount: number;
-  totalBlocks: number;
-  totalAssets: number;
-  totalTransactions: number;
-  totalAddresses: number;
+  total = {
+    count: Number,
+    blocks: Number,
+    assets: Number,
+    transactions: Number,
+    addresses: Number
+  }
+  searchForm: FormGroup;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   public data: any = [
     ['2000-06-05', 116],
@@ -72,12 +76,15 @@ export class HomeComponent implements OnInit {
     }
   };
   ngOnInit() {
+    this.searchForm = this.builder.group({
+      searchName: ['', [Validators.required]]
+    })
     this.http.post(`${this.global.apiDomain}/api/index`,
       { 'method': 'queryallcounts' }).subscribe((res: any) => {
-      this.totalAssets = res.result.assetCounts;
-      this.totalBlocks = res.result.blockCounts ;
-      this.totalAddresses = res.result.addressCounts;
-      this.totalTransactions = res.result.txCounts;
+      this.total.assets = res.result.assetCounts;
+      this.total.blocks = res.result.blockCounts ;
+      this.total.addresses = res.result.addressCounts;
+      this.total.transactions = res.result.txCounts;
     }, (err) => {
       console.log(err);
     });
@@ -85,16 +92,16 @@ export class HomeComponent implements OnInit {
   }
 
   getAssets(pageIndex, pageSize) {
-    this.http.post(`${this.global.apiDomain}/api/block`,
-      { 'method': 'getassets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
-      this.totalAssets = res.result.total;
-      this.dataSource = new MatTableDataSource(res. result.data);
+    this.http.post(`${this.global.apiDomain}/api/transactions`,
+      { 'method': 'gettransactions', 'params': [pageIndex, pageSize, "unit"] }).subscribe((res: any) => {
+      this.dataSource = new MatTableDataSource(res.result.data);
     }, (err) => {
       console.log(err);
     });
   }
   constructor(
     private http: HttpClient,
-    private global: GlobalService
+    private global: GlobalService,
+    private builder: FormBuilder
   ) { }
 }

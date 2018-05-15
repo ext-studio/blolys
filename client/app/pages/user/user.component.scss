@@ -3,7 +3,6 @@
 }
 .main {
   max-width: 1140px;
-  padding: 0 20px;
   margin: 0 auto;
 }
 .dropdown {
@@ -199,10 +198,16 @@
   .top-nav {
     margin-bottom: 70px !important;
   }
+  .main {
+    padding: 0 20px;
+  }
 }
 @media screen and (max-width: 419px) {
   .top-nav {
     margin-bottom: 30px !important;
+  }
+  .main {
+    padding: 0 10px;
   }
 }
 

@@ -8,19 +8,16 @@
   cursor: pointer; 
 }
 .header-title-info {
-  font-size: 30px;
   margin-bottom: 20px;
 }
 .example-container {
   display: flex;
   flex-direction: column;
   min-width: 300px;
-  margin-bottom: 60px;
 }
 .paginator {
   text-align: center;
   font-size: 14px;
-  margin-bottom: 70px;
   ul {
     display: inline;
   }
@@ -53,11 +50,24 @@
     margin-right: 0;
   }
 }
-@media screen and (max-width: 600px) {
-  
+@media screen and (min-width: 420px) {
+  .paginator, .example-container {
+    margin-bottom: 70px;
+  }
+  .header-title-info {
+    font-size: 30px;
+  }
 }
-@media screen and (min-width: 601px) {
-  
+@media screen and (max-width: 419px) {
+  .hidden {
+    display: none;
+  }  
+  .paginator, .example-container {
+    margin-bottom: 30px;
+  }
+  .header-title-info {
+    font-size: 22px;
+  }
 }
 :host {
   display: block;

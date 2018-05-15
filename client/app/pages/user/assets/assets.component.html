@@ -10,27 +10,27 @@
 			<!-- type Column -->
 			<ng-container matColumnDef="type">
 				<mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
-				<mat-cell *matCellDef="let row"> {{row.type}} </mat-cell>
+				<mat-cell *matCellDef="let row" [appAssetColor]="row.type"> {{row.type}} </mat-cell>
 			</ng-container>
 			<!-- amount Column -->
 			<ng-container matColumnDef="amount">
-				<mat-header-cell *matHeaderCellDef>Supply</mat-header-cell>
-				<mat-cell *matCellDef="let row"> {{row.amount | number}} </mat-cell>
+				<mat-header-cell *matHeaderCellDef class="hidden">Supply</mat-header-cell>
+				<mat-cell *matCellDef="let row" class="hidden"> {{row.amount | number}} </mat-cell>
       </ng-container>
       <!-- addresses Column -->
 			<ng-container matColumnDef="addresses">
-        <mat-header-cell *matHeaderCellDef>Addresses<mat-icon class="icon-sort" (click)="sortAddr()" [ngClass]="{active: showSortAddr}">keyboard_arrow_down</mat-icon> </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.addresses | number}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef class="hidden">Addresses<mat-icon class="icon-sort" (click)="sortAddr()" [ngClass]="{active: showSortAddr}">keyboard_arrow_down</mat-icon> </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="hidden"> {{row.addresses | number}} </mat-cell>
       </ng-container>
 			<!-- transactions Column -->
 			<ng-container matColumnDef="transactions">
-				<mat-header-cell *matHeaderCellDef>Transactions<mat-icon class="icon-sort" (click)="sortTrans()" [ngClass]="{active: showSortTran}">keyboard_arrow_down</mat-icon> </mat-header-cell>
-				<mat-cell *matCellDef="let row"> {{row.transactions | number}} </mat-cell>
+				<mat-header-cell *matHeaderCellDef class="hidden">Transactions<mat-icon class="icon-sort" (click)="sortTrans()" [ngClass]="{active: showSortTran}">keyboard_arrow_down</mat-icon> </mat-header-cell>
+				<mat-cell *matCellDef="let row" class="hidden"> {{row.transactions | number}} </mat-cell>
 			</ng-container>
 			<!-- register adress Column -->
 			<ng-container matColumnDef="admin">
-				<mat-header-cell *matHeaderCellDef style="min-width: 300px;">Registered</mat-header-cell>
-				<mat-cell *matCellDef="let row"  class="link-btn" style="min-width: 300px;"> {{ row.admin }} </mat-cell>
+				<mat-header-cell *matHeaderCellDef style="min-width: 300px;"  class="hidden">Registered</mat-header-cell>
+				<mat-cell *matCellDef="let row"  class="link-btn hidden" style="min-width: 300px;" routerLink="/address/{{row.admin}}"> {{ row.admin }} </mat-cell>
 			</ng-container>
 			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

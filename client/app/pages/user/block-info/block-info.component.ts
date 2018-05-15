@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./block-info.component.scss']
 })
 export class BlockInfoComponent implements OnInit {
-  blockTransaction: any;
+  blockTransactions: any;
   blockInfo: any;
-  height: Number = Number(this.router.url.split('/')[2]);
+  transTotal: Number;
+  height: number = Number(this.router.url.split('/')[2]);
 
   constructor(
     private http: HttpClient,
@@ -22,17 +23,22 @@ export class BlockInfoComponent implements OnInit {
   ngOnInit() {
     this.http.post(`${this.global.apiDomain}/api/block`,
       {'method': 'getblockbyheight', 'params': [this.height]}).subscribe((res: any) => {
-        this.blockInfo = res.result;
-        console.log(res.result);
+      this.blockInfo = res.result;
     }, (err) => {
       console.log(err);
     });
-    this.http.post(`${this.global.apiDomain}/api/block`,
-      { 'method': 'gettransactions', 'params': [1, 5, 'ContractTransaction'] }).subscribe((res: any) => {
-      this.blockTransaction = res.result.data;
+    this.http.post(`${this.global.apiDomain}/api/transactions`,
+      { 'method': 'gettxbyheight', 'params': [1, 5, this.height] }).subscribe((res: any) => {
+      this.blockTransactions = res.result.data;
+      this.transTotal = res.result.total;
     }, (err) => {
       console.log(err);
     });
   }
-
+  reHeight() {
+    this.height -= 1;
+  }
+  addHeight() {
+    this.height += 1;
+  }
 }

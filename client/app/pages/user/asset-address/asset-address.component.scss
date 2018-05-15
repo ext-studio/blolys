@@ -3,7 +3,6 @@
   color: #fff;
 }
 .header-title-info {
-  font-size: 30px;
   margin-bottom: 20px;
 }
 .link-btn {
@@ -21,12 +20,11 @@
     font-size: 14px;
   }
 }
-.info-address {
+.address-info {
   width: 100%;
   overflow: hidden;
-  margin-bottom: 70px;
   border-radius: 2px;
-  box-shadow: 3px 3px 25px #060c23;
+  box-shadow: 3px 3px 25px #0a1331;
   background: #18244f;
   font-size: 16px;
   li {
@@ -39,6 +37,8 @@
     line-height: 50px;
     label {
       margin-right: 44px;
+      display: inline-block;
+      width: 100px;
     }
     span.link-btn {
       color: #1770ea;
@@ -51,29 +51,16 @@
   font-size: 14px;
   color: #fff;
   margin-bottom: 30px;
-  box-shadow: 3px 3px 25px #060c23;
+  box-shadow: 3px 3px 25px #0a1331;
   .row-head, .row {
     height: 50px;
     line-height: 50px;
     .col {
       display: inline-block;
+      text-align: center;
     }
     .col-1 {
       padding-left: 30px;
-      width: 20%;
-    }
-    .col-2 {
-      width: 20%;
-    }
-    .col-3 {
-      width: 15%;
-    }
-    .col-4 {
-      width: 10%;
-    }
-    .col-5 {
-      width: 20%;
-      padding-left: 16px;
     }
   }
   .col-6 {
@@ -133,16 +120,11 @@
       }
       .info-address {
         font-size: 14px;
-        color: #1770ea;
         margin-bottom: 20px;
       }
       .info-amount {
         font-size: 18px;
         margin-bottom: 30px;
-        .info-amount-name {
-          color: #1770ea;
-          
-        }
       }
     }
   }
@@ -150,7 +132,6 @@
 .view-all {
   width: 100%;
   text-align: center;
-  margin-bottom: 70px;
   button {
     background-color: #1770ea;
     color: #fff;
@@ -166,7 +147,7 @@
   }
 }
 @media screen and (min-width: 870px) {
-  .info-address {
+  .address-info {
     width: 100%;
     li {
       float: left;
@@ -183,7 +164,7 @@
   }
 }
 @media screen and (max-width: 869px) {
-  .info-address {
+  .address-info {
     li {
       width: 100%;
       &:nth-child(odd) {
@@ -193,6 +174,48 @@
         background: #18244f;
       }
     }
+  }
+}
+@media screen and (min-width: 420px) {
+  .col-1 {
+    padding-left: 30px;
+    width: 20%;
+  }
+  .col-2 {
+    width: 20%;
+  }
+  .col-3 {
+    width: 15%;
+  }
+  .col-4 {
+    width: 10%;
+  }
+  .col-5 {
+    width: 20%;
+    padding-left: 16px;
+  }
+  .address-info, .view-all {
+    margin-bottom: 70px;
+  }
+  .header-title-info {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 419px) {
+  .col-1{
+    width: 45%;
+  }
+  .col-2 {
+    width: 45%;
+  }
+  .address-info, .view-all {
+    margin-bottom: 30px;
+  }
+  .header-title-info {
+    font-size: 22px;
+  }
+  .hidden {
+    display: none !important;
   }
 }
 :host {

@@ -2,6 +2,10 @@
   width: 100%;
   color: #fff;
 }
+.over-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .link-btn {
   color: #1770ea;
   cursor: pointer;
@@ -18,7 +22,6 @@
   }
 }
 .header-title-info {
-  font-size: 30px;
   margin-bottom: 20px;
 }
 .option-btn {
@@ -34,6 +37,13 @@
     cursor: pointer;
     &:hover {
       background: #1c2b5d;
+    }
+    a {
+      text-decoration: none;
+      width: 100%;
+      display: inline-block;
+      height: 32px;
+      line-height: 32px;
     }
   }
   .option-left {
@@ -57,24 +67,37 @@
   }
 }
 .info {
-  box-shadow: 3px 3px 25px #060c23;
+  box-shadow: 3px 3px 25px #0a1331;
   width: 100%;
   background: #18244f;
   border-radius: 2px;
   overflow: hidden;
-  margin-bottom: 70px;
   li {
     list-style: none;
     display: inline-block;
     box-sizing: border-box;
-    text-align: center;
-    padding-top: 40px;
+    position: relative;
+    div {
+      position: absolute;
+      bottom: 40px;
+      text-align: center;
+      width: 100%;
+      padding: 0 10px;
+    }
     p {
-      word-wrap: break-word;
+      word-break: break-all; 
       margin-bottom: 10px;
     }
-    span {
+    .big-font-size {
+      font-size: 24px;
+    }
+    .small-font-size {
       font-size: 14px;
+    }
+    span {
+      bottom: 0;
+      font-size: 14px;
+      padding-bottom: 40px;
       color: #134699; 
       &:nth-child(9) {
         color: #1770ea;
@@ -87,29 +110,16 @@
   font-size: 14px;
   color: #fff;
   margin-bottom: 30px;
-  box-shadow: 3px 3px 25px #060c23;
+  box-shadow: 3px 3px 25px #0a1331;
   .row-head, .row {
     height: 50px;
     line-height: 50px;
     .col {
       display: inline-block;
+      text-align: center;
     }
     .col-1 {
       padding-left: 30px;
-      width: 20%;
-    }
-    .col-2 {
-      width: 20%;
-    }
-    .col-3 {
-      width: 15%;
-    }
-    .col-4 {
-      width: 10%;
-    }
-    .col-5 {
-      width: 20%;
-      padding-left: 16px;
     }
   }
   .col-6 {
@@ -169,16 +179,11 @@
       }
       .info-address {
         font-size: 14px;
-        color: #1770ea;
         margin-bottom: 20px;
       }
       .info-amount {
         font-size: 18px;
         margin-bottom: 30px;
-        .info-amount-name {
-          color: #1770ea;
-          
-        }
       }
     }
   }
@@ -186,7 +191,6 @@
 .view-all {
   width: 100%;
   text-align: center;
-  margin-bottom: 70px;
   button {
     background-color: #1770ea;
     color: #fff;
@@ -205,7 +209,7 @@
   .info {
     li {
       width: 33.33%;
-      min-height: 135px;
+      min-height: 150px;
       float: left;
       &:not(:nth-child(3n)) {
         border-right: 1px solid #203067;
@@ -222,6 +226,48 @@
         }
       }
     }
+  }
+}
+@media screen and (min-width: 420px) {
+  .col-1 {
+    padding-left: 30px;
+    width: 20%;
+  }
+  .col-2 {
+    width: 20%;
+  }
+  .col-3 {
+    width: 15%;
+  }
+  .col-4 {
+    width: 10%;
+  }
+  .col-5 {
+    width: 20%;
+    padding-left: 16px;
+  }
+  .info, .view-all {
+    margin-bottom: 70px;
+  }
+  .header-title-info {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 419px) {
+  .info, .view-all {
+    margin-bottom: 30px;
+  }
+  .header-title-info {
+    font-size: 22px;
+  }
+  .hidden {
+    display: none !important;
+  }
+  .col-1{
+    width: 45%;
+  }
+  .col-2 {
+    width: 45%;
   }
 }
 :host {

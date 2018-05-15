@@ -1,92 +1,110 @@
 <div class="block">
   <div class="header-title">
     <p class="header-title-info">Block information</p>
-    <p class="header-title-address">address</p>
+    <p class="header-title-address over-ellipsis">{{ blockInfo.hash }}</p>
   </div>
   <div class="option-btn">
     <div class="option-left">
-      <button>back</button>
+      <button><a routerLink="/blocks">back</a></button>
     </div>
     <div class="option-right">
-      <button class="pre-button">Previous block</button>
-      <button class="next-button">Next block</button>
+      <button class="pre-button"><a routerLink='/block/{{height-1}}' (click)=reHeight()>Previous block</a></button>
+      <button class="next-button"><a routerLink='/block/{{height+1}}' (click)=addHeight()>Next block</a></button>
     </div>
   </div>
   <ul class="info">
     <li>
-      <p>{{ height }}</p>
-      <span>block Index</span>
+      <div>
+        <p class="big-font-size">{{ height | number }}</p>
+        <span>block Index</span>
+      </div>
     </li>
     <li>
-      <p>{{ blockInfo.time * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
-      <span>Time</span>
+      <div>
+        <p class="big-font-size">{{ blockInfo.time * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
+        <span>Time</span>
+      </div>
     </li>
     <li>
-      <p>{{ blockInfo.hash }}</p>
-      <span>hash</span>
+      <div>
+        <p class="small-font-size">{{ blockInfo.hash }}</p>
+        <span>hash</span>
+      </div>
     </li>
     <li>
-      <p>{{ blockInfo.size }}</p>
-      <span>size</span>
+      <div>
+        <p class="big-font-size">{{ blockInfo.size }}</p>
+        <span>size</span>
+      </div>
     </li>
     <li>
-      <p>{{ blockInfo.version }}</p>
-      <span>version</span>
+      <div>
+        <p class="big-font-size">{{ blockInfo.version }}</p>
+        <span>version</span>
+      </div>
     </li>
     <li>
-      <p>{{ blockInfo.merkleRoot }}</p>
-      <span>Merkle Root</span>
+      <div>
+        <p class="small-font-size">{{ blockInfo.merkleRoot }}</p>
+        <span>Merkle Root</span>
+      </div>
     </li>
     <li>
-      <p>{{ blockInfo.scriptVerification }}</p>
-      <span>confirmations</span>
+      <div>
+        <p class="big-font-size">183</p>
+        <span>confirmations</span>
+      </div>
     </li>
     <li>
-      <p>{{ blockInfo.txNum }}</p>
-      <span>transactions</span>
+      <div>
+        <p class="big-font-size">{{ blockInfo.txNum }}</p>
+        <span>transactions</span>
+      </div>
     </li>
     <li>
-      <p>{{ blockInfo.nextConsensus }}</p>
-      <span>Validator</span>
+      <div>
+        <p class="small-font-size link-btn">Validator</p>
+        <span>Validator</span>
+      </div>
     </li>
   </ul>
-  <p class="header-title-info ">Transactions ( 18 )</p>
+  <p class="header-title-info ">Transactions ({{ transTotal }})</p>
   <div class="tran-list">
     <div class="row-head">
       <div class="col col-1">TXID</div>
       <div class="col col-2">Type</div>
-      <div class="col col-3">Size</div>
-      <div class="col col-4">Version</div>
-      <div class="col col-5">Time</div>
+      <div class="col col-3 hidden">Size</div>
+      <div class="col col-4 hidden">Version</div>
+      <div class="col col-5 hidden">Time</div>
     </div>
-    <div class="warpper" *ngFor="let item of blockTransaction; index as index">
+    <div class="warpper" *ngFor="let item of dataSource; index as index">
       <div class="row">
-        <div class="col col-1 link-btn">{{ item.TX.txid | shortHash }}</div>
-        <div class="col col-2">{{ item.TX.type }}</div>
-        <div class="col col-3">{{ item.TX.size }} Bytes</div>
-        <div class="col col-4">{{ item.TX.version }}</div>
-        <div class="col col-5">2018-1-1 12:10:09</div>
-        <div class="col col-6"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
+        <div class="col col-1 link-btn" routerLink="/transaction/{{item.TX.txid}}">{{ item.TX.txid | shortHash }}</div>
+        <div class="col col-2" [appTransColor]="item.TX.type">{{ item.TX.type }}</div>
+        <div class="col col-3 hidden">{{ item.TX.size }} Bytes</div>
+        <div class="col col-4 hidden">{{ item.TX.version }}</div>
+        <div class="col col-5 hidden">2018-1-1 12:10:09</div>
+        <div class="col col-6 hidden"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
       </div>
-      <div class="tran-info" *ngIf="show[index]">
+      <div class="tran-info">
         <div class="tran-info-from">
-          <p class="info-title" *ngIf=item.UTXOVout.TxUTXO>Sent from</p>
-          <div  *ngFor="let txUTXO of item.UTXOVout.TxUTXO">
-            <div class="info-address">{{ txUTXO.address }}</div>
+          <p class="info-title" *ngIf=txInfo.UTXOVout.TxUTXO>Sent from</p>
+          <div  *ngFor="let txUTXO of txInfo.UTXOVout.TxUTXO">
+            <div class="info-address link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</div>
             <div class="info-amount">
               <span>{{ txUTXO.value }}</span>
-              <span class="info-amount-name">{{ txUTXO.name }}</span>
+              <span class="link-btn" routerLink="/asset/info/{{txUTXO.name}}">{{ txUTXO.name }}</span>
             </div>
           </div>
         </div>
         <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
         <div class="tran-info-to">
-          <p class="info-title" *ngIf=item.UTXOVout.TxVouts>Sent to</p>
-          <div *ngFor="let txVout of item.UTXOVout.TxVouts">
-            <div class="info-address">{{ txVout.address }}</div>
+          <p class="info-title" *ngIf=txInfo.UTXOVout.TxVouts>Sent to</p>
+          <div *ngFor="let txVout of txInfo.UTXOVout.TxVouts">
+            <div class="info-address link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
             <div class="info-amount">
               <span>{{ txVout.value }}</span>
-              <span class="info-amount-name">{{ txVout.name }}</span>
+              <span class="link-btn" routerLink="/asset/info/{{txVout.name}}">{{ txVout.name }}</span>
             </div>
           </div>
         </div>
