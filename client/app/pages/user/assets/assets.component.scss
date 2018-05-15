@@ -15,41 +15,6 @@
   flex-direction: column;
   min-width: 300px;
 }
-.paginator {
-  text-align: center;
-  font-size: 14px;
-  ul {
-    display: inline;
-  }
-  li {
-    list-style: none;
-    display: inline-block;
-    text-align: center;
-    cursor: pointer;
-    height: 26px;
-    line-height: 26px;
-    background: #1c2b5d;
-    border-radius: 3px;
-    margin-right: 8px;
-    padding: 0 6px;
-    min-width: 26px;
-    a {
-      text-decoration: none;
-      display: inline-block;
-      width: 100%;
-      height: 100%;
-    }
-    &:hover {
-      background: #1770ea;
-    }
-  }
-  li.active {
-    background: #1770ea;
-  }
-  .pager-right li:last-child {
-    margin-right: 0;
-  }
-}
 @media screen and (max-width: 600px) {
   
 }
@@ -57,7 +22,7 @@
   
 }
 @media screen and (min-width: 420px) {
-  .paginator, .example-container {
+  .example-container {
     margin-bottom: 70px;
   }
   .header-title-info {
@@ -68,7 +33,7 @@
   .hidden {
     display: none;
   }  
-  .paginator, .example-container {
+  .example-container {
     margin-bottom: 30px;
   }
   .header-title-info {

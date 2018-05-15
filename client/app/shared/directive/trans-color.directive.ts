@@ -3,18 +3,18 @@ import { Directive, Input, ElementRef, OnChanges, SimpleChanges } from '@angular
 @Directive({
   selector: '[appTransColor]'
 })
-export class TransColorDirective {
+export class TransColorDirective implements OnChanges {
   constructor(private el: ElementRef) { }
-  @Input('appTransColor') colorName: String;
+  @Input('appTransColor') appTransColor: String;
 
   public ngOnChanges(changes: SimpleChanges) {
     this.addColor();
   }
   private addColor() {
     let res: string;
-    console.log(this.colorName);
-    switch(this.colorName) {
-      case 'ClaimTransaction': 
+    console.log(this.appTransColor);
+    switch (this.appTransColor) {
+      case 'ClaimTransaction':
         res = '#31aadc';
         break;
       case 'MinerTransaction':
@@ -40,5 +40,5 @@ export class TransColorDirective {
         break;
     }
     this.el.nativeElement.style.color = res;
-  } 
+  }
 }

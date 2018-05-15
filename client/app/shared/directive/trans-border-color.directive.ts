@@ -3,19 +3,19 @@ import { Directive, Input, ElementRef, OnChanges, SimpleChanges } from '@angular
 @Directive({
   selector: '[appTransBorderColor]'
 })
-export class TransBorderColorDirective {
+export class TransBorderColorDirective implements OnChanges {
 
   constructor(private el: ElementRef) { }
-  @Input('appTransBorderColor') colorName: String;
+  @Input('appTransBorderColor') appTransBorderColor: String;
 
   public ngOnChanges(changes: SimpleChanges) {
     this.addColor();
   }
   private addColor() {
     let res: string;
-    console.log(this.colorName);  
-    switch(this.colorName) {
-      case 'ClaimTransaction': 
+    console.log(this.appTransBorderColor);
+    switch (this.appTransBorderColor) {
+      case 'ClaimTransaction':
         res = '#31aadc';
         break;
       case 'MinerTransaction':
@@ -41,5 +41,5 @@ export class TransBorderColorDirective {
         break;
     }
     this.el.nativeElement.style.borderLeftColor = res;
-  } 
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnChanges, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../../../core';
 
@@ -7,23 +7,29 @@ import { GlobalService } from '../../../core';
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.scss']
 })
-export class PaginatorComponent implements OnInit {
+
+export class PaginatorComponent implements OnChanges {
   clickPage: any = 1;
-  pageShowList: any;
+  pageShowList: any = [];
   @Input() pageSize: number;
   @Input() pageLength: number;
-  @Output() onPageGo = new EventEmitter<number>();
-
+  @Output() onpageGo = new EventEmitter<number>();
   constructor(
     private http: HttpClient,
     private global: GlobalService
   ) { }
 
-  ngOnInit() {
-    this.pageShowList = [1, 2, 3];
+  ngOnChanges() {
+    if (this.pageLength >= 3) {
+      this.pageShowList = [1, 2, 3];
+    } else if (this.pageLength === 2) {
+      this.pageShowList = [1, 2];
+    } else if (this.pageShowList === 1) {
+      this.pageShowList = [1];
+    }
   }
   pageGo(num: number) {
-    this.onPageGo.emit(num);
+    this.onpageGo.emit(num);
     this.clickPage = num;
   }
   pagePreList() {

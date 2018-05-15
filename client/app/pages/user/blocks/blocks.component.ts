@@ -10,7 +10,7 @@ import { GlobalService } from '../../../core';
 export class BlocksComponent implements OnInit {
   displayedColumns = ['index', 'txNum', 'time', 'size', 'nextConsensus'];
   dataSource: MatTableDataSource<any>;
-  pageSize: number = 2;
+  pageSize: any = 16;
   pageLength: number;
 
   constructor(
@@ -25,12 +25,12 @@ export class BlocksComponent implements OnInit {
     this.http.post(`${this.global.apiDomain}/api/block`,
       { 'method': 'getblocks', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
       this.dataSource = new MatTableDataSource(res.result.data);
-      this.pageLength = res.result.total;
+      this.pageLength = Math.ceil(res.result.total / this.pageSize);
     }, (err) => {
       console.log(err);
     });
   }
-  onPageGo(num: number) {
-    this.getIssues(num, this.pageSize)
+  onpageGo(num: number) {
+    this.getIssues(num, this.pageSize);
   }
 }
