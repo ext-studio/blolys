@@ -6,7 +6,7 @@
   </ul>
   <ul>
     <li><a href="javascript: ;" (click)="pagePreList()">&lt;&lt;</a></li>
-    <li *ngFor="let num of pageShowList" [ngClass]="{active: clickPage == num}"><a href="javascript: ;" (click)="pageGo(num)">{{ num }}</a></li>
+    <li *ngFor="let num of pageShowList" [ngClass]="{active: clickPage === num}"><a href="javascript: ;" (click)="pageGo(num)">{{ num }}</a></li>
     <li><a href="javascript: ;" (click)="pageNextList()">&gt;&gt;</a></li>
   </ul>
   <ul class="pager pager-right">

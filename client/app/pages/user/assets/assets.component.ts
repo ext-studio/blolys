@@ -8,10 +8,12 @@ import { GlobalService } from '../../../core';
   styleUrls: ['./assets.component.scss']
 })
 export class AssetsComponent implements OnInit {
-  displayedColumns = ['name', 'type', 'amount', 'addresses', 'transactions', 'admin'];
+  displayedColumns = ['name', 'type', 'amount', 'addresses', 'transactions', 'admin', 'assetId'];
   dataSource: MatTableDataSource<any>;
+  pageIndex: Number = 0;
   pageSize: any = 16;
   pageLength: number;
+  assetType: String = 'Assets'; // 0 => assets, 1 => nep5Assets
   showSortTran: Boolean = false;
   showSortAddr: Boolean = false;
 
@@ -21,7 +23,7 @@ export class AssetsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getIssues(1, this.pageSize);
+    this.getAssets(1, this.pageSize);
   }
   sortTrans() {
     this.showSortTran = !this.showSortTran;
@@ -29,7 +31,8 @@ export class AssetsComponent implements OnInit {
   sortAddr() {
     this.showSortAddr = !this.showSortAddr;
   }
-  getIssues(pageIndex, pageSize) {
+  getAssets (pageIndex, pageSize) {
+    pageIndex = Number(pageIndex);
     this.http.post(`${this.global.apiDomain}/api/asset`,
       { 'method': 'getassets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
       this.dataSource = new MatTableDataSource(res.result.data);
@@ -38,7 +41,30 @@ export class AssetsComponent implements OnInit {
       console.log(err);
     });
   }
+  getNep5Assets (pageIndex, pageSize) {
+    pageIndex = Number(pageIndex);
+    this.http.post(`${this.global.apiDomain}/api/asset`,
+      { 'method': 'getnep5assets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
+      this.dataSource = new MatTableDataSource(res.result.data);
+      this.pageLength = Math.ceil(res.result.total / this.pageSize);
+    }, (err) => {
+      console.log(err);
+    });
+  }
+  changeAssetType (type) {
+    if (Number(type) === 0) {
+      this.assetType = 'Assets';
+    } else {
+      this.assetType = 'Nep5';
+    }
+    this.pageIndex = 1;
+    this.onpageGo(1);
+  }
   onpageGo(num: number) {
-    this.getIssues(num, this.pageSize);
+    if (this.assetType === 'Assets') {
+      this.getAssets(num, this.pageSize);
+    } else {
+      this.getNep5Assets(num, this.pageSize);
+    }
   }
 }

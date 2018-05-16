@@ -3,7 +3,7 @@
     <p class="header-title-info">Addresses information</p>
     <p class="header-title-address">{{ this.address }}</p>
   </div>
-  <!-- <ul class="info-address info">
+  <!-- <ul class="address-info info">
     <li>
       <p>{{ height }}</p>
       <span>Block Index</span>
@@ -29,14 +29,14 @@
       <span>Size</span>
     </li>
   </ul> -->
-  <ul class="info-assets info">
-    <li *ngFor="let item of addrassets">
+  <ul class="assets-info info">
+    <li *ngFor="let item of addrAssets">
       <p>{{ item.balance | number }}</p>
       <span>{{ item.name }}</span>
     </li>
   </ul>
-  <p class="header-title-info">Transactions ( 5 )</p>
-  <div class="tran-list">
+  <p class="header-title-info" *ngIf="transTotal > 0">Transactions ({{ transTotal }})</p>
+  <div class="tran-list" *ngIf="transTotal > 0">
     <div class="row-head">
       <div class="col">TXID</div>
       <div class="col">Type</div>
@@ -44,7 +44,7 @@
       <div class="col hidden">Version</div>
       <div class="col hidden">Time</div>
     </div>
-    <div class="warpper" *ngFor="let item of dataSource; index as index">
+    <div class="warpper" *ngFor="let item of addrTransactions; index as index">
       <div class="row">
         <div class="col link-btn" routerLink="/transaction/{{item.TX.txid}}">{{ item.TX.txid | shortHash }}</div>
         <div class="col" [appTransColor]="item.TX.type">{{ item.TX.type }}</div>
@@ -66,8 +66,8 @@
         </div>
         <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
         <div class="tran-info-to">
-          <p class="info-title" *ngIf=txInfo.UTXOVout.TxVouts>Sent to</p>
-          <div *ngFor="let txVout of txInfo.UTXOVout.TxVouts">
+          <p class="info-title" *ngIf=item.UTXOVout.TxVouts>Sent to</p>
+          <div *ngFor="let txVout of item.UTXOVout.TxVouts">
             <div class="info-address link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
             <div class="info-amount">
               <span>{{ txVout.value }}</span>
@@ -78,7 +78,7 @@
       </div>
     </div>
   </div>
-  <div class="view-all">
-    <button mat-raised-button  routerLink="/assets">View All</button>
+  <div class="view-all" *ngIf="transTotal > pageSize">
+    <button mat-raised-button (click)="showAllTrans()" [ngClass]="{isVisible: isVisible}">View All</button>
   </div>
 </div>

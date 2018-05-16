@@ -4,7 +4,7 @@
     <div class="line-second">Your home for all NEO related blockchain information</div>
     <div class="example-container" [formGroup]="searchForm">
       <mat-form-field >
-        <mat-label><span>Block Height, Hach, Address or transaction id </span><img src="/assets/icon_search@2x.png"></mat-label>
+        <mat-label><span>Block Height, Hach, Address or Transaction id </span><img src="/assets/icon_search@2x.png"></mat-label>
         <input matInput formcControlName="searchText">
       </mat-form-field>
     </div>
@@ -27,7 +27,7 @@
       <span>{{ total.addresses  | number }}</span>
     </div>
   </div>
-  <div class="recent-assets">
+  <div class="recent-assets" style="display: none;">
     <p class="header-title-info">Recent Assets transactions</p>
     <mat-table [dataSource]="dataSource">
       <!-- name Column -->
@@ -52,7 +52,7 @@
       </ng-container>
       <!-- time Column -->
       <ng-container matColumnDef="time">
-        <mat-header-cell *matHeaderCellDef class="data-right" class="hidden"> time </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef class="data-right" class="hidden"> Time </mat-header-cell>
         <mat-cell *matCellDef="let row" class="data-right" class="hidden"> {{ row.time * 1000 | date : 'yyyy-MM-dd HH:mm:ss'}} </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -62,5 +62,5 @@
       <button mat-raised-button  routerLink="/assets">View All Assetes <img src="/assets/img_nextpage@2x.png"></button>
     </div>
   </div>
-  <!-- <div echarts [options] = "option" class="demo-chart"></div> -->
+  <div style="display: none;" echarts [options] = "option" class="demo-chart"></div>
 </div>

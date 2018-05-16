@@ -3,21 +3,26 @@ import { HttpClient } from '@angular/common/http';
 import { MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/material';
 import { GlobalService } from '../../../core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+interface Totals {
+  assets: number;
+  blocks: number;
+  transactions: number;
+  addresses: number;
+}
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
   displayedColumns = ['name', 'type', 'amount', 'transactions', 'time'];
   dataSource: MatTableDataSource<any>;
   pageEvent: PageEvent;
-  total = {
-    count: Number,
-    blocks: Number,
-    assets: Number,
-    transactions: Number,
-    addresses: Number
+  public total: Totals = {
+    assets: 0,
+    blocks: 0,
+    addresses: 0,
+    transactions: 0
   };
   searchForm: FormGroup;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -88,7 +93,7 @@ export class HomeComponent implements OnInit {
     }, (err) => {
       console.log(err);
     });
-    this.getAssets(1, 10);
+    // this.getAssets(1, 10);
   }
 
   getAssets(pageIndex, pageSize) {

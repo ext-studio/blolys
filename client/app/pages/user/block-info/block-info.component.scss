@@ -2,6 +2,9 @@
   width: 100%;
   color: #fff;
 }
+.isVisible {
+  display: none;
+}
 .over-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -193,7 +196,7 @@
     margin-top: 30px;
     border-radius: 5px;
     &:hover {
-      background:  #1c2b5d;
+      background: #134699;
     }
   }
 }
@@ -268,7 +271,7 @@
     font-size: 22px;
   }
   .hidden {
-    display: none !important;
+    display: none;
   }
   .tran-list {
     margin-bottom: 30px;

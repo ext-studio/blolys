@@ -12,7 +12,6 @@ export class TransColorDirective implements OnChanges {
   }
   private addColor() {
     let res: string;
-    console.log(this.appTransColor);
     switch (this.appTransColor) {
       case 'ClaimTransaction':
         res = '#31aadc';
@@ -34,6 +33,9 @@ export class TransColorDirective implements OnChanges {
         break;
       case 'Enrollmenttransaction':
         res = '#ff30cc';
+        break;
+      case 'InvocationTransaction':
+        res = '#0e7c54';
         break;
       default:
         res = '#fff';

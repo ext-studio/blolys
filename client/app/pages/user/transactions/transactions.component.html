@@ -2,17 +2,17 @@
   <div class="header-title">
     <span class="header-title-info">Transactions</span>
     <div class="dropdown">
-      <button class="dropbtn">Invocation<mat-icon style="margin-left: 4px;">keyboard_arrow_down</mat-icon></button>
+      <button class="dropbtn">{{transType | transType}}<mat-icon class="icon-link">keyboard_arrow_down</mat-icon></button>
       <div class="dropdown-content">
-        <a href="javascript:;">Any</a>
-        <a href="javascript:;">Contract</a>
-        <a href="javascript:;">Invocation</a>
-        <a href="javascript:;">Claim</a>
-        <a href="javascript:;">Miner</a>
-        <a href="javascript:;">Register</a>
-        <a href="javascript:;">Issue</a>
-        <a href="javascript:;">Enrollment</a>
-        <a href="javascript:;">Publish</a>
+        <a href="javascript:;" (click)="changeTransType('all')">Any</a>
+        <a href="javascript:;" (click)="changeTransType('ContractTransaction')">Contract</a>
+        <a href="javascript:;" (click)="changeTransType('InvocationTransaction')">Invocation</a>
+        <a href="javascript:;" (click)="changeTransType('ClaimTransaction')">Claim</a>
+        <a href="javascript:;" (click)="changeTransType('MinerTransaction')">Miner</a>
+        <a href="javascript:;" (click)="changeTransType('RegisterTransaction')">Register</a>
+        <a href="javascript:;" (click)="changeTransType('IssueTransaction')">Issue</a>
+        <a href="javascript:;" (click)="changeTransType('EnrollmentTransaction')">Enrollment</a>
+        <a href="javascript:;" (click)="changeTransType('PublishTransaction')">Publish</a>
       </div>
     </div>
   </div>
@@ -60,6 +60,7 @@
   </div>
   <app-paginator 
     [pageSize]=pageSize
+    [pageIndex]=pageIndex
     [pageLength]=pageLength
     (onpageGo)="onpageGo($event)">
   </app-paginator>

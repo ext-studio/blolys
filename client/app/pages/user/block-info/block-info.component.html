@@ -52,7 +52,7 @@
     <li>
       <div>
         <p class="big-font-size">183</p>
-        <span>confirmations</span>
+        <span>conformations</span>
       </div>
     </li>
     <li>
@@ -68,8 +68,8 @@
       </div>
     </li>
   </ul>
-  <p class="header-title-info ">Transactions ({{ transTotal }})</p>
-  <div class="tran-list">
+  <p class="header-title-info" *ngIf="transTotal > 0">Transactions ({{ transTotal }})</p>
+  <div class="tran-list" *ngIf="transTotal > 0">
     <div class="row-head">
       <div class="col">TXID</div>
       <div class="col">Type</div>
@@ -77,7 +77,7 @@
       <div class="col hidden">Version</div>
       <div class="col hidden">Time</div>
     </div>
-    <div class="warpper" *ngFor="let item of dataSource; index as index">
+    <div class="warpper" *ngFor="let item of blockTransactions; index as index">
       <div class="row">
         <div class="col link-btn" routerLink="/transaction/{{item.TX.txid}}">{{ item.TX.txid | shortHash }}</div>
         <div class="col" [appTransColor]="item.TX.type">{{ item.TX.type }}</div>
@@ -86,10 +86,10 @@
         <div class="col hidden">2018-1-1 12:10:09</div>
         <div class="col-icon hidden"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
       </div>
-      <div class="tran-info">
+      <div class="tran-info" *ngIf="show[index]">
         <div class="tran-info-from">
-          <p class="info-title" *ngIf=txInfo.UTXOVout.TxUTXO>Sent from</p>
-          <div  *ngFor="let txUTXO of txInfo.UTXOVout.TxUTXO">
+          <p class="info-title" *ngIf=item.UTXOVout.TxUTXO>Sent from</p>
+          <div  *ngFor="let txUTXO of item.UTXOVout.TxUTXO">
             <div class="info-address link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</div>
             <div class="info-amount">
               <span>{{ txUTXO.value }}</span>
@@ -99,8 +99,8 @@
         </div>
         <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
         <div class="tran-info-to">
-          <p class="info-title" *ngIf=txInfo.UTXOVout.TxVouts>Sent to</p>
-          <div *ngFor="let txVout of txInfo.UTXOVout.TxVouts">
+          <p class="info-title" *ngIf=item.UTXOVout.TxVouts>Sent to</p>
+          <div *ngFor="let txVout of item.UTXOVout.TxVouts">
             <div class="info-address link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
             <div class="info-amount">
               <span>{{ txVout.value }}</span>
@@ -111,7 +111,7 @@
       </div>
     </div>
   </div>
-  <div class="view-all">
-    <button mat-raised-button  routerLink="/assets">View All</button>
+  <div class="view-all"  *ngIf="transTotal > pageSize">
+    <button mat-raised-button  (click)="showAllTrans()" [ngClass]="{isVisible: isVisible}">View All</button>
   </div>
 </div>

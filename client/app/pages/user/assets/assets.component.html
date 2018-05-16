@@ -1,11 +1,21 @@
 <div class="block">
-  <p class="header-title-info">Assets</p>
+	<!-- <p class="header-title-info">Assets</p> -->
+	<div class="header-title">
+    <span class="header-title-info">Assets</span>
+    <div class="dropdown">
+      <button class="dropbtn">{{assetType}}<mat-icon class="icon-link">keyboard_arrow_down</mat-icon></button>
+      <div class="dropdown-content">
+        <a href="javascript:;" (click)="changeAssetType('0')">Assets</a>
+        <a href="javascript:;" (click)="changeAssetType('1')">Nep5</a>
+      </div>
+    </div>
+  </div>
 	<div class="example-container mat-elevation-z8">
 		<mat-table [dataSource]="dataSource">
 			<!-- name Column -->
 			<ng-container matColumnDef="name">
 				<mat-header-cell *matHeaderCellDef>Asset</mat-header-cell>
-				<mat-cell *matCellDef="let row" class="link-btn" routerLink="/asset/info/{{row.name}}"> {{row.name}} </mat-cell>
+				<mat-cell *matCellDef="let row" class="link-btn" routerLink="/asset/info/{{row.assetId}}"> {{row.name}} </mat-cell>
 			</ng-container>
 			<!-- type Column -->
 			<ng-container matColumnDef="type">
@@ -32,12 +42,18 @@
 				<mat-header-cell *matHeaderCellDef class="hidden">Registered</mat-header-cell>
 				<mat-cell *matCellDef="let row"  class="link-btn hidden" routerLink="/address/{{row.admin}}"> {{ row.admin }} </mat-cell>
 			</ng-container>
+			<!-- assetId Column -->
+			<ng-container matColumnDef="assetId" style="display: none;">
+				<mat-header-cell *matHeaderCellDef class="hidden">AssetId</mat-header-cell>
+				<mat-cell *matCellDef="let row"> {{ row.assetId }} </mat-cell>
+			</ng-container>
 			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 		</mat-table>
   </div>
   <app-paginator 
-    [pageSize]=pageSize
+		[pageSize]=pageSize
+		[pageIndex]=pageIndex
     [pageLength]=pageLength
     (onpageGo)="onpageGo($event)">
   </app-paginator>

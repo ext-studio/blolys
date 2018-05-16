@@ -2,6 +2,9 @@
   width: 100%;
   color: #fff;
 }
+.isVisible {
+  display: none;
+}
 .header-title {
   margin-bottom: 25px;
   border-left: 3px solid #1770ea;
@@ -42,12 +45,12 @@
     }
   }
 }
-.info-address {
+.address-info {
   border-radius: 2px;
   box-shadow: 3px 3px 25px #0a1331;
   background: #18244f;
 }
-.info-assets {
+.assets-info {
   li {
     padding-left: 3px;
     padding-right: 3px;
@@ -157,12 +160,12 @@
     margin-top: 30px;
     border-radius: 5px;
     &:hover {
-      background:  #1c2b5d;
+      background:  #134699;
     }
   }
 }
 @media screen and (min-width: 870px) {
-  .info-address {
+  .address-info {
     li {
       width: 33.33%;
       min-height: 135px;
@@ -197,7 +200,7 @@
   .info, .view-all {
     margin-bottom: 70px;
   }
-  .info-assets {
+  .assets-info {
     li {
       margin-bottom: 10px;
       width: 32.66%;
@@ -223,7 +226,7 @@
   .hidden {
     display: none !important;
   }
-  .info-assets {
+  .assets-info {
     li {
       margin-bottom: 8px;
       width: 49%;

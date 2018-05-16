@@ -36,6 +36,9 @@ export class TransBorderColorDirective implements OnChanges {
       case 'Enrollmenttransaction':
         res = '#ff30cc';
         break;
+      case 'InvocationTransaction':
+        res = '#0e7c54';
+        break;
       default:
         res = '#fff';
         break;

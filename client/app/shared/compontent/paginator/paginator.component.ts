@@ -11,6 +11,7 @@ import { GlobalService } from '../../../core';
 export class PaginatorComponent implements OnChanges {
   clickPage: any = 1;
   pageShowList: any = [];
+  @Input() pageIndex: number;
   @Input() pageSize: number;
   @Input() pageLength: number;
   @Output() onpageGo = new EventEmitter<number>();
@@ -26,6 +27,10 @@ export class PaginatorComponent implements OnChanges {
       this.pageShowList = [1, 2];
     } else {
       this.pageShowList = [1];
+    }
+    if (this.pageIndex === 1) {
+      this.pageGo(1);
+      // this.clickPage = 1;
     }
   }
   pageGo(num: number) {

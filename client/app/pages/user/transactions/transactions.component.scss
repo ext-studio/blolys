@@ -5,6 +5,10 @@
 .header-title-info {
   margin-bottom: 20px;
 }
+.icon-link {
+  margin-left: 4px;
+  color: #1770ea;
+}
 .link-btn {
   color: #1770ea; 
   cursor: pointer; 
@@ -59,6 +63,9 @@
         &:hover {
           color: #1770ea;
         }
+        // &:not(:last-child) {
+        //   border-bottom: 1px solid #132b5d;
+        // }
       }
     }
   }

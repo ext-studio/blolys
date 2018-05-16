@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AssetInfoComponent implements OnInit {
   dataSource: any;
-  address: String = this.router.url.split('/')[2];
+  assetId: String = this.router.url.split('/')[3];
 
   constructor(
     private http: HttpClient,
@@ -20,8 +20,8 @@ export class AssetInfoComponent implements OnInit {
 
   ngOnInit() {
     this.http.post(`${this.global.apiDomain}/api/asset`,
-      {'method': 'getaddressasset', 'params': [this.address]}).subscribe((res: any) => {
-        // this.dataSource = res.result;
+      {'method': 'getassetinfo', 'params': [this.assetId]}).subscribe((res: any) => {
+        this.dataSource = res.result;
         console.log(res.result);
     }, (err) => {
       console.log(err);
