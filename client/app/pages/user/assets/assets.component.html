@@ -29,12 +29,12 @@
       </ng-container>
       <!-- addresses Column -->
 			<ng-container matColumnDef="addresses">
-        <mat-header-cell *matHeaderCellDef class="hidden"><span i18n>Addresses</span><mat-icon class="icon-sort" (click)="sortAddr()" [ngClass]="{active: showSortAddr}">keyboard_arrow_down</mat-icon> </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef class="hidden">Addresses</mat-header-cell>
         <mat-cell *matCellDef="let row" class="hidden"> {{row.addresses | number}} </mat-cell>
       </ng-container>
 			<!-- transactions Column -->
 			<ng-container matColumnDef="transactions">
-				<mat-header-cell *matHeaderCellDef class="hidden"><span i18n>Transactions</span><mat-icon class="icon-sort" (click)="sortTrans()" [ngClass]="{active: showSortTran}">keyboard_arrow_down</mat-icon> </mat-header-cell>
+				<mat-header-cell *matHeaderCellDef class="hidden">Transactions</mat-header-cell>
 				<mat-cell *matCellDef="let row" class="hidden"> {{row.transactions | number}} </mat-cell>
 			</ng-container>
 			<!-- register adress Column -->

@@ -78,8 +78,7 @@
     list-style: none;
     box-sizing: border-box;
     position: relative;
-    float: left;
-    min-height: 150px;    
+    float: left;   
     div {
       position: absolute;
       bottom: 40px;
@@ -264,6 +263,9 @@
     position: absolute;
     right: 0; 
   }
+  .info li {
+    height: 150px;
+  }
 }
 @media screen and (max-width: 419px) {
   .info, .view-all {
@@ -283,7 +285,7 @@
   .info {
     li {
       width: 100%;
-      min-height: 150px;
+      min-height: 120px;
       float: left;
       &:not(:nth-child) {
         border-bottom: 1px solid #203067;

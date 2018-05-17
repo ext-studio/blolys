@@ -16,28 +16,28 @@ export class TransBorderColorDirective implements OnChanges {
     console.log(this.appTransBorderColor);
     switch (this.appTransBorderColor) {
       case 'ClaimTransaction':
-        res = '#31aadc';
+        res = 'rgb(57, 181, 232)';
         break;
       case 'MinerTransaction':
-        res = '#f3f536';
+        res = 'rgb(243, 245, 54)';
         break;
       case 'ContractTransaction':
-        res = '#3ee9c3';
+        res = 'rgb(62, 233, 195)';
         break;
       case 'RegisterTransaction':
-        res = '#f04731';
+        res = 'rgb(240, 71, 49)';
         break;
       case 'PublishTransaction':
-        res = '#f97d3a';
+        res = 'rgb(249, 125, 58)';
         break;
       case 'IssueTransaction':
-        res = '#ff3a5a';
+        res = 'rgb(255, 48, 204)';
         break;
       case 'Enrollmenttransaction':
-        res = '#ff30cc';
+        res = 'rgb(79, 214, 81)';
         break;
       case 'InvocationTransaction':
-        res = '#0e7c54';
+        res = 'rgb(160, 99, 243)';
         break;
       default:
         res = '#fff';

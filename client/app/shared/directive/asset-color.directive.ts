@@ -13,7 +13,6 @@ export class AssetColorDirective implements OnChanges {
 
   private addColor() {
     let res: string;
-    console.log(this.appAssetColor);
     switch (this.appAssetColor) {
       case 'Token':
         res = '#627913';

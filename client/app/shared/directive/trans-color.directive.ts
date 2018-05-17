@@ -14,28 +14,28 @@ export class TransColorDirective implements OnChanges {
     let res: string;
     switch (this.appTransColor) {
       case 'ClaimTransaction':
-        res = '#31aadc';
+        res = 'rgb(61, 155, 195)';
         break;
       case 'MinerTransaction':
-        res = '#f3f536';
+        res = 'rgb(201, 196, 47)';
         break;
       case 'ContractTransaction':
-        res = '#3ee9c3';
+        res = 'rgb(37, 186, 155)';
         break;
       case 'RegisterTransaction':
-        res = '#f04731';
+        res = 'rgb(179, 43, 40)';
         break;
       case 'PublishTransaction':
-        res = '#f97d3a';
+        res = 'rgb(199, 106, 56)';
         break;
       case 'IssueTransaction':
-        res = '#ff3a5a';
+        res = 'rgb(197, 55, 162)';
         break;
       case 'Enrollmenttransaction':
-        res = '#ff30cc';
+        res = 'rgb(72, 167, 39)';
         break;
       case 'InvocationTransaction':
-        res = '#0e7c54';
+        res = 'rgb(139, 100, 208)';
         break;
       default:
         res = '#fff';

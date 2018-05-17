@@ -59,3 +59,8 @@
   border: none !important;
   min-height: 50px !important;
 }
+::ng-deep .mat-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

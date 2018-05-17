@@ -16,17 +16,6 @@
   margin-left: 4px;
   color: #1770ea;
 }
-.icon-sort {
-  vertical-align: middle;
-  font-size: 24px;
-  cursor: pointer;
-  color: #1770ea;
-  transition: all .4s;
-}
-.icon-sort.active {
-  transform: rotate(180deg);
-  color: #fff;
-}
 .header-title {
   position: relative;
   height: 60px;
@@ -35,7 +24,7 @@
   }
   .dropdown {
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     right: 0;
     display: inline-block;
     &:hover .dropbtn {

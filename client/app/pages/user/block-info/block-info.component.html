@@ -80,7 +80,7 @@
     <div class="warpper" *ngFor="let item of blockTransactions; index as index">
       <div class="row">
         <div class="col link-btn" routerLink="/transaction/{{item.TX.txid}}">{{ item.TX.txid | shortHash }}</div>
-        <div class="col" [appTransColor]="item.TX.type">{{ item.TX.type }}</div>
+        <div class="col" [appTransColor]="item.TX.type">{{ item.TX.type | transType }}</div>
         <div class="col hidden">{{ item.TX.size }} Bytes</div>
         <div class="col hidden">{{ item.TX.version }}</div>
         <div class="col hidden">2018-1-1 12:10:09</div>

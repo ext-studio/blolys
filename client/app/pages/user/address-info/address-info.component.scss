@@ -57,11 +57,10 @@
   li {
     padding-left: 3px;
     padding-right: 3px;
-    height: 150px;
     float: left;
     background: #18244f;
     p {
-      font-size: 28px;
+      // font-size: 28px;
       color: #359bd5;
     }
   }
@@ -206,8 +205,12 @@
     li {
       margin-bottom: 10px;
       width: 32.66%;
+      height: 150px;
       &:not(:nth-child(3n)) {
         margin-right: 1%;
+      }
+      p {
+        font-size: 28px;
       }
     }
   }
@@ -231,8 +234,12 @@
     li {
       margin-bottom: 8px;
       width: 49%;
+      height: 120px;
       &:not(:nth-child(2n)) {
         margin-right: 2%;
+      }
+      p {
+        font-size: 18px;
       }
     }
   }

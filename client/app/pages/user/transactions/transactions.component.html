@@ -30,7 +30,7 @@
         <div class="col" [appTransColor]="item.TX.type">{{ item.TX.type | transType }}</div>
         <div class="col hidden">{{ item.TX.size }} Bytes</div>
         <div class="col hidden">{{ item.TX.version }}</div>
-        <div class="col hidden">2018-1-1 12:10:09</div>
+        <div class="col hidden">{{index}}</div>
         <div class="col-icon hidden" [ngClass]="{isVisibilty: !(item.UTXOVout.TxUTXO || item.UTXOVout.TxVouts)}"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
       </div>
       <div class="tran-info" *ngIf="show[index]">

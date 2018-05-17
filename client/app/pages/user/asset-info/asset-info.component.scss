@@ -6,6 +6,15 @@
   color: #1770ea;
   cursor: pointer;
 }
+.over-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #1770ea;
+  label {
+    color: #fff;
+  }
+}
 .header-title {
   margin-bottom: 25px;
   border-left: 3px solid #1770ea;
@@ -37,8 +46,7 @@
     line-height: 50px;
     label {
       display: inline-block;
-      margin-right: 44px;
-      width: 100px;
+      width: 120px;
     }
   }
 }
@@ -147,4 +155,9 @@
   padding: 0 30px !important;  
   border: none !important;
   min-height: 50px !important;
+}
+::ng-deep .mat-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

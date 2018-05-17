@@ -109,6 +109,11 @@
   border: none !important;
   min-height: 50px !important;
 }
+::ng-deep .mat-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 :host ::ng-deep mat-form-field * {
   text-align: center !important;
 }

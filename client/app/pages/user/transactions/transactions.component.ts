@@ -1,6 +1,19 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../../../core';
+import { Observable } from 'rxjs/observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { merge } from 'rxjs/observable/merge';
+
+import {
+  distinct,
+  filter,
+  map,
+  debounceTime,
+  tap,
+  flatMap
+} from 'rxjs/operators';
 
 @Component({
   templateUrl: './transactions.component.html',
@@ -45,4 +58,5 @@ export class TransactionsComponent implements OnInit {
   onpageGo(num: number) {
     this.getIssues(num, this.pageSize, this.transType);
   }
+
 }
