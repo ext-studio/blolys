@@ -5,6 +5,9 @@
 .isVisible {
   display: none;
 }
+.isVisibilty {
+  visibility: hidden;
+}
 .over-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -240,7 +243,6 @@
 }
 @media screen and (min-width: 420px) {
   .tran-list {
-    margin-bottom: 70px;
     .row {
       padding: 0 30px;
     }
@@ -274,7 +276,6 @@
     display: none;
   }
   .tran-list {
-    margin-bottom: 30px;
     .row-head, .row {
       padding: 0 10px;
     }

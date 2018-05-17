@@ -5,6 +5,9 @@
 .isVisible {
   display: none;
 }
+.isVisibilty {
+  visibility: hidden;
+}
 .header-title {
   margin-bottom: 25px;
   border-left: 3px solid #1770ea;
@@ -189,7 +192,6 @@
 }
 @media screen and (min-width: 420px) {
   .tran-list {
-    margin-bottom: 70px;
     .row {
       padding: 0 30px;
     }
@@ -215,7 +217,6 @@
 }
 @media screen and (max-width: 419px) {
   .tran-list {
-    margin-bottom: 30px;
     .row-head, .row {
       padding: 0 10px;
     }

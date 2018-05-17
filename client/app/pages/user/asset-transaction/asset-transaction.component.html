@@ -1,23 +1,23 @@
 <div class="block">
   <div class="header-title">
-    <p class="header-title-info">NEO information</p>
+    <p class="header-title-info" i18n>NEO information</p>
   </div>
   <ul class="address-info">
-    <li class="color-one width-half"><label>Name</label>NEO</li>
-    <li class="color-one width-half"><label>Symbol</label>NEO</li>
-    <li class="color-two width-half"><label>Total Supply</label>NEO</li>
-    <li class="color-two width-half"><label>Issued</label>NEO</li>
-    <li class="color-one width-half"><label>Type</label>NEO</li>
-    <li class="color-one width-half"><label>Created</label><span class="link-btn">NEO</span></li>
-    <li class="color-two width-half"><label>Blocks</label><span class="link-btn">NEO</span></li>
-    <li class="color-two width-half"><label>transactions</label><span class="link-btn">NEO</span></li>
-    <li class="color-one width-half"><label>Persion</label>NEO</li>
-    <li class="color-one width-half"><label>Addresses</label><span class="link-btn">NEO</span></li>
+    <li class="color-one width-half"><label i18n>Name</label>NEO</li>
+    <li class="color-one width-half"><label i18n>Symbol</label>NEO</li>
+    <li class="color-two width-half"><label i18n>Total Supply</label>NEO</li>
+    <li class="color-two width-half"><label i18n>Issued</label>NEO</li>
+    <li class="color-one width-half"><label i18n>Type</label>NEO</li>
+    <li class="color-one width-half"><label i18n>Created</label><span class="link-btn">NEO</span></li>
+    <li class="color-two width-half"><label i18n>Blocks</label><span class="link-btn">NEO</span></li>
+    <li class="color-two width-half"><label i18n>transactions</label><span class="link-btn">NEO</span></li>
+    <li class="color-one width-half"><label i18n>Percision</label>NEO</li>
+    <li class="color-one width-half"><label i18n>Addresses</label><span class="link-btn">NEO</span></li>
   </ul>
   <div class="tran-title">
-    <span class="header-title-info">Transactions</span>
+    <span class="header-title-info" i18n>Transactions</span>
     <div class="dropdown">
-      <button class="dropbtn">Invocation<mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></button>
+      <button class="dropbtn">Any<mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></button>
       <div class="dropdown-content">
         <a href="javascript:;">Any</a>
         <a href="javascript:;">Contract</a>
@@ -33,11 +33,11 @@
   </div>
   <div class="tran-list">
     <div class="row-head">
-      <div class="col">TXID</div>
-      <div class="col">Type</div>
-      <div class="col hidden">Size</div>
-      <div class="col hidden">Version</div>
-      <div class="col hidden">Time</div>
+      <div class="col" i18n>TXID</div>
+      <div class="col" i18n>Type</div>
+      <div class="col hidden" i18n>Size</div>
+      <div class="col hidden" i18n>Version</div>
+      <div class="col hidden" i18n>Time</div>
     </div>
     <div class="warpper" *ngFor="let item of dataSource; index as index">
       <div class="row">
@@ -46,11 +46,11 @@
         <div class="col hidden">{{ item.TX.size }} Bytes</div>
         <div class="col hidden">{{ item.TX.version }}</div>
         <div class="col hidden">2018-1-1 12:10:09</div>
-        <div class="col-icon hidden"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
+        <div class="col-icon hidden" [ngClass]="{isVisibilty: !(item.UTXOVout.TxUTXO || item.UTXOVout.TxVouts)}"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
       </div>
       <div class="tran-info">
         <div class="tran-info-from">
-          <p class="info-title" *ngIf=txInfo.UTXOVout.TxUTXO>Sent from</p>
+          <p class="info-title" *ngIf=txInfo.UTXOVout.TxUTXO i18n>Sent from</p>
           <div  *ngFor="let txUTXO of txInfo.UTXOVout.TxUTXO">
             <div class="info-address link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</div>
             <div class="info-amount">
@@ -61,7 +61,7 @@
         </div>
         <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
         <div class="tran-info-to">
-          <p class="info-title" *ngIf=txInfo.UTXOVout.TxVouts>Sent to</p>
+          <p class="info-title" *ngIf=txInfo.UTXOVout.TxVouts i18n>Sent to</p>
           <div *ngFor="let txVout of txInfo.UTXOVout.TxVouts">
             <div class="info-address link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
             <div class="info-amount">
@@ -74,6 +74,6 @@
     </div>
   </div>
   <div class="view-all">
-    <button mat-raised-button  routerLink="/assets">View All</button>
+    <button mat-raised-button routerLink="/assets" i18n>View All</button>
   </div>
 </div>

@@ -1,81 +1,81 @@
 <div class="block">
   <div class="header-title">
-    <p class="header-title-info">Block information</p>
+    <p class="header-title-info" i18n>Block information</p>
     <p class="header-title-address over-ellipsis">{{ blockInfo.hash }}</p>
   </div>
   <div class="option-btn">
     <div class="option-left">
-      <button><a routerLink="/blocks">back</a></button>
+      <button><a routerLink="/blocks" i18n>back</a></button>
     </div>
     <div class="option-right">
-      <button class="pre-button"><a routerLink='/block/{{height-1}}' (click)=reHeight()>Previous block</a></button>
-      <button class="next-button"><a routerLink='/block/{{height+1}}' (click)=addHeight()>Next block</a></button>
+      <button class="pre-button"><a routerLink='/block/{{height-1}}' (click)=reHeight() i18n>Previous block</a></button>
+      <button class="next-button"><a routerLink='/block/{{height+1}}' (click)=addHeight() i18n>Next block</a></button>
     </div>
   </div>
   <ul class="info">
     <li>
       <div>
         <p class="big-font-size">{{ height | number }}</p>
-        <span>block Index</span>
+        <span i18n>block Index</span>
       </div>
     </li>
     <li>
       <div>
         <p class="big-font-size">{{ blockInfo.time * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
-        <span>Time</span>
+        <span i18n>Time</span>
       </div>
     </li>
     <li>
       <div>
         <p class="small-font-size">{{ blockInfo.hash }}</p>
-        <span>hash</span>
+        <span i18n>hash</span>
       </div>
     </li>
     <li>
       <div>
         <p class="big-font-size">{{ blockInfo.size }}</p>
-        <span>size</span>
+        <span i18n>size</span>
       </div>
     </li>
     <li>
       <div>
         <p class="big-font-size">{{ blockInfo.version }}</p>
-        <span>version</span>
+        <span i18n>version</span>
       </div>
     </li>
     <li>
       <div>
         <p class="small-font-size">{{ blockInfo.merkleRoot }}</p>
-        <span>Merkle Root</span>
+        <span i18n>Merkle Root</span>
       </div>
     </li>
     <li>
       <div>
         <p class="big-font-size">183</p>
-        <span>conformations</span>
+        <span i18n>conformations</span>
       </div>
     </li>
     <li>
       <div>
         <p class="big-font-size">{{ blockInfo.txNum }}</p>
-        <span>transactions</span>
+        <span i18n>transactions</span>
       </div>
     </li>
     <li>
       <div>
         <p class="small-font-size link-btn">Validator</p>
-        <span>Validator</span>
+        <span i18n>Validator</span>
       </div>
     </li>
   </ul>
-  <p class="header-title-info" *ngIf="transTotal > 0">Transactions ({{ transTotal }})</p>
+  <p class="header-title-info" *ngIf="transTotal > 0"><span i18n>Transactions</span> ({{ transTotal }})</p>
   <div class="tran-list" *ngIf="transTotal > 0">
     <div class="row-head">
-      <div class="col">TXID</div>
-      <div class="col">Type</div>
-      <div class="col hidden">Size</div>
-      <div class="col hidden">Version</div>
-      <div class="col hidden">Time</div>
+      <div class="col" i18n>TXID</div>
+      <div class="col" i18n>Type</div>
+      <div class="col hidden" i18n>Size</div>
+      <div class="col hidden" i18n>Version</div>
+      <div class="col hidden" i18n>Time</div>
     </div>
     <div class="warpper" *ngFor="let item of blockTransactions; index as index">
       <div class="row">
@@ -84,11 +84,11 @@
         <div class="col hidden">{{ item.TX.size }} Bytes</div>
         <div class="col hidden">{{ item.TX.version }}</div>
         <div class="col hidden">2018-1-1 12:10:09</div>
-        <div class="col-icon hidden"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
+        <div class="col-icon hidden" [ngClass]="{isVisibilty: !(item.UTXOVout.TxUTXO || item.UTXOVout.TxVouts)}"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
       </div>
       <div class="tran-info" *ngIf="show[index]">
         <div class="tran-info-from">
-          <p class="info-title" *ngIf=item.UTXOVout.TxUTXO>Sent from</p>
+          <p class="info-title" *ngIf="item.UTXOVout.TxUTXO" i18n>Sent from</p>
           <div  *ngFor="let txUTXO of item.UTXOVout.TxUTXO">
             <div class="info-address link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</div>
             <div class="info-amount">
@@ -99,7 +99,7 @@
         </div>
         <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
         <div class="tran-info-to">
-          <p class="info-title" *ngIf=item.UTXOVout.TxVouts>Sent to</p>
+          <p class="info-title" *ngIf="item.UTXOVout.TxVouts" i18n>Sent to</p>
           <div *ngFor="let txVout of item.UTXOVout.TxVouts">
             <div class="info-address link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
             <div class="info-amount">
@@ -112,6 +112,6 @@
     </div>
   </div>
   <div class="view-all"  *ngIf="transTotal > pageSize">
-    <button mat-raised-button  (click)="showAllTrans()" [ngClass]="{isVisible: isVisible}">View All</button>
+    <button mat-raised-button  (click)="showAllTrans()" [ngClass]="{isVisible: isVisible}" i18n>View All</button>
   </div>
 </div>

@@ -6,6 +6,9 @@
   color: #1770ea;
   cursor: pointer;
 }
+.isVisibilty {
+  visibility: hidden;
+}
 .header-title {
   margin-bottom: 25px;
   border-left: 3px solid #1770ea;
@@ -169,7 +172,7 @@
         text-align: center;
         margin-top: 30px;
       }
-      -title {
+      .info-title {
         font-size: 14px;
         margin-bottom: 20px;
       }

@@ -1,63 +1,49 @@
 <div class="block">
   <div class="header-title">
-    <p class="header-title-info">NEO information</p>
+    <p class="header-title-info" i18n>NEO information</p>
   </div>
   <ul class="address-info">
-    <li class="color-one width-half"><label>Name</label>NEO</li>
-    <li class="color-one width-half"><label>Symbol</label>NEO</li>
-    <li class="color-two width-half"><label>Total Supply</label>NEO</li>
-    <li class="color-two width-half"><label>Issued</label>NEO</li>
-    <li class="color-one width-half"><label>Type</label>NEO</li>
-    <li class="color-one width-half"><label>Created</label><span class="link-btn">NEO</span></li>
-    <li class="color-two width-half"><label>Blocks</label><span class="link-btn">NEO</span></li>
-    <li class="color-two width-half"><label>transactions</label><span class="link-btn">NEO</span></li>
-    <li class="color-one width-half"><label>Persion</label>NEO</li>
-    <li class="color-one width-half"><label>Addresses</label><span class="link-btn">NEO</span></li>
+    <li class="color-one width-half"><label i18n>Name</label>{{assetInfo.name}}</li>
+    <li class="color-one width-half"><label i18n>Symbol</label>不提供</li>
+    <li class="color-two width-half"><label i18n>Total Supply</label>{{assetInfo.amount}}</li>
+    <li class="color-two width-half"><label i18n>Issued</label>不提供</li>
+    <li class="color-one width-half"><label i18n>Type</label>{{assetInfo.type}}</li>
+    <li class="color-one width-half"><label i18n>Created</label><span class="link-btn">{{assetInfo.time * 1000 | date: 'yyyy-MM-dd'}}</span></li>
+    <li class="color-two width-half"><label i18n>Blocks</label><span class="link-btn">{{assetInfo.blockIndex}}</span></li>
+    <li class="color-two width-half"><label i18n>transactions</label><span class="link-btn">{{assetInfo.transactions}}</span></li>
+    <li class="color-one width-half"><label i18n>Precision</label>{{assetInfo.precision}}</li>
+    <li class="color-one width-half"><label i18n>Addresses</label><span class="link-btn">{{assetInfo.addresses}}</span></li>
   </ul>
-  <p class="header-title-info">Addresses</p>
-  <div class="tran-list">
-    <div class="row-head">
-      <div class="col">TXID</div>
-      <div class="col">Type</div>
-      <div class="col hidden">Size</div>
-      <div class="col hidden">Version</div>
-      <div class="col hidden">Time</div>
-    </div>
-    <div class="warpper" *ngFor="let item of dataSource; index as index">
-      <div class="row">
-        <div class="col link-btn" routerLink="/transaction/{{item.TX.txid}}">{{ item.TX.txid | shortHash }}</div>
-        <div class="col" [appTransColor]="item.TX.type">{{ item.TX.type }}</div>
-        <div class="col hidden">{{ item.TX.size }} Bytes</div>
-        <div class="col hidden">{{ item.TX.version }}</div>
-        <div class="col hidden">2018-1-1 12:10:09</div>
-        <div class="col-icon hidden"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
-      </div>
-      <div class="tran-info">
-        <div class="tran-info-from">
-          <p class="info-title" *ngIf=txInfo.UTXOVout.TxUTXO>Sent from</p>
-          <div  *ngFor="let txUTXO of txInfo.UTXOVout.TxUTXO">
-            <div class="info-address link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</div>
-            <div class="info-amount">
-              <span>{{ txUTXO.value }}</span>
-              <span class="link-btn" routerLink="/asset/info/{{txUTXO.name}}">{{ txUTXO.name }}</span>
-            </div>
-          </div>
-        </div>
-        <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
-        <div class="tran-info-to">
-          <p class="info-title" *ngIf=txInfo.UTXOVout.TxVouts>Sent to</p>
-          <div *ngFor="let txVout of txInfo.UTXOVout.TxVouts">
-            <div class="info-address link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
-            <div class="info-amount">
-              <span>{{ txVout.value }}</span>
-              <span class="link-btn" routerLink="/asset/info/{{txVout.name}}">{{ txVout.name }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <p class="header-title-info" i18n>Addresses</p>
+  <div class="example-container mat-elevation-z8">
+		<mat-table [dataSource]="allAddress">
+			<!-- address Column -->
+			<ng-container matColumnDef="address">
+				<mat-header-cell *matHeaderCellDef class="addr-min-width" i18n> Address </mat-header-cell>
+				<mat-cell *matCellDef="let row" class="link-btn addr-min-width" routerLink="/address/{{row.address}}"> {{ row.address }} </mat-cell>
+			</ng-container>
+			<!-- createdAt Column -->
+			<ng-container matColumnDef="createdAt">
+				<mat-header-cell *matHeaderCellDef i18n> CreatedAt </mat-header-cell>
+				<mat-cell *matCellDef="let row"> {{ row.createdAt | unixTime }} </mat-cell>
+      </ng-container>
+      <!-- lastTransactionTime Column -->
+			<ng-container matColumnDef="lastTransactionTime">
+        <mat-header-cell *matHeaderCellDef class="hidden" i18n> Last Transaction </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="hidden"> {{ row.lastTransactionTime | unixTime }} </mat-cell>
+      </ng-container>
+      <!-- transactions Column -->
+      <ng-container matColumnDef="transactions">
+        <mat-header-cell *matHeaderCellDef class="hidden" i18n> Transactions </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="hidden"> {{ row.transactions }} </mat-cell>
+      </ng-container>
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
   </div>
-  <div class="view-all">
-    <button mat-raised-button  routerLink="/assets">View All</button>
-  </div>
+  <app-paginator 
+		[pageSize]=pageSize
+    [pageLength]=pageLength
+    (onpageGo)="onpageGo($event)">
+  </app-paginator>
 </div>

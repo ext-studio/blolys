@@ -9,7 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./asset-info.component.scss']
 })
 export class AssetInfoComponent implements OnInit {
-  dataSource: any;
+  displayedColumns = ['address', 'createdAt', 'lastTransactionTime', 'transactions'];
+  recentAddress: MatTableDataSource<any>;
+  assetInfo: any;
+  pageSize: Number = 5;
   assetId: String = this.router.url.split('/')[3];
 
   constructor(
@@ -21,8 +24,13 @@ export class AssetInfoComponent implements OnInit {
   ngOnInit() {
     this.http.post(`${this.global.apiDomain}/api/asset`,
       {'method': 'getassetinfo', 'params': [this.assetId]}).subscribe((res: any) => {
-        this.dataSource = res.result;
-        console.log(res.result);
+        this.assetInfo = res.result;
+    }, (err) => {
+      console.log(err);
+    });
+    this.http.post(`${this.global.apiDomain}/api/address`,
+      { 'method': 'getaddresses', 'params': [1, this.pageSize] }).subscribe((res: any) => {
+      this.recentAddress = new MatTableDataSource(res.result.data);
     }, (err) => {
       console.log(err);
     });

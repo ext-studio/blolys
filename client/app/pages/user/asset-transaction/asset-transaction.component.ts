@@ -19,12 +19,12 @@ export class AssetTransactionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.http.post(`${this.global.apiDomain}/api/asset`,
-      {'method': 'getassets', 'params': [this.address]}).subscribe((res: any) => {
-        // this.dataSource = res.result;
-        console.log(res.result);
-    }, (err) => {
-      console.log(err);
-    });
+    // this.http.post(`${this.global.apiDomain}/api/asset`,
+    //   {'method': 'getassets', 'params': [this.address]}).subscribe((res: any) => {
+    //     // this.dataSource = res.result;
+    //     console.log(res.result);
+    // }, (err) => {
+    //   console.log(err);
+    // });
   }
 }

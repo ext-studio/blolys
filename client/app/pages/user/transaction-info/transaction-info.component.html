@@ -1,11 +1,11 @@
 <div class="block">
   <div class="header-title" [appTransBorderColor]="txInfo.TX.type">
-    <p class="header-title-info">{{ txInfo.TX.type | transType}} Transaction</p>
-    <p class="header-title-address over-ellipsis">{{ txInfo.TX.type | lowTransType}} | Hash: {{ txInfo.TX.txid }}</p>
+    <p class="header-title-info">{{ txInfo.TX.type | transType}} <span i18n>Transaction</span></p>
+    <p class="header-title-address over-ellipsis">{{ txInfo.TX.type | lowTransType}} | <span i18n>Hash</span>: {{ txInfo.TX.txid }}</p>
   </div>
   <div class="tran-info">
     <div class="tran-info-from">
-      <p class="info-title" *ngIf=txInfo.UTXOVout.TxUTXO>Sent from</p>
+      <p class="info-title" *ngIf=txInfo.UTXOVout.TxUTXO i18n>Sent from</p>
       <div  *ngFor="let txUTXO of txInfo.UTXOVout.TxUTXO">
         <div class="info-address break-word link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</div>
         <div class="info-amount">
@@ -16,7 +16,7 @@
     </div>
     <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
     <div class="tran-info-to">
-      <p class="info-title" *ngIf=txInfo.UTXOVout.TxVouts>Sent to</p>
+      <p class="info-title" *ngIf=txInfo.UTXOVout.TxVouts i18n>Sent to</p>
       <div *ngFor="let txVout of txInfo.UTXOVout.TxVouts">
         <div class="info-address break-word link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
         <div class="info-amount">
@@ -53,22 +53,22 @@
     </li>
   </ul> -->
   <div class="invocation-script script">
-    <div class="header-title-info">Invocation Script</div>
+    <div class="header-title-info" i18n>Invocation Script</div>
     <div class="script-info">
       <p>PUSHBYTES64:</p>
       <p>dhghghj</p>
       <div class="view-btn">
-        <button>VIEW BYTECODE</button>
+        <button i18n>VIEW BYTECODE</button>
       </div>
     </div>
   </div>
   <div class="verification-script script">
-    <div class="header-title-info">Verification Script</div>
+    <div class="header-title-info" i18n>Verification Script</div>
     <div class="script-info">
       <p>PUSHBYTES32: ffff</p>
       <p>CHECKSIG</p>
       <div class="view-btn">
-        <button>VIEW OPCODE</button>
+        <button i18n>VIEW OPCODE</button>
       </div>
     </div>
   </div>

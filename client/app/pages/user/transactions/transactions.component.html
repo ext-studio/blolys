@@ -1,6 +1,6 @@
 <div class="block">
   <div class="header-title">
-    <span class="header-title-info">Transactions</span>
+    <span class="header-title-info" i18n>Transactions</span>
     <div class="dropdown">
       <button class="dropbtn">{{transType | transType}}<mat-icon class="icon-link">keyboard_arrow_down</mat-icon></button>
       <div class="dropdown-content">
@@ -18,11 +18,11 @@
   </div>
   <div class="tran-list">
     <div class="row-head">
-      <div class="col">TXID</div>
-      <div class="col">Type</div>
-      <div class="col hidden">Size</div>
-      <div class="col hidden">Version</div>
-      <div class="col hidden">Time</div>
+      <div class="col" i18n>TXID</div>
+      <div class="col" i18n>Type</div>
+      <div class="col hidden" i18n>Size</div>
+      <div class="col hidden" i18n>Version</div>
+      <div class="col hidden" i18n>Time</div>
     </div>
     <div class="warpper" *ngFor="let item of dataSource; index as index">
       <div class="row">
@@ -31,11 +31,11 @@
         <div class="col hidden">{{ item.TX.size }} Bytes</div>
         <div class="col hidden">{{ item.TX.version }}</div>
         <div class="col hidden">2018-1-1 12:10:09</div>
-        <div class="col-icon hidden"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
+        <div class="col-icon hidden" [ngClass]="{isVisibilty: !(item.UTXOVout.TxUTXO || item.UTXOVout.TxVouts)}"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
       </div>
       <div class="tran-info" *ngIf="show[index]">
         <div class="tran-info-from">
-          <p class="info-title" *ngIf=item.UTXOVout.TxUTXO>Sent from</p>
+          <p class="info-title" *ngIf="item.UTXOVout.TxUTXO" i18n>Sent from</p>
           <div  *ngFor="let txUTXO of item.UTXOVout.TxUTXO">
             <div class="info-address link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</div>
             <div class="info-amount">
@@ -46,7 +46,7 @@
         </div>
         <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
         <div class="tran-info-to">
-          <p class="info-title" *ngIf=item.UTXOVout.TxVouts>Sent to</p>
+          <p class="info-title" *ngIf="item.UTXOVout.TxVouts" i18n>Sent to</p>
           <div *ngFor="let txVout of item.UTXOVout.TxVouts">
             <div class="info-address link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
             <div class="info-amount">

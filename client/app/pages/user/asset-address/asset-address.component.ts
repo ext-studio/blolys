@@ -9,8 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./asset-address.component.scss']
 })
 export class AssetAddressComponent implements OnInit {
-  dataSource: any;
-  address: String = this.router.url.split('/')[2];
+  displayedColumns = ['address', 'createdAt', 'lastTransactionTime', 'transactions'];
+  allAddress: MatTableDataSource<any>;
+  assetInfo: any;
+  pageSize: any = 16;
+  pageLength: number;
+  assetId: String = this.router.url.split('/')[3];
 
   constructor(
     private http: HttpClient,
@@ -20,11 +24,23 @@ export class AssetAddressComponent implements OnInit {
 
   ngOnInit() {
     this.http.post(`${this.global.apiDomain}/api/asset`,
-      {'method': 'getaddressasset', 'params': [this.address]}).subscribe((res: any) => {
-        // this.dataSource = res.result;
-        console.log(res.result);
+      {'method': 'getassetinfo', 'params': [this.assetId]}).subscribe((res: any) => {
+        this.assetInfo = res.result;
     }, (err) => {
       console.log(err);
     });
+    this.getIssues(1, this.pageSize);
+  }
+  getIssues (pageIndex, pageSize) {
+    this.http.post(`${this.global.apiDomain}/api/address`,
+      {'method': 'getaddresses', 'params': [pageIndex, pageSize]}).subscribe((res: any) => {
+        this.allAddress = new MatTableDataSource(res.result.data);
+        this.pageLength = Math.ceil(res.result.total / this.pageSize);
+    }, (err) => {
+      console.log(err);
+    });
+  }
+  onpageGo(num: number) {
+    this.getIssues(num, this.pageSize);
   }
 }

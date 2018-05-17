@@ -1,30 +1,30 @@
 <div class="block">
-  <p class="header-title-info">Blocks</p>
+  <p class="header-title-info" i18n>Blocks</p>
 	<div class="example-container mat-elevation-z8">
 		<mat-table [dataSource]="dataSource">
 			<!-- index Column -->
 			<ng-container matColumnDef="index">
-				<mat-header-cell *matHeaderCellDef> Index </mat-header-cell>
+				<mat-header-cell *matHeaderCellDef i18n> Index </mat-header-cell>
 				<mat-cell *matCellDef="let row" class="link-btn" routerLink="/block/{{row.index}}"> {{ row.index | number }} </mat-cell>
 			</ng-container>
 			<!-- txNum Column -->
 			<ng-container matColumnDef="txNum">
-				<mat-header-cell *matHeaderCellDef> Transactions </mat-header-cell>
+				<mat-header-cell *matHeaderCellDef i18n> Transactions </mat-header-cell>
 				<mat-cell *matCellDef="let row"> {{ row.txNum | number }} </mat-cell>
 			</ng-container>
 			<!-- time Column -->
 			<ng-container matColumnDef="time">
-				<mat-header-cell *matHeaderCellDef class="hidden"> Time </mat-header-cell>
+				<mat-header-cell *matHeaderCellDef class="hidden" i18n> Time </mat-header-cell>
 				<mat-cell *matCellDef="let row" class="hidden"> {{ row.time | unixTime }} </mat-cell>
       </ng-container>
       <!-- size Column -->
 			<ng-container matColumnDef="size">
-        <mat-header-cell *matHeaderCellDef class="hidden"> Size </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef class="hidden" i18n> Size </mat-header-cell>
         <mat-cell *matCellDef="let row" class="hidden"> {{ row.size | number }} Bytes </mat-cell>
       </ng-container>
       <!-- nextConsensus Column -->
       <ng-container matColumnDef="nextConsensus">
-        <mat-header-cell *matHeaderCellDef style="min-width: 300px;" class="hidden"> Validator </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef style="min-width: 300px;" class="hidden" i18n> Validator </mat-header-cell>
         <mat-cell *matCellDef="let row"  class="link-btn hidden" routerLink="/address/{{row.nextConsensus}}" style="min-width: 300px;"> {{ row.nextConsensus }} </mat-cell>
       </ng-container>
 			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

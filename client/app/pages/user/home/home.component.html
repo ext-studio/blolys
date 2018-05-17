@@ -1,65 +1,65 @@
 <div class="block">
   <div class="welcome">
-    <div class="line-first">Welcome to ExChain Explorer</div>
-    <div class="line-second">Your home for all NEO related blockchain information</div>
+    <div class="line-first" i18n>Welcome to ExChain Explorer</div>
+    <div class="line-second" i18n>Your home for all NEO related blockchain information</div>
     <div class="example-container" [formGroup]="searchForm">
       <mat-form-field >
-        <mat-label><span>Block Height, Hach, Address or Transaction id </span><img src="/assets/icon_search@2x.png"></mat-label>
+        <mat-label><span i18n>Block Height, Hach, Address or Transaction id </span><img src="/assets/icon_search@2x.png"></mat-label>
         <input matInput formcControlName="searchText">
       </mat-form-field>
     </div>
   </div>
   <div class="links">
     <div class="link-item">
-      <p>Total Blocks</p>
+      <p i18n>Total Blocks</p>
       <span>{{ total.blocks  | number }}</span>
     </div>
     <div class="link-item">
-      <p>Total Assets</p>
+      <p i18n>Total Assets</p>
       <span>{{ total.assets  | number }}</span>
     </div>
     <div class="link-item">
-      <p>Total Transactions</p>
+      <p i18n>Total Transactions</p>
       <span>{{ total.transactions  | number }}</span>
     </div>
     <div class="link-item">
-      <p>Total Addresses</p>
+      <p i18n>Total Addresses</p>
       <span>{{ total.addresses  | number }}</span>
     </div>
   </div>
   <div class="recent-assets" style="display: none;">
-    <p class="header-title-info">Recent Assets transactions</p>
+    <p class="header-title-info" i18n>Recent Assets transactions</p>
     <mat-table [dataSource]="dataSource">
       <!-- name Column -->
       <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> Assets </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef i18n> Assets </mat-header-cell>
         <mat-cell *matCellDef="let row" class="link-btn" routerLink="/asset/info/{{row.TX.type}}"> {{row.TX.type}} </mat-cell>
       </ng-container>
       <!-- type Column -->
       <ng-container matColumnDef="type">
-        <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef i18n> Type </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.type}} </mat-cell>
       </ng-container>
       <!-- amount Column -->
       <ng-container matColumnDef="amount">
-        <mat-header-cell *matHeaderCellDef class="data-right" class="hidden"> Amount </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef class="data-right" class="hidden" i18n> Amount </mat-header-cell>
         <mat-cell *matCellDef="let row" class="data-right" class="hidden"> {{row.amount | number}} </mat-cell>
       </ng-container>
       <!-- transactions Column -->
       <ng-container matColumnDef="transactions">
-        <mat-header-cell *matHeaderCellDef class="data-right" class="hidden"> Transactions </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef class="data-right" class="hidden" i18n> Transactions </mat-header-cell>
         <mat-cell *matCellDef="let row" class="data-right" class="hidden"> {{row.transactions | number}} </mat-cell>
       </ng-container>
       <!-- time Column -->
       <ng-container matColumnDef="time">
-        <mat-header-cell *matHeaderCellDef class="data-right" class="hidden"> Time </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef class="data-right" class="hidden" i18n> Time </mat-header-cell>
         <mat-cell *matCellDef="let row" class="data-right" class="hidden"> {{ row.time * 1000 | date : 'yyyy-MM-dd HH:mm:ss'}} </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
     <div class="view-all">
-      <button mat-raised-button  routerLink="/assets">View All Assetes <img src="/assets/img_nextpage@2x.png"></button>
+      <button mat-raised-button  routerLink="/assets"><span i18n>View All Assetes</span> <img src="/assets/img_nextpage@2x.png"></button>
     </div>
   </div>
   <div style="display: none;" echarts [options] = "option" class="demo-chart"></div>

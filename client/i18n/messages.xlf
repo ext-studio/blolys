@@ -2,20 +2,6 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="24e954d8d340874715afc4df04ec29ddb2b9a9c4" datatype="html">
-        <source>GET TOKENS</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/popups/buy/buy.component.ts</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8dd413cee2228118c536f503709329a4d1a395e2" datatype="html">
-        <source>Done</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/shared/popups/buy/buy.component.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="23cb95dbf1c67516b4031368dbb0e29d1b8b7c2c" datatype="html">
         <source>Tip</source>
         <context-group purpose="location">
@@ -30,11 +16,865 @@
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="e8ac32575847a0651ec724664116291204532849" datatype="html">
-        <source>BLOLYS</source>
+      <trans-unit id="92eee6be6de0b11c924e3ab27db30257159c0a7c" datatype="html">
+        <source>Home</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8a7b4bd44c0ac71b2e72de0398b303257f7d2f54" datatype="html">
+        <source>Blocks</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/blocks/blocks.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="add4cd82e3e38a3110fe67b3c7df56e9602644ee" datatype="html">
+        <source>Transactions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/assets/assets.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transactions/transactions.component.ts</context>
           <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/address-info/address-info.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7882f2edb1d4139800b276b6b0bbf5ae0b2234ef" datatype="html">
+        <source>Addresses</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/assets/assets.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ee8f8008bae6ce3a49840c4e1d39b4af23d4c263" datatype="html">
+        <source>Assets</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/assets/assets.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a0843de0a64adcc7ee6a946408b6876cd8abdcae" datatype="html">
+        <source>English</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8b0c335aaa0fb216cbdbde0985935869b4c48971" datatype="html">
+        <source>中文繁体</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="28f0fbe3099763007f30cbc3d628aeb16cf9cfa8" datatype="html">
+        <source>MainNet</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="db99fd9ecb3c7be7fddd96aa484c18ef4dc9c134" datatype="html">
+        <source>TestNet</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fe46ccaae902ce974e2441abe752399288298619" datatype="html">
+        <source>Language</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c08a4b87e44d03394fec0cfdc8043bb0a2b2ec3a" datatype="html">
+        <source>Chinese</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e3785a14db3da4919c8e172d297e56f00f236f9f" datatype="html">
+        <source>Net</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6409ffc5024592798a9d65610ef6c1a561557ef4" datatype="html">
+        <source>Asset</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/assets/assets.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f61c6867295f3b53d23557021f2f4e0aa1d0b8fc" datatype="html">
+        <source>Type</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/assets/assets.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transactions/transactions.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/address-info/address-info.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cd8c07ee71d02a75bd9604fb099f22fc3d5d25e8" datatype="html">
+        <source>Supply</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/assets/assets.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b4d5a5498840744671731ffa7ff77149c29343ee" datatype="html">
+        <source>Registered</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/assets/assets.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="137f9ff9ab42e72066e9f99910b0f3e7b381002b" datatype="html">
+        <source>Welcome to ExChain Explorer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/home/home.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c11d0d7c7532ed8ed753ff0b5765cfe3f1b6945c" datatype="html">
+        <source>Your home for all NEO related blockchain information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/home/home.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="39cb95b700196a9a47007b91fe929e25b544d035" datatype="html">
+        <source>Block Height, Hach, Address or Transaction id </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/home/home.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="80a5dc16ce669bbc521915d4e051bc5ab5fb33a4" datatype="html">
+        <source>Total Blocks</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/home/home.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f159ffb7a09c8c1fe7913ef063462db50ddcd878" datatype="html">
+        <source>Total Assets</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/home/home.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f6dbb801f16f8ca8cac4ee828f9a41c6c5e9f533" datatype="html">
+        <source>Total Transactions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/home/home.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5bca11a0b16ef645c654571172e7faf06ab867d0" datatype="html">
+        <source>Total Addresses</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/home/home.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8c3f7a4c386d9e7c652bfe9cda32e9624fe04077" datatype="html">
+        <source>Recent Assets transactions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/home/home.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9014a24a36e57c9c8549d17ce807d518c4440118" datatype="html">
+        <source> Assets </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/home/home.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4bea5cb235dec5098d09764a9c7ba0de647c827d" datatype="html">
+        <source> Type </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/home/home.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bb60d279d1b544ae80de6c89297fd454f93844e8" datatype="html">
+        <source> Amount </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/home/home.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2d7d47bd1af1d193c6b9d44710ff5cbdd41efad5" datatype="html">
+        <source> Transactions </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/home/home.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/blocks/blocks.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="10da539dfe55f50819ce2a4a45316944022e6c4d" datatype="html">
+        <source> Time </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/home/home.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/blocks/blocks.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="91402e5dc351d45a4594b79da110b312c14f11d4" datatype="html">
+        <source>View All Assetes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/home/home.component.ts</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="844c8dc1dd2ed9256a5305bc7ab4e50e01921e2d" datatype="html">
+        <source> Index </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/blocks/blocks.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="40ebb9453526f04b21eb9027a2da6181cc70dacb" datatype="html">
+        <source> Size </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/blocks/blocks.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b8ed996bead74fc070522a39fde5cdd05cf7d237" datatype="html">
+        <source> Validator </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/blocks/blocks.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="94c248797dd2b6af49068cb49c3b4bc26bec6a16" datatype="html">
+        <source>TXID</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transactions/transactions.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/address-info/address-info.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7faaaa08f56427999f3be41df1093ce4089bbd75" datatype="html">
+        <source>Size</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transactions/transactions.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/address-info/address-info.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8fe73a4787b8068b2ba61f54ab7e0f9af2ea1fc9" datatype="html">
+        <source>Version</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transactions/transactions.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/address-info/address-info.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b24f1cd32cbc1ec9537af28c4fe1b8204097714b" datatype="html">
+        <source>Time</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transactions/transactions.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/address-info/address-info.component.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9d89e2872be2bfcda242f3b1b17ef1a02d3346e6" datatype="html">
+        <source>Sent from</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transactions/transactions.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/address-info/address-info.component.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transaction-info/transaction-info.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="83d3c15511dbc2b18109ef351012e438b74f5cba" datatype="html">
+        <source>Sent to</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transactions/transactions.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/address-info/address-info.component.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transaction-info/transaction-info.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e9ded9ddc67d3d863a5484c81550ee0de9b0ff04" datatype="html">
+        <source> Address </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d2d256df03a53241489db9038bc9dbc4437fd53b" datatype="html">
+        <source> CreatedAt </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="49294656d173846977ad39d56bbefb56fbfa63f3" datatype="html">
+        <source> Last Transaction </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8f64029de07193ae17f0fdcbbaace053b0a0b0d4" datatype="html">
+        <source>Block information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3923c7ee91836570ff8c5cc870a63cd5e2e61564" datatype="html">
+        <source>back</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e5b304c2957d896ad2b347d392494f3946e3bb7a" datatype="html">
+        <source>Previous block</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2796adb5348671bc16fda1227f538f5d6ad70af5" datatype="html">
+        <source>Next block</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4c39f5794ccaf52681effc9c494fa904c9a001ee" datatype="html">
+        <source>block Index</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6bd341d3647adcda07b23b7ed907f7412531df3e" datatype="html">
+        <source>hash</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="542ef638499635dec7641bdc2e499258094187cc" datatype="html">
+        <source>size</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5780e5c3b4fc2ae07836bb5221cec4f8d597630d" datatype="html">
+        <source>version</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="27e670a5906f0c4fef6b0adedf1715a8b44018f9" datatype="html">
+        <source>Merkle Root</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6c8f51fa4d117881cee50a21a364517a00d0ce12" datatype="html">
+        <source>conformations</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3be4e3c0a506f2d238c116f1bdeeae8da389efa3" datatype="html">
+        <source>transactions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e9989acc7c8ce4e53c98e725c4ccddb26500a12c" datatype="html">
+        <source>Validator</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="85807a0db361fe42b0edae5b05f98f5e348ccffd" datatype="html">
+        <source>View All</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/block-info/block-info.component.ts</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/address-info/address-info.component.ts</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dba926658858589d65fb34451058140ce791e7d7" datatype="html">
+        <source>Addresses information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/address-info/address-info.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d517b7f2af3407c0dad3d91aa115c4f5af2b6892" datatype="html">
+        <source>Asset information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cff1428d10d59d14e45edec3c735a27b5482db59" datatype="html">
+        <source>Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7cd2168068d1fd50772c493d493f83e4e412ebc8" datatype="html">
+        <source>Symbol</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="219457e31107e4653abc2952947c150ef7840260" datatype="html">
+        <source>Total Supply</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d8d99cf1b19623fbff4c0198707775ba49c38a40" datatype="html">
+        <source>Issued</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1b051734b0ee9021991c91b3ed4e81c244322462" datatype="html">
+        <source>Created</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="df4e06359ce80f4212a8a466d43860918bb28665" datatype="html">
+        <source>Precision</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5c11efa8e1cd3ec7280fd5fca12273e1386f01db" datatype="html">
+        <source>Network fee</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0ee5132a8da30e0b7f9f5c70dbc91928d17dd909" datatype="html">
+        <source>Owner</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="960cd598cbd85edb0a254ff3e59574d2c5cb888c" datatype="html">
+        <source>Hash</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transaction-info/transaction-info.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cfc2f436ec2beffb042e7511a73c89c372e86a6c" datatype="html">
+        <source>Register</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f45f12fa114fcfb3ad448e19ff7c258a21216426" datatype="html">
+        <source>Recent  Addresses</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b59ea65c89a5ae15b787d8318fdad9edd6fec243" datatype="html">
+        <source>Transaction</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transaction-info/transaction-info.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e82229fa0658f17bd881b0330ccd33a8df9a216b" datatype="html">
+        <source>Invocation Script</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transaction-info/transaction-info.component.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6790be6c1808b4e014673ea82f63f8dbc751270c" datatype="html">
+        <source>VIEW BYTECODE</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transaction-info/transaction-info.component.ts</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4177edc4e7f7a1879f2c019219af94393dbccd74" datatype="html">
+        <source>Verification Script</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transaction-info/transaction-info.component.ts</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bfd3af33a2749549c96353f68a63bef028b065e0" datatype="html">
+        <source>VIEW OPCODE</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/transaction-info/transaction-info.component.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2c7d8e52c29b4654fe1069f59d65e72f406de08f" datatype="html">
+        <source>NEO information</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-address/asset-address.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="708a73729534d3d627703bf31a5b9059461fe139" datatype="html">
+        <source>Percision</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/asset-transaction/asset-transaction.component.ts</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
     </body>

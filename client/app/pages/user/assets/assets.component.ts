@@ -8,7 +8,7 @@ import { GlobalService } from '../../../core';
   styleUrls: ['./assets.component.scss']
 })
 export class AssetsComponent implements OnInit {
-  displayedColumns = ['name', 'type', 'amount', 'addresses', 'transactions', 'admin', 'assetId'];
+  displayedColumns = ['name', 'type', 'amount', 'addresses', 'transactions', 'admin'];
   dataSource: MatTableDataSource<any>;
   pageIndex: Number = 0;
   pageSize: any = 16;

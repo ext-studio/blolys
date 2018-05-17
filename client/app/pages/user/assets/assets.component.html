@@ -1,7 +1,7 @@
 <div class="block">
 	<!-- <p class="header-title-info">Assets</p> -->
 	<div class="header-title">
-    <span class="header-title-info">Assets</span>
+    <span class="header-title-info" i18n>Assets</span>
     <div class="dropdown">
       <button class="dropbtn">{{assetType}}<mat-icon class="icon-link">keyboard_arrow_down</mat-icon></button>
       <div class="dropdown-content">
@@ -14,38 +14,33 @@
 		<mat-table [dataSource]="dataSource">
 			<!-- name Column -->
 			<ng-container matColumnDef="name">
-				<mat-header-cell *matHeaderCellDef>Asset</mat-header-cell>
+				<mat-header-cell *matHeaderCellDef i18n>Asset</mat-header-cell>
 				<mat-cell *matCellDef="let row" class="link-btn" routerLink="/asset/info/{{row.assetId}}"> {{row.name}} </mat-cell>
 			</ng-container>
 			<!-- type Column -->
 			<ng-container matColumnDef="type">
-				<mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+				<mat-header-cell *matHeaderCellDef i18n>Type</mat-header-cell>
 				<mat-cell *matCellDef="let row" [appAssetColor]="row.type"> {{row.type}} </mat-cell>
 			</ng-container>
 			<!-- amount Column -->
 			<ng-container matColumnDef="amount">
-				<mat-header-cell *matHeaderCellDef class="hidden">Supply</mat-header-cell>
+				<mat-header-cell *matHeaderCellDef class="hidden" i18n>Supply</mat-header-cell>
 				<mat-cell *matCellDef="let row" class="hidden"> {{row.amount | number}} </mat-cell>
       </ng-container>
       <!-- addresses Column -->
 			<ng-container matColumnDef="addresses">
-        <mat-header-cell *matHeaderCellDef class="hidden">Addresses<mat-icon class="icon-sort" (click)="sortAddr()" [ngClass]="{active: showSortAddr}">keyboard_arrow_down</mat-icon> </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef class="hidden"><span i18n>Addresses</span><mat-icon class="icon-sort" (click)="sortAddr()" [ngClass]="{active: showSortAddr}">keyboard_arrow_down</mat-icon> </mat-header-cell>
         <mat-cell *matCellDef="let row" class="hidden"> {{row.addresses | number}} </mat-cell>
       </ng-container>
 			<!-- transactions Column -->
 			<ng-container matColumnDef="transactions">
-				<mat-header-cell *matHeaderCellDef class="hidden">Transactions<mat-icon class="icon-sort" (click)="sortTrans()" [ngClass]="{active: showSortTran}">keyboard_arrow_down</mat-icon> </mat-header-cell>
+				<mat-header-cell *matHeaderCellDef class="hidden"><span i18n>Transactions</span><mat-icon class="icon-sort" (click)="sortTrans()" [ngClass]="{active: showSortTran}">keyboard_arrow_down</mat-icon> </mat-header-cell>
 				<mat-cell *matCellDef="let row" class="hidden"> {{row.transactions | number}} </mat-cell>
 			</ng-container>
 			<!-- register adress Column -->
 			<ng-container matColumnDef="admin">
-				<mat-header-cell *matHeaderCellDef class="hidden">Registered</mat-header-cell>
+				<mat-header-cell *matHeaderCellDef class="hidden" i18n>Registered</mat-header-cell>
 				<mat-cell *matCellDef="let row"  class="link-btn hidden" routerLink="/address/{{row.admin}}"> {{ row.admin }} </mat-cell>
-			</ng-container>
-			<!-- assetId Column -->
-			<ng-container matColumnDef="assetId" style="display: none;">
-				<mat-header-cell *matHeaderCellDef class="hidden">AssetId</mat-header-cell>
-				<mat-cell *matCellDef="let row"> {{ row.assetId }} </mat-cell>
 			</ng-container>
 			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
