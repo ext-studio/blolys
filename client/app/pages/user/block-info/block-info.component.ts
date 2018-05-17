@@ -12,6 +12,7 @@ export class BlockInfoComponent implements OnInit {
   blockTransactions: any;
   blockInfo: any;
   transTotal: Number = 0;
+  totalBlocks: Number = 0;
   show: any = [];
   pageSize: Number = 5;
   isVisible: Boolean = false;
@@ -26,15 +27,16 @@ export class BlockInfoComponent implements OnInit {
     for (let i = 0; i < 16; i++) {
       this.show[i] = false;
     }
-    this.http.post(`${this.global.apiDomain}/api/block`,
-      { 'method': 'getblockbyheight', 'params': [this.height]} ).subscribe((res: any) => {
-      this.blockInfo = res.result;
+    this.http.post(`${this.global.apiDomain}/api/index`,
+      { 'method': 'queryallcounts' }).subscribe((res: any) => {
+      this.totalBlocks = res.result.blockCounts ;
     }, (err) => {
       console.log(err);
     });
-    this.getIssues(1, this.pageSize);
+    this.getBlockByHeight();
+    this.getTxByHeight(1, this.pageSize);
   }
-  getIssues(pageIndex, pageSize) {
+  getTxByHeight(pageIndex, pageSize) {
     this.http.post(`${this.global.apiDomain}/api/transactions`,
       { 'method': 'gettxbyheight', 'params': [pageIndex, pageSize, this.height] }).subscribe((res: any) => {
       this.blockTransactions = res.result.data;
@@ -43,17 +45,35 @@ export class BlockInfoComponent implements OnInit {
       console.log(err);
     });
   }
+  getBlockByHeight() {
+    this.http.post(`${this.global.apiDomain}/api/block`,
+      { 'method': 'getblockbyheight', 'params': [this.height]} ).subscribe((res: any) => {
+      this.blockInfo = res.result;
+    }, (err) => {
+      console.log(err);
+    });
+  }
   showInfo(index) {
     this.show[index] = !this.show[index];
   }
   showAllTrans() {
-    this.getIssues(1, this.transTotal);
+    this.getTxByHeight(1, this.transTotal);
     this.isVisible = true;
   }
   reHeight() {
-    this.height -= 1;
+    if (this.height > 1) {
+      this.height -= 1;
+      this.router.navigate(['/block/' + this.height]);
+      this.getBlockByHeight();
+      this.getTxByHeight(1, this.pageSize);
+    }
   }
   addHeight() {
-    this.height += 1;
+    if (this.height < this.totalBlocks) {
+      this.height += 1;
+      this.router.navigate(['/block/' + this.height]);
+      this.getBlockByHeight();
+      this.getTxByHeight(1, this.pageSize);
+    }
   }
 }

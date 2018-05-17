@@ -886,8 +886,8 @@
           <context context-type="linenumber">20</context>
       </context-group>
       </trans-unit>
-      <trans-unit id="f45f12fa114fcfb3ad448e19ff7c258a21216426" datatype="html">
-        <source>Recent  Addresses</source>
+      <trans-unit id="0a174ddbabc2e21890dba81e640a6ac1542c8f04" datatype="html">
+        <source>Recent Addresses</source>
         <target>最近地址</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>

@@ -2,8 +2,7 @@
   <mat-toolbar class="top-nav">
     <mat-toolbar-row *ngIf="isWide">
       <div class="wide-title" routerLink="/home">
-        <img src="/assets/favicon.ico">
-        <span>ExChain</span>
+        <img src="/assets/logo.png">
       </div>
       <div class="flex-1 menu">
           <button class="menu-item" [ngClass]="{active: currentPage==='/home'}" routerLink="/home" i18n>Home</button>
@@ -29,8 +28,7 @@
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="!isWide">
       <div class="wide-title" routerLink="/home">
-        <img src="/assets/favicon.ico">
-        <span>ExChain</span>
+        <img src="/assets/logo.png">
       </div>
       <div class="flex-1"></div>
       <div class="dropdown links-dropdown">

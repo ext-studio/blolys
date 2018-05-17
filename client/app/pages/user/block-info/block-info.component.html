@@ -8,8 +8,8 @@
       <button><a routerLink="/blocks" i18n>back</a></button>
     </div>
     <div class="option-right">
-      <button class="pre-button"><a routerLink='/block/{{height-1}}' (click)=reHeight() i18n>Previous block</a></button>
-      <button class="next-button"><a routerLink='/block/{{height+1}}' (click)=addHeight() i18n>Next block</a></button>
+      <button class="pre-button"><a (click)=reHeight() i18n>Previous block</a></button>
+      <button class="next-button"><a (click)=addHeight() i18n>Next block</a></button>
     </div>
   </div>
   <ul class="info">

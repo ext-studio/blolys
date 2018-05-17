@@ -29,7 +29,7 @@ export class AssetInfoComponent implements OnInit {
       console.log(err);
     });
     this.http.post(`${this.global.apiDomain}/api/address`,
-      { 'method': 'getaddresses', 'params': [1, this.pageSize] }).subscribe((res: any) => {
+      { 'method': 'getaddrbyasset', 'params': [1, this.pageSize, this.assetId] }).subscribe((res: any) => {
       this.recentAddress = new MatTableDataSource(res.result.data);
     }, (err) => {
       console.log(err);

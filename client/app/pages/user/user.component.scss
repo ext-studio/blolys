@@ -11,7 +11,7 @@
   background: #151e40 !important;
   border-bottom: 1px solid #132f5a;
   font-size: 16px;
-  color: #769acb !important;
+  color: #1770ea !important;
   .wide-title {
     cursor: pointer;
     text-align: left;
@@ -20,14 +20,10 @@
     vertical-align: middle;
     img {
       position: absolute;
+      display: inline-block;
+      width: 120px;
+      height: 32px;
       bottom: 16px;
-    }
-    span {
-      position: absolute;
-      bottom: 16px;
-      left: 40px;
-      font-weight: 700;
-      font-size: 20px;
     }
   }
   .menu {
@@ -39,7 +35,7 @@
       background: transparent;
       border: none;
       font-size: 16px;
-      color: #769acb;
+      color: #1770ea;
       cursor: pointer;
       &:not(:last-child) {
         margin-right: 30px;
@@ -60,7 +56,7 @@
     color: #fff;
   }
   .dropbtn {
-    color: #769acb;
+    color: #1770ea;
     padding: 0;
   }
   .dropdown-content {
@@ -74,7 +70,7 @@
     border-radius: 3px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     a {
-      color: #769acb;
+      color: #1770ea;
       height: 45px;
       line-height: 45px;
       text-align: center;

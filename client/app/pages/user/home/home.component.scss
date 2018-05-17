@@ -105,7 +105,8 @@
   text-align: center;
 }
 ::ng-deep .mat-header-row, .mat-row {
-  padding: 0 30px;  
+  padding: 0 30px !important;  
+  border: none !important;
   min-height: 50px !important;
 }
 :host ::ng-deep mat-form-field * {

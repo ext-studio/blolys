@@ -22,20 +22,15 @@
 				<mat-header-cell *matHeaderCellDef class="addr-min-width" i18n> Address </mat-header-cell>
 				<mat-cell *matCellDef="let row" class="link-btn addr-min-width" routerLink="/address/{{row.address}}"> {{ row.address }} </mat-cell>
 			</ng-container>
-			<!-- createdAt Column -->
-			<ng-container matColumnDef="createdAt">
-				<mat-header-cell *matHeaderCellDef i18n> CreatedAt </mat-header-cell>
-				<mat-cell *matCellDef="let row"> {{ row.createdAt | unixTime }} </mat-cell>
+			<!-- balance Column -->
+			<ng-container matColumnDef="balance">
+				<mat-header-cell *matHeaderCellDef i18n> Balance </mat-header-cell>
+				<mat-cell *matCellDef="let row"> {{ row.balance }} </mat-cell>
       </ng-container>
-      <!-- lastTransactionTime Column -->
-			<ng-container matColumnDef="lastTransactionTime">
-        <mat-header-cell *matHeaderCellDef class="hidden" i18n> Last Transaction </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="hidden"> {{ row.lastTransactionTime | unixTime }} </mat-cell>
-      </ng-container>
-      <!-- transactions Column -->
-      <ng-container matColumnDef="transactions">
-        <mat-header-cell *matHeaderCellDef class="hidden" i18n> Transactions </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="hidden"> {{ row.transactions }} </mat-cell>
+      <!-- occupancy Column -->
+			<ng-container matColumnDef="occupancy">
+        <mat-header-cell *matHeaderCellDef class="hidden" i18n> Occupancy </mat-header-cell>
+        <mat-cell *matCellDef="let row" class="hidden"> {{row.balance/assetInfo.amount}} </mat-cell>
       </ng-container>
 			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

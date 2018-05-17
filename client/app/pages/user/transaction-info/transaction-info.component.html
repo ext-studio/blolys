@@ -3,7 +3,7 @@
     <p class="header-title-info">{{ txInfo.TX.type | transType}} <span i18n>Transaction</span></p>
     <p class="header-title-address over-ellipsis">{{ txInfo.TX.type | lowTransType}} | <span i18n>Hash</span>: {{ txInfo.TX.txid }}</p>
   </div>
-  <div class="tran-info">
+  <div class="tran-info" [ngClass]="{isVisible: !(txInfo.UTXOVout.TxUTXO || txInfo.UTXOVout.TxVouts)}">
     <div class="tran-info-from">
       <p class="info-title" *ngIf=txInfo.UTXOVout.TxUTXO i18n>Sent from</p>
       <div  *ngFor="let txUTXO of txInfo.UTXOVout.TxUTXO">

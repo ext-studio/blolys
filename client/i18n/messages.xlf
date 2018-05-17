@@ -20,22 +20,22 @@
         <source>Home</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8a7b4bd44c0ac71b2e72de0398b303257f7d2f54" datatype="html">
         <source>Blocks</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">9</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">39</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/blocks/blocks.component.ts</context>
@@ -58,11 +58,11 @@
         <source>Transactions</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">10</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">40</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/assets/assets.component.ts</context>
@@ -89,11 +89,11 @@
         <source>Addresses</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">11</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">41</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/assets/assets.component.ts</context>
@@ -124,11 +124,11 @@
         <source>Assets</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">42</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/assets/assets.component.ts</context>
@@ -139,30 +139,41 @@
         <source>English</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">15</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">17</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8b0c335aaa0fb216cbdbde0985935869b4c48971" datatype="html">
         <source>中文繁体</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="28f0fbe3099763007f30cbc3d628aeb16cf9cfa8" datatype="html">
         <source>MainNet</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">22</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="db99fd9ecb3c7be7fddd96aa484c18ef4dc9c134" datatype="html">
+        <source>TestNet</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
           <context context-type="linenumber">25</context>
@@ -172,36 +183,25 @@
           <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="db99fd9ecb3c7be7fddd96aa484c18ef4dc9c134" datatype="html">
-        <source>TestNet</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">26</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">55</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="fe46ccaae902ce974e2441abe752399288298619" datatype="html">
         <source>Language</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c08a4b87e44d03394fec0cfdc8043bb0a2b2ec3a" datatype="html">
         <source>Chinese</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e3785a14db3da4919c8e172d297e56f00f236f9f" datatype="html">
         <source>Net</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/user.component.ts</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6409ffc5024592798a9d65610ef6c1a561557ef4" datatype="html">
@@ -817,8 +817,8 @@
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="f45f12fa114fcfb3ad448e19ff7c258a21216426" datatype="html">
-        <source>Recent  Addresses</source>
+      <trans-unit id="0a174ddbabc2e21890dba81e640a6ac1542c8f04" datatype="html">
+        <source>Recent Addresses</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/user/asset-info/asset-info.component.ts</context>
           <context context-type="linenumber">22</context>

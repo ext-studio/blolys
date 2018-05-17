@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./asset-address.component.scss']
 })
 export class AssetAddressComponent implements OnInit {
-  displayedColumns = ['address', 'createdAt', 'lastTransactionTime', 'transactions'];
+  displayedColumns = ['address', 'balance', 'occupancy'];
   allAddress: MatTableDataSource<any>;
   assetInfo: any;
   pageSize: any = 16;
@@ -33,9 +33,8 @@ export class AssetAddressComponent implements OnInit {
   }
   getIssues (pageIndex, pageSize) {
     this.http.post(`${this.global.apiDomain}/api/address`,
-      {'method': 'getaddresses', 'params': [pageIndex, pageSize]}).subscribe((res: any) => {
-        this.allAddress = new MatTableDataSource(res.result.data);
-        this.pageLength = Math.ceil(res.result.total / this.pageSize);
+      { 'method': 'getaddrbyasset', 'params': [1, this.pageSize, this.assetId] }).subscribe((res: any) => {
+      this.allAddress = new MatTableDataSource(res.result.data);
     }, (err) => {
       console.log(err);
     });
