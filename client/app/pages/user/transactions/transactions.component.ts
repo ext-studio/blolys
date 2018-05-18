@@ -1,19 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../../../core';
-import { Observable } from 'rxjs/observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { merge } from 'rxjs/observable/merge';
-
-import {
-  distinct,
-  filter,
-  map,
-  debounceTime,
-  tap,
-  flatMap
-} from 'rxjs/operators';
 
 @Component({
   templateUrl: './transactions.component.html',
@@ -23,9 +10,10 @@ export class TransactionsComponent implements OnInit {
   dataSource: any;
   show: any = [];
   transType: String = 'all';
-  pageIndex: Number = 0;  // 1 => go to page 1, 0 => no
   pageSize: any = 16;
   pageLength: number;
+  pageIndex: Boolean = false;
+  isProgress: Boolean = true;
 
   constructor(
     private http: HttpClient,
@@ -33,16 +21,18 @@ export class TransactionsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getIssues(1, this.pageSize, this.transType);
+    this.pageIndex = true;
+    this.getIssues(1, this.pageSize);
     for (let i = 0; i < this.pageSize; i++) {
       this.show[i] = false;
     }
   }
-  getIssues (pageIndex, pageSize, type) {
+  getIssues (pageIndex, pageSize) {
     this.http.post(`${this.global.apiDomain}/api/transactions`,
-      { 'method': 'gettransactions', 'params': [pageIndex, pageSize, type] }).subscribe((res: any) => {
+      { 'method': 'gettransactions', 'params': [pageIndex, pageSize, this.transType] }).subscribe((res: any) => {
       this.dataSource = res.result.data;
       this.pageLength = Math.ceil(res.result.total / this.pageSize);
+      this.isProgress = false;
     }, (err) => {
       console.log(err);
     });
@@ -50,13 +40,13 @@ export class TransactionsComponent implements OnInit {
   showInfo (index) {
     this.show[index] = !this.show[index];
   }
-  changeTransType (type) {
+  changeTransType (type: string) {
     this.transType = type;
-    this.pageIndex = 1;
+    this.pageIndex = true;
     this.onpageGo(1);
   }
   onpageGo(num: number) {
-    this.getIssues(num, this.pageSize, this.transType);
+    this.getIssues(num, this.pageSize);
   }
 
 }

@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class AssetInfoComponent implements OnInit {
   displayedColumns = ['address', 'createdAt', 'lastTransactionTime', 'transactions'];
-  recentAddress: MatTableDataSource<any>;
+  recentAddress: any;
+  rankAddr: any;
   assetInfo: any;
   pageSize: Number = 5;
   assetId: String = this.router.url.split('/')[3];
@@ -29,8 +30,17 @@ export class AssetInfoComponent implements OnInit {
       console.log(err);
     });
     this.http.post(`${this.global.apiDomain}/api/address`,
-      { 'method': 'getaddrbyasset', 'params': [1, this.pageSize, this.assetId] }).subscribe((res: any) => {
-      this.recentAddress = new MatTableDataSource(res.result.data);
+      { 'method': 'getaddrbyassetid', 'params': [1, this.pageSize, this.assetId] }).subscribe((res: any) => {
+      this.recentAddress = res.result.data;
+    }, (err) => {
+      console.log(err);
+    });
+    this.getRankByAssetid(1, this.pageSize);
+  }
+  getRankByAssetid (pageIndex, pageSize) {
+    this.http.post(`${this.global.apiDomain}/api/address`,
+      { 'method': 'getrankbyassetid', 'params': [pageIndex, pageSize, this.assetId] }).subscribe((res: any) => {
+      this.rankAddr = res.result.data;
     }, (err) => {
       console.log(err);
     });
