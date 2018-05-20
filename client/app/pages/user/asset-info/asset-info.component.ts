@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { GlobalService } from '../../../core';
 import { Router } from '@angular/router';
 
@@ -9,11 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./asset-info.component.scss']
 })
 export class AssetInfoComponent implements OnInit {
-  displayedColumns = ['address', 'createdAt', 'lastTransactionTime', 'transactions'];
   recentAddress: any;
   rankAddr: any;
   assetInfo: any;
-  pageSize: Number = 5;
+  pageSize: any = 5;
+  pageLength: Number = 100;
   assetId: String = this.router.url.split('/')[3];
 
   constructor(
@@ -44,5 +43,8 @@ export class AssetInfoComponent implements OnInit {
     }, (err) => {
       console.log(err);
     });
+  }
+  onpageGo(num: number) {
+    this.getRankByAssetid(num, this.pageSize);
   }
 }

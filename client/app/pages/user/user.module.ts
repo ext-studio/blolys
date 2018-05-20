@@ -12,8 +12,6 @@ import { AddressInfoComponent } from './address-info/address-info.component';
 import { AssetInfoComponent } from './asset-info/asset-info.component';
 import { BlockInfoComponent } from './block-info/block-info.component';
 import { TransactionInfoComponent } from './transaction-info/transaction-info.component';
-import { AssetAddressComponent } from './asset-address/asset-address.component';
-import { AssetTransactionComponent } from './asset-transaction/asset-transaction.component';
 
 @NgModule({
   imports: [SharedModule, UserRoutingModule],
@@ -22,8 +20,7 @@ import { AssetTransactionComponent } from './asset-transaction/asset-transaction
     UserComponent, AssetsComponent, HomeComponent,
     BlocksComponent, TransactionsComponent, AddressesComponent,
     BlockInfoComponent, AddressInfoComponent, AssetInfoComponent,
-    TransactionInfoComponent, AssetAddressComponent,
-    AssetTransactionComponent
+    TransactionInfoComponent,
   ],
   providers: [],
 })

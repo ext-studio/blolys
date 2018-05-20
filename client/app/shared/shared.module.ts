@@ -2,10 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {
-  MatFormFieldModule, MatTableModule, MatPaginatorModule,
-  MatTooltipModule, MatButtonModule, MatToolbarModule,
-  MatMenuModule, MatStepperModule, MatIconModule,
-  MatInputModule, MatProgressBarModule
+  MatFormFieldModule, MatTooltipModule, MatButtonModule,
+  MatToolbarModule, MatMenuModule, MatStepperModule,
+  MatIconModule, MatInputModule, MatProgressBarModule
 } from '@angular/material';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { PaginatorComponent } from './compontent/paginator/paginator.component';
@@ -23,18 +22,20 @@ import { LowTransTypePipe } from './pipes/low-trans-type.pipe';
   imports: [
     CommonModule, MatButtonModule, MatTooltipModule,
     MatFormFieldModule, MatMenuModule, MatToolbarModule,
-    FormsModule, MatPaginatorModule, MatTableModule,
-    MatIconModule, MatInputModule, MatProgressBarModule
+    FormsModule, MatIconModule, MatInputModule,
+    MatProgressBarModule, ReactiveFormsModule, NgxEchartsModule,
+    MatStepperModule
   ],
   exports: [
     CommonModule, MatButtonModule, MatMenuModule,
-    MatFormFieldModule, MatToolbarModule, MatStepperModule,
-    ReactiveFormsModule, FormsModule, MatTooltipModule,
-    MatPaginatorModule, MatTableModule, MatInputModule,
-    NgxEchartsModule, MatIconModule, PaginatorComponent,
-    ShortHashPipe, UnixDatePipe, UnixTimePipe, TransColorDirective,
-    AlertComponent, AssetColorDirective, TransBorderColorDirective,
-    TransTypePipe, LowTransTypePipe, MatProgressBarModule
+    MatFormFieldModule, MatToolbarModule, MatInputModule,
+    FormsModule, MatTooltipModule, MatProgressBarModule,
+    MatIconModule, NgxEchartsModule, ReactiveFormsModule,
+    MatStepperModule,
+    ShortHashPipe, UnixDatePipe, UnixTimePipe,
+    TransColorDirective, AlertComponent, AssetColorDirective,
+    TransBorderColorDirective, TransTypePipe, PaginatorComponent,
+    LowTransTypePipe,
   ],
   declarations: [
     PaginatorComponent, ShortHashPipe, UnixDatePipe,

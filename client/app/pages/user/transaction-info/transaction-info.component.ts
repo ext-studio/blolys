@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TransactionInfoComponent implements OnInit {
   txInfo: any;
+  scripts: any;
   txid: String = this.router.url.split('/')[2];
 
   constructor(
@@ -22,7 +23,12 @@ export class TransactionInfoComponent implements OnInit {
     this.http.post(`${this.global.apiDomain}/api/transactions`,
       {'method': 'gettxbytxid', 'params': [this.txid]}).subscribe((res: any) => {
         this.txInfo = res.result;
-        console.log(res);
+    }, (err) => {
+      console.log(err);
+    });
+    this.http.post(`${this.global.apiDomain}/api/transactions`,
+      {'method': 'getscripts', 'params': [this.txid]}).subscribe((res: any) => {
+        this.scripts = res.result;
     }, (err) => {
       console.log(err);
     });

@@ -1,34 +1,26 @@
 <div class="block">
   <p class="header-title-info" i18n>Addresses</p>
-	<div class="example-container mat-elevation-z8">
-		<mat-table [dataSource]="dataSource">
-			<!-- address Column -->
-			<ng-container matColumnDef="address">
-				<mat-header-cell *matHeaderCellDef class="addr-min-width" i18n> Address </mat-header-cell>
-				<mat-cell *matCellDef="let row" class="link-btn addr-min-width" routerLink="/address/{{row.address}}"> {{ row.address }} </mat-cell>
-			</ng-container>
-			<!-- createdAt Column -->
-			<ng-container matColumnDef="createdAt">
-				<mat-header-cell *matHeaderCellDef i18n> CreatedAt </mat-header-cell>
-				<mat-cell *matCellDef="let row"> {{ row.createdAt | unixTime }} </mat-cell>
-      </ng-container>
-      <!-- lastTransactionTime Column -->
-			<ng-container matColumnDef="lastTransactionTime">
-        <mat-header-cell *matHeaderCellDef class="hidden" i18n> Last Transaction </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="hidden"> {{ row.lastTransactionTime | unixTime }} </mat-cell>
-      </ng-container>
-      <!-- transactions Column -->
-      <ng-container matColumnDef="transactions">
-        <mat-header-cell *matHeaderCellDef class="hidden" i18n> Transactions </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="hidden"> {{ row.transactions }} </mat-cell>
-      </ng-container>
-			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-		</mat-table>
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th i18n class="addr-min-width">Address</th>
+        <th i18n>CreatedAt</th>
+        <th class="hidden" i18n>Last Transaction</th>
+        <th class="hidden" i18n>Transactions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of addresses; index as index">
+        <td class="link-btn addr-min-width" routerLink="/address/{{item.address}}">{{item.address}}</td>
+        <td>{{item.createdAt | unixTime}}</td>
+        <td class="hidden">{{item.lastTransactionTime | unixTime}}</td>
+        <td class="hidden">{{item.transactions}}</td>
+      </tr>
+    </tbody>
+  </table>
   <app-paginator 
-    [pageSize]=pageSize
-    [pageLength]=pageLength
+    [pageSize]="pageSize"
+    [pageLength]="pageLength"
     (onpageGo)="onpageGo($event)">
   </app-paginator>
 </div>

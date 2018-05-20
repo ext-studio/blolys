@@ -21,23 +21,20 @@ export class PaginatorComponent implements OnChanges {
     private global: GlobalService
   ) { }
   ngOnChanges() {
-    console.log(this.pageIndex);
-    // if (this.pageIndex === true) {
-      if (this.pageLength >= 3) {
-        this.pageShowList = [1, 2, 3];
-      } else if (this.pageLength === 2) {
-        this.pageShowList = [1, 2];
-      } else {
-        this.pageShowList = [1];
-      }
-      console.log(this.pageShowList);
+    if (this.pageLength >= 3) {
+      this.pageShowList = [1, 2, 3];
+    } else if (this.pageLength === 2) {
+      this.pageShowList = [1, 2];
+    } else {
+      this.pageShowList = [1];
+    }
+    if (this.pageIndex === true) {
       this.pageGo(1);
       this.clickPage = 1;
-    // }
+    }
   }
   pageGo(num: number) {
     this.onpageGo.emit(num);
-    console.log('pageIndex: ' + this.pageIndex);
     this.pageIndex = false;
     this.clickPage = num;
   }

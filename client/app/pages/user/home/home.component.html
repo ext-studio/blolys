@@ -27,40 +27,5 @@
       <span>{{ total.addresses  | number }}</span>
     </div>
   </div>
-  <div class="recent-assets" style="display: none;">
-    <p class="header-title-info" i18n>Recent Assets transactions</p>
-    <mat-table [dataSource]="dataSource">
-      <!-- name Column -->
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef i18n> Assets </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="link-btn" routerLink="/asset/info/{{row.TX.type}}"> {{row.TX.type}} </mat-cell>
-      </ng-container>
-      <!-- type Column -->
-      <ng-container matColumnDef="type">
-        <mat-header-cell *matHeaderCellDef i18n> Type </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.type}} </mat-cell>
-      </ng-container>
-      <!-- amount Column -->
-      <ng-container matColumnDef="amount">
-        <mat-header-cell *matHeaderCellDef class="data-right" class="hidden" i18n> Amount </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="data-right" class="hidden"> {{row.amount | number}} </mat-cell>
-      </ng-container>
-      <!-- transactions Column -->
-      <ng-container matColumnDef="transactions">
-        <mat-header-cell *matHeaderCellDef class="data-right" class="hidden" i18n> Transactions </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="data-right" class="hidden"> {{row.transactions | number}} </mat-cell>
-      </ng-container>
-      <!-- time Column -->
-      <ng-container matColumnDef="time">
-        <mat-header-cell *matHeaderCellDef class="data-right" class="hidden" i18n> Time </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="data-right" class="hidden"> {{ row.time * 1000 | date : 'yyyy-MM-dd HH:mm:ss'}} </mat-cell>
-      </ng-container>
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-    <div class="view-all">
-      <button mat-raised-button  routerLink="/assets"><span i18n>View All Assetes</span> <img src="/assets/img_nextpage@2x.png"></button>
-    </div>
-  </div>
   <div style="display: none;" echarts [options] = "option" class="demo-chart"></div>
 </div>

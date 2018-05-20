@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/material';
 import { GlobalService } from '../../../core';
 
 @Component({
@@ -8,8 +7,7 @@ import { GlobalService } from '../../../core';
   styleUrls: ['./assets.component.scss']
 })
 export class AssetsComponent implements OnInit {
-  displayedColumns = ['name', 'type', 'amount', 'addresses', 'transactions', 'admin'];
-  dataSource: MatTableDataSource<any>;
+  assets: any;
   pageIndex: Number = 0;
   pageSize: any = 16;
   pageLength: number;
@@ -35,7 +33,7 @@ export class AssetsComponent implements OnInit {
     pageIndex = Number(pageIndex);
     this.http.post(`${this.global.apiDomain}/api/asset`,
       { 'method': 'getassets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
-      this.dataSource = new MatTableDataSource(res.result.data);
+      this.assets = res.result.data;
       this.pageLength = Math.ceil(res.result.total / this.pageSize);
     }, (err) => {
       console.log(err);
@@ -45,7 +43,7 @@ export class AssetsComponent implements OnInit {
     pageIndex = Number(pageIndex);
     this.http.post(`${this.global.apiDomain}/api/asset`,
       { 'method': 'getnep5assets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
-      this.dataSource = new MatTableDataSource(res.result.data);
+      this.assets = res.result.data;
       this.pageLength = Math.ceil(res.result.total / this.pageSize);
     }, (err) => {
       console.log(err);

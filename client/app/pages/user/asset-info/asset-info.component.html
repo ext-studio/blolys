@@ -19,34 +19,56 @@
     <li class="color-two width-all"><label i18n>Hash</label>不提供</li>
     <li class="color-one width-all"><label i18n>Register</label><span class="link-btn">不提供</span></li>
   </ul>
-  <p class="header-title-info" i18n>Recent Addresses</p>
-	<div class="example-container mat-elevation-z8">
-		<mat-table [dataSource]="recentAddress">
-			<!-- address Column -->
-			<ng-container matColumnDef="address">
-				<mat-header-cell *matHeaderCellDef class="addr-min-width" i18n> Address </mat-header-cell>
-				<mat-cell *matCellDef="let row" class="link-btn addr-min-width" routerLink="/address/{{row.address}}"> {{ row.address }} </mat-cell>
-			</ng-container>
-			<!-- createdAt Column -->
-			<ng-container matColumnDef="createdAt">
-				<mat-header-cell *matHeaderCellDef i18n> CreatedAt </mat-header-cell>
-				<mat-cell *matCellDef="let row"> {{ row.createdAt | unixTime }} </mat-cell>
-      </ng-container>
-      <!-- lastTransactionTime Column -->
-			<ng-container matColumnDef="lastTransactionTime">
-        <mat-header-cell *matHeaderCellDef class="hidden" i18n> Last Transaction </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="hidden"> {{ row.lastTransactionTime | unixTime }} </mat-cell>
-      </ng-container>
-      <!-- transactions Column -->
-      <ng-container matColumnDef="transactions">
-        <mat-header-cell *matHeaderCellDef class="hidden" i18n> Transactions </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="hidden"> {{ row.transactions }} </mat-cell>
-      </ng-container>
-			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-		</mat-table>
+  <div>
+    <p class="header-title-info" i18n>Recent Addresses</p>
+    <table>
+      <thead>
+        <tr>
+          <th i18n class="addr-min-width">Address</th>
+          <th i18n>CreatedAt</th>
+          <th class="hidden" i18n>Last Transaction</th>
+          <th class="hidden" i18n>Transactions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of recentAddress; index as index">
+          <td class="link-btn addr-min-width" routerLink="/address/{{item.address}}">{{item.address}}</td>
+          <td>{{item.createdAt | unixTime}}</td>
+          <td class="hidden">{{item.lastTransactionTime | unixTime}}</td>
+          <td class="hidden">{{item.transactions}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <app-paginator 
+      [pageSize]="pageSize"
+      [pageLength]="pageLength"
+      (onpageGo)="onpageGo($event)">
+    </app-paginator> -->
   </div>
-  <div class="view-all">
-    <button mat-raised-button routerLink="/asset/address/{{assetInfo.assetId}}" i18n>View All</button>
+  <div>
+    <p class="header-title-info" i18n>Balance Rank</p>
+    <table>
+      <thead>
+        <tr>
+          <th i18n>Rank</th>
+          <th class="addr-min-width" i18n>Address</th>
+          <th 
+           i18n>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of rankAddr; index as index">
+          <td>{{index}}</td>
+          <td class="addr-min-width">{{item.address}}</td>
+          <td 
+          >{{item.balance}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <app-paginator 
+      [pageSize]="pageSize"
+      [pageLength]="pageLength"
+      (onpageGo)="onpageGo($event)">
+    </app-paginator>
   </div>
 </div>

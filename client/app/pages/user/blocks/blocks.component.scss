@@ -10,57 +10,65 @@
 .header-title-info {
   margin-bottom: 20px;
 }
-.example-container {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
+table {
+  width: 100%;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  border-spacing: 0;
+  box-shadow: 3px 3px 25px #0a1331;
+  tr{
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 50px;
+    line-height: 50px;
+  }
+  th, td {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  thead tr {
+    background-color: #1c2b5d;
+  }
+  tbody tr {
+    &:nth-child(even) {
+      background: #1c2b5d;
+    }
+    &:nth-child(odd) {
+      background: #18244f;
+    }
+  }
 }
 @media screen and (min-width: 420px) {
-  .example-container {
-    margin-bottom: 70px;
-  }
   .header-title-info {
     font-size: 30px;
+  }
+  .addr-min-width {
+    min-width: 320px;
+  }
+  table {
+    margin-bottom: 70px;
+    tr {
+      padding: 0 30px;
+    }
   }
 }
 @media screen and (max-width: 419px) {
   .hidden {
     display: none;
   }  
-  .example-container {
-    margin-bottom: 30px;
-  }
   .header-title-info {
     font-size: 22px;
+  }
+  table {
+    margin-bottom: 30px;
+    tr {
+      padding: 0 10px;
+    }
   }
 }
 :host {
   display: block;
-}
-::ng-deep .mat-header-row {
-  background-color: #1c2b5d;
-}
-::ng-deep .mat-row:nth-child(even) {
-  background-color: #18244f;
-}
-::ng-deep .mat-row:nth-child(odd) {
-  background-color: #1c2b5d;
-}
-::ng-deep .mat-table * {
-  color: #fff;
-  font-size: 14px;
-}  
-::ng-deep .mat-table {
-  overflow: auto;
-  text-align: center;
-}
-::ng-deep .mat-header-row, .mat-row {
-  padding: 0 30px !important;  
-  border: none !important;
-  min-height: 50px !important;
-}
-::ng-deep .mat-cell {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }

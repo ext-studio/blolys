@@ -1,6 +1,5 @@
-import { Component, OnInit , ViewChild} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/material';
 import { GlobalService } from '../../../core';
 
 @Component({
@@ -8,8 +7,7 @@ import { GlobalService } from '../../../core';
   styleUrls: ['./blocks.component.scss']
 })
 export class BlocksComponent implements OnInit {
-  displayedColumns = ['index', 'txNum', 'time', 'size', 'nextConsensus'];
-  dataSource: MatTableDataSource<any>;
+  blocks: any;
   pageSize: any = 16;
   pageLength: number;
 
@@ -24,7 +22,7 @@ export class BlocksComponent implements OnInit {
   getIssues(pageIndex, pageSize) {
     this.http.post(`${this.global.apiDomain}/api/block`,
       { 'method': 'getblocks', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
-      this.dataSource = new MatTableDataSource(res.result.data);
+      this.blocks = res.result.data;
       this.pageLength = Math.ceil(res.result.total / this.pageSize);
     }, (err) => {
       console.log(err);

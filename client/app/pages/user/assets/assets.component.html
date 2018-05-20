@@ -1,5 +1,4 @@
 <div class="block">
-	<!-- <p class="header-title-info">Assets</p> -->
 	<div class="header-title">
     <span class="header-title-info" i18n>Assets</span>
     <div class="dropdown">
@@ -10,46 +9,32 @@
       </div>
     </div>
   </div>
-	<div class="example-container mat-elevation-z8">
-		<mat-table [dataSource]="dataSource">
-			<!-- name Column -->
-			<ng-container matColumnDef="name">
-				<mat-header-cell *matHeaderCellDef i18n>Asset</mat-header-cell>
-				<mat-cell *matCellDef="let row" class="link-btn" routerLink="/asset/info/{{row.assetId}}"> {{row.name}} </mat-cell>
-			</ng-container>
-			<!-- type Column -->
-			<ng-container matColumnDef="type">
-				<mat-header-cell *matHeaderCellDef i18n>Type</mat-header-cell>
-				<mat-cell *matCellDef="let row" [appAssetColor]="row.type"> {{row.type}} </mat-cell>
-			</ng-container>
-			<!-- amount Column -->
-			<ng-container matColumnDef="amount">
-				<mat-header-cell *matHeaderCellDef class="hidden" i18n>Supply</mat-header-cell>
-				<mat-cell *matCellDef="let row" class="hidden"> {{row.amount | number}} </mat-cell>
-      </ng-container>
-      <!-- addresses Column -->
-			<ng-container matColumnDef="addresses">
-        <mat-header-cell *matHeaderCellDef class="hidden">Addresses</mat-header-cell>
-        <mat-cell *matCellDef="let row" class="hidden"> {{row.addresses | number}} </mat-cell>
-      </ng-container>
-			<!-- transactions Column -->
-			<ng-container matColumnDef="transactions">
-				<mat-header-cell *matHeaderCellDef class="hidden">Transactions</mat-header-cell>
-				<mat-cell *matCellDef="let row" class="hidden"> {{row.transactions | number}} </mat-cell>
-			</ng-container>
-			<!-- register adress Column -->
-			<ng-container matColumnDef="admin">
-				<mat-header-cell *matHeaderCellDef class="hidden" i18n>Registered</mat-header-cell>
-				<mat-cell *matCellDef="let row"  class="link-btn hidden" routerLink="/address/{{row.admin}}"> {{ row.admin }} </mat-cell>
-			</ng-container>
-			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-		</mat-table>
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th i18n>Asset</th>
+        <th i18n>Type</th>
+        <th class="hidden" i18n>Supply</th>
+        <th class="hidden" i18n>Addresses</th>
+        <th class="hidden" i18n>Transactions</th>
+        <th class="hidden" i18n>Registered</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of assets; index as index">
+        <td class="link-btn" routerLink="/asset/info/{{item.assetId}}">{{item.name}}</td>
+        <td [appAssetColor]="item.type">{{item.type}}</td>
+        <td class="hidden">{{item.amount | number}}</td>
+        <td class="hidden">{{item.addresses | number}}</td>
+        <td class="hidden">{{item.transactions | number}}</td>
+        <td class="link-btn hidden" routerLink="/address/{{item.admin}}">{{item.admin}}</td>
+      </tr>
+    </tbody>
+  </table>
   <app-paginator 
-		[pageSize]=pageSize
-		[pageIndex]=pageIndex
-    [pageLength]=pageLength
+		[pageSize]="pageSize"
+		[pageIndex]="pageIndex"
+    [pageLength]="pageLength"
     (onpageGo)="onpageGo($event)">
   </app-paginator>
 </div>

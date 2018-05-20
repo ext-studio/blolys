@@ -1,84 +1,84 @@
 <div class="block">
-  <div class="header-title">
-    <p class="header-title-info" i18n>Addresses information</p>
-    <p class="header-title-address">{{ this.address }}</p>
-  </div>
-  <!-- <ul class="address-info info">
-    <li>
-      <p>{{ height }}</p>
-      <span>Block Index</span>
-    </li>
-    <li>
-      <p>{{ blockInfo.time * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
-      <span>Created</span>
-    </li>
-    <li>
-      <p>{{ blockInfo.hash }}</p>
-      <span>Hash</span>
-    </li>
-    <li>
-      <p>{{ blockInfo.size }}</p>
-      <span>Network Fee</span>
-    </li>
-    <li>
-      <p>{{ blockInfo.version }}</p>
-      <span>System Fee</span>
-    </li>
-    <li>
-      <p>{{ blockInfo.merkleRoot }}</p>
-      <span>Size</span>
-    </li>
-  </ul> -->
-  <ul class="assets-info info">
-    <li *ngFor="let item of addrAssets">
-      <p>{{ item.balance | number }}</p>
-      <span>{{ item.name }}</span>
-    </li>
-  </ul>
-  <p class="header-title-info" *ngIf="transTotal > 0"><span i18n>Transactions</span> ({{ transTotal }})</p>
-  <div class="tran-list" *ngIf="transTotal > 0">
-    <div class="row-head">
-      <div class="col" i18n>TXID</div>
-      <div class="col" i18n>Type</div>
-      <div class="col hidden" i18n>Size</div>
-      <div class="col hidden" i18n>Version</div>
-      <div class="col hidden" i18n>Time</div>
+    <div class="header-title">
+      <p class="header-title-info" i18n>Addresses information</p>
+      <p class="header-title-address">{{ this.address }}</p>
     </div>
-    <div class="warpper" *ngFor="let item of addrTransactions; index as index">
-      <div class="row">
-        <div class="col link-btn" routerLink="/transaction/{{item.TX.txid}}">{{ item.TX.txid | shortHash }}</div>
-        <div class="col" [appTransColor]="item.TX.type">{{ item.TX.type | transType }}</div>
-        <div class="col hidden">{{ item.TX.size }} <span>Bytes</span></div>
-        <div class="col hidden">{{ item.TX.version }}</div>
-        <div class="col hidden">2018-1-1 12:10:09</div>
-        <div class="col-icon hidden" [ngClass]="{isVisibilty: !(item.UTXOVout.TxUTXO || item.UTXOVout.TxVouts)}"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
+    <!-- <ul class="address-info info">
+      <li>
+        <p>{{ height }}</p>
+        <span>Block Index</span>
+      </li>
+      <li>
+        <p>{{ blockInfo.time * 1000 | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
+        <span>Created</span>
+      </li>
+      <li>
+        <p>{{ blockInfo.hash }}</p>
+        <span>Hash</span>
+      </li>
+      <li>
+        <p>{{ blockInfo.size }}</p>
+        <span>Network Fee</span>
+      </li>
+      <li>
+        <p>{{ blockInfo.version }}</p>
+        <span>System Fee</span>
+      </li>
+      <li>
+        <p>{{ blockInfo.merkleRoot }}</p>
+        <span>Size</span>
+      </li>
+    </ul> -->
+    <ul class="assets-info info">
+      <li *ngFor="let item of addrAssets">
+        <p>{{ item.balance | number }}</p>
+        <span>{{ item.name }}</span>
+      </li>
+    </ul>
+    <p class="header-title-info" *ngIf="transTotal > 0"><span i18n>Transactions</span> ({{ transTotal }})</p>
+    <div class="tran-list" *ngIf="transTotal > 0">
+      <div class="row-head">
+        <div class="col" i18n>TXID</div>
+        <div class="col" i18n>Type</div>
+        <div class="col hidden" i18n>Size</div>
+        <div class="col hidden" i18n>Version</div>
+        <div class="col hidden" i18n>Time</div>
       </div>
-      <div class="tran-info" *ngIf="show[index]">
-        <div class="tran-info-from">
-          <p class="info-title" *ngIf="item.UTXOVout.TxUTXO" i18n>Sent from</p>
-          <div  *ngFor="let txUTXO of item.UTXOVout.TxUTXO">
-            <div class="info-address link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</div>
-            <div class="info-amount">
-              <span>{{ txUTXO.value }}</span>
-              <span class="link-btn" routerLink="/asset/info/{{txUTXO.name}}">{{ txUTXO.name }}</span>
+      <div class="warpper" *ngFor="let item of addrTransactions; index as index">
+        <div class="row">
+          <div class="col link-btn" routerLink="/transaction/{{item.TX.txid}}">{{ item.TX.txid | shortHash }}</div>
+          <div class="col" [appTransColor]="item.TX.type">{{ item.TX.type | transType }}</div>
+          <div class="col hidden">{{ item.TX.size }} <span>Bytes</span></div>
+          <div class="col hidden">{{ item.TX.version }}</div>
+          <div class="col hidden">2018-1-1 12:10:09</div>
+          <div class="col-icon hidden" [ngClass]="{isVisibilty: !(item.UTXOVout.TxUTXO || item.UTXOVout.TxVouts)}"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
+        </div>
+        <div class="tran-info" *ngIf="show[index]">
+          <div class="tran-info-from">
+            <p class="info-title" *ngIf="item.UTXOVout.TxUTXO" i18n>Sent from</p>
+            <div  *ngFor="let txUTXO of item.UTXOVout.TxUTXO">
+              <div class="info-address link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</div>
+              <div class="info-amount">
+                <span>{{ txUTXO.value }}</span>
+                <span class="link-btn" routerLink="/asset/info/{{txUTXO.name}}">{{ txUTXO.name }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
+          <div class="tran-info-to">
+            <p class="info-title" *ngIf="item.UTXOVout.TxVouts" i18n>Sent to</p>
+            <div *ngFor="let txVout of item.UTXOVout.TxVouts">
+              <div class="info-address link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
+              <div class="info-amount">
+                <span>{{ txVout.value }}</span>
+                <span class="link-btn" routerLink="/asset/info/{{txVout.name}}">{{ txVout.name }}</span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
-        <div class="tran-info-to">
-          <p class="info-title" *ngIf="item.UTXOVout.TxVouts" i18n>Sent to</p>
-          <div *ngFor="let txVout of item.UTXOVout.TxVouts">
-            <div class="info-address link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
-            <div class="info-amount">
-              <span>{{ txVout.value }}</span>
-              <span class="link-btn" routerLink="/asset/info/{{txVout.name}}">{{ txVout.name }}</span>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
+    <div class="view-all" *ngIf="transTotal > pageSize">
+      <button mat-raised-button (click)="showAllTrans()" [ngClass]="{isVisible: isVisible}" i18n>View All</button>
+    </div>
   </div>
-  <div class="view-all" *ngIf="transTotal > pageSize">
-    <button mat-raised-button (click)="showAllTrans()" [ngClass]="{isVisible: isVisible}" i18n>View All</button>
-  </div>
-</div>

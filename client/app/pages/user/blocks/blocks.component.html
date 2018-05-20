@@ -1,39 +1,28 @@
 <div class="block">
   <p class="header-title-info" i18n>Blocks</p>
-	<div class="example-container mat-elevation-z8">
-		<mat-table [dataSource]="dataSource">
-			<!-- index Column -->
-			<ng-container matColumnDef="index">
-				<mat-header-cell *matHeaderCellDef i18n> Index </mat-header-cell>
-				<mat-cell *matCellDef="let row" class="link-btn" routerLink="/block/{{row.index}}"> {{ row.index | number }} </mat-cell>
-			</ng-container>
-			<!-- txNum Column -->
-			<ng-container matColumnDef="txNum">
-				<mat-header-cell *matHeaderCellDef i18n> Transactions </mat-header-cell>
-				<mat-cell *matCellDef="let row"> {{ row.txNum | number }} </mat-cell>
-			</ng-container>
-			<!-- time Column -->
-			<ng-container matColumnDef="time">
-				<mat-header-cell *matHeaderCellDef class="hidden" i18n> Time </mat-header-cell>
-				<mat-cell *matCellDef="let row" class="hidden"> {{ row.time | unixTime }} </mat-cell>
-      </ng-container>
-      <!-- size Column -->
-			<ng-container matColumnDef="size">
-        <mat-header-cell *matHeaderCellDef class="hidden" i18n> Size </mat-header-cell>
-        <mat-cell *matCellDef="let row" class="hidden"> {{ row.size | number }} Bytes </mat-cell>
-      </ng-container>
-      <!-- nextConsensus Column -->
-      <ng-container matColumnDef="nextConsensus">
-        <mat-header-cell *matHeaderCellDef style="min-width: 300px;" class="hidden" i18n> Validator </mat-header-cell>
-        <mat-cell *matCellDef="let row"  class="link-btn hidden" routerLink="/address/{{row.nextConsensus}}" style="min-width: 300px;"> {{ row.nextConsensus }} </mat-cell>
-      </ng-container>
-			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-		</mat-table>
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th i18n>Index</th>
+        <th i18n>Transactions</th>
+        <th class="hidden" i18n>Time</th>
+        <th class="hidden" i18n>Size</th>
+        <th class="addr-min-width hidden" i18n>Validator</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of blocks; index as index">
+        <td  class="link-btn" routerLink="/block/{{item.index}}">{{item.index | number}}</td>
+        <td>{{item.txNum | number}}</td>
+        <td class="hidden">{{item.time | unixTime}}</td>
+        <td class="hidden">{{item.size | number}} Bytes</td>
+        <td class="link-btn hidden addr-min-width" routerLink="/address/{{item.nextConsensus}}">{{item.nextConsensus}}</td>
+      </tr>
+    </tbody>
+  </table>
   <app-paginator 
-    [pageSize]=pageSize
-    [pageLength]=pageLength
+    [pageSize]="pageSize"
+    [pageLength]="pageLength"
     (onpageGo)="onpageGo($event)">
   </app-paginator>
 </div>
