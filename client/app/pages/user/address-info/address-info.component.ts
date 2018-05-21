@@ -23,7 +23,23 @@ export class AddressInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getIssues(1, this.pageSize);
+    this.initShow();
+    this.getTxByAddr(1, this.pageSize);
+    this.getAddrAssets();
+  }
+  initShow () {
+    for (let i = 0; i < this.pageSize; i++) {
+      this.show[i] = false;
+    }
+  }
+  showInfo(index) {
+    this.show[index] = !this.show[index];
+  }
+  showAllTrans () {
+    this.getTxByAddr(1, this.transTotal);
+    this.isVisible = true;
+  }
+  getAddrAssets () {
     this.http.post(`${this.global.apiDomain}/api/asset`,
       {'method': 'getaddrassets', 'params': [this.address]}).subscribe((res: any) => {
         this.addrAssets = res.result;
@@ -31,14 +47,7 @@ export class AddressInfoComponent implements OnInit {
       console.log(err);
     });
   }
-  showInfo(index) {
-    this.show[index] = !this.show[index];
-  }
-  showAllTrans () {
-    this.getIssues(1, this.transTotal);
-    this.isVisible = true;
-  }
-  getIssues (pageIndex, pageSize) {
+  getTxByAddr (pageIndex, pageSize) {
     this.http.post(`${this.global.apiDomain}/api/transactions`,
       {'method': 'getpagetxbyaddress', 'params': [pageIndex, pageSize, this.address]}).subscribe((res: any) => {
         this.addrTransactions = res.result.data;
@@ -46,5 +55,12 @@ export class AddressInfoComponent implements OnInit {
     }, (err) => {
       console.log(err);
     });
+  }
+  gotoAddr (address: string) {
+    this.address = address;
+    this.isVisible = false;
+    this.initShow();
+    this.getAddrAssets();
+    this.getTxByAddr(1, this.pageSize);
   }
 }

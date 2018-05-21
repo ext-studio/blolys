@@ -40,9 +40,7 @@ export class BlockInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    for (let i = 0; i < 16; i++) {
-      this.show[i] = false;
-    }
+    this.initShow();
     this.http.post(`${this.global.apiDomain}/api/index`,
       { 'method': 'queryallcounts' }).subscribe((res: any) => {
       this.totalBlocks = res.result.blockCounts ;
@@ -51,6 +49,11 @@ export class BlockInfoComponent implements OnInit {
     });
     this.getBlockByHeight();
     this.getTxByHeight(1, this.pageSize);
+  }
+  initShow () {
+    for (let i = 0; i < this.pageSize; i++) {
+      this.show[i] = false;
+    }
   }
   getTxByHeight(pageIndex, pageSize) {
     this.http.post(`${this.global.apiDomain}/api/transactions`,
@@ -79,6 +82,8 @@ export class BlockInfoComponent implements OnInit {
   reHeight() {
     if (this.height > 1) {
       this.height -= 1;
+      this.initShow();
+      this.isVisible = false;
       this.router.navigate([`/block/${this.height}`]);
       this.getBlockByHeight();
       this.getTxByHeight(1, this.pageSize);
@@ -87,6 +92,8 @@ export class BlockInfoComponent implements OnInit {
   addHeight() {
     if (this.height < this.totalBlocks) {
       this.height += 1;
+      this.initShow();
+      this.isVisible = false;
       this.router.navigate([`/block/${this.height}`]);
       this.getBlockByHeight();
       this.getTxByHeight(1, this.pageSize);

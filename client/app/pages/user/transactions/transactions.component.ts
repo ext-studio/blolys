@@ -21,8 +21,11 @@ export class TransactionsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.initShow();
     this.pageIndex = true;
     this.getIssues(1, this.pageSize);
+  }
+  initShow () {
     for (let i = 0; i < this.pageSize; i++) {
       this.show[i] = false;
     }
@@ -48,6 +51,7 @@ export class TransactionsComponent implements OnInit {
     this.onpageGo(1);
   }
   onpageGo(num: number) {
+    this.initShow();
     this.getIssues(num, this.pageSize);
   }
 }

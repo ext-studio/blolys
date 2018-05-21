@@ -93,7 +93,7 @@
             <div class="info-address"><a class="link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</a></div>
             <div class="info-amount">
               <span>{{ txUTXO.value }}</span>
-              <span class="link-btn" routerLink="/asset/info/{{txUTXO.name}}">{{ txUTXO.name }}</span>
+              <span class="link-btn" routerLink="/asset/info/{{txUTXO.assetId}}">{{ txUTXO.name }}</span>
             </div>
           </div>
         </div>
@@ -104,7 +104,7 @@
             <div class="info-address"><a class="link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</a></div>
             <div class="info-amount">
               <span>{{ txVout.value }}</span>
-              <span class="link-btn" routerLink="/asset/info/{{txVout.name}}">{{ txVout.name }}</span>
+              <span class="link-btn" routerLink="/asset/info/{{txVout.assetId}}">{{ txVout.name }}</span>
             </div>
           </div>
         </div>

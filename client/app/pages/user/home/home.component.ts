@@ -29,8 +29,7 @@ export class HomeComponent implements OnInit {
     this.searchForm = this.builder.group({
       searchName: ['', [Validators.required]]
     });
-    setInterval(() => {
-      this.http.post(`${this.global.apiDomain}/api/index`,
+    this.http.post(`${this.global.apiDomain}/api/index`,
       { 'method': 'queryallcounts' }).subscribe((res: any) => {
       this.total.assets = res.result.assetCounts;
       this.total.blocks = res.result.blockCounts ;
@@ -39,6 +38,16 @@ export class HomeComponent implements OnInit {
     }, (err) => {
       console.log(err);
     });
+    setInterval(() => {
+      this.http.post(`${this.global.apiDomain}/api/index`,
+        { 'method': 'queryallcounts' }).subscribe((res: any) => {
+        this.total.assets = res.result.assetCounts;
+        this.total.blocks = res.result.blockCounts ;
+        this.total.addresses = res.result.addressCounts;
+        this.total.transactions = res.result.txCounts;
+      }, (err) => {
+        console.log(err);
+      });
     }, 20000);
   }
 
