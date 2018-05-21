@@ -27,18 +27,18 @@
     </div>
     <div class="warpper" *ngFor="let item of dataSource; index as index">
       <div class="row">
-        <div class="col link-btn" routerLink="/transaction/{{item.TX.txid}}">{{ item.TX.txid | shortHash }}</div>
+        <div class="col td-link-btn"><a class="link-btn" routerLink="/transaction/{{item.TX.txid}}">{{ item.TX.txid }}</a></div>
         <div class="col" [appTransColor]="item.TX.type">{{ item.TX.type | transType }}</div>
         <div class="col hidden">{{ item.TX.size }} Bytes</div>
         <div class="col hidden">{{ item.TX.version }}</div>
         <div class="col hidden">{{ item.TX.blockTime | unixTime }}</div>
-        <div class="col-icon hidden" [ngClass]="{isVisibilty: !(item.UTXOVout.TxUTXO || item.UTXOVout.TxVouts)}"><img style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
+        <div class="hidden" [ngClass]="{isVisibilty: !(item.UTXOVout.TxUTXO || item.UTXOVout.TxVouts)}"><img class="col-icon" style="transition: all .4s;" (click)="showInfo(index)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
       </div>
       <div class="tran-info" *ngIf="show[index]">
         <div class="tran-info-from">
           <p class="info-title" *ngIf="item.UTXOVout.TxUTXO" i18n>Sent from</p>
           <div  *ngFor="let txUTXO of item.UTXOVout.TxUTXO">
-            <div class="info-address link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</div>
+            <div class="info-address"><a class="link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</a></div>
             <div class="info-amount">
               <span>{{ txUTXO.value }}</span>
               <span class="link-btn" routerLink="/asset/info/{{txUTXO.name}}">{{ txUTXO.name }}</span>
@@ -49,7 +49,7 @@
         <div class="tran-info-to">
           <p class="info-title" *ngIf="item.UTXOVout.TxVouts" i18n>Sent to</p>
           <div *ngFor="let txVout of item.UTXOVout.TxVouts">
-            <div class="info-address link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</div>
+            <div class="info-address"><a class="link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</a></div>
             <div class="info-amount">
               <span>{{ txVout.value }}</span>
               <span class="link-btn" routerLink="/asset/info/{{txVout.name}}">{{ txVout.name }}</span>

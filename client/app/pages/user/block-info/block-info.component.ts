@@ -63,7 +63,7 @@ export class BlockInfoComponent implements OnInit {
   reHeight() {
     if (this.height > 1) {
       this.height -= 1;
-      this.router.navigate(['/block/' + this.height]);
+      this.router.navigate([`/block/${this.height}`]);
       this.getBlockByHeight();
       this.getTxByHeight(1, this.pageSize);
     }
@@ -71,7 +71,7 @@ export class BlockInfoComponent implements OnInit {
   addHeight() {
     if (this.height < this.totalBlocks) {
       this.height += 1;
-      this.router.navigate(['/block/' + this.height]);
+      this.router.navigate([`/block/${this.height}`]);
       this.getBlockByHeight();
       this.getTxByHeight(1, this.pageSize);
     }

@@ -1,0 +1,106 @@
+.block {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.welcome {
+  text-align: center;
+  min-height: 380px;
+  background: #18244f;
+  box-shadow: 3px 3px 18px #101938;
+  border-radius: 3px;
+  .line-first {
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #fff;
+  }
+  .line-second {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 25px;
+  }
+  .example-container {
+    display: flex;
+    flex-direction: column;
+    img {
+      width: 20px;
+      height: 20px;        
+    }
+  }    
+}
+.view-all {
+  width: 100%;
+  button {
+    background-color: #18244f;
+    color: #fff;
+    width: 300px;
+    height: 48px;
+    border-radius: 5px;
+    border: solid 1px #1770ea;
+    &:hover {
+      background:  #1c2b5d;
+    }
+    img {
+      width: 30px;
+      height: 30px;
+      margin-left: 16px;
+      display: inline-block;
+    }
+  }
+}
+:host {
+  display: block;
+}
+:host ::ng-deep mat-form-field * {
+  text-align: center !important;
+}
+:host ::ng-deep mat-label {
+  color: #1770ea;
+  span {
+    font-size: 14px;
+    position: relative;
+    top: -5px;
+  }
+}
+:host ::ng-deep .mat-input-underline {
+  background-color: #1770ea;
+}
+:host ::ng-deep .mat-form-field-ripple{
+  background-color: #1770ea;
+}
+:host ::ng-deep .mat-focused:not(.mat-form-field-invalid) mat-form-field * {
+  color: #1770ea;
+}
+:host ::ng-deep .mat-input-element {
+  caret-color: #fff;
+}
+:host ::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-input-underline {
+  background-color: #1770ea;
+}
+:host ::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-form-field-ripple{
+  background-color: #1770ea;
+}
+@media screen and (min-width: 420px) {
+  .welcome {
+    padding: 100px 10% 0 10%;
+    margin-bottom: 38px;
+    img {
+      margin-left: 20px;
+    }
+  }
+  .view-all {
+    text-align: right;
+  }
+}
+@media screen and (max-width: 419px) {
+  .welcome {
+    padding: 85px 10px;
+    margin-bottom: 30px;
+    img {
+      margin-left: 5px;
+    }
+  }
+  .view-all {
+    text-align: center;
+  }
+}

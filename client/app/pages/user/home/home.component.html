@@ -4,8 +4,9 @@
     <div class="line-second" i18n>Your home for all NEO related blockchain information</div>
     <div class="example-container" [formGroup]="searchForm">
       <mat-form-field >
-        <mat-label><span i18n>Block Height, Hach, Address or Transaction id </span><img src="/assets/icon_search@2x.png"></mat-label>
-        <input matInput formcControlName="searchText">
+        <mat-label><span i18n>Block Height, Hash, Address or Transaction id </span><img src="/assets/icon_search@2x.png"></mat-label>
+        <!-- <input matInput formcControlName="searchText" (keyup)=""> -->
+        <input matInput formcControlName="searchText" (keyup)="applyFilter($event)">
       </mat-form-field>
     </div>
   </div>

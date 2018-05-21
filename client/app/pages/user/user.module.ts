@@ -12,6 +12,7 @@ import { AddressInfoComponent } from './address-info/address-info.component';
 import { AssetInfoComponent } from './asset-info/asset-info.component';
 import { BlockInfoComponent } from './block-info/block-info.component';
 import { TransactionInfoComponent } from './transaction-info/transaction-info.component';
+import { NotsearchComponent } from './notsearch/notsearch.component';
 
 @NgModule({
   imports: [SharedModule, UserRoutingModule],
@@ -21,6 +22,7 @@ import { TransactionInfoComponent } from './transaction-info/transaction-info.co
     BlocksComponent, TransactionsComponent, AddressesComponent,
     BlockInfoComponent, AddressInfoComponent, AssetInfoComponent,
     TransactionInfoComponent,
+    NotsearchComponent,
   ],
   providers: [],
 })

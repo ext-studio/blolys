@@ -1,0 +1,15 @@
+<div class="block">
+  <div class="welcome">
+    <div class="line-first" i18n>Sorry, that page was not found.</div>
+    <div class="line-second" i18n>Try going back to where you were or heading to the home page.</div>
+    <div class="example-container" [formGroup]="searchForm">
+      <mat-form-field >
+        <mat-label><span i18n>Block Height, Hash, Address or Transaction id </span><img src="/assets/icon_search@2x.png"></mat-label>
+        <input matInput formcControlName="searchText" (keyup)="applyFilter($event)">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="view-all">
+    <button mat-raised-button  routerLink="/home"><span i18n>Back home</span> <img src="/assets/img_nextpage@2x.png"></button>
+  </div>
+</div>

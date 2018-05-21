@@ -12,11 +12,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of blocks; index as index">
-        <td  class="link-btn" routerLink="/block/{{item.index}}">{{item.index | number}}</td>
+        <td class="td-link-btn"><a class="link-btn" routerLink="/block/{{item.index}}">{{item.index | number}}</a></td>
         <td>{{item.txNum | number}}</td>
         <td class="hidden">{{item.time | unixTime}}</td>
         <td class="hidden">{{item.size | number}} Bytes</td>
-        <td class="link-btn hidden addr-min-width" routerLink="/address/{{item.nextConsensus}}">{{item.nextConsensus}}</td>
+        <td class="hidden addr-min-width"><a class="link-btn" routerLink="/address/{{item.nextConsensus}}">{{item.nextConsensus}}</a></td>
       </tr>
     </tbody>
   </table>

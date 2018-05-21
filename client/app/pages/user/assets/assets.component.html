@@ -22,12 +22,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of assets; index as index">
-        <td class="link-btn" routerLink="/asset/info/{{item.assetId}}">{{item.name}}</td>
+        <td class="td-link-btn"><a class="link-btn" routerLink="/asset/info/{{item.assetId}}">{{item.name}}</a></td>
         <td [appAssetColor]="item.type">{{item.type}}</td>
         <td class="hidden">{{item.amount | number}}</td>
         <td class="hidden">{{item.addresses | number}}</td>
         <td class="hidden">{{item.transactions | number}}</td>
-        <td class="link-btn hidden" routerLink="/address/{{item.admin}}">{{item.admin}}</td>
+        <td class="hidden td-link-btn"><a class="link-btn" routerLink="/address/{{item.admin}}">{{item.admin}}</a></td>
       </tr>
     </tbody>
   </table>

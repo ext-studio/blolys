@@ -11,6 +11,7 @@ import { AddressInfoComponent } from './address-info/address-info.component';
 import { AssetInfoComponent } from './asset-info/asset-info.component';
 import { BlockInfoComponent } from './block-info/block-info.component';
 import { TransactionInfoComponent } from './transaction-info/transaction-info.component';
+import { NotsearchComponent } from './notsearch/notsearch.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
       { path: 'address/:address', component: AddressInfoComponent },
       { path: 'transactions', component: TransactionsComponent },
       { path: 'transaction/:txid', component: TransactionInfoComponent },
+      { path: 'search/:id', component: NotsearchComponent}
     ]
   }
 ];

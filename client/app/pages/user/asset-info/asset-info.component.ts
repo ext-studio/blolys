@@ -11,8 +11,11 @@ export class AssetInfoComponent implements OnInit {
   recentAddress: any;
   rankAddr: any;
   assetInfo: any;
-  pageSize: any = 5;
-  pageLength: Number = 100;
+  pageIndex: Number = 0;
+  addrPageSize: any = 5;
+  rankPageSize: any = 5;
+  addrPageLength: Number;
+  rankPageLength: Number = 20;
   assetId: String = this.router.url.split('/')[3];
 
   constructor(
@@ -28,13 +31,17 @@ export class AssetInfoComponent implements OnInit {
     }, (err) => {
       console.log(err);
     });
+    this.getAddrByAssetid(1, this.addrPageSize);
+    this.getRankByAssetid(1, this.rankPageSize);
+  }
+  getAddrByAssetid (pageIndex, pageSize) {
     this.http.post(`${this.global.apiDomain}/api/address`,
-      { 'method': 'getaddrbyassetid', 'params': [1, this.pageSize, this.assetId] }).subscribe((res: any) => {
+      { 'method': 'getaddrbyassetid', 'params': [pageIndex, pageSize, this.assetId] }).subscribe((res: any) => {
       this.recentAddress = res.result.data;
+      this.addrPageLength = res.result.total;
     }, (err) => {
       console.log(err);
     });
-    this.getRankByAssetid(1, this.pageSize);
   }
   getRankByAssetid (pageIndex, pageSize) {
     this.http.post(`${this.global.apiDomain}/api/address`,
@@ -44,7 +51,11 @@ export class AssetInfoComponent implements OnInit {
       console.log(err);
     });
   }
-  onpageGo(num: number) {
-    this.getRankByAssetid(num, this.pageSize);
+  onaddrPageGo(num: number) {
+    this.getAddrByAssetid(num, this.addrPageSize);
+  }
+  onrankPageGo(num: number) {
+    this.pageIndex = num - 1;
+    this.getRankByAssetid(num, this.rankPageSize);
   }
 }

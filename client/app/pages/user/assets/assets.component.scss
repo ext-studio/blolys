@@ -81,8 +81,12 @@ table {
   }
   th, td {
     flex: 1;
+    white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .td-link-btn {
+    color: #1770ea;
   }
   thead tr {
     background-color: #1c2b5d;
