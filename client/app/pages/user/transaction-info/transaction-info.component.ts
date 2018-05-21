@@ -4,13 +4,28 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { GlobalService } from '../../../core';
 import { Router } from '@angular/router';
 
+interface TxInfo {
+  TX: any;
+  UTXOVout: any;
+}
+
+interface Scripts {
+  invation: string;
+  verification: string;
+}
 @Component({
   templateUrl: './transaction-info.component.html',
   styleUrls: ['./transaction-info.component.scss']
 })
 export class TransactionInfoComponent implements OnInit {
-  txInfo: any;
-  scripts: any;
+  txInfo: TxInfo = {
+    TX: '',
+    UTXOVout: ''
+  };
+  scripts: Scripts = {
+    invation: '',
+    verification: ''
+  };
   txid: String = this.router.url.split('/')[2];
 
   constructor(

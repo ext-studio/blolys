@@ -14,6 +14,7 @@ export class AssetsComponent implements OnInit {
   assetType: String = 'Assets'; // 0 => assets, 1 => nep5Assets
   showSortTran: Boolean = false;
   showSortAddr: Boolean = false;
+  isProgress: Boolean = true;
 
   constructor(
     private http: HttpClient,
@@ -30,21 +31,27 @@ export class AssetsComponent implements OnInit {
     this.showSortAddr = !this.showSortAddr;
   }
   getAssets (pageIndex, pageSize) {
+    this.assets = [];
+    this.isProgress = true;
     pageIndex = Number(pageIndex);
     this.http.post(`${this.global.apiDomain}/api/asset`,
       { 'method': 'getassets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
       this.assets = res.result.data;
       this.pageLength = Math.ceil(res.result.total / this.pageSize);
+      this.isProgress = false;
     }, (err) => {
       console.log(err);
     });
   }
   getNep5Assets (pageIndex, pageSize) {
+    this.assets = [];
+    this.isProgress = true;
     pageIndex = Number(pageIndex);
     this.http.post(`${this.global.apiDomain}/api/asset`,
       { 'method': 'getnep5assets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
       this.assets = res.result.data;
       this.pageLength = Math.ceil(res.result.total / this.pageSize);
+      this.isProgress = false;
     }, (err) => {
       console.log(err);
     });

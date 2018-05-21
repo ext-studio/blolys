@@ -10,6 +10,7 @@ export class BlocksComponent implements OnInit {
   blocks: any;
   pageSize: any = 16;
   pageLength: number;
+  isProgress: Boolean = true;
 
   constructor(
     private http: HttpClient,
@@ -20,10 +21,13 @@ export class BlocksComponent implements OnInit {
     this.getIssues(1, this.pageSize);
   }
   getIssues(pageIndex, pageSize) {
+    this.blocks = [];
+    this.isProgress = true;
     this.http.post(`${this.global.apiDomain}/api/block`,
       { 'method': 'getblocks', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
       this.blocks = res.result.data;
       this.pageLength = Math.ceil(res.result.total / this.pageSize);
+      this.isProgress = false;
     }, (err) => {
       console.log(err);
     });

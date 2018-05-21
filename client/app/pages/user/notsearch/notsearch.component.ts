@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../../../core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { AlertComponent } from '../../../shared';
 
 @Component({
   selector: 'app-notsearch',
@@ -15,7 +17,8 @@ export class NotsearchComponent implements OnInit {
     private http: HttpClient,
     private global: GlobalService,
     private builder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
@@ -56,8 +59,8 @@ export class NotsearchComponent implements OnInit {
           if (Number(value[i]) >= 0 && Number(value[i]) <= 9) {
             target = target * 10 + Number(value[i]);
           } else if (value[i] !== ',' && value[i] !== '，') {
-            this.router.navigate([`/search/${value}`]);
-            return ;
+            this.dialog.open(AlertComponent,
+              {data: {type: 'warn', title: 'Search error', body: '您的输入有误，请重新输入', ok: '确定', no: '取消'}});
           }
         }
         if (target > 0) {
@@ -73,7 +76,8 @@ export class NotsearchComponent implements OnInit {
           });
         }
       } else {
-        this.router.navigate([`/search/${value}`]);
+        this.dialog.open(AlertComponent,
+          {data: {type: 'warn', title: 'Search error', body: '您的输入有误，请重新输入', ok: '确定', no: '取消'}});
       }
     }
   }

@@ -4,7 +4,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {
   MatFormFieldModule, MatTooltipModule, MatButtonModule,
   MatToolbarModule, MatMenuModule, MatStepperModule,
-  MatIconModule, MatInputModule, MatProgressBarModule
+  MatIconModule, MatInputModule, MatProgressBarModule,
+  MatDialogModule
 } from '@angular/material';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { PaginatorComponent } from './compontent/paginator/paginator.component';
@@ -24,14 +25,14 @@ import { LowTransTypePipe } from './pipes/low-trans-type.pipe';
     MatFormFieldModule, MatMenuModule, MatToolbarModule,
     FormsModule, MatIconModule, MatInputModule,
     MatProgressBarModule, ReactiveFormsModule, NgxEchartsModule,
-    MatStepperModule
+    MatStepperModule, MatDialogModule
   ],
   exports: [
     CommonModule, MatButtonModule, MatMenuModule,
     MatFormFieldModule, MatToolbarModule, MatInputModule,
     FormsModule, MatTooltipModule, MatProgressBarModule,
     MatIconModule, NgxEchartsModule, ReactiveFormsModule,
-    MatStepperModule,
+    MatStepperModule, MatDialogModule,
     ShortHashPipe, UnixDatePipe, UnixTimePipe,
     TransColorDirective, AlertComponent, AssetColorDirective,
     TransBorderColorDirective, TransTypePipe, PaginatorComponent,
@@ -43,7 +44,7 @@ import { LowTransTypePipe } from './pipes/low-trans-type.pipe';
     AssetColorDirective, TransBorderColorDirective, TransTypePipe,
     LowTransTypePipe
   ],
-  entryComponents: [],
+  entryComponents: [AlertComponent],
   providers: []
 })
 export class SharedModule { }

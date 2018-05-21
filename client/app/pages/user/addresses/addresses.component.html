@@ -18,6 +18,7 @@
       </tr>
     </tbody>
   </table>
+  <mat-progress-bar mode="indeterminate" *ngIf="isProgress"></mat-progress-bar>  
   <app-paginator 
     [pageSize]="pageSize"
     [pageLength]="pageLength"

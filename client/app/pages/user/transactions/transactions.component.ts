@@ -28,6 +28,8 @@ export class TransactionsComponent implements OnInit {
     }
   }
   getIssues (pageIndex, pageSize) {
+    this.dataSource = [];
+    this.isProgress = true;
     this.http.post(`${this.global.apiDomain}/api/transactions`,
       { 'method': 'gettransactions', 'params': [pageIndex, pageSize, this.transType] }).subscribe((res: any) => {
       this.dataSource = res.result.data;
@@ -48,5 +50,4 @@ export class TransactionsComponent implements OnInit {
   onpageGo(num: number) {
     this.getIssues(num, this.pageSize);
   }
-
 }

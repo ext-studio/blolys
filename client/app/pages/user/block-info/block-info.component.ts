@@ -4,13 +4,29 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { GlobalService } from '../../../core';
 import { Router } from '@angular/router';
 
+interface BlockInfo {
+  hash: string;
+  time: number;
+  size: number;
+  version: number;
+  merkleRoot: string;
+  txNum: number;
+}
+
 @Component({
   templateUrl: './block-info.component.html',
   styleUrls: ['./block-info.component.scss']
 })
 export class BlockInfoComponent implements OnInit {
   blockTransactions: any;
-  blockInfo: any;
+  blockInfo: BlockInfo = {
+    hash: '',
+    time: 0,
+    size: 0,
+    version: 0,
+    merkleRoot: '',
+    txNum: 0
+  };
   transTotal: Number = 0;
   totalBlocks: Number = 0;
   show: any = [];

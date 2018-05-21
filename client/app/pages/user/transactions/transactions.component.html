@@ -16,7 +16,6 @@
       </div>
     </div>
   </div>
-  <mat-progress-bar mode="indeterminate" *ngIf="isProgress"></mat-progress-bar>  
   <div class="tran-list">
     <div class="row-head">
       <div class="col" i18n>TXID</div>
@@ -59,6 +58,7 @@
       </div>
     </div>
   </div>
+  <mat-progress-bar mode="indeterminate" *ngIf="isProgress"></mat-progress-bar>  
   <app-paginator 
     [pageSize]="pageSize"
     [pageIndex]="pageIndex"

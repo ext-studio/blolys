@@ -13,7 +13,6 @@ export class TransBorderColorDirective implements OnChanges {
   }
   private addColor() {
     let res: string;
-    console.log(this.appTransBorderColor);
     switch (this.appTransBorderColor) {
       case 'ClaimTransaction':
         res = 'rgb(57, 181, 232)';
