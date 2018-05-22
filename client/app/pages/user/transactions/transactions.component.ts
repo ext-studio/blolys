@@ -12,7 +12,7 @@ export class TransactionsComponent implements OnInit {
   transType: String = 'all';
   pageSize: any = 16;
   pageLength: number;
-  pageIndex: Boolean = false;
+  pageIndex: any = 0;
   isProgress: Boolean = true;
 
   constructor(
@@ -22,7 +22,6 @@ export class TransactionsComponent implements OnInit {
 
   ngOnInit() {
     this.initShow();
-    this.pageIndex = true;
     this.getIssues(1, this.pageSize);
   }
   initShow () {
@@ -47,7 +46,7 @@ export class TransactionsComponent implements OnInit {
   }
   changeTransType (type: string) {
     this.transType = type;
-    this.pageIndex = true;
+    this.pageIndex += 1;
     this.onpageGo(1);
   }
   onpageGo(num: number) {

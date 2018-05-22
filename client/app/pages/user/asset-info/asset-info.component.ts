@@ -8,7 +8,7 @@ interface AssetInfo {
   admin: string;
   amount: number;
   type: string;
-  time: number;
+  // time: number;
   blockIndex: number;
   transactions: number;
   precision: number;
@@ -29,18 +29,20 @@ export class AssetInfoComponent implements OnInit {
     admin: '',
     amount: 0,
     type: '',
-    time: 0,
+    // time: 0,
     blockIndex: 0,
     transactions: 0,
     precision: 0,
     addresses: 0
   };
+  assetRegisterInfo: any;
   pageIndex: Number = 0;
   addrPageSize: any = 5;
   rankPageSize: any = 5;
   addrPageLength: Number;
   rankPageLength: Number = 20;
-  assetId: String = this.router.url.split('/')[3];
+  assetType: String = this.router.url.split('/')[1];
+  assetId: String = this.router.url.split('/')[2];
 
   constructor(
     private http: HttpClient,
@@ -49,14 +51,29 @@ export class AssetInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.http.post(`${this.global.apiDomain}/api/asset`,
-      {'method': 'getassetinfo', 'params': [this.assetId]}).subscribe((res: any) => {
-        this.assetInfo = res.result;
-    }, (err) => {
-      console.log(err);
-    });
     this.getAddrByAssetid(1, this.addrPageSize);
     this.getRankByAssetid(1, this.rankPageSize);
+    if (this.assetType !== 'nep5') {
+      this.http.post(`${this.global.apiDomain}/api/asset`,
+        {'method': 'getassetinfo', 'params': [this.assetId]}).subscribe((res: any) => {
+          this.assetInfo = res.result;
+      }, (err) => {
+        console.log(err);
+      });
+    } else {
+      this.http.post(`${this.global.apiDomain}/api/asset`,
+        {'method': 'getnep5info', 'params': [this.assetId]}).subscribe((res: any) => {
+          this.assetInfo = res.result;
+      }, (err) => {
+        console.log(err);
+      });
+      this.http.post(`${this.global.apiDomain}/api/asset`,
+        {'method': 'getnep5registerinfo', 'params': [1]}).subscribe((res: any) => {
+          this.assetRegisterInfo = res.result;
+      }, (err) => {
+        console.log(err);
+      });
+    }
   }
   getAddrByAssetid (pageIndex, pageSize) {
     this.recentAddress = [];

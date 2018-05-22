@@ -22,7 +22,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of assets; index as index">
-        <td class="td-link-btn"><a class="link-btn" routerLink="/asset/info/{{item.assetId}}">{{item.name}}</a></td>
+        <td class="td-link-btn" *ngIf="item.type !== 'nep5'"><a class="link-btn" routerLink="/asset/{{item.assetId}}">{{item.name}}</a></td>
+        <td class="td-link-btn" *ngIf="item.type === 'nep5'"><a class="link-btn" routerLink="/nep5/{{item.assetId}}">{{item.name}}</a></td>
         <td [appAssetColor]="item.type">{{item.type}}</td>
         <td class="hidden">{{item.amount | number}}</td>
         <td class="hidden">{{item.addresses | number}}</td>
