@@ -7,12 +7,12 @@ import { GlobalService } from '../../../core';
   styleUrls: ['./transactions.component.scss']
 })
 export class TransactionsComponent implements OnInit {
-  dataSource: any;
+  dataSource: any = [];
   show: any = [];
   transType: String = 'all';
   pageSize: any = 16;
   pageLength: number;
-  pageIndex: any = 0;
+  pageIndex: any = 1;
   isProgress: Boolean = true;
 
   constructor(

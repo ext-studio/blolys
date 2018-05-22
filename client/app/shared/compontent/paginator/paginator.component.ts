@@ -24,8 +24,14 @@ export class PaginatorComponent implements OnChanges, OnInit {
     this.pageGo(1);
   }
   ngOnChanges() {
-    if (this.pageIndex) {
+    console.log('Index: ' + this.pageIndex + ' length: ' + this.pageLength);
+    if (this.pageIndex > 0) {
       this.pageGo(1);
+      this.pageIndex = 0;
+      // this.initShow();
+    }
+    if (this.pageIndex === 0) {
+      this.initShow();
     }
   }
   initShow () {
@@ -39,10 +45,9 @@ export class PaginatorComponent implements OnChanges, OnInit {
   }
   pageGo(num: number) {
     this.onpageGo.emit(num);
-    if (num === 1) {
-      this.initShow();
+    if (num !== 1) {
+      this.pageIndex = -1;
     }
-    this.pageIndex = 0;
     this.clickPage = num;
   }
   pagePreList() {
