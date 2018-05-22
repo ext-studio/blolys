@@ -1,5 +1,4 @@
 .block {
-  height: 100%;
   width: 100%;
   position: relative;
 }
@@ -60,59 +59,8 @@
     }
   }
 }
-.recent-assets {
-  .view-all {
-    width: 100%;
-    text-align: center;
-    button {
-      background-color: #18244f;
-      color: #fff;
-      width: 300px;
-      height: 48px;
-      margin-top: 36px;
-      border-radius: 5px;
-      border: solid 1px #1770ea;
-      &:hover {
-        background:  #1c2b5d;
-      }
-      img {
-        width: 30px;
-        height: 30px;
-        margin-left: 16px;
-        display: inline-block;
-      }
-    }
-  }
-}
 :host {
   display: block;
-}
-::ng-deep .mat-header-row {
-  background-color: #1c2b5d;
-}
-::ng-deep .mat-row:nth-child(even) {
-  background-color: #18244f;
-}
-::ng-deep .mat-row:nth-child(odd) {
-  background-color: #1c2b5d;
-}
-::ng-deep .mat-table * {
-  color: #fff;
-  font-size: 14px;
-}  
-::ng-deep .mat-table {
-  overflow: auto;
-  text-align: center;
-}
-::ng-deep .mat-header-row, .mat-row {
-  padding: 0 30px !important;  
-  border: none !important;
-  min-height: 50px !important;
-}
-::ng-deep .mat-cell {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 :host ::ng-deep mat-form-field * {
   text-align: center !important;

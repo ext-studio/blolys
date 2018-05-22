@@ -7,7 +7,8 @@ import { GlobalService } from '../../../core';
   styleUrls: ['./blocks.component.scss']
 })
 export class BlocksComponent implements OnInit {
-  blocks: any;
+  blocks: any = [];
+  pageIndex: any = 0;
   pageSize: any = 16;
   pageLength: number;
   isProgress: Boolean = true;
@@ -17,9 +18,7 @@ export class BlocksComponent implements OnInit {
     private global: GlobalService
   ) { }
 
-  ngOnInit() {
-    this.getIssues(1, this.pageSize);
-  }
+  ngOnInit() { }
   getIssues(pageIndex, pageSize) {
     this.blocks = [];
     this.isProgress = true;

@@ -24,11 +24,9 @@ export class PaginatorComponent implements OnChanges, OnInit {
     this.pageGo(1);
   }
   ngOnChanges() {
-    console.log('Index: ' + this.pageIndex + ' length: ' + this.pageLength);
     if (this.pageIndex > 0) {
       this.pageGo(1);
       this.pageIndex = 0;
-      // this.initShow();
     }
     if (this.pageIndex === 0) {
       this.initShow();

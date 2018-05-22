@@ -22,8 +22,8 @@ interface AssetInfo {
 export class AssetInfoComponent implements OnInit {
   isAddrProgress: Boolean = true;
   isRankProgress: Boolean = true;
-  recentAddress: any;
-  rankAddr: any;
+  recentAddress: any = [];
+  rankAddr: any = [];
   assetInfo: AssetInfo = {
     name: '',
     admin: '',
@@ -36,7 +36,8 @@ export class AssetInfoComponent implements OnInit {
     addresses: 0
   };
   assetRegisterInfo: any;
-  pageIndex: Number = 0;
+  pageIndex: any = 0;
+  page: Number = 0;
   addrPageSize: any = 5;
   rankPageSize: any = 5;
   addrPageLength: Number;
@@ -102,7 +103,7 @@ export class AssetInfoComponent implements OnInit {
     this.getAddrByAssetid(num, this.addrPageSize);
   }
   onrankPageGo(num: number) {
-    this.pageIndex = num - 1;
+    this.page = num - 1;
     this.getRankByAssetid(num, this.rankPageSize);
   }
 }

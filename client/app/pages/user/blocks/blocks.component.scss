@@ -1,5 +1,4 @@
 .block {
-  height: 100%;
   width: 100%;
   position: relative;
 }
@@ -29,6 +28,10 @@ table {
     white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    a {
+      display: inline-block;
+      width: 100%;
+    }
   }
   .td-link-btn {
     color: #1770ea;
@@ -52,10 +55,8 @@ table {
   .addr-min-width {
     min-width: 320px;
   }
-  table {
-    tr {
-      padding: 0 30px;
-    }
+  table tr {
+    padding: 0 30px;
   }
 }
 @media screen and (max-width: 419px) {
@@ -68,6 +69,9 @@ table {
   table {
     tr {
       padding: 0 10px;
+      th, td {
+        max-width: 167.5px;
+      }
     }
   }
 }

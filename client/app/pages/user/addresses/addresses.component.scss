@@ -1,5 +1,4 @@
 .block {
-  height: 100%;
   width: 100%;
   position: relative;
 }
@@ -29,6 +28,10 @@ table {
     white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    a {
+      display: inline-block;
+      width: 100%;
+    }
   }
   .td-link-btn {
     color: #1770ea;
@@ -44,12 +47,6 @@ table {
       background: #18244f;
     }
   }
-}
-@media screen and (max-width: 600px) {
-  
-}
-@media screen and (min-width: 601px) {
-  
 }
 @media screen and (min-width: 420px) {
   .addr-min-width {
@@ -70,8 +67,13 @@ table {
   .header-title-info {
     font-size: 22px;
   }
-  table tr {
-    padding: 0 10px;
+  table {
+    tr {
+      padding: 0 10px;
+      th, td {
+        max-width: 167.5px;
+      }
+    }
   }
 }
 :host {

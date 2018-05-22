@@ -19,56 +19,54 @@
     <li class="color-two width-all"><label i18n>Hash</label>不提供</li>
     <li class="color-one width-all"><label i18n>Register</label><span class="link-btn">不提供</span></li>
   </ul>
-  <div>
-    <p class="header-title-info" i18n>Recent Addresses</p>
-    <table>
-      <thead>
-        <tr>
-          <th i18n class="addr-min-width">Address</th>
-          <th i18n>CreatedAt</th>
-          <th class="hidden" i18n>Last Transaction</th>
-          <th class="hidden" i18n>Transactions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of recentAddress; index as index">
-          <td class="addr-min-width td-link-btn"><a class="link-btn" routerLink="/address/{{item.address}}">{{item.address}}</a></td>
-          <td>{{item.createdAt | unixTime}}</td>
-          <td class="hidden">{{item.lastTransactionTime | unixTime}}</td>
-          <td class="hidden">{{item.transactions}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <mat-progress-bar mode="indeterminate" *ngIf="isAddrProgress"></mat-progress-bar>
-    <app-paginator 
-      [pageSize]="addrPageSize"
-      [pageLength]="addrPageLength"
-      (onpageGo)="onaddrPageGo($event)">
-    </app-paginator>
-  </div>
-  <div>
-    <p class="header-title-info" i18n>Balance Rank</p>
-    <table>
-      <thead>
-        <tr>
-          <th i18n>Rank</th>
-          <th class="addr-min-width" i18n>Address</th>
-          <th i18n>Balance</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of rankAddr; index as index">
-          <td>{{index + 1 + pageIndex * rankPageSize}}</td>
-          <td class="addr-min-width">{{item.address}}</td>
-          <td>{{item.balance}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <mat-progress-bar mode="indeterminate" *ngIf="isRankProgress"></mat-progress-bar>
-    <app-paginator 
-      [pageSize]="rankPageSize"
-      [pageLength]="rankPageLength"
-      (onpageGo)="onrankPageGo($event)">
-    </app-paginator>
-  </div>
+  <p class="header-title-info" i18n>Recent Addresses</p>
+  <table>
+    <thead>
+      <tr>
+        <th i18n class="addr-min-width">Address</th>
+        <th i18n>CreatedAt</th>
+        <th class="hidden" i18n>Last Transaction</th>
+        <th class="hidden" i18n>Transactions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of recentAddress; index as index">
+        <td class="addr-min-width td-link-btn"><a class="link-btn" routerLink="/address/{{item.address}}">{{item.address}}</a></td>
+        <td>{{item.createdAt | unixTime}}</td>
+        <td class="hidden">{{item.lastTransactionTime | unixTime}}</td>
+        <td class="hidden">{{item.transactions}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <mat-progress-bar mode="indeterminate" *ngIf="isAddrProgress"></mat-progress-bar>
+  <app-paginator 
+    [pageIndex]="pageIndex"
+    [pageSize]="addrPageSize"
+    [pageLength]="addrPageLength"
+    (onpageGo)="onaddrPageGo($event)">
+  </app-paginator>
+  <p class="header-title-info" i18n>Balance Rank</p>
+  <table>
+    <thead>
+      <tr>
+        <th i18n>Rank</th>
+        <th class="addr-min-width" i18n>Address</th>
+        <th class="hidden" i18n>Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of rankAddr; index as index">
+        <td>{{index + 1 + page * rankPageSize}}</td>
+        <td class="addr-min-width td-link-btn"><a class="link-btn" routerLink="/address/{{item.address}}">{{item.address}}</a></td>
+        <td class="hidden">{{item.balance}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <mat-progress-bar mode="indeterminate" *ngIf="isRankProgress"></mat-progress-bar>
+  <app-paginator 
+    [pageIndex]="pageIndex"
+    [pageSize]="rankPageSize"
+    [pageLength]="rankPageLength"
+    (onpageGo)="onrankPageGo($event)">
+  </app-paginator>
 </div>

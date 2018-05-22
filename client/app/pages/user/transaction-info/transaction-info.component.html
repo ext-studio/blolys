@@ -10,7 +10,8 @@
         <div class="info-address break-word"><a class="link-btn" routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</a></div>
         <div class="info-amount">
           <span>{{ txUTXO.value }}</span>
-          <span class="link-btn" routerLink="/asset/info/{{txUTXO.assetId}}">{{ txUTXO.name }}</span>
+          <span class="link-btn" *ngIf="txUTXO.name !== 'nep5'" routerLink="/asset/{{txUTXO.assetId}}">{{ txUTXO.name }}</span>
+          <span class="link-btn" *ngIf="txUTXO.name === 'nep5'" routerLink="/nep5/{{txUTXO.assetId}}">{{ txUTXO.name }}</span>
         </div>
       </div>
     </div>
@@ -21,7 +22,8 @@
         <div class="info-address break-word"><a class="link-btn" routerLink="/address/{{txVout.address}}">{{ txVout.address }}</a></div>
         <div class="info-amount">
           <span>{{ txVout.value }}</span>
-          <span class="link-btn" routerLink="/asset/info/{{txVout.assetId}}">{{ txVout.name }}</span>
+          <span class="link-btn" *ngIf="txUTXO.name !== 'nep5'" routerLink="/asset/{{txVout.assetId}}">{{ txVout.name }}</span>
+          <span class="link-btn" *ngIf="txUTXO.name === 'nep5'" routerLink="/nep5/{{txVout.assetId}}">{{ txVout.name }}</span>
         </div>
       </div>
     </div>

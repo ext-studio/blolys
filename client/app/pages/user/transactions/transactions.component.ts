@@ -12,7 +12,7 @@ export class TransactionsComponent implements OnInit {
   transType: String = 'all';
   pageSize: any = 16;
   pageLength: number;
-  pageIndex: any = 1;
+  pageIndex: any = 0;
   isProgress: Boolean = true;
 
   constructor(
@@ -20,10 +20,7 @@ export class TransactionsComponent implements OnInit {
     private global: GlobalService,
   ) { }
 
-  ngOnInit() {
-    this.initShow();
-    this.getIssues(1, this.pageSize);
-  }
+  ngOnInit() { }
   initShow () {
     for (let i = 0; i < this.pageSize; i++) {
       this.show[i] = false;

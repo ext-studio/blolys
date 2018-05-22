@@ -7,7 +7,7 @@ import { GlobalService } from '../../../core';
   styleUrls: ['./assets.component.scss']
 })
 export class AssetsComponent implements OnInit {
-  assets: any;
+  assets: any = [];
   pageIndex: Number = 0;
   pageSize: any = 16;
   pageLength: number;
@@ -21,9 +21,7 @@ export class AssetsComponent implements OnInit {
     private global: GlobalService
   ) { }
 
-  ngOnInit() {
-    this.getAssets(1, this.pageSize);
-  }
+  ngOnInit() { }
   sortTrans() {
     this.showSortTran = !this.showSortTran;
   }

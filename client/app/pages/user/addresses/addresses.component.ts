@@ -7,7 +7,8 @@ import { GlobalService } from '../../../core';
   styleUrls: ['./addresses.component.scss']
 })
 export class AddressesComponent implements OnInit {
-  addresses: any;
+  addresses: any = [];
+  pageIndex: any = 0;
   pageSize: any = 16;
   pageLength: number;
   isProgress: Boolean = true;
@@ -17,9 +18,7 @@ export class AddressesComponent implements OnInit {
     private global: GlobalService
   ) { }
 
-  ngOnInit() {
-    this.getIssues(1, this.pageSize);
-  }
+  ngOnInit() { }
   getIssues(pageIndex, pageSize) {
     this.addresses = [];
     this.isProgress = true;
