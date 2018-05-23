@@ -32,7 +32,7 @@ export class AddressInfoComponent implements OnInit {
     for (let i = 0; i < this.transTotal; i++) {
       this.show[i] = false;
       this.transfer[i] = '';
-      this.transferType[i] = 0;
+      this.transferType[i] = -1;
     }
   }
   getTransferByTxid (index, txid) {

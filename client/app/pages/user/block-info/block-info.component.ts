@@ -41,7 +41,7 @@ export class BlockInfoComponent implements OnInit {
     for (let i = 0; i < this.transTotal; i++) {
       this.show[i] = false;
       this.transfer[i] = '';
-      this.transferType[i] = 0;
+      this.transferType[i] = -1;
     }
   }
   getTxByHeight(pageIndex, pageSize) {
@@ -98,7 +98,7 @@ export class BlockInfoComponent implements OnInit {
     this.isVisible = true;
   }
   reHeight() {
-    if (this.height > 1) {
+    if (this.height > 0) {
       this.height -= 1;
       this.initShow();
       this.isVisible = false;

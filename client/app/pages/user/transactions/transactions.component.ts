@@ -27,7 +27,7 @@ export class TransactionsComponent implements OnInit {
     for (let i = 0; i < this.pageSize; i++) {
       this.show[i] = false;
       this.transfer[i] = '';
-      this.transferType[i] = 0;
+      this.transferType[i] = -1;
     }
   }
   getTrans (pageIndex, pageSize) {

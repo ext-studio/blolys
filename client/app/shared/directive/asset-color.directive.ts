@@ -18,7 +18,7 @@ export class AssetColorDirective implements OnChanges {
         res = '#627913';
         break;
       case 'Share':
-        res = '#693277';
+        res = '#966EC8';
         break;
       case 'Nep5':
         res = '#84670e';

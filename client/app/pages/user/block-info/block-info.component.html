@@ -8,8 +8,8 @@
       <button><a routerLink="/blocks" i18n>back</a></button>
     </div>
     <div class="option-right">
-      <button class="pre-button"><a (click)=reHeight() i18n>Previous block</a></button>
-      <button class="next-button"><a (click)=addHeight() i18n>Next block</a></button>
+      <button class="pre-button" *ngIf="height > 0"><a (click)=reHeight() i18n>Previous block</a></button>
+      <button class="next-button" *ngIf="height < totalBlocks"><a (click)=addHeight() i18n>Next block</a></button>
     </div>
   </div>
   <ul class="info">
@@ -66,9 +66,9 @@
         <div class="col hidden">{{ item.size | number }} Bytes</div>
         <div class="col hidden">{{ item.version }}</div>
         <div class="col hidden">{{ item.blockTime | unixTime }}</div> 
-        <div class="hidden"><img class="col-icon" style="transition: all .4s;" (click)="showInfo(index, item.txid)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
+        <div class="hidden col-icon"><img style="transition: all .4s;" (click)="showInfo(index, item.txid)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
       </div>
-      <div class="tran-info" *ngIf="show[index] && !transferType[index] && (transfer[index].TxUTXO !== null || transfer[index].TxVouts !== null)">
+      <div class="tran-info" *ngIf="show[index] && transferType[index] === 0 && (transfer[index].TxUTXO !== null || transfer[index].TxVouts !== null)">
         <div class="tran-info-from">
           <p class="info-title" *ngIf="transfer[index].TxUTXO !== null" i18n>Sent from</p>
           <div *ngFor="let txUTXO of transfer[index].TxUTXO">
@@ -91,7 +91,7 @@
           </div>
         </div>
       </div>
-      <div class="tran-info" *ngIf="show[index] && transferType[index] && transfer[index] !== null">
+      <div class="tran-info" *ngIf="show[index] && transferType[index] === 1 && transfer[index] !== null">
         <div class="tran-info-from">
           <p class="info-title" i18n>Sent from</p>
           <div *ngFor="let txfrom of transfer[index]">
