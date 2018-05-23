@@ -3,18 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../../../core';
 import { Router } from '@angular/router';
 
-interface AssetInfo {
-  name: string;
-  admin: string;
-  amount: number;
-  type: string;
-  // time: number;
-  blockIndex: number;
-  transactions: number;
-  precision: number;
-  addresses: number;
-}
-
 @Component({
   templateUrl: './asset-info.component.html',
   styleUrls: ['./asset-info.component.scss']
@@ -24,17 +12,7 @@ export class AssetInfoComponent implements OnInit {
   isRankProgress: Boolean = true;
   recentAddress: any = [];
   rankAddr: any = [];
-  assetInfo: AssetInfo = {
-    name: '',
-    admin: '',
-    amount: 0,
-    type: '',
-    // time: 0,
-    blockIndex: 0,
-    transactions: 0,
-    precision: 0,
-    addresses: 0
-  };
+  assetInfo: any = [];
   assetRegisterInfo: any;
   pageIndex: any = 0;
   page: Number = 0;
@@ -57,20 +35,26 @@ export class AssetInfoComponent implements OnInit {
     if (this.assetType !== 'nep5') {
       this.http.post(`${this.global.apiDomain}/api/asset`,
         {'method': 'getassetinfo', 'params': [this.assetId]}).subscribe((res: any) => {
+        if (res.code === 200) {
           this.assetInfo = res.result;
+        }
       }, (err) => {
         console.log(err);
       });
     } else {
       this.http.post(`${this.global.apiDomain}/api/asset`,
         {'method': 'getnep5info', 'params': [this.assetId]}).subscribe((res: any) => {
+        if (res.code === 200) {
           this.assetInfo = res.result;
+        }
       }, (err) => {
         console.log(err);
       });
       this.http.post(`${this.global.apiDomain}/api/asset`,
         {'method': 'getnep5registerinfo', 'params': [1]}).subscribe((res: any) => {
+        if (res.code === 200) {
           this.assetRegisterInfo = res.result;
+        }
       }, (err) => {
         console.log(err);
       });
@@ -81,9 +65,11 @@ export class AssetInfoComponent implements OnInit {
     this.isAddrProgress = true;
     this.http.post(`${this.global.apiDomain}/api/address`,
       { 'method': 'getaddrbyassetid', 'params': [pageIndex, pageSize, this.assetId] }).subscribe((res: any) => {
-      this.recentAddress = res.result.data;
-      this.addrPageLength = res.result.total;
-      this.isAddrProgress = false;
+      if (res.code === 200) {
+        this.recentAddress = res.result.data;
+        this.addrPageLength = res.result.total;
+        this.isAddrProgress = false;
+      }
     }, (err) => {
       console.log(err);
     });
@@ -93,8 +79,10 @@ export class AssetInfoComponent implements OnInit {
     this.isRankProgress = true;
     this.http.post(`${this.global.apiDomain}/api/address`,
       { 'method': 'getrankbyassetid', 'params': [pageIndex, pageSize, this.assetId] }).subscribe((res: any) => {
-      this.rankAddr = res.result.data;
-      this.isRankProgress = false;
+      if (res.code === 200) {
+        this.rankAddr = res.result.data;
+        this.isRankProgress = false;
+      }
     }, (err) => {
       console.log(err);
     });

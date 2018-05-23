@@ -10,6 +10,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.over-ellipsis-link {
   color: #1770ea;
   label {
     color: #fff;
@@ -42,6 +44,7 @@
     box-sizing: border-box;
     text-align: left;
     padding-left: 30px;
+    padding-right: 10px;
     height: 50px;
     line-height: 50px;
     label {
@@ -108,6 +111,9 @@ table {
       width: 100%;
     }
   }
+  .addr-min-width {
+    min-width: 320px;
+  }
 }
 @media screen and (max-width: 869px) {
   .address-info {
@@ -121,6 +127,9 @@ table {
       }
     }
   }
+  .middle-hidden {
+    display: none;
+  }
 }
 @media screen and (min-width: 420px) {
   .address-info{
@@ -128,9 +137,6 @@ table {
   }
   .header-title-info {
     font-size: 30px;
-  }
-  .addr-min-width {
-    min-width: 320px;
   }
   table tr {
     padding: 0 30px;

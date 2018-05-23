@@ -48,10 +48,12 @@ table {
     }
   }
 }
-@media screen and (min-width: 420px) {
+@media screen and (min-width: 870px) {
   .addr-min-width {
     min-width: 320px;
   }
+}
+@media screen and (min-width: 420px) {
   .header-title-info {
     font-size: 30px;
   }

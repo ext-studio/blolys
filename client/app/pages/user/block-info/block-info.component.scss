@@ -95,9 +95,6 @@
       font-size: 14px;
       padding-bottom: 40px;
       color: #134699; 
-      &:nth-child(9) {
-        color: #1770ea;
-      }
     }
   }
 }
@@ -212,7 +209,7 @@
       &:not(:nth-child(3n)) {
         border-right: 1px solid #203067;
       }
-      &:nth-child(-n + 6) {
+      &:nth-child(-n + 3) {
         border-bottom: 1px solid #203067;
       }
       .big-font-size {
@@ -231,7 +228,7 @@
       &:not(:nth-child(2n)) {
         border-right: 1px solid #203067;
       }
-      &:nth-child(-n + 8) {
+      &:nth-child(-n + 4) {
         border-bottom: 1px solid #203067;
       }
       .big-font-size {
@@ -290,7 +287,7 @@
       width: 100%;
       min-height: 120px;
       float: left;
-      &:not(:nth-child) {
+      &:not(:last-child) {
         border-bottom: 1px solid #203067;
       }
     }

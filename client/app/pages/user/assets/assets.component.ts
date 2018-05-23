@@ -34,9 +34,11 @@ export class AssetsComponent implements OnInit {
     pageIndex = Number(pageIndex);
     this.http.post(`${this.global.apiDomain}/api/asset`,
       { 'method': 'getassets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
-      this.assets = res.result.data;
-      this.pageLength = Math.ceil(res.result.total / this.pageSize);
-      this.isProgress = false;
+      if (res.code === 200) {
+        this.assets = res.result.data;
+        this.pageLength = Math.ceil(res.result.total / this.pageSize);
+        this.isProgress = false;
+      }
     }, (err) => {
       console.log(err);
     });
@@ -47,9 +49,11 @@ export class AssetsComponent implements OnInit {
     pageIndex = Number(pageIndex);
     this.http.post(`${this.global.apiDomain}/api/asset`,
       { 'method': 'getnep5assets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
-      this.assets = res.result.data;
-      this.pageLength = Math.ceil(res.result.total / this.pageSize);
-      this.isProgress = false;
+      if (res.code === 200) {
+        this.assets = res.result.data;
+        this.pageLength = Math.ceil(res.result.total / this.pageSize);
+        this.isProgress = false;
+      }
     }, (err) => {
       console.log(err);
     });

@@ -5,19 +5,15 @@
   </div>
   <ul class="address-info">
     <li class="color-one width-half"><label i18n>Name</label>{{assetInfo.name}}</li>
-    <li class="color-one width-half"><label i18n>Symbol</label>不提供</li>
-    <li class="color-two width-half"><label i18n>Total Supply</label>{{assetInfo.amount}}</li>
-    <li class="color-two width-half"><label i18n>Issued</label>不提供</li>
-    <li class="color-one width-half"><label i18n>Type</label>{{assetInfo.type}}</li>
-    <li class="color-one width-half"><label i18n>Created</label><span class="link-btn">不提供</span></li>
-    <li class="color-two width-half"><label i18n>Blocks</label><span class="link-btn">{{assetInfo.blockIndex}}</span></li>
-    <li class="color-two width-half"><label i18n>transactions</label><span class="link-btn">{{assetInfo.transactions}}</span></li>
-    <li class="color-one width-half"><label i18n>Precision</label>{{assetInfo.precision}}</li>
-    <li class="color-one width-half"><label i18n>Addresses</label><span class="link-btn">{{assetInfo.addresses}}</span></li>
-    <li class="color-two width-all"><label i18n>Network fee</label>不提供</li>
-    <li class="color-one width-all over-ellipsis"><label i18n>Owner</label><span class="link-btn">{{assetInfo.admin}}</span></li>
-    <li class="color-two width-all"><label i18n>Hash</label>不提供</li>
-    <li class="color-one width-all"><label i18n>Register</label><span class="link-btn">不提供</span></li>
+    <li class="color-one width-half"><label i18n>Total Supply</label>{{assetInfo.amount | number: '1.0-8'}}</li>
+    <li class="color-two width-half"><label i18n>Type</label>{{assetInfo.type}}</li>
+    <li class="color-two width-half"><label i18n>Created</label>{{assetInfo.time * 1000 | date: 'yyyy-MM-dd'}}</li>
+    <li class="color-one width-half"><label i18n>Blocks</label><span class="link-btn" routerLink="/block/{{assetInfo.blockIndex}}">{{assetInfo.blockIndex | number}}</span></li>
+    <li class="color-one width-half"><label i18n>transactions</label>{{assetInfo.transactions | number}}</li>
+    <li class="color-two width-half"><label i18n>Precision</label>{{assetInfo.precision}}</li>
+    <li class="color-two width-half"><label i18n>Addresses</label>{{assetInfo.addresses | number}}</li>
+    <li class="color-one width-all over-ellipsis over-ellipsis-link"><label i18n>Owner</label><span class="link-btn" routerLink="/address/{{assetInfo.admin}}">{{assetInfo.admin}}</span></li>
+    <li class="color-two width-all over-ellipsis"><label i18n>AssetId</label>{{assetInfo.assetId}}</li>
   </ul>
   <p class="header-title-info" i18n>Recent Addresses</p>
   <table>
@@ -25,7 +21,7 @@
       <tr>
         <th i18n class="addr-min-width">Address</th>
         <th i18n>CreatedAt</th>
-        <th class="hidden" i18n>Last Transaction</th>
+        <th class="hidden middle-hidden" i18n>Last Transaction</th>
         <th class="hidden" i18n>Transactions</th>
       </tr>
     </thead>
@@ -33,8 +29,8 @@
       <tr *ngFor="let item of recentAddress; index as index">
         <td class="addr-min-width td-link-btn"><a class="link-btn" routerLink="/address/{{item.address}}">{{item.address}}</a></td>
         <td>{{item.createdAt | unixTime}}</td>
-        <td class="hidden">{{item.lastTransactionTime | unixTime}}</td>
-        <td class="hidden">{{item.transactions}}</td>
+        <td class="hidden middle-hidden">{{item.lastTransactionTime | unixTime}}</td>
+        <td class="hidden">{{item.transactions | number}}</td>
       </tr>
     </tbody>
   </table>
@@ -58,7 +54,7 @@
       <tr *ngFor="let item of rankAddr; index as index">
         <td>{{index + 1 + page * rankPageSize}}</td>
         <td class="addr-min-width td-link-btn"><a class="link-btn" routerLink="/address/{{item.address}}">{{item.address}}</a></td>
-        <td class="hidden">{{item.balance}}</td>
+        <td class="hidden">{{item.balance | number: '1.0-8'}}</td>
       </tr>
     </tbody>
   </table>

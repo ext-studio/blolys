@@ -10,14 +10,12 @@ import {
 import { NgxEchartsModule } from 'ngx-echarts';
 import { PaginatorComponent } from './compontent/paginator/paginator.component';
 import { ShortHashPipe } from './pipes/shorthash.pipe';
-import { UnixDatePipe } from './pipes/unixdate.pipe';
 import { UnixTimePipe } from './pipes/unixtime.pipe';
 import { TransColorDirective } from './directive/trans-color.directive';
 import { TransBorderColorDirective } from './directive/trans-border-color.directive';
 import { AlertComponent } from './popups/alert/alert.component';
 import { AssetColorDirective } from './directive/asset-color.directive';
 import { TransTypePipe } from './pipes/trans-type.pipe';
-import { LowTransTypePipe } from './pipes/low-trans-type.pipe';
 
 @NgModule({
   imports: [
@@ -33,17 +31,15 @@ import { LowTransTypePipe } from './pipes/low-trans-type.pipe';
     FormsModule, MatTooltipModule, MatProgressBarModule,
     MatIconModule, NgxEchartsModule, ReactiveFormsModule,
     MatStepperModule, MatDialogModule,
-    ShortHashPipe, UnixDatePipe, UnixTimePipe,
+    ShortHashPipe, UnixTimePipe,
     TransColorDirective, AlertComponent, AssetColorDirective,
     TransBorderColorDirective, TransTypePipe, PaginatorComponent,
-    LowTransTypePipe,
   ],
   declarations: [
-    PaginatorComponent, ShortHashPipe, UnixDatePipe,
+    PaginatorComponent, ShortHashPipe,
     UnixTimePipe, TransColorDirective, AlertComponent,
     AssetColorDirective, TransBorderColorDirective, TransTypePipe,
-    LowTransTypePipe
-  ],
+ ],
   entryComponents: [AlertComponent],
   providers: []
 })

@@ -24,9 +24,11 @@ export class AddressesComponent implements OnInit {
     this.isProgress = true;
     this.http.post(`${this.global.apiDomain}/api/address`,
       { 'method': 'getaddresses', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
-      this.addresses = res.result.data;
-      this.pageLength = Math.ceil(res.result.total / this.pageSize);
-      this.isProgress = false;
+      if (res.code === 200) {
+        this.addresses = res.result.data;
+        this.pageLength = Math.ceil(res.result.total / this.pageSize);
+        this.isProgress = false;
+      }
     }, (err) => {
       console.log(err);
     });

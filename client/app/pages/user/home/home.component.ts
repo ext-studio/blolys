@@ -6,24 +6,13 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { AlertComponent } from '../../../shared';
 
-interface Totals {
-  assets: number;
-  blocks: number;
-  transactions: number;
-  addresses: number;
-}
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 
 export class HomeComponent implements OnInit {
-  public total: Totals = {
-    assets: 0,
-    blocks: 0,
-    addresses: 0,
-    transactions: 0
-  };
+  public total: any = [];
   searchForm: FormGroup;
   ngOnInit() {
     this.searchForm = this.builder.group({
@@ -31,20 +20,24 @@ export class HomeComponent implements OnInit {
     });
     this.http.post(`${this.global.apiDomain}/api/index`,
       { 'method': 'queryallcounts' }).subscribe((res: any) => {
-      this.total.assets = res.result.assetCounts;
-      this.total.blocks = res.result.blockCounts ;
-      this.total.addresses = res.result.addressCounts;
-      this.total.transactions = res.result.txCounts;
+      if (res.code === 200) {
+        this.total.assets = res.result.assetCounts;
+        this.total.blocks = res.result.blockCounts ;
+        this.total.addresses = res.result.addressCounts;
+        this.total.transactions = res.result.txCounts;
+      }
     }, (err) => {
       console.log(err);
     });
     setInterval(() => {
       this.http.post(`${this.global.apiDomain}/api/index`,
         { 'method': 'queryallcounts' }).subscribe((res: any) => {
-        this.total.assets = res.result.assetCounts;
-        this.total.blocks = res.result.blockCounts ;
-        this.total.addresses = res.result.addressCounts;
-        this.total.transactions = res.result.txCounts;
+        if (res.code === 200) {
+          this.total.assets = res.result.assetCounts;
+          this.total.blocks = res.result.blockCounts ;
+          this.total.addresses = res.result.addressCounts;
+          this.total.transactions = res.result.txCounts;
+        }
       }, (err) => {
         console.log(err);
       });

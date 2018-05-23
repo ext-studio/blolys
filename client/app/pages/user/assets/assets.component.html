@@ -25,7 +25,7 @@
         <td class="td-link-btn" *ngIf="item.type !== 'nep5'"><a class="link-btn" routerLink="/asset/{{item.assetId}}">{{item.name}}</a></td>
         <td class="td-link-btn" *ngIf="item.type === 'nep5'"><a class="link-btn" routerLink="/nep5/{{item.assetId}}">{{item.name}}</a></td>
         <td [appAssetColor]="item.type">{{item.type}}</td>
-        <td class="hidden">{{item.amount | number}}</td>
+        <td class="hidden">{{item.amount | number: '1.0-8'}}</td>
         <td class="hidden">{{item.addresses | number}}</td>
         <td class="hidden">{{item.transactions | number}}</td>
         <td class="hidden td-link-btn"><a class="link-btn" routerLink="/address/{{item.admin}}">{{item.admin}}</a></td>
