@@ -8,7 +8,6 @@ import {
   MatDialogModule
 } from '@angular/material';
 import { PaginatorComponent } from './compontent/paginator/paginator.component';
-import { ShortHashPipe } from './pipes/shorthash.pipe';
 import { UnixTimePipe } from './pipes/unixtime.pipe';
 import { TransColorDirective } from './directive/trans-color.directive';
 import { TransBorderColorDirective } from './directive/trans-border-color.directive';
@@ -28,16 +27,16 @@ import { TransTypePipe } from './pipes/trans-type.pipe';
     CommonModule, MatButtonModule, MatMenuModule,
     MatFormFieldModule, MatToolbarModule, MatInputModule,
     FormsModule, MatTooltipModule, MatProgressBarModule,
-    MatIconModule, ReactiveFormsModule,
-    MatStepperModule, MatDialogModule,
-    ShortHashPipe, UnixTimePipe,
+    MatIconModule, ReactiveFormsModule, MatDialogModule,
+    MatStepperModule,
     TransColorDirective, AlertComponent, AssetColorDirective,
     TransBorderColorDirective, TransTypePipe, PaginatorComponent,
+    UnixTimePipe,
   ],
   declarations: [
-    PaginatorComponent, ShortHashPipe,
     UnixTimePipe, TransColorDirective, AlertComponent,
     AssetColorDirective, TransBorderColorDirective, TransTypePipe,
+    PaginatorComponent
  ],
   entryComponents: [AlertComponent],
   providers: []

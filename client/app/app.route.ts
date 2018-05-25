@@ -2,8 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent }
+  // {
+  //   path: '', redirectTo: 'mainnet', pathMatch: 'full'
+  // },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true})],
