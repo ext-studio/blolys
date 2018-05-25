@@ -47,9 +47,9 @@ export class AssetInfoComponent implements OnInit {
         if (res.code === 200) {
           this.assetInfo = res.result;
           this.http.post(`${this.global.apiDomain}/api/asset`,
-            {'method': 'getnep5registerinfo', 'params': [this.assetInfo.id]}).subscribe((res: any) => {
-            if (res.code === 200) {
-              this.assetRegisterInfo = res.result;
+            {'method': 'getnep5registerinfo', 'params': [this.assetInfo.id]}).subscribe((res2: any) => {
+            if (res2.code === 200) {
+              this.assetRegisterInfo = res2.result;
             }
           }, (err) => {
             console.log(err);
@@ -57,7 +57,7 @@ export class AssetInfoComponent implements OnInit {
         }
       }, (err) => {
         console.log(err);
-      });      
+      });
     }
   }
   getAddrByAssetid (pageIndex, pageSize) {
