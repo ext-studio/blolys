@@ -16,7 +16,7 @@
     </div>
     <div class="link-item">
       <p i18n>Total Assets</p>
-      <span>{{ total.assets  | number }}</span>
+      <span>{{ total.assets  | number: '1.0-8' }}</span>
     </div>
     <div class="link-item">
       <p i18n>Total Transactions</p>
@@ -27,5 +27,4 @@
       <span>{{ total.addresses  | number }}</span>
     </div>
   </div>
-  <div style="display: none;" echarts [options] = "option" class="demo-chart"></div>
 </div>

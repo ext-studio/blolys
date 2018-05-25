@@ -7,7 +7,6 @@ import {
   MatIconModule, MatInputModule, MatProgressBarModule,
   MatDialogModule
 } from '@angular/material';
-import { NgxEchartsModule } from 'ngx-echarts';
 import { PaginatorComponent } from './compontent/paginator/paginator.component';
 import { ShortHashPipe } from './pipes/shorthash.pipe';
 import { UnixTimePipe } from './pipes/unixtime.pipe';
@@ -22,14 +21,14 @@ import { TransTypePipe } from './pipes/trans-type.pipe';
     CommonModule, MatButtonModule, MatTooltipModule,
     MatFormFieldModule, MatMenuModule, MatToolbarModule,
     FormsModule, MatIconModule, MatInputModule,
-    MatProgressBarModule, ReactiveFormsModule, NgxEchartsModule,
+    MatProgressBarModule, ReactiveFormsModule,
     MatStepperModule, MatDialogModule
   ],
   exports: [
     CommonModule, MatButtonModule, MatMenuModule,
     MatFormFieldModule, MatToolbarModule, MatInputModule,
     FormsModule, MatTooltipModule, MatProgressBarModule,
-    MatIconModule, NgxEchartsModule, ReactiveFormsModule,
+    MatIconModule, ReactiveFormsModule,
     MatStepperModule, MatDialogModule,
     ShortHashPipe, UnixTimePipe,
     TransColorDirective, AlertComponent, AssetColorDirective,

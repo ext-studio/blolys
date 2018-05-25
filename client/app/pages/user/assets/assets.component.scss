@@ -76,16 +76,15 @@ table {
     align-items: center;
     box-sizing: border-box;
     height: 50px;
-    line-height: 50px;
   }
   th, td {
     flex: 1;
     white-space:nowrap;
     overflow: hidden;
+    height: 14px;
     text-overflow: ellipsis;
     a {
       display: inline-block;
-      width: 100%;
     }
   }
   .td-link-btn {

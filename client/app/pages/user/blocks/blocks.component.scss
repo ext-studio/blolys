@@ -21,16 +21,15 @@ table {
     align-items: center;
     box-sizing: border-box;
     height: 50px;
-    line-height: 50px;
   }
   th, td {
     flex: 1;
     white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    height: 14px;
     a {
       display: inline-block;
-      width: 100%;
     }
   }
   .td-link-btn {

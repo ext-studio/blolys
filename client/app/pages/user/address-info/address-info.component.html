@@ -9,7 +9,7 @@
         <span>{{ item.name }}</span>
       </li>
     </ul>
-    <p class="header-title-info" *ngIf="transTotal > 0"><span i18n>Transactions</span> ({{ transTotal }})</p>
+    <p class="header-title-info" *ngIf="transTotal > 0"><span i18n>Transactions</span> ({{ transTotal | number }})</p>
     <div class="tran-list">
       <div class="row-head">
         <div class="col" i18n>TXID</div>

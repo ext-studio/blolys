@@ -14,6 +14,9 @@ import { TransactionInfoComponent } from './transaction-info/transaction-info.co
 import { NotsearchComponent } from './notsearch/notsearch.component';
 
 const routes: Routes = [
+  // {
+  //   path: '', redirectTo: 'mainnet', pathMatch: 'full'
+  // },
   {
     path: '',
     component: UserComponent,
@@ -32,6 +35,24 @@ const routes: Routes = [
       { path: 'search/:id', component: NotsearchComponent}
     ]
   }
+  // {
+  //   path: 'testnet',
+  //   component: UserComponent,
+  //   children: [
+  //     { path: '', component: HomeComponent },
+  //     { path: 'home', component: HomeComponent },
+  //     { path: 'assets', component: AssetsComponent },
+  //     { path: 'asset/:name', component: AssetInfoComponent },
+  //     { path: 'nep5/:name', component: AssetInfoComponent },
+  //     { path: 'blocks', component: BlocksComponent },
+  //     { path: 'block/:index', component: BlockInfoComponent },
+  //     { path: 'addresses', component: AddressesComponent },
+  //     { path: 'address/:address', component: AddressInfoComponent },
+  //     { path: 'transactions', component: TransactionsComponent },
+  //     { path: 'transaction/:txid', component: TransactionInfoComponent },
+  //     { path: 'search/:id', component: NotsearchComponent}
+  //   ]
+  // }
 ];
 
 @NgModule({
