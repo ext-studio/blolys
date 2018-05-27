@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { GlobalService } from '../../../core';
+// import { HttpClient } from '@angular/common/http';
+// import { GlobalService } from '../../../core';
+import { AddressService } from '../address.service';
 
 @Component({
   templateUrl: './addresses.component.html',
@@ -14,24 +15,26 @@ export class AddressesComponent implements OnInit {
   isProgress: Boolean = true;
 
   constructor(
-    private http: HttpClient,
-    private global: GlobalService
+    // private http: HttpClient,
+    // private global: GlobalService,
+    private addressService: AddressService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getAddresses();
+    // console.log(temp);
+  }
+  getAddresses(): void {
+    this.addressService.getAddresses().subscribe((res) => {
+      console.log(res);
+    });
+  }
   getIssues(pageIndex, pageSize) {
     this.addresses = [];
     this.isProgress = true;
-    this.http.post(`${this.global.apiDomain}/api/address`,
-      { 'method': 'getaddresses', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
-      if (res.code === 200) {
-        this.addresses = res.result.data;
-        this.pageLength = Math.ceil(res.result.total / this.pageSize);
-        this.isProgress = false;
-      }
-    }, (err) => {
-      console.log(err);
-    });
+    // this.addresses = res.result.data;
+    // this.pageLength = Math.ceil(res.result.total / this.pageSize);
+    // this.isProgress = false;
   }
   onpageGo(num: number) {
     this.getIssues(num, this.pageSize);
