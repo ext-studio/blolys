@@ -50,7 +50,7 @@ export class AssetInfoComponent implements OnInit {
     this.assetService.AddrByAssetid(pageIndex, pageSize, this.assetId).subscribe((res: any) => {
       if (res.result) {
         this.recentAddress = res.result.data;
-        this.addrPageLength = res.result.total;
+        this.addrPageLength = Math.ceil(res.result.total / pageSize);
         this.isAddrProgress = false;
       }
     });
@@ -61,6 +61,7 @@ export class AssetInfoComponent implements OnInit {
     this.assetService.RankByAssetid(pageIndex, pageSize, this.assetId).subscribe((res: any) => {
       if (res.result) {
         this.rankAddr = res.result.data;
+        this.rankPageLength = Math.ceil(res.result.total / pageSize) < pageSize ? Math.ceil(res.result.total / pageSize) : pageSize;
         this.isRankProgress = false;
       }
     });

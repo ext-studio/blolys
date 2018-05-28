@@ -35,7 +35,7 @@ export class NotsearchComponent implements OnInit {
       value = value.trim(); // Remove whitespace
       if (value[0] === 'A' && value.length === 34) {
         this.addressService.AddrAssets(value).subscribe((res: any) => {
-          if (res.result === 200) {
+          if (res.result) {
             this.router.navigate([`/address/${value}`]);
           } else {
             this.router.navigate([`/search/${value}`]);
@@ -44,7 +44,7 @@ export class NotsearchComponent implements OnInit {
       } else if (value[0] === '0' && value[1] === 'x' && value.length === 66) {
         value = value.toLowerCase(); // Datasource defaults to lowercase matches
         this.transactionService.Script(value).subscribe((res: any) => {
-          if (res.result === 200) {
+          if (res.result) {
             this.router.navigate([`/transaction/${value}`]);
           } else {
             this.router.navigate([`/search/${value}`]);
@@ -62,7 +62,7 @@ export class NotsearchComponent implements OnInit {
         }
         if (target > 0) {
           this.blockService.BlockByHeight(target).subscribe((res: any) => {
-            if (res.result === 200) {
+            if (res.result) {
               this.router.navigate([`/block/${target}`]);
             } else {
               this.router.navigate([`/search/${value}`]);
