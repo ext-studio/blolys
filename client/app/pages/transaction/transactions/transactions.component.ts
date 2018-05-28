@@ -1,6 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { GlobalService } from '../../../core';
+import { Component, OnInit } from '@angular/core';
+import { TransactionService } from '../transaction.service';
 
 @Component({
   templateUrl: './transactions.component.html',
@@ -18,8 +17,7 @@ export class TransactionsComponent implements OnInit {
   isProgress: Boolean = true;
 
   constructor(
-    private http: HttpClient,
-    private global: GlobalService,
+    private transactionService: TransactionService
   ) { }
 
   ngOnInit() { }
@@ -33,37 +31,28 @@ export class TransactionsComponent implements OnInit {
   getTrans (pageIndex, pageSize) {
     this.transactions = [];
     this.isProgress = true;
-    this.http.post(`${this.global.apiDomain}/api/transactions`,
-      { 'method': 'gettransactions', 'params': [pageIndex, pageSize, this.transType] }).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.transactionService.Trans(pageIndex, pageSize, this.transType).subscribe((res: any) => {
+      if (res.result) {
         this.transactions = res.result.data;
         this.pageLength = Math.ceil(res.result.total / this.pageSize);
         this.isProgress = false;
       }
-    }, (err) => {
-      console.log(err);
     });
   }
   getTransferByTxid (index, txid) {
-    this.http.post(`${this.global.apiDomain}/api/transactions`,
-      { 'method': 'gettransferbytxid', 'params': [txid] }).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.transactionService.TransferByTxid(txid).subscribe((res: any) => {
+      if (res.result.TxUTXO != null && res.result.TxVouts != null) {
         this.transfer[index] = res.result;
         this.transferType[index] = 0;
       }
-    }, (err) => {
-      console.log(err);
     });
   }
   getNep5TransferByTxid (index, txid) {
-    this.http.post(`${this.global.apiDomain}/api/transactions`,
-      { 'method': 'getnep5transferbytxid', 'params': [txid] }).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.transactionService.Nep5TransferByTxid(txid).subscribe((res: any) => {
+      if (res.result.length > 0) {
         this.transfer[index] = res.result;
         this.transferType[index] = 1;
       }
-    }, (err) => {
-      console.log(err);
     });
   }
   showInfo (index, txid) {

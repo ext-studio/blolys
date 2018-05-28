@@ -5,8 +5,8 @@
     </div>
     <ul class="assets-info info">
       <li *ngFor="let item of addrAssets">
-        <p>{{ item.balance | number: '1.0-8' }}</p>
-        <span>{{ item.name }}</span>
+        <p>{{ item?.balance | number: '1.0-8' }}</p>
+        <span>{{ item?.name }}</span>
       </li>
     </ul>
     <p class="header-title-info" *ngIf="transTotal > 0"><span i18n>Transactions</span> ({{ transTotal | number }})</p>
@@ -20,44 +20,44 @@
       </div>
       <div class="warpper" *ngFor="let item of addrTransactions; index as index">
         <div class="row">
-          <div class="col td-link-btn"><a class="link-btn" routerLink="/transaction/{{item.txid}}">{{ item.txid }}</a></div>
-          <div class="col" [appTransColor]="item.type">{{ item.type | transType }}</div>
-          <div class="col hidden">{{ item.size | number }} Bytes</div>
-          <div class="col hidden">{{ item.version }}</div>
-          <div class="col hidden">{{ item.blockTime | unixTime }}</div> 
-          <div class="hidden col-icon"><img style="transition: all .4s;" (click)="showInfo(index, item.txid)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
+          <div class="col td-link-btn"><a class="link-btn" routerLink="/transaction/{{item?.txid}}">{{ item?.txid }}</a></div>
+          <div class="col" [appTransColor]="item?.type">{{ item?.type | transType }}</div>
+          <div class="col hidden">{{ item?.size | number }} Bytes</div>
+          <div class="col hidden">{{ item?.version }}</div>
+          <div class="col hidden">{{ item?.blockTime | unixTime }}</div> 
+          <div class="hidden col-icon"><img style="transition: all .4s;" (click)="showInfo(index, item?.txid)" [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
         </div>
-        <div class="tran-info" *ngIf="show[index] && transferType[index] === 0 && (transfer[index].TxUTXO !== null || transfer[index].TxVouts !== null)">
+        <div class="tran-info" *ngIf="show[index] && transferType[index] === 0 && (transfer[index]?.TxUTXO !== null || transfer[index]?.TxVouts !== null)">
           <div class="tran-info-from">
-            <p class="info-title" *ngIf="transfer[index].TxUTXO !== null" i18n>Sent from</p>
-            <div *ngFor="let txUTXO of transfer[index].TxUTXO">
-              <div class="info-address"><a class="link-btn" (click)=gotoAddr(txUTXO.address) routerLink="/address/{{txUTXO.address}}">{{ txUTXO.address }}</a></div>
+            <p class="info-title" *ngIf="transfer[index]?.TxUTXO !== null" i18n>Sent from</p>
+            <div *ngFor="let txUTXO of transfer[index]?.TxUTXO">
+              <div class="info-address"><a class="link-btn" (click)=gotoAddr(txUTXO?.address) routerLink="/address/{{txUTXO?.address}}">{{ txUTXO?.address }}</a></div>
               <div class="info-amount">
-                <span>{{ txUTXO.value | number: '1.0-8' }}</span>
-                <span class="link-btn" routerLink="/asset/{{txUTXO.assetId}}">{{ txUTXO.name }}</span>
+                <span>{{ txUTXO?.value | number: '1.0-8' }}</span>
+                <span class="link-btn" routerLink="/asset/{{txUTXO?.assetId}}">{{ txUTXO?.name }}</span>
               </div>
             </div>
           </div>
           <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
           <div class="tran-info-to">
-            <p class="info-title" *ngIf="transfer[index].TxVouts !== null" i18n>Sent to</p>
-            <div *ngFor="let txVout of transfer[index].TxVouts">
-              <div class="info-address"><a class="link-btn" (click)=gotoAddr(txVout.address) routerLink="/address/{{txVout.address}}">{{ txVout.address }}</a></div>
+            <p class="info-title" *ngIf="transfer[index]?.TxVouts !== null" i18n>Sent to</p>
+            <div *ngFor="let txVout of transfer[index]?.TxVouts">
+              <div class="info-address"><a class="link-btn" (click)=gotoAddr(txVout?.address) routerLink="/address/{{txVout?.address}}">{{ txVout?.address }}</a></div>
               <div class="info-amount">
-                <span>{{ txVout.value | number: '1.0-8' }}</span>
-                <span class="link-btn" routerLink="/asset/{{txVout.assetId}}">{{ txVout.name }}</span>
+                <span>{{ txVout?.value | number: '1.0-8' }}</span>
+                <span class="link-btn" routerLink="/asset/{{txVout?.assetId}}">{{ txVout?.name }}</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="tran-info" *ngIf="show[index] && transferType[index] === 1 && transfer[index] !== null">
+        <div class="tran-info" *ngIf="show[index] && transferType[index] === 1 && transfer[index].length > 0">
           <div class="tran-info-from">
             <p class="info-title" i18n>Sent from</p>
             <div *ngFor="let txfrom of transfer[index]">
-              <div class="info-address"><a class="link-btn" (click)="gotoAddr(txfrom.from)" routerLink="/address/{{txfrom.from}}">{{ txfrom.from }}</a></div>
+              <div class="info-address"><a class="link-btn" (click)="gotoAddr(txfrom?.from)" routerLink="/address/{{txfrom?.from}}">{{ txfrom?.from }}</a></div>
               <div class="info-amount">
-                <span>{{ txfrom.value | number: '1.0-8' }}</span>
-                <span class="link-btn" routerLink="/nep5/{{txfrom.assetId}}">{{ txfrom.name }}</span>
+                <span>{{ txfrom?.value | number: '1.0-8' }}</span>
+                <span class="link-btn" routerLink="/nep5/{{txfrom?.assetId}}">{{ txfrom?.name }}</span>
               </div>
             </div>
           </div>
@@ -65,10 +65,10 @@
           <div class="tran-info-to">
             <p class="info-title" i18n>Sent to</p>
             <div *ngFor="let txto of transfer[index]">
-              <div class="info-address"><a class="link-btn" (click)="gotoAddr(txto.to)" routerLink="/address/{{txto.to}}">{{ txto.to }}</a></div>
+              <div class="info-address"><a class="link-btn" (click)="gotoAddr(txto?.to)" routerLink="/address/{{txto?.to}}">{{ txto?.to }}</a></div>
               <div class="info-amount">
-                <span>{{ txto.value | number: '1.0-8' }}</span>
-                <span class="link-btn" routerLink="/nep5/{{txto.assetId}}">{{ txto.name }}</span>
+                <span>{{ txto?.value | number: '1.0-8' }}</span>
+                <span class="link-btn" routerLink="/nep5/{{txto?.assetId}}">{{ txto?.name }}</span>
               </div>
             </div>
           </div>

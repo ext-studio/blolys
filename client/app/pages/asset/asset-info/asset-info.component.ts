@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { GlobalService } from '../../../core';
 import { Router } from '@angular/router';
+import { AssetService } from '../asset.service';
 
 @Component({
   templateUrl: './asset-info.component.html',
@@ -24,67 +23,46 @@ export class AssetInfoComponent implements OnInit {
   assetId: String = this.router.url.split('/')[2];
 
   constructor(
-    private http: HttpClient,
-    private global: GlobalService,
-    private router: Router
+    private router: Router,
+    private assetService: AssetService
   ) { }
 
   ngOnInit() {
     this.getAddrByAssetid(1, this.addrPageSize);
     this.getRankByAssetid(1, this.rankPageSize);
     if (this.assetType !== 'nep5') {
-      this.http.post(`${this.global.apiDomain}/api/asset`,
-        {'method': 'getassetinfo', 'params': [this.assetId]}).subscribe((res: any) => {
-        if (res.code === 200) {
+      this.assetService.AssetInfo(this.assetId).subscribe((res: any) => {
+        if (res.result) {
           this.assetInfo = res.result;
         }
-      }, (err) => {
-        console.log(err);
       });
     } else {
-      this.http.post(`${this.global.apiDomain}/api/asset`,
-        {'method': 'getnep5info', 'params': [this.assetId]}).subscribe((res: any) => {
-        if (res.code === 200) {
+      this.assetService.Nep5Info(this.assetId).subscribe((res: any) => {
+        if (res.result) {
           this.assetInfo = res.result;
-          this.http.post(`${this.global.apiDomain}/api/asset`,
-            {'method': 'getnep5registerinfo', 'params': [this.assetInfo.id]}).subscribe((res2: any) => {
-            if (res2.code === 200) {
-              this.assetRegisterInfo = res2.result;
-            }
-          }, (err) => {
-            console.log(err);
-          });
         }
-      }, (err) => {
-        console.log(err);
       });
     }
   }
   getAddrByAssetid (pageIndex, pageSize) {
     this.recentAddress = [];
     this.isAddrProgress = true;
-    this.http.post(`${this.global.apiDomain}/api/address`,
-      { 'method': 'getaddrbyassetid', 'params': [pageIndex, pageSize, this.assetId] }).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.assetService.AddrByAssetid(pageIndex, pageSize, this.assetId).subscribe((res: any) => {
+      if (res.result) {
         this.recentAddress = res.result.data;
         this.addrPageLength = res.result.total;
         this.isAddrProgress = false;
       }
-    }, (err) => {
-      console.log(err);
     });
   }
   getRankByAssetid (pageIndex, pageSize) {
     this.rankAddr = [];
     this.isRankProgress = true;
-    this.http.post(`${this.global.apiDomain}/api/address`,
-      { 'method': 'getrankbyassetid', 'params': [pageIndex, pageSize, this.assetId] }).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.assetService.RankByAssetid(pageIndex, pageSize, this.assetId).subscribe((res: any) => {
+      if (res.result) {
         this.rankAddr = res.result.data;
         this.isRankProgress = false;
       }
-    }, (err) => {
-      console.log(err);
     });
   }
   onaddrPageGo(num: number) {

@@ -1,20 +1,20 @@
 <div class="block">
   <div class="header-title">
     <p class="header-title-info" i18n>Asset information</p>
-    <p class="header-title-address">{{assetInfo.admin}}</p>
+    <p class="header-title-address">{{assetInfo?.admin}}</p>
   </div>
   <ul class="address-info">
-    <li class="color-one width-half"><label i18n>Name</label>{{assetInfo.name}}</li>
-    <li class="color-one width-half"><label i18n>Total Supply</label>{{assetInfo.amount | number: '1.0-8'}}</li>
-    <li class="color-two width-half"><label i18n>Type</label>{{assetInfo.type}}</li>
-    <li class="color-two width-half"><label i18n>Addresses</label>{{assetInfo.addresses | number}}</li>
-    <li class="color-one width-half"><label i18n>Blocks</label><span class="link-btn" routerLink="/block/{{assetInfo.blockIndex}}">{{assetInfo.blockIndex | number}}</span></li>
-    <li class="color-one width-half"><label i18n>transactions</label>{{assetInfo.transactions | number}}</li>
-    <li class="color-two width-half"><label i18n>Precision</label>{{assetInfo.precision}}</li>
-    <li class="color-two width-half" *ngIf="assetInfo.type === 'nep5'"><label i18n>Symbol</label>{{assetInfo.symbol}}</li>
-    <li class="color-two width-half" *ngIf="assetInfo.type !== 'nep5'"><label i18n>Created</label>{{assetInfo.time * 1000 | date: 'yyyy-MM-dd'}}</li>
-    <li class="color-one width-all over-ellipsis over-ellipsis-link"><label i18n>Owner</label><span class="link-btn" routerLink="/address/{{assetInfo.admin}}">{{assetInfo.admin}}</span></li>
-    <li class="color-two width-all over-ellipsis"><label i18n>AssetId</label>{{assetInfo.assetId}}</li>
+    <li class="color-one width-half"><label i18n>Name</label>{{assetInfo?.name}}</li>
+    <li class="color-one width-half"><label i18n>Total Supply</label>{{assetInfo?.amount | number: '1.0-8'}}</li>
+    <li class="color-two width-half"><label i18n>Type</label>{{assetInfo?.type}}</li>
+    <li class="color-two width-half"><label i18n>Addresses</label>{{assetInfo?.addresses | number}}</li>
+    <li class="color-one width-half"><label i18n>Blocks</label><span class="link-btn" routerLink="/block/{{assetInfo?.blockIndex}}">{{assetInfo?.blockIndex | number}}</span></li>
+    <li class="color-one width-half"><label i18n>transactions</label>{{assetInfo?.transactions | number}}</li>
+    <li class="color-two width-half"><label i18n>Precision</label>{{assetInfo?.precision}}</li>
+    <li class="color-two width-half" *ngIf="assetInfo?.type === 'nep5'"><label i18n>Symbol</label>{{assetInfo?.symbol}}</li>
+    <li class="color-two width-half" *ngIf="assetInfo?.type !== 'nep5'"><label i18n>Created</label>{{assetInfo?.time * 1000 | date: 'yyyy-MM-dd'}}</li>
+    <li class="color-one width-all over-ellipsis over-ellipsis-link"><label i18n>Owner</label><span class="link-btn" routerLink="/address/{{assetInfo?.admin}}">{{assetInfo?.admin}}</span></li>
+    <li class="color-two width-all over-ellipsis"><label i18n>AssetId</label>{{assetInfo?.assetId}}</li>
   </ul>
   <p class="header-title-info" i18n>Recent Addresses</p>
   <table>
@@ -28,10 +28,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of recentAddress; index as index">
-        <td class="addr-min-width td-link-btn"><a class="link-btn" routerLink="/address/{{item.address}}">{{item.address}}</a></td>
-        <td>{{item.createdAt | unixTime}}</td>
-        <td class="hidden middle-hidden">{{item.lastTransactionTime | unixTime}}</td>
-        <td class="hidden">{{item.transactions | number}}</td>
+        <td class="addr-min-width td-link-btn"><a class="link-btn" routerLink="/address/{{item?.address}}">{{item?.address}}</a></td>
+        <td>{{item?.createdAt | unixTime}}</td>
+        <td class="hidden middle-hidden">{{item?.lastTransactionTime | unixTime}}</td>
+        <td class="hidden">{{item?.transactions | number}}</td>
       </tr>
     </tbody>
   </table>
@@ -54,8 +54,8 @@
     <tbody>
       <tr *ngFor="let item of rankAddr; index as index">
         <td>{{index + 1 + page * rankPageSize}}</td>
-        <td class="addr-min-width td-link-btn"><a class="link-btn" routerLink="/address/{{item.address}}">{{item.address}}</a></td>
-        <td class="hidden">{{item.balance | number: '1.0-8'}}</td>
+        <td class="addr-min-width td-link-btn"><a class="link-btn" routerLink="/address/{{item?.address}}">{{item?.address}}</a></td>
+        <td class="hidden">{{item?.balance | number: '1.0-8'}}</td>
       </tr>
     </tbody>
   </table>

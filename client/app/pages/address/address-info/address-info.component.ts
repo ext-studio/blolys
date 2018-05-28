@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { GlobalService } from '../../../core';
 import { Router } from '@angular/router';
+import { AddressService } from '../address.service';
+import { TransactionService } from '../../transaction/transaction.service';
 
 @Component({
   templateUrl: './address-info.component.html',
@@ -19,9 +19,9 @@ export class AddressInfoComponent implements OnInit {
   address: String = this.router.url.split('/')[2];
 
   constructor(
-    private http: HttpClient,
-    private global: GlobalService,
-    private router: Router
+    private router: Router,
+    private addressService: AddressService,
+    private transactionService: TransactionService
   ) { }
 
   ngOnInit() {
@@ -35,28 +35,6 @@ export class AddressInfoComponent implements OnInit {
       this.transferType[i] = -1;
     }
   }
-  getTransferByTxid (index, txid) {
-    this.http.post(`${this.global.apiDomain}/api/transactions`,
-      { 'method': 'gettransferbytxid', 'params': [txid] }).subscribe((res: any) => {
-      if (res.code === 200) {
-        this.transfer[index] = res.result;
-        this.transferType[index] = 0;
-      }
-    }, (err) => {
-      console.log(err);
-    });
-  }
-  getNep5TransferByTxid (index, txid) {
-    this.http.post(`${this.global.apiDomain}/api/transactions`,
-      { 'method': 'getnep5transferbytxid', 'params': [txid] }).subscribe((res: any) => {
-      if (res.code === 200) {
-        this.transfer[index] = res.result;
-        this.transferType[index] = 1;
-      }
-    }, (err) => {
-      console.log(err);
-    });
-  }
   showInfo (index, txid) {
     this.show[index] = !this.show[index];
     this.getTransferByTxid(index, txid);
@@ -66,32 +44,42 @@ export class AddressInfoComponent implements OnInit {
     this.getTxByAddr(1, this.transTotal);
     this.isVisible = true;
   }
-  getAddrAssets () {
-    this.http.post(`${this.global.apiDomain}/api/asset`,
-      {'method': 'getaddrassets', 'params': [this.address]}).subscribe((res: any) => {
-      if (res.code === 200) {
-        this.addrAssets = res.result;
-      }
-    }, (err) => {
-      console.log(err);
-    });
-  }
-  getTxByAddr (pageIndex, pageSize) {
-    this.http.post(`${this.global.apiDomain}/api/transactions`,
-      {'method': 'getpagetxbyaddress', 'params': [pageIndex, pageSize, this.address]}).subscribe((res: any) => {
-      if (res.code === 200) {
-        this.addrTransactions = res.result.data;
-        this.transTotal = res.result.total;
-        this.initShow();
-      }
-    }, (err) => {
-      console.log(err);
-    });
-  }
   gotoAddr (address: string) {
     this.address = address;
     this.isVisible = false;
     this.getAddrAssets();
     this.getTxByAddr(1, this.pageSize);
+  }
+  getAddrAssets () {
+    this.addressService.AddrAssets(this.address).subscribe((res: any) => {
+      if (res.result) {
+        this.addrAssets = res.result;
+      }
+    });
+  }
+  getTxByAddr (pageIndex, pageSize) {
+    this.addressService.TxByAddr(pageIndex, pageSize, this.address).subscribe((res: any) => {
+      if (res.result) {
+        this.addrTransactions = res.result.data;
+        this.transTotal = res.result.total;
+        this.initShow();
+      }
+    });
+  }
+  getTransferByTxid (index, txid) {
+    this.transactionService.TransferByTxid(txid).subscribe((res: any) => {
+      if (res.result.TxUTXO != null && res.result.TxVouts != null) {
+        this.transfer[index] = res.result;
+        this.transferType[index] = 0;
+      }
+    });
+  }
+  getNep5TransferByTxid (index, txid) {
+    this.transactionService.Nep5TransferByTxid(txid).subscribe((res: any) => {
+      if (res.result.length > 0) {
+        this.transfer[index] = res.result;
+        this.transferType[index] = 1;
+      }
+    });
   }
 }

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { GlobalService } from '../../../core';
 import { Router } from '@angular/router';
+import { TransactionService } from '../transaction.service';
 
 @Component({
   templateUrl: './transaction-info.component.html',
@@ -10,51 +8,38 @@ import { Router } from '@angular/router';
 })
 export class TransactionInfoComponent implements OnInit {
   transfer: any = [];
-  transferType: Number = 0;
+  transferType: Number = -1;
   txInfo: any = [];
   scripts: any = {};
   txid: String = this.router.url.split('/')[2];
 
   constructor(
-    private http: HttpClient,
-    private global: GlobalService,
-    private router: Router
+    private router: Router,
+    private transactionService: TransactionService
   ) { }
 
   ngOnInit() {
-    this.http.post(`${this.global.apiDomain}/api/transactions`,
-      {'method': 'gettxbytxid', 'params': [this.txid]}).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.transactionService.TxbyTxid(this.txid).subscribe((res: any) => {
+      if (res.result) {
         this.txInfo = res.result;
       }
-    }, (err) => {
-      console.log(err);
     });
-    this.http.post(`${this.global.apiDomain}/api/transactions`,
-      {'method': 'getscripts', 'params': [this.txid]}).subscribe((res: any) => {
-        if (res.code === 200) {
-          this.scripts = res.result;
-        }
-    }, (err) => {
-      console.log(err);
+    this.transactionService.Script(this.txid).subscribe((res: any) => {
+      if (res.result) {
+        this.scripts = res.result;
+      }
     });
-    this.http.post(`${this.global.apiDomain}/api/transactions`,
-      { 'method': 'gettransferbytxid', 'params': [this.txid] }).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.transactionService.TransferByTxid(this.txid).subscribe((res: any) => {
+      if (res.result.TxUTXO != null && res.result.TxVouts != null) {
         this.transfer = res.result;
         this.transferType = 0;
       }
-    }, (err) => {
-      console.log(err);
     });
-    this.http.post(`${this.global.apiDomain}/api/transactions`,
-      { 'method': 'getnep5transferbytxid', 'params': [this.txid] }).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.transactionService.Nep5TransferByTxid(this.txid).subscribe((res: any) => {
+      if (res.result.length > 0) {
         this.transfer = res.result;
         this.transferType = 1;
       }
-    }, (err) => {
-      console.log(err);
     });
   }
 }

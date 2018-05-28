@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { GlobalService } from '../../../core';
+import { AssetService } from '../asset.service';
 
 @Component({
   templateUrl: './assets.component.html',
@@ -17,8 +16,7 @@ export class AssetsComponent implements OnInit {
   isProgress: Boolean = true;
 
   constructor(
-    private http: HttpClient,
-    private global: GlobalService
+    private assetService: AssetService
   ) { }
 
   ngOnInit() { }
@@ -32,30 +30,24 @@ export class AssetsComponent implements OnInit {
     this.assets = [];
     this.isProgress = true;
     pageIndex = Number(pageIndex);
-    this.http.post(`${this.global.apiDomain}/api/asset`,
-      { 'method': 'getassets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.assetService.Assets(pageIndex, pageSize).subscribe((res: any) => {
+      if (res.result) {
         this.assets = res.result.data;
         this.pageLength = Math.ceil(res.result.total / this.pageSize);
         this.isProgress = false;
       }
-    }, (err) => {
-      console.log(err);
     });
   }
   getNep5Assets (pageIndex, pageSize) {
     this.assets = [];
     this.isProgress = true;
     pageIndex = Number(pageIndex);
-    this.http.post(`${this.global.apiDomain}/api/asset`,
-      { 'method': 'getnep5assets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.assetService.Assets(pageIndex, pageSize).subscribe((res: any) => {
+      if (res.result) {
         this.assets = res.result.data;
         this.pageLength = Math.ceil(res.result.total / this.pageSize);
         this.isProgress = false;
       }
-    }, (err) => {
-      console.log(err);
     });
   }
   changeAssetType (type) {

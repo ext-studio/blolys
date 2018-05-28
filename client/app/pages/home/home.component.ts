@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { GlobalService } from '../../core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { AlertComponent } from '../../shared';
+
+import { BlockService } from '../block/block.service';
+import { AddressService } from '../address/address.service';
+import { TransactionService } from '../transaction/transaction.service';
 
 @Component({
   templateUrl: './home.component.html',
@@ -18,38 +20,27 @@ export class HomeComponent implements OnInit {
     this.searchForm = this.builder.group({
       searchName: ['', [Validators.required]]
     });
-    this.http.post(`${this.global.apiDomain}/api/index`,
-      { 'method': 'queryallcounts' }).subscribe((res: any) => {
-      if (res.code === 200) {
-        this.total.assets = res.result.assetCounts;
-        this.total.blocks = res.result.blockCounts ;
-        this.total.addresses = res.result.addressCounts;
-        this.total.transactions = res.result.txCounts;
+    this.blockService.Allcounts().subscribe((res: any) => {
+      if (res.result) {
+        this.total = res.result;
       }
-    }, (err) => {
-      console.log(err);
     });
     setInterval(() => {
-      this.http.post(`${this.global.apiDomain}/api/index`,
-        { 'method': 'queryallcounts' }).subscribe((res: any) => {
-        if (res.code === 200) {
-          this.total.assets = res.result.assetCounts;
-          this.total.blocks = res.result.blockCounts ;
-          this.total.addresses = res.result.addressCounts;
-          this.total.transactions = res.result.txCounts;
+      this.blockService.Allcounts().subscribe((res: any) => {
+        if (res.result) {
+          this.total = res.result;
         }
-      }, (err) => {
-        console.log(err);
       });
     }, 20000);
   }
 
   constructor(
-    private http: HttpClient,
-    private global: GlobalService,
     private builder: FormBuilder,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private blockService: BlockService,
+    private addressService: AddressService,
+    private transactionService: TransactionService
   ) { }
 
   applyFilter($event) {
@@ -57,27 +48,21 @@ export class HomeComponent implements OnInit {
       let value = $event.target.value;
       value = value.trim(); // Remove whitespace
       if (value[0] === 'A' && value.length === 34) {
-        this.http.post(`${this.global.apiDomain}/api/asset`,
-          {'method': 'getaddrassets', 'params': [value]}).subscribe((res: any) => {
-          if (res.code === 200) {
+        this.addressService.AddrAssets(value).subscribe((res: any) => {
+          if (res.result === 200) {
             this.router.navigate([`/address/${value}`]);
           } else {
             this.router.navigate([`/search/${value}`]);
           }
-        }, (err) => {
-          console.log(err);
         });
       } else if (value[0] === '0' && value[1] === 'x' && value.length === 66) {
         value = value.toLowerCase(); // Datasource defaults to lowercase matches
-        this.http.post(`${this.global.apiDomain}/api/transactions`,
-          {'method': 'getscripts', 'params': [value]}).subscribe((res: any) => {
-            if (res.code === 200) {
-              this.router.navigate([`/transaction/${value}`]);
-            } else {
-              this.router.navigate([`/search/${value}`]);
-            }
-        }, (err) => {
-          console.log(err);
+        this.transactionService.Script(value).subscribe((res: any) => {
+          if (res.result === 200) {
+            this.router.navigate([`/transaction/${value}`]);
+          } else {
+            this.router.navigate([`/search/${value}`]);
+          }
         });
       } else if (Number(value[0]) >= 0) {
         let target: any = 0;
@@ -91,15 +76,12 @@ export class HomeComponent implements OnInit {
           }
         }
         if (target >= 0) {
-          this.http.post(`${this.global.apiDomain}/api/block`,
-            { 'method': 'getblockbyheight', 'params': [target]} ).subscribe((res: any) => {
-            if (res.code === 200) {
+          this.blockService.BlockByHeight(target).subscribe((res: any) => {
+            if (res.result === 200) {
               this.router.navigate([`/block/${target}`]);
             } else {
               this.router.navigate([`/search/${value}`]);
             }
-          }, (err) => {
-            console.log(err);
           });
         }
       } else {

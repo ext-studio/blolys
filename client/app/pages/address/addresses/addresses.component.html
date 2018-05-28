@@ -11,10 +11,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of addresses; index as index">
-        <td class="addr-min-width td-link-btn"><a class="link-btn" routerLink="/address/{{item.address}}">{{item.address}}</a></td>
-        <td>{{item.createdAt | unixTime}}</td>
-        <td class="hidden">{{item.lastTransactionTime | unixTime}}</td>
-        <td class="hidden">{{item.transactions | number}}</td>
+        <td class="addr-min-width td-link-btn"><a class="link-btn" routerLink="/address/{{item?.address}}">{{item?.address}}</a></td>
+        <td>{{item?.createdAt | unixTime}}</td>
+        <td class="hidden">{{item?.lastTransactionTime | unixTime}}</td>
+        <td class="hidden">{{item?.transactions | number}}</td>
       </tr>
     </tbody>
   </table>

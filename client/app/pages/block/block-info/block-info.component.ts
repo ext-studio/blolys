@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { GlobalService } from '../../../core';
 import { Router } from '@angular/router';
+
+import { BlockService } from '../block.service';
+import { TransactionService } from '../../transaction/transaction.service';
 
 @Component({
   templateUrl: './block-info.component.html',
@@ -20,19 +20,16 @@ export class BlockInfoComponent implements OnInit {
   isVisible: Boolean = false;
   height: number = Number(this.router.url.split('/')[2]);
   constructor(
-    private http: HttpClient,
-    private global: GlobalService,
-    private router: Router
+    private router: Router,
+    private blockService: BlockService,
+    private transactionService: TransactionService
   ) { }
 
   ngOnInit() {
-    this.http.post(`${this.global.apiDomain}/api/index`,
-      { 'method': 'queryallcounts' }).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.blockService.Allcounts().subscribe((res: any) => {
+      if (res.result) {
         this.totalBlocks = res.result.blockCounts ;
       }
-    }, (err) => {
-      console.log(err);
     });
     this.getBlockByHeight();
     this.getTxByHeight(1, this.pageSize);
@@ -45,47 +42,35 @@ export class BlockInfoComponent implements OnInit {
     }
   }
   getTxByHeight(pageIndex, pageSize) {
-    this.http.post(`${this.global.apiDomain}/api/transactions`,
-      { 'method': 'gettxbyheight', 'params': [pageIndex, pageSize, this.height] }).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.blockService.TxByHeight(pageIndex, pageSize, this.height).subscribe((res: any) => {
+      if (res.result) {
         this.blockTransactions = res.result.data;
         this.transTotal = res.result.total;
         this.initShow();
       }
-    }, (err) => {
-      console.log(err);
     });
   }
   getBlockByHeight() {
-    this.http.post(`${this.global.apiDomain}/api/block`,
-      { 'method': 'getblockbyheight', 'params': [this.height]} ).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.blockService.BlockByHeight(this.height).subscribe((res: any) => {
+      if (res.result) {
         this.blockInfo = res.result;
       }
-    }, (err) => {
-      console.log(err);
     });
   }
   getTransferByTxid (index, txid) {
-    this.http.post(`${this.global.apiDomain}/api/transactions`,
-      { 'method': 'gettransferbytxid', 'params': [txid] }).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.transactionService.TransferByTxid(txid).subscribe((res: any) => {
+      if (res.result.TxUTXO != null && res.result.TxVouts != null) {
         this.transfer[index] = res.result;
         this.transferType[index] = 0;
       }
-    }, (err) => {
-      console.log(err);
     });
   }
   getNep5TransferByTxid (index, txid) {
-    this.http.post(`${this.global.apiDomain}/api/transactions`,
-      { 'method': 'getnep5transferbytxid', 'params': [txid] }).subscribe((res: any) => {
-      if (res.code === 200) {
+    this.transactionService.Nep5TransferByTxid(txid).subscribe((res: any) => {
+      if (res.result.length > 0) {
         this.transfer[index] = res.result;
         this.transferType[index] = 1;
       }
-    }, (err) => {
-      console.log(err);
     });
   }
   showInfo (index, txid) {
