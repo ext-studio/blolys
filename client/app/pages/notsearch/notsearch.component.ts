@@ -57,7 +57,7 @@ export class NotsearchComponent implements OnInit {
             target = target * 10 + Number(value[i]);
           } else if (value[i] !== ',' && value[i] !== '，') {
             this.dialog.open(AlertComponent,
-              {data: {type: 'warn', title: 'Search error', body: '您的输入有误，请重新输入', ok: '确定', no: '取消'}});
+              {data: {type: 'warn', title: 'Search error', body: 'Your input is wrong, please re-enter', ok: 'ok', no: 'cancel'}});
           }
         }
         if (target > 0) {
@@ -71,7 +71,7 @@ export class NotsearchComponent implements OnInit {
         }
       } else {
         this.dialog.open(AlertComponent,
-          {data: {type: 'warn', title: 'Search error', body: '您的输入有误，请重新输入', ok: '确定', no: '取消'}});
+          {data: {type: 'warn', title: 'Search error', body: 'Your input is wrong, please re-enter', ok: 'ok', no: 'cancel'}});
       }
     }
   }

@@ -31,24 +31,32 @@
   margin-bottom: 20px;
 }
 .info {
+  box-shadow: 3px 3px 25px #0a1331;
   width: 100%;
+  background: #18244f;
+  border-radius: 2px;
   overflow: hidden;
   li {
     list-style: none;
-    display: inline-block;
     box-sizing: border-box;
-    text-align: center;
-    padding-top: 40px;
+    position: relative;
+    float: left;   
+    div {
+      position: absolute;
+      bottom: 40px;
+      text-align: center;
+      width: 100%;
+      padding: 0 10px;
+    }
     p {
-      word-wrap: break-word;
+      word-break: break-all; 
       margin-bottom: 10px;
     }
     span {
+      bottom: 0;
       font-size: 14px;
+      padding-bottom: 40px;
       color: #134699; 
-      &:nth-child(9) {
-        color: #1770ea;
-      }
     }
   }
 }
@@ -60,6 +68,7 @@
 .tran-info {
   padding: 0 10px;
   background: #18244f;
+  box-shadow: 3px 3px 25px #0a1331;
   .tran-info-from {
     text-align: center;
     margin-top: 30px;
@@ -118,6 +127,23 @@
       }
     }
   }
+  .info {
+    li {
+      width: 33.33%;
+      &:not(:nth-child(3n)) {
+        border-right: 1px solid #203067;
+      }
+      &:nth-child(-n + 3) {
+        border-bottom: 1px solid #203067;
+      }
+      .big-font-size {
+        font-size: 24px;
+      }
+      .small-font-size {
+        font-size: 14px;
+      }
+    }
+  }
   .tran-info {
     display: flex;  
     flex-wrap: wrap;
@@ -140,6 +166,23 @@
   }
 }
 @media screen and (max-width: 869px) {
+  .info {
+    li {
+      width: 50%;
+      &:not(:nth-child(2n)) {
+        border-right: 1px solid #203067;
+      }
+      &:nth-child(-n + 4) {
+        border-bottom: 1px solid #203067;
+      }
+      .big-font-size {
+        font-size: 18px;
+      }
+      .small-font-size {
+        font-size: 14px;
+      }
+    }
+  }
   .tran-info {
     display: flex;  
     flex-wrap: wrap;
@@ -161,6 +204,9 @@
   .header-title-info {
     font-size: 30px;
   }
+  .info li {
+    height: 150px;
+  }
 }
 @media screen and (max-width: 419px) {
   .info, .tran-info, .script {
@@ -168,6 +214,16 @@
   }
   .header-title-info {
     font-size: 22px;
+  }
+  .info {
+    li {
+      width: 100%;
+      min-height: 120px;
+      float: left;
+      &:not(:last-child) {
+        border-bottom: 1px solid #203067;
+      }
+    }
   }
 }
 :host {

@@ -42,7 +42,7 @@ export class AssetsComponent implements OnInit {
     this.assets = [];
     this.isProgress = true;
     pageIndex = Number(pageIndex);
-    this.assetService.Assets(pageIndex, pageSize).subscribe((res: any) => {
+    this.assetService.Nep5Assets(pageIndex, pageSize).subscribe((res: any) => {
       if (res.result) {
         this.assets = res.result.data;
         this.pageLength = Math.ceil(res.result.total / this.pageSize);
@@ -51,10 +51,12 @@ export class AssetsComponent implements OnInit {
     });
   }
   changeAssetType (type) {
-    if (Number(type) === 0) {
+    if (type === 'Assets') {
       this.assetType = 'Assets';
+      // this.getAssets(1, this.pageSize);
     } else {
       this.assetType = 'Nep5';
+      // this.getNep5Assets(1, this.pageSize);
     }
     this.pageIndex = 1;
     this.onpageGo(1);

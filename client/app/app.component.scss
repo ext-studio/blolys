@@ -13,17 +13,15 @@
   font-size: 16px;
   color: #1770ea !important;
   .wide-title {
-    cursor: pointer;
     text-align: left;
     width: 25%;
+    height: 100%;
     margin-right: 16px;
-    vertical-align: middle;
+    padding-top: 14px;
     img {
-      position: absolute;
-      display: inline-block;
-      width: 120px;
-      height: 32px;
-      bottom: 16px;
+      cursor: pointer;
+      width: 126px;
+      height: 36px;
     }
   }
   .menu {

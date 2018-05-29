@@ -12,7 +12,7 @@ export class AssetInfoComponent implements OnInit {
   recentAddress: any = [];
   rankAddr: any = [];
   assetInfo: any = [];
-  assetRegisterInfo: any;
+  assetRegisterInfo: any = [];
   pageIndex: any = 0;
   page: Number = 0;
   addrPageSize: any = 5;
@@ -40,6 +40,11 @@ export class AssetInfoComponent implements OnInit {
       this.assetService.Nep5Info(this.assetId).subscribe((res: any) => {
         if (res.result) {
           this.assetInfo = res.result;
+          this.assetService.Nep5RegisterInfo(res.result.id).subscribe((res2: any) => {
+            if (res2.result) {
+              this.assetRegisterInfo = res2.result;
+            }
+          });
         }
       });
     }

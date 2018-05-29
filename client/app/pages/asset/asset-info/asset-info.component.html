@@ -16,7 +16,15 @@
     <li class="color-one width-all over-ellipsis over-ellipsis-link"><label i18n>Owner</label><span class="link-btn" routerLink="/address/{{assetInfo?.admin}}">{{assetInfo?.admin}}</span></li>
     <li class="color-two width-all over-ellipsis"><label i18n>AssetId</label>{{assetInfo?.assetId}}</li>
   </ul>
-  <p class="header-title-info" i18n>Recent Addresses</p>
+  <p class="header-title-info"  *ngIf="assetInfo?.type === 'nep5'" i18n>Asset register information</p>
+  <ul class="address-info" *ngIf="assetInfo?.type === 'nep5'">
+    <li class="color-one width-half"><label i18n>Name</label>{{assetRegisterInfo?.name}}</li>
+    <li class="color-one width-half"><label i18n>Version</label>{{assetRegisterInfo?.version}}</li>
+    <li class="color-two width-half"><label i18n>Author</label>{{assetRegisterInfo?.author}}</li>
+    <li class="color-two width-half"><label i18n>Email</label>{{assetRegisterInfo?.email}}</li>
+    <li class="color-one width-all over-ellipsis"><label i18n>Description</label>{{assetRegisterInfo?.description}}</li>
+  </ul>
+  <p class="header-title-info" i18n>Recent addresses</p>
   <table>
     <thead>
       <tr>
@@ -42,7 +50,7 @@
     [pageLength]="addrPageLength"
     (onpageGo)="onaddrPageGo($event)">
   </app-paginator>
-  <p class="header-title-info" i18n>Balance Rank</p>
+  <p class="header-title-info" i18n>Balance rank</p>
   <table>
     <thead>
       <tr>

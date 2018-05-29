@@ -20,7 +20,7 @@ export class TransactionsComponent implements OnInit {
     private transactionService: TransactionService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {}
   initShow () {
     for (let i = 0; i < this.pageSize; i++) {
       this.show[i] = false;

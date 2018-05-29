@@ -7,9 +7,6 @@ import { HomeComponent } from './pages/home';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent }
-  // {
-  //   path: '', redirectTo: 'mainnet', pathMatch: 'full'
-  // },
 ];
 
 @NgModule({

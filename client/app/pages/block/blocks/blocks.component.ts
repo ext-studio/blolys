@@ -11,12 +11,11 @@ export class BlocksComponent implements OnInit {
   pageSize: any = 16;
   pageLength: number;
   isProgress: Boolean = true;
-
   constructor(
-    private blockService: BlockService
+    private blockService: BlockService,
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {}
   getIssues(pageIndex, pageSize) {
     this.blocks = [];
     this.isProgress = true;
