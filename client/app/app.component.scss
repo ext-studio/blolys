@@ -183,17 +183,12 @@
   text-align: center;
   padding: 0 !important;
 }
-@media screen and (max-width: 869px) {
-  .main {
-    padding: 0 10px;
-  }
-}
 @media screen and (min-width: 420px) {
   .top-nav {
     margin-bottom: 70px !important;
   }
   .main {
-    padding: 0 20px;
+    padding: 0 20px 10px 20px;
   }
 }
 @media screen and (max-width: 419px) {
@@ -201,7 +196,7 @@
     margin-bottom: 30px !important;
   }
   .main {
-    padding: 0 10px;
+    padding: 0 10px 10px 10px;
   }
 }
 

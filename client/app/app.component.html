@@ -14,17 +14,17 @@
         <button class="menu-item" [ngClass]="{active: currentPage.indexOf('asset') >= 0 || currentPage.indexOf('nep5') >= 0}" routerLink="/assets" i18n>Assets</button>
       </div>
       <div class="lang-dropdown dropdown">
-        <button class="dropbtn">English<mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></button>
+        <button class="dropbtn"><span i18n>Language</span><mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></button>
         <div class="dropdown-content lang-dropdown-content">
-          <a href="javascript:;">English</a>
-          <a href="javascript:;">中文繁体</a>
+          <a href="javascript:;" i18n>English</a>
+          <a href="javascript:;" i18n>Chinese</a>
         </div>
       </div>
       <div class="net-dropdown dropdown">
-        <button class="dropbtn"><span>MainNet</span><mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></button>
+        <button class="dropbtn"><span i18n>Net</span><mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></button>
         <div class="dropdown-content net-dropdown-content">
-          <a href="javascript: ;" i18n>MainNet</a>
-          <a href="javascript: ;" i18n>TestNet</a>
+          <a href="javascript: ;" (click)="alertDialog()" i18n>MainNet</a>
+          <a href="javascript: ;" (click)="alertDialog()" i18n>TestNet</a>
         </div>
       </div>
     </mat-toolbar-row>
@@ -45,14 +45,14 @@
             <a href="javascript: ;" class="dropbtn" i18n>Language</a>
             <div class="dropdown-content lang2-dropdown-content">
               <a href="javascript: ;" i18n>English</a>
-              <a href="javascript: ;" i18n>Chinese</a>
+              <a href="javascript: ;" i18n>chinese</a>
             </div>
           </div>
           <div class="dropdown net2-dropdown">
             <a href="javascript: ;" class="dropbtn" i18n>Net</a>
             <div class="dropdown-content net2-dropdown-content">
-              <a href="javascript: ;" i18n>MainNet</a>
-              <a href="javascript: ;" i18n>TestNet</a>
+              <a href="javascript: ;" (click)="alertDialog()" i18n>MainNet</a>
+              <a href="javascript: ;" (click)="alertDialog()" i18n>TestNet</a>
             </div>
           </div>
         </div>

@@ -1,6 +1,8 @@
 import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterEvent, NavigationEnd } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { AlertComponent } from './shared';
 
 @Component({
   selector: 'app-blolys',
@@ -13,6 +15,7 @@ export class AppComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private dialog: MatDialog,
   ) {
     //
   }
@@ -36,5 +39,9 @@ export class AppComponent implements OnInit {
       this.isWide = true;
       return;
     }
+  }
+  alertDialog() {
+    this.dialog.open(AlertComponent,
+      {data: {type: 'accent', title: 'Search error', body: 'coming soon...', ok: 'ok', no: 'cancel'}});
   }
 }
