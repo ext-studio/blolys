@@ -18,12 +18,12 @@ export class TransactionService {
     private http: HttpClient,
     private global: GlobalService
   ) { }
-  public TransferByTxid(txid): Observable<any> {
-    this.getTransferByTxid(txid);
+  public TransferByTxid(index, txid): Observable<any> {
+    this.getTransferByTxid(index, txid);
     return this.$transfer.publish().refCount();
   }
-  public Nep5TransferByTxid(txid): Observable<any> {
-    this.getNep5TransferByTxid(txid);
+  public Nep5TransferByTxid(index, txid): Observable<any> {
+    this.getNep5TransferByTxid(index, txid);
     return this.$transfer.publish().refCount();
   }
   public Trans(pageIndex, pageSize, transType): Observable<any> {
@@ -39,20 +39,22 @@ export class TransactionService {
     return this.$script.publish().refCount();
   }
 
-  public getTransferByTxid (txid) {
+  public getTransferByTxid (index, txid) {
     this.http.post(`${this.global.apiDomain}/api/transactions`,
       { 'method': 'gettransferbytxid', 'params': [txid] }).subscribe((res: any) => {
       if (res.code === 200 && res.result.TxUTXO != null && res.result.TxVouts != null) {
+        res.index = index;
         this.$transfer.next(res);
       }
     }, (err) => {
       console.log(err);
     });
   }
-  public getNep5TransferByTxid (txid) {
+  public getNep5TransferByTxid (index, txid) {
     this.http.post(`${this.global.apiDomain}/api/transactions`,
       { 'method': 'getnep5transferbytxid', 'params': [txid] }).subscribe((res: any) => {
       if (res.code === 200 && res.result.length > 0) {
+        res.index = index;
         this.$transfer.next(res);
       }
     }, (err) => {

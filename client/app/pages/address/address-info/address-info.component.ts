@@ -37,8 +37,10 @@ export class AddressInfoComponent implements OnInit {
   }
   showInfo (index, txid) {
     this.show[index] = !this.show[index];
-    this.getTransferByTxid(index, txid);
-    this.getNep5TransferByTxid(index, txid);
+    if (this.show[index]) {
+      this.getTransferByTxid(index, txid);
+      this.getNep5TransferByTxid(index, txid);
+    }
   }
   showAllTrans () {
     this.getTxByAddr(1, this.transTotal);
@@ -67,18 +69,18 @@ export class AddressInfoComponent implements OnInit {
     });
   }
   getTransferByTxid (index, txid) {
-    this.transactionService.TransferByTxid(txid).subscribe((res: any) => {
+    this.transactionService.TransferByTxid(index, txid).subscribe((res: any) => {
       if (res.result.TxUTXO != null && res.result.TxVouts != null) {
-        this.transfer[index] = res.result;
-        this.transferType[index] = 0;
+        this.transfer[res.index] = res.result;
+        this.transferType[res.index] = 0;
       }
     });
   }
   getNep5TransferByTxid (index, txid) {
-    this.transactionService.Nep5TransferByTxid(txid).subscribe((res: any) => {
+    this.transactionService.Nep5TransferByTxid(index, txid).subscribe((res: any) => {
       if (res.result.length > 0) {
-        this.transfer[index] = res.result;
-        this.transferType[index] = 1;
+        this.transfer[res.index] = res.result;
+        this.transferType[res.index] = 1;
       }
     });
   }
