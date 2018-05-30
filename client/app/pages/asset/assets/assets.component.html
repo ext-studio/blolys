@@ -1,12 +1,12 @@
 <div class="block">
 	<div class="header-title">
     <span class="header-title-info" i18n>Assets</span>
-    <div class="dropdown">
-      <button class="dropbtn">{{assetType}}<mat-icon class="icon-link">keyboard_arrow_down</mat-icon></button>
-      <div class="dropdown-content">
-        <a href="javascript:;" (click)="changeAssetType('Assets')">Assets</a>
-        <a href="javascript:;" (click)="changeAssetType('Nep5')">Nep5</a>
-      </div>
+    <div class="pc-menu">
+      <button mat-raised-button class="pc-menu-btn" [matMenuTriggerFor]="pcAsset">{{assetType}}<mat-icon class="icon-link">keyboard_arrow_down</mat-icon></button>
+      <mat-menu #pcAsset="matMenu">
+        <button class="pc-menu-item" mat-menu-item (click)="changeAssetType('Assets')">Assets</button>
+        <button class="pc-menu-item" mat-menu-item (click)="changeAssetType('Nep5')">Nep5</button>
+      </mat-menu>
     </div>
   </div>
   <table>

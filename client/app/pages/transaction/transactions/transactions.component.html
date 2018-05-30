@@ -1,19 +1,19 @@
 <div class="block">
   <div class="header-title">
     <span class="header-title-info" i18n>Transactions</span>
-    <div class="dropdown">
-      <button class="dropbtn">{{transType | transType}}<mat-icon class="icon-link">keyboard_arrow_down</mat-icon></button>
-      <div class="dropdown-content">
-        <a href="javascript:;" (click)="changeTransType('all')">Any</a>
-        <a href="javascript:;" (click)="changeTransType('ContractTransaction')">Contract</a>
-        <a href="javascript:;" (click)="changeTransType('InvocationTransaction')">Invocation</a>
-        <a href="javascript:;" (click)="changeTransType('ClaimTransaction')">Claim</a>
-        <a href="javascript:;" (click)="changeTransType('MinerTransaction')">Miner</a>
-        <a href="javascript:;" (click)="changeTransType('RegisterTransaction')">Register</a>
-        <a href="javascript:;" (click)="changeTransType('IssueTransaction')">Issue</a>
-        <a href="javascript:;" (click)="changeTransType('EnrollmentTransaction')">Enrollment</a>
-        <a href="javascript:;" (click)="changeTransType('PublishTransaction')">Publish</a>
-      </div>
+    <div class="pc-menu">
+      <button mat-raised-button class="pc-menu-btn" [matMenuTriggerFor]="pcTrans">{{transType | transType}}<mat-icon class="icon-link">keyboard_arrow_down</mat-icon></button>
+      <mat-menu #pcTrans="matMenu">
+        <button class="pc-menu-item" mat-menu-item (click)="changeTransType('all')">Any</button>
+        <button class="pc-menu-item" mat-menu-item (click)="changeTransType('ContractTransaction')">Contract</button>
+        <button class="pc-menu-item" mat-menu-item (click)="changeTransType('InvocationTransaction')">Invocation</button>
+        <button class="pc-menu-item" mat-menu-item (click)="changeTransType('ClaimTransaction')">Claim</button>
+        <button class="pc-menu-item" mat-menu-item (click)="changeTransType('MinerTransaction')">Miner</button>
+        <button class="pc-menu-item" mat-menu-item (click)="changeTransType('RegisterTransaction')">Register</button>
+        <button class="pc-menu-item" mat-menu-item (click)="changeTransType('IssueTransaction')">Issue</button>
+        <button class="pc-menu-item" mat-menu-item (click)="changeTransType('EnrollmentTransaction')">Enrollment</button>
+        <button class="pc-menu-item" mat-menu-item (click)="changeTransType('PublishTransaction')">Publish</button>
+      </mat-menu>
     </div>
   </div>
   <div class="tran-list">

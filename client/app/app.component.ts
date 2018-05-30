@@ -10,8 +10,10 @@ import { AlertComponent } from './shared';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public isWide: Boolean = true;
-  public currentPage: String = this.router.url;
+  isWide: Boolean = true;
+  currentPage: String = this.router.url;
+  dropContentOpened: Boolean = false;
+
   constructor(
     private http: HttpClient,
     private router: Router,

@@ -14,7 +14,7 @@
         <td class="addr-min-width td-link-btn"><a class="link-btn" routerLink="/address/{{item?.address}}">{{item?.address}}</a></td>
         <td>{{item?.createdAt | unixTime}}</td>
         <td class="hidden">{{item?.lastTransactionTime | unixTime}}</td>
-        <td class="hidden">{{item?.transactions | number}}</td>
+        <td class="hidden">{{item?.transAsset + item?.transNep5 | number}}</td>
       </tr>
     </tbody>
   </table>

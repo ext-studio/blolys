@@ -57,8 +57,10 @@ export class TransactionsComponent implements OnInit {
   }
   showInfo (index, txid) {
     this.show[index] = !this.show[index];
-    this.getTransferByTxid(index, txid);
-    this.getNep5TransferByTxid(index, txid);
+    if (this.show[index]) {
+      this.getTransferByTxid(index, txid);
+      this.getNep5TransferByTxid(index, txid);
+    }
   }
   changeTransType (type: string) {
     this.transType = type;
