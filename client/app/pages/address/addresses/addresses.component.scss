@@ -24,13 +24,8 @@ table {
   }
   th, td {
     flex: 1;
-    white-space:nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    // height: 14px;
-    a {
-      display: inline-block;
-    }
   }
   .td-link-btn {
     color: #1770ea;

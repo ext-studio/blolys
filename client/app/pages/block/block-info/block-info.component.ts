@@ -59,7 +59,7 @@ export class BlockInfoComponent implements OnInit {
   }
   getTransferByTxid (index, txid) {
     this.transactionService.TransferByTxid(index, txid).subscribe((res: any) => {
-      if (res.result.TxUTXO != null && res.result.TxVouts != null) {
+      if (res.result.TxUTXO != null || res.result.TxVouts != null) {
         this.transfer[res.index] = res.result;
         this.transferType[res.index] = 0;
       }

@@ -42,7 +42,7 @@ export class TransactionService {
   public getTransferByTxid (index, txid) {
     this.http.post(`${this.global.apiDomain}/api/transactions`,
       { 'method': 'gettransferbytxid', 'params': [txid] }).subscribe((res: any) => {
-      if (res.code === 200 && res.result.TxUTXO != null && res.result.TxVouts != null) {
+      if (res.code === 200 && (res.result.TxUTXO != null || res.result.TxVouts != null)) {
         res.index = index;
         this.$transfer.next(res);
       }

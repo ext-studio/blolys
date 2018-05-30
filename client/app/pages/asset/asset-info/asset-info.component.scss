@@ -43,8 +43,6 @@
     display: inline-block;
     box-sizing: border-box;
     text-align: left;
-    padding-left: 30px;
-    padding-right: 10px;
     min-height: 50px;
     line-height: 50px;
     label {
@@ -68,13 +66,8 @@ table {
   }
   th, td {
     flex: 1;
-    white-space:nowrap;
     overflow: hidden;
-    // height: 14px;
     text-overflow: ellipsis;
-    a {
-      display: inline-block;
-    }
   }
   .td-link-btn {
     color: #1770ea;
@@ -133,6 +126,9 @@ table {
 @media screen and (min-width: 420px) {
   .address-info{
     margin-bottom: 70px;
+    li {
+      padding: 0 30px;
+    }
   }
   .header-title-info {
     font-size: 30px;
@@ -144,6 +140,9 @@ table {
 @media screen and (max-width: 419px) {
   .address-info {
     margin-bottom: 30px;
+    li {
+      padding: 0 10px;
+    }
   }
   .header-title-info {
     font-size: 22px;

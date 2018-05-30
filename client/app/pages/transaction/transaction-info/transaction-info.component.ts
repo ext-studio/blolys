@@ -29,13 +29,13 @@ export class TransactionInfoComponent implements OnInit {
         this.scripts = res.result;
       }
     });
-    this.transactionService.TransferByTxid(1, this.txid).subscribe((res: any) => {
+    this.transactionService.TransferByTxid('1', this.txid).subscribe((res: any) => {
       if (res.result.TxUTXO != null && res.result.TxVouts != null) {
         this.transfer = res.result;
         this.transferType = 0;
       }
     });
-    this.transactionService.Nep5TransferByTxid(1, this.txid).subscribe((res: any) => {
+    this.transactionService.Nep5TransferByTxid('1', this.txid).subscribe((res: any) => {
       if (res.result.length > 0) {
         this.transfer = res.result;
         this.transferType = 1;

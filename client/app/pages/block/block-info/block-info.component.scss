@@ -10,7 +10,8 @@
 }
 .over-ellipsis {
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 .link-btn {
   color: #1770ea;
@@ -111,12 +112,8 @@
     height: 50px;
     .col {
       flex: 1;
-      // height: 14px;
       overflow: hidden;
       text-overflow: ellipsis;
-      a {
-        display: inline-block;
-      }
     }
   }
   .td-link-btn {
