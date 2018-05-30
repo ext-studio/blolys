@@ -8,8 +8,8 @@
     "build": "ng build --prod",
     "lint": "ng lint",
     "prebuild-i18n": "ng xi18n --output-path client/i18n",
-    "build:all": "yarn build && yarn build-i18n:tw",
-    "build-i18n:tw": "ng build --output-path=dist/tw --aot -prod -vc=true --bh /tw/ --i18n-file=client/i18n/messages.tw.xlf --i18n-format=xlf --locale=zh"
+    "build:all": "yarn build && yarn build-i18n:cn",
+    "build-i18n:cn": "ng build --output-path=dist/cn --aot -prod -vc=true --bh /cn/ --i18n-file=client/i18n/messages.cn.xlf --i18n-format=xlf --locale=zh"
   },
   "private": true,
   "dependencies": {
