@@ -7,6 +7,7 @@
     "start": "ng serve",
     "build": "ng build --prod",
     "lint": "ng lint",
+    "http": "http-server dist",
     "prebuild-i18n": "ng xi18n --output-path client/i18n",
     "build:all": "yarn build && yarn build-i18n:cn",
     "build-i18n:cn": "ng build --output-path=dist/cn --aot -prod -vc=true --bh /cn/ --i18n-file=client/i18n/messages.cn.xlf --i18n-format=xlf --locale=zh"
@@ -25,6 +26,7 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "core-js": "^2.4.1",
+    "http-server": "^0.11.1",
     "ngtouchstart": "^1.0.1",
     "protractor": "^5.3.2",
     "rxjs": "^5.5.6",
