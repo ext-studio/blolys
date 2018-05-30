@@ -220,7 +220,7 @@
       </trans-unit>
       <trans-unit id="9e039855072809fc6b11de145affb2d304d5633c" datatype="html">
         <source>Block Height, Hash, Address or Transaction id </source>        
-        <target>B区块高度、哈希、地址或者交易id </target>        
+        <target>区块高度、哈希、地址或者交易id </target>        
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
           <context context-type="linenumber">7</context>
@@ -660,7 +660,7 @@
       </trans-unit>
       <trans-unit id="df4e06359ce80f4212a8a466d43860918bb28665" datatype="html">
         <source>Precision</source>        
-        <target>精确到小数点后位数</target>        
+        <target>精度</target>        
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
           <context context-type="linenumber">13</context>
