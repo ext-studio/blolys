@@ -58,13 +58,15 @@
   color: #1770ea;
   height: 45px;
   line-height: 45px;
-  width: 120px;
   &:hover {
     color: #fff;
   }
   &:not(:last-child) {
     border-bottom: 1px solid #132f5a;
   }
+}
+.pc-phone-wide {
+  width: 120px;
 }
 ::ng-deep .links-menu {
   right: -24px !important;

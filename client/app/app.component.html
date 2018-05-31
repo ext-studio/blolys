@@ -29,13 +29,13 @@
       <div class="flex-1"></div>
       <div style="height: 24px;" mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></div>
       <mat-menu #menu="matMenu" class="links-menu">
-        <button class="pc-menu-item" mat-menu-item routerLink="/home" i18n>Home</button>
-        <button class="pc-menu-item" mat-menu-item routerLink="/blocks" i18n>Blocks</button>
-        <button class="pc-menu-item" mat-menu-item routerLink="/transactions" i18n>Transactions</button>
-        <button class="pc-menu-item" mat-menu-item routerLink="/addresses" i18n>Addresses</button>
-        <button class="pc-menu-item" mat-menu-item routerLink="/assets" i18n>Assets</button>
-        <button class="pc-menu-item" mat-menu-item [matMenuTriggerFor]="language" i18n>Language</button>
-        <button class="pc-menu-item" mat-menu-item [matMenuTriggerFor]="net" i18n>Net</button>
+        <button class="pc-menu-item pc-phone-wide" mat-menu-item routerLink="/home" i18n>Home</button>
+        <button class="pc-menu-item pc-phone-wide" mat-menu-item routerLink="/blocks" i18n>Blocks</button>
+        <button class="pc-menu-item pc-phone-wide" mat-menu-item routerLink="/transactions" i18n>Transactions</button>
+        <button class="pc-menu-item pc-phone-wide" mat-menu-item routerLink="/addresses" i18n>Addresses</button>
+        <button class="pc-menu-item pc-phone-wide" mat-menu-item routerLink="/assets" i18n>Assets</button>
+        <button class="pc-menu-item pc-phone-wide" mat-menu-item [matMenuTriggerFor]="language" i18n>Language</button>
+        <button class="pc-menu-item pc-phone-wide" mat-menu-item [matMenuTriggerFor]="net" i18n>Net</button>
       </mat-menu>
       <mat-menu #language="matMenu" class="lang-menu">
         <a class="pc-menu-item" mat-menu-item href="/#/" i18n>English</a>
