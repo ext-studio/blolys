@@ -115,6 +115,10 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
           <context context-type="linenumber">34</context>
         </context-group>
         <context-group purpose="location">
@@ -632,10 +636,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/block/block-info/block-info.component.ts</context>
           <context context-type="linenumber">49</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
-          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6409ffc5024592798a9d65610ef6c1a561557ef4" datatype="html">
