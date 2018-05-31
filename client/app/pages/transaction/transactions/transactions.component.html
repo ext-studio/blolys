@@ -72,7 +72,7 @@
           <p class="info-title" i18n *ngIf="transfer[index][0].to !== ''">Sent to</p>
           <div *ngFor="let txto of transfer[index]">
             <div class="info-address"><a class="link-btn" routerLink="/address/{{txto?.to}}">{{ txto?.to }}</a></div>
-            <div class="info-amount" *ngIf="transfer[index][0].to > 0">
+            <div class="info-amount" *ngIf="transfer[index][0].to !== ''">
               <span>{{ txto?.value | number: '1.0-8' }}</span>
               <span class="link-btn" routerLink="/nep5/{{txto?.assetId}}">{{ txto?.name }}</span>
             </div>
