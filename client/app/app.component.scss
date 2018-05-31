@@ -58,6 +58,7 @@
   color: #1770ea;
   height: 45px;
   line-height: 45px;
+  width: 120px;
   &:hover {
     color: #fff;
   }
@@ -69,7 +70,7 @@
   right: -24px !important;
 }
 ::ng-deep .lang-menu, ::ng-deep .net-menu {
-  right: 100px !important;
+  right: 121px !important;
   top: 6px !important;
 }
 ::ng-deep .mat-icon {
@@ -88,7 +89,7 @@
   top: 40px;
   background: #18244f;  
   border: 1px solid #1770ea;
-  transform-origin: top !important;
+  transform-origin: right top !important;
   min-width: 100px !important;
   max-width: 140px !important;
   text-align: center;
