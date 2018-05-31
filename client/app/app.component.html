@@ -11,7 +11,7 @@
         <button class="menu-item" [ngClass]="{active: currentPage.indexOf('address') >= 0}" routerLink="/addresses" i18n>Addresses</button>
         <button class="menu-item" [ngClass]="{active: currentPage.indexOf('asset') >= 0 || currentPage.indexOf('nep5') >= 0}" routerLink="/assets" i18n>Assets</button>
       </div>
-      <div mat-button class="pc-menu-btn" [matMenuTriggerFor]="pcLanguage"><span i18n>Language</span><mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></div>
+      <div mat-button class="pc-menu-btn" [matMenuTriggerFor]="pcLanguage" style="text-align: center;"><span i18n>Language</span><mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></div>
       <mat-menu #pcLanguage="matMenu">
         <a class="pc-menu-item" mat-menu-item href="/#/" i18n>English</a>
         <a class="pc-menu-item" mat-menu-item href="/cn/#/" i18n>Chinese</a>

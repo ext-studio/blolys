@@ -18,9 +18,7 @@ export class AppComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private dialog: MatDialog,
-  ) {
-    //
-  }
+  ) {}
   public ngOnInit() {
     this.renderMenu();
     this.router.events.subscribe((res: RouterEvent) => {
@@ -43,7 +41,12 @@ export class AppComponent implements OnInit {
     }
   }
   alertDialog() {
-    this.dialog.open(AlertComponent,
-      {data: {type: 'accent', title: 'Search error', body: 'coming soon...', ok: 'ok', no: 'cancel'}});
+    if (window.location.href.indexOf('cn') >= 0) {
+      this.dialog.open(AlertComponent,
+        {data: {type: 'accent', title: '错误', body: '即将到来', ok: '确认', no: '取消'}});
+    } else {
+      this.dialog.open(AlertComponent,
+        {data: {type: 'accent', title: 'Search error', body: 'coming soon...', ok: 'ok', no: 'cancel'}});
+    }
   }
 }

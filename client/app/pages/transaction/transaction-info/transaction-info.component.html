@@ -64,12 +64,12 @@
       </div>
     </div>
   </div>
-  <div class="tran-info" *ngIf="transferType === 1 && transfer.length > 0">
+  <div class="tran-info" *ngIf="transferType === 1 && transfer !== ''">
     <div class="tran-info-from">
-      <p class="info-title" i18n *ngIf="transfer[0].form > 0">Sent from</p>
+      <p class="info-title" i18n *ngIf="transfer[0].form !== ''">Sent from</p>
       <div *ngFor="let txfrom of transfer">
         <div class="info-address"><a class="link-btn" routerLink="/address/{{txfrom?.from}}">{{ txfrom?.from }}</a></div>
-        <div class="info-amount" *ngIf="transfer[0].form > 0">
+        <div class="info-amount" *ngIf="transfer[0].form !== ''">
           <span>{{ txfrom?.value | number: '1.0-8' }}</span>
           <span class="link-btn" routerLink="/nep5/{{txfrom?.assetId}}">{{ txfrom?.name }}</span>
         </div>
@@ -77,10 +77,10 @@
     </div>
     <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
     <div class="tran-info-to">
-      <p class="info-title" i18n *ngIf="transfer[0].to > 0">Sent to</p>
+      <p class="info-title" i18n *ngIf="transfer[0].to !== ''">Sent to</p>
       <div *ngFor="let txto of transfer">
         <div class="info-address"><a class="link-btn" routerLink="/address/{{txto?.to}}">{{ txto?.to }}</a></div>
-        <div class="info-amount"  *ngIf="transfer[0].to > 0">
+        <div class="info-amount"  *ngIf="transfer[0].to !== ''">
           <span>{{ txto?.value | number: '1.0-8' }}</span>
           <span class="link-btn" routerLink="/nep5/{{txto?.assetId}}">{{ txto?.name }}</span>
         </div>

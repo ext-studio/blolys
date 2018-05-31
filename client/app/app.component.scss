@@ -92,21 +92,8 @@
   max-width: 140px !important;
   text-align: center;
 }
-::ng-deep .mat-menu-panel::before {
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-bottom-color: #1770ea;
-  position: absolute;
-  top: -12px;
-  left: 39px; 
-  content: "";
-}
 ::ng-deep .mat-menu-content {
   text-align: center;
-  padding: 0 !important;
-}
-::ng-deep mat-toolbar-row {
   padding: 0 !important;
 }
 ::ng-deep .mat-menu-item-submenu-trigger::after {
@@ -114,6 +101,9 @@
   left: 5px;
   border-width: 5px 5px 5px 0 !important;
   color: #1770ea;
+}
+::ng-deep mat-toolbar-row {
+  padding: 0 !important;
 }
 @media screen and (min-width: 420px) {
   .top-nav {

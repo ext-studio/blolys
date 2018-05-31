@@ -105,5 +105,36 @@ table {
 :host {
   display: block;
 }
+::ng-deep .mat-icon {
+  vertical-align: middle;
+}
+::ng-deep .mat-button-focus-overlay {
+  background-color: transparent !important;
+}
+::ng-deep .mat-menu-item {
+  text-align: center !important;
+  padding: 0 !important;
+  padding: 0 10px !important;
+}
+::ng-deep .mat-menu-panel {
+  position: absolute;
+  top: 40px;
+  background: #18244f;  
+  border: 1px solid #1770ea;
+  transform-origin: top !important;
+  min-width: 100px !important;
+  max-width: 140px !important;
+  text-align: center;
+}
+::ng-deep .mat-menu-content {
+  text-align: center;
+  padding: 0 !important;
+}
+::ng-deep .mat-menu-item-submenu-trigger::after {
+  border-color: transparent currentColor transparent transparent !important;
+  left: 5px;
+  border-width: 5px 5px 5px 0 !important;
+  color: #1770ea;
+}
 
 
