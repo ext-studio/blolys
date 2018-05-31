@@ -91,9 +91,9 @@
     text-align: center;
     float: right;
     cursor: pointer;
-    .active {
-      transform: rotate(180deg);
-    }
+  }
+  .col-icon.active {
+    transform: rotate(180deg);
   }
   .row-head {
     background-color: #1c2b5d;

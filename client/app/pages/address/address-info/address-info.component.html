@@ -25,7 +25,7 @@
           <div class="col hidden">{{ item?.size | number }} Bytes</div>
           <div class="col hidden">{{ item?.version }}</div>
           <div class="col hidden">{{ item?.blockTime | unixTime }}</div> 
-          <div class="hidden col-icon" (click)="showInfo(index, item?.txid)" [ngClass]="{active: show[index]}"><img style="transition: all .6s;" src="/assets/icon_drop_down_n1.png"></div>
+          <div class="hidden col-icon" (click)="showInfo(index, item?.txid)" [ngClass]="{active: show[index]}" style="transition: all .6s;"><img src="/assets/icon_drop_down_n1.png"></div>
         </div>
         <div class="tran-info" *ngIf="show[index] && transferType[index] === 0 && (transfer[index]?.TxUTXO !== null || transfer[index]?.TxVouts !== null)">
           <div class="tran-info-from">
