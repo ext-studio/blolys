@@ -234,9 +234,9 @@
           <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="46d3be612963a6ec34da21a83c8913abeebca731" datatype="html">
-        <source>Welcome to ExtChain Explorer</source>        
-        <target>欢迎来到历链</target>        
+      <trans-unit id="783c3bcb4a6571551abbe8ff70a0b7ef15aac07b" datatype="html">
+        <source>Welcome to Blolys</source>
+        <target>欢迎来到 Blolys</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
           <context context-type="linenumber">3</context>

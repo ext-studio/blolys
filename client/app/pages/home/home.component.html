@@ -1,6 +1,6 @@
 <div class="block">
   <div class="welcome">
-    <div class="line-first" i18n>Welcome to ExtChain Explorer</div>
+    <div class="line-first" i18n>Welcome to Blolys</div>
     <div class="line-second" i18n>Your home for all NEO related blockchain information</div>
     <div class="example-container" [formGroup]="searchForm">
       <mat-form-field >
@@ -12,19 +12,19 @@
   <div class="links">
     <div class="link-item">
       <p i18n>Total Blocks</p>
-      <span>{{ total?.blockCounts | number }}</span>
+      <span class="link-btn" routerLink="/blocks">{{ total?.blockCounts | number }}</span>
     </div>
     <div class="link-item">
       <p i18n>Total Assets</p>
-      <span>{{ total?.assetCounts | number: '1.0-8' }}</span>
+      <span class="link-btn" routerLink="/assets">{{ total?.assetCounts | number: '1.0-8' }}</span>
     </div>
     <div class="link-item">
       <p i18n>Total Transactions</p>
-      <span>{{ total?.txCounts | number }}</span>
+      <span class="link-btn" routerLink="/transactions">{{ total?.txCounts | number }}</span>
     </div>
     <div class="link-item">
       <p i18n>Total Addresses</p>
-      <span>{{ total?.addressCounts | number }}</span>
+      <span class="link-btn" routerLink="/addresses">{{ total?.addressCounts | number }}</span>
     </div>
   </div>
 </div>
