@@ -84,9 +84,9 @@ export class TransactionService {
   public getScript(txid) {
     this.http.post(`${this.global.apiDomain}/api/transactions`,
     {'method': 'getscripts', 'params': [txid]}).subscribe((res: any) => {
-      if (res.code === 200) {
-        this.$script.next(res);
-      }
+      // if (res.code === 200) {
+      this.$script.next(res);
+      // }
   }, (err) => {
     console.log(err);
   });

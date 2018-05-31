@@ -54,9 +54,9 @@ export class AddressService {
   public getAddrAssets(address) {
     this.http.post(`${this.global.apiDomain}/api/asset`,
       {'method': 'getaddrassets', 'params': [address]}).subscribe((res: any) => {
-      if (res.code === 200) {
-        this.$addrAsset.next(res);
-      }
+      // if (res.code === 200) {
+      this.$addrAsset.next(res);
+      // }
     }, (err) => {
       console.log(err);
     });

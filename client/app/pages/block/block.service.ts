@@ -69,9 +69,9 @@ export class BlockService {
   public getBlockByHeight(height) {
     this.http.post(`${this.global.apiDomain}/api/block`,
       { 'method': 'getblockbyheight', 'params': [height]} ).subscribe((res: any) => {
-      if (res.code === 200) {
-        this.$blockInfo.next(res);
-      }
+      // if (res.code === 200) {
+      this.$blockInfo.next(res);
+      // }
     }, (err) => {
       console.log(err);
     });
