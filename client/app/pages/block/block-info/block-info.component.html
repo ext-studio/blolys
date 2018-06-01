@@ -51,7 +51,7 @@
     </li>
   </ul>
   <p class="header-title-info" *ngIf="transTotal > 0"><span i18n>Transactions</span> ({{ transTotal | number }})</p>
-  <div class="tran-list">
+  <div class="tran-list" *ngIf="transTotal > 0">
     <div class="row-head">
       <div class="col" i18n>TXID</div>
       <div class="col" i18n>Type</div>

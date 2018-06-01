@@ -11,7 +11,7 @@ export class AddressInfoComponent implements OnInit {
   addrTransactions: any;
   transfer: any = [];
   transferType: any = [];
-  addrAssets: any;
+  addrAssets: any = [];
   transTotal: Number = 0;
   show: any = [];
   isVisible: Boolean = false;
