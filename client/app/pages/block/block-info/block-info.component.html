@@ -58,6 +58,7 @@
       <div class="col hidden" i18n>Size</div>
       <div class="col hidden" i18n>Version</div>
       <div class="col hidden" i18n>Time</div>
+      <div class="hidden col-icon-empty"></div>
     </div>
     <div class="warpper" *ngFor="let item of blockTransactions; index as index">
       <div class="row">
@@ -66,7 +67,7 @@
         <div class="col hidden">{{ item?.size | number }} Bytes</div>
         <div class="col hidden">{{ item?.version }}</div>
         <div class="col hidden">{{ item?.blockTime | unixTime }}</div> 
-        <div class="hidden col-icon" (click)="showInfo(index, item?.txid)" [ngClass]="{active: show[index]}" style="transition: all .4s;"><img src="/assets/icon_drop_down_n1.png"></div>
+        <div class="hidden col-icon" (click)="showInfo(index, item?.txid)"><img [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
       </div>
       <div class="tran-info" *ngIf="show[index] && transferType[index] === 0 && (transfer[index].TxUTXO !== null || transfer[index].TxVouts !== null)">
         <div class="tran-info-from">

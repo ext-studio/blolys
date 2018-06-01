@@ -43,13 +43,22 @@
   .td-link-btn {
     color: #1770ea;
   }
+  .col-icon-empty {
+    width: 36px;
+    height: 50px;
+  }
   .col-icon {
-    text-align: center;
+    width: 36px;
+    height: 50px;
+    text-align: right;
     float: right;
     cursor: pointer;
   }
-  .col-icon.active {
-    transform: rotate(180deg);
+  .col-icon img {
+    transition: all .6s;
+  }
+  .col-icon img.active {
+    transform: rotate(180deg);    
   }
   .row-head {
     background-color: #1c2b5d;
@@ -164,11 +173,8 @@
 }
 @media screen and (min-width: 420px) {
   .tran-list {
-    .row {
+    .row, .row-head {
       padding: 0 30px;
-    }
-    .row-head {
-      padding: 0 46px 0 30px;
     }
   }
   .header-title-info {

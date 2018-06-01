@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
@@ -16,6 +16,10 @@ import { TransactionService } from '../transaction/transaction.service';
 export class HomeComponent implements OnInit {
   public total: any = [];
   searchForm: FormGroup;
+  // btn: any = 'link-first';
+  @HostListener('click', ['$event']) public(btn: HTMLElement) {
+    console.log('button: ' + btn);
+  }
   ngOnInit() {
     this.searchForm = this.builder.group({
       searchName: ['', [Validators.required]]
