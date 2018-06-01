@@ -55,4 +55,20 @@ export class AppComponent implements OnInit {
         {data: {type: 'accent', title: '错误', body: '即将到来', ok: '确认', no: '取消'}});
     }
   }
+  changelang (lang) {
+    let href, hrefstart, hrefend, targethref;
+    href = window.location.href;
+    if (lang === 'en' && href.indexOf('en') < 0) {
+      hrefstart = href.substr(0, href.indexOf('#'));
+      hrefend = href.substr(href.indexOf('#'), href.length);
+      targethref = hrefstart.concat('en/');
+      targethref = targethref.concat(hrefend);
+      window.location.href = targethref;
+    } else if (lang === 'cn' && href.indexOf('en') >= 0) {
+      hrefstart = href.substr(0, href.indexOf('/en/#/'));
+      hrefend = href.substr(href.indexOf('/#/'), href.length);
+      targethref = hrefstart.concat(hrefend);
+      window.location.href = targethref;
+    }
+  }
 }

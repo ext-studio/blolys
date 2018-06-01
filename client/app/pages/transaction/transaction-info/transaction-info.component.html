@@ -1,46 +1,8 @@
 <div class="block">
   <div class="header-title" [appTransBorderColor]="txInfo?.type">
     <p class="header-title-info">{{ txInfo?.type | transType}} <span i18n>transaction</span></p>
-    <p class="header-title-address over-ellipsis">{{ txInfo?.type | slice:0:-11 | lowercase }} | <span i18n>Hash</span>: {{ txInfo?.txid }}</p>
+    <p class="header-title-address over-ellipsis"><span i18n>Transaction hash</span>: {{ txInfo?.txid }}</p>
   </div>
-  <ul class="info">
-    <li>
-      <div>
-        <p class="big-font-size">{{ txInfo?.blockTime | unixTime }}</p>
-        <span i18n>Time</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <p class="big-font-size">{{ txInfo?.type | transType }}</p>
-        <span i18n>Type</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <p class="big-font-size">{{ txInfo?.netFee | unlimitedNumber }}</p>
-        <span i18n>NetworkFee</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <p class="big-font-size">{{ txInfo?.sysFee | unlimitedNumber }}</p>
-        <span i18n>SystemFee</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <p class="big-font-size link-btn" routerLink="/block/{{txInfo?.blockIndex}}">{{ txInfo?.blockIndex | number }}</p>
-        <span i18n>Index</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <p class="big-font-size">{{ txInfo?.size | number}} Bytes</p>
-        <span i18n>Size</span>
-      </div>
-    </li>
-  </ul>
   <div class="tran-info" *ngIf="transferType === 0 && (transfer?.TxUTXO !== null || transfer?.TxVouts !== null)">
     <div class="tran-info-from">
       <p class="info-title" *ngIf="transfer?.TxUTXO !== null" i18n>Sent from</p>
@@ -87,6 +49,44 @@
       </div>
     </div>
   </div>
+  <ul class="info">
+    <li>
+      <div>
+        <p class="big-font-size">{{ txInfo?.blockTime | unixTime }}</p>
+        <span i18n>Time</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p class="big-font-size">{{ txInfo?.type | transType }}</p>
+        <span i18n>Type</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p class="big-font-size">{{ txInfo?.netFee | unlimitedNumber }}</p>
+        <span i18n>NetworkFee</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p class="big-font-size">{{ txInfo?.sysFee | unlimitedNumber }}</p>
+        <span i18n>SystemFee</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p class="big-font-size link-btn" routerLink="/block/{{txInfo?.blockIndex}}">{{ txInfo?.blockIndex | number }}</p>
+        <span i18n>Index</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p class="big-font-size">{{ txInfo?.size | number}} Bytes</p>
+        <span i18n>Size</span>
+      </div>
+    </li>
+  </ul>
   <div class="script" *ngIf="scripts?.invocation">
     <div class="header-title-info" i18n>Invocation script</div>
     <div class="script-info">

@@ -13,8 +13,8 @@
       </div>
       <div mat-button class="pc-menu-btn" [matMenuTriggerFor]="pcLanguage" style="text-align: center;"><span class="toggle-lang">{{delanguage}}</span><mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></div>
       <mat-menu #pcLanguage="matMenu">
-        <a class="pc-menu-item" mat-menu-item href="/en/#/">English</a>
-        <a class="pc-menu-item" mat-menu-item href="/#/">中文简体</a>
+        <a class="pc-menu-item" mat-menu-item (click)="changelang('en')">English</a>
+        <a class="pc-menu-item" mat-menu-item (click)="changelang('cn')">中文简体</a>
       </mat-menu>
       <div mat-button class="pc-menu-btn" [matMenuTriggerFor]="pcNet"><span class="toggle-net">{{denet}}</span><mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></div>
       <mat-menu #pcNet="matMenu">
@@ -38,8 +38,8 @@
         <button class="pc-menu-item pc-phone-wide" mat-menu-item [matMenuTriggerFor]="net">{{denet}}</button>
       </mat-menu>
       <mat-menu #language="matMenu" class="lang-menu">
-        <a class="pc-menu-item" mat-menu-item href="/en/#/">English</a>
-        <a class="pc-menu-item" mat-menu-item href="/#/">中文简体</a>
+        <a class="pc-menu-item" mat-menu-item (click)="changelang('en')">English</a>
+        <a class="pc-menu-item" mat-menu-item (click)="changelang('cn')">中文简体</a>
       </mat-menu>
       <mat-menu #net="matMenu" class="net-menu">
         <button class="pc-menu-item" mat-menu-item i18n>MainNet</button>
