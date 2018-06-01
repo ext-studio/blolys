@@ -13,8 +13,8 @@ export class AppComponent implements OnInit {
   isWide: Boolean = true;
   currentPage: String = this.router.url;
   dropContentOpened: Boolean = false;
-  delanguage: String = 'English';
-  denet: String = 'MainNet';
+  delanguage: String = '中文简体';
+  denet: String = '主网';
 
   constructor(
     private http: HttpClient,
@@ -28,9 +28,9 @@ export class AppComponent implements OnInit {
         this.currentPage = res.url;
       }
     });
-    if (window.location.href.indexOf('cn') >= 0) {
-      this.delanguage = '中文简体';
-      this.denet = '主网';
+    if (window.location.href.indexOf('en') >= 0) {
+      this.delanguage = 'English';
+      this.denet = 'MainNet';
     }
   }
   @HostListener('window:resize') public onResize() {
@@ -47,12 +47,12 @@ export class AppComponent implements OnInit {
     }
   }
   alertDialog() {
-    if (window.location.href.indexOf('cn') >= 0) {
-      this.dialog.open(AlertComponent,
-        {data: {type: 'accent', title: '错误', body: '即将到来', ok: '确认', no: '取消'}});
-    } else {
+    if (window.location.href.indexOf('en') >= 0) {
       this.dialog.open(AlertComponent,
         {data: {type: 'accent', title: 'Search error', body: 'coming soon...', ok: 'ok', no: 'cancel'}});
+    } else {
+      this.dialog.open(AlertComponent,
+        {data: {type: 'accent', title: '错误', body: '即将到来', ok: '确认', no: '取消'}});
     }
   }
 }

@@ -16,7 +16,7 @@
     </div>
     <div class="link-item">
       <p i18n>Total Assets</p>
-      <span class="link-btn" routerLink="/assets">{{ total?.assetCounts | number: '1.0-8' }}</span>
+      <span class="link-btn" routerLink="/assets">{{ total?.assetCounts | unlimitedNumber }}</span>
     </div>
     <div class="link-item">
       <p i18n>Total Transactions</p>
