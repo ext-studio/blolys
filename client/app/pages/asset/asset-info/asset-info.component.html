@@ -5,7 +5,7 @@
   </div>
   <ul class="address-info">
     <li class="color-one width-half over-ellipsis"><label i18n>Name</label>{{assetInfo?.name}}</li>
-    <li class="color-one width-half over-ellipsis"><label i18n>Total Supply</label>{{assetInfo?.amount | number: '1.0-8'}}</li>
+    <li class="color-one width-half over-ellipsis"><label i18n>Total Supply</label>{{assetInfo?.amount | number: '1.0-8' | unlimitedNumber}}</li>
     <li class="color-two width-half over-ellipsis"><label i18n>Type</label>{{assetInfo?.type}}</li>
     <li class="color-two width-half over-ellipsis"><label i18n>Addresses</label>{{assetInfo?.addresses | number}}</li>
     <li class="color-one width-half over-ellipsis over-ellipsis-link"><label i18n>Blocks</label><span class="link-btn" routerLink="/block/{{assetInfo?.blockIndex}}">{{assetInfo?.blockIndex | number}}</span></li>

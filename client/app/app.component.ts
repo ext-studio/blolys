@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   isWide: Boolean = true;
   currentPage: String = this.router.url;
   dropContentOpened: Boolean = false;
+  delanguage: String = 'English';
+  denet: String = 'MainNet';
 
   constructor(
     private http: HttpClient,
@@ -26,6 +28,10 @@ export class AppComponent implements OnInit {
         this.currentPage = res.url;
       }
     });
+    if (window.location.href.indexOf('cn') >= 0) {
+      this.delanguage = '中文简体';
+      this.denet = '主网';
+    }
   }
   @HostListener('window:resize') public onResize() {
     this.renderMenu();

@@ -14,6 +14,7 @@ import { TransBorderColorDirective } from './directive/trans-border-color.direct
 import { AlertComponent } from './popups/alert/alert.component';
 import { AssetColorDirective } from './directive/asset-color.directive';
 import { TransTypePipe } from './pipes/trans-type.pipe';
+import { UnlimitedNumberPipe } from './pipes/unlimited-number.pipe';
 
 @NgModule({
   imports: [
@@ -31,12 +32,13 @@ import { TransTypePipe } from './pipes/trans-type.pipe';
     MatStepperModule,
     TransColorDirective, AlertComponent, AssetColorDirective,
     TransBorderColorDirective, TransTypePipe, PaginatorComponent,
-    UnixTimePipe,
+    UnixTimePipe, UnlimitedNumberPipe
   ],
   declarations: [
     UnixTimePipe, TransColorDirective, AlertComponent,
     AssetColorDirective, TransBorderColorDirective, TransTypePipe,
-    PaginatorComponent
+    PaginatorComponent,
+    UnlimitedNumberPipe
  ],
   entryComponents: [AlertComponent],
   providers: []
