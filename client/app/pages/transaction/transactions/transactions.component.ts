@@ -32,7 +32,7 @@ export class TransactionsComponent implements OnInit {
     this.transactions = [];
     this.isProgress = true;
     this.transactionService.Trans(pageIndex, pageSize, this.transType).subscribe((res: any) => {
-      if (res.result) {
+      if (res.result.total > 0) {
         this.transactions = res.result.data;
         this.pageLength = Math.ceil(res.result.total / this.pageSize);
         this.isProgress = false;

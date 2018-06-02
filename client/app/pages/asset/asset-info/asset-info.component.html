@@ -24,54 +24,58 @@
     <li class="color-two width-half over-ellipsis"><label i18n>Email</label>{{assetRegisterInfo?.email}}</li>
     <li class="color-one width-all over-ellipsis"><label i18n>Description</label>{{assetRegisterInfo?.description}}</li>
   </ul>
-  <p class="header-title-info" i18n>Recent addresses</p>
-  <table>
-    <thead>
-      <tr>
-        <th i18n class="addr-min-width">Address</th>
-        <th i18n>CreatedAt</th>
-        <th class="hidden middle-hidden" i18n>Last Transaction</th>
-        <th class="hidden" i18n>Transactions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of recentAddress; index as index">
-        <td class="addr-min-width td-link-btn"><a class="link-btn over-ellipsis" routerLink="/address/{{item?.address}}">{{item?.address}}</a></td>
-        <td>{{item?.createdAt | unixTime}}</td>
-        <td class="hidden middle-hidden over-ellipsis">{{item?.lastTransactionTime | unixTime}}</td>
-        <td class="hidden">{{item?.transAsset + item?.transNep5 | number}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <mat-progress-bar mode="indeterminate" *ngIf="isAddrProgress"></mat-progress-bar>
-  <app-paginator 
-    [pageIndex]="pageIndex"
-    [pageSize]="addrPageSize"
-    [pageLength]="addrPageLength"
-    (onpageGo)="onaddrPageGo($event)">
-  </app-paginator>
-  <p class="header-title-info" i18n>Balance rank</p>
-  <table>
-    <thead>
-      <tr>
-        <th i18n>Rank</th>
-        <th class="addr-min-width" i18n>Address</th>
-        <th class="hidden" i18n>Balance</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of rankAddr; index as index">
-        <td>{{index + 1 + page * rankPageSize}}</td>
-        <td class="addr-min-width td-link-btn over-ellipsis"><a class="link-btn" routerLink="/address/{{item?.address}}">{{item?.address}}</a></td>
-        <td class="hidden">{{item?.balance | unlimitedNumber}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <mat-progress-bar mode="indeterminate" *ngIf="isRankProgress"></mat-progress-bar>
-  <app-paginator 
-    [pageIndex]="pageIndex"
-    [pageSize]="rankPageSize"
-    [pageLength]="rankPageLength"
-    (onpageGo)="onrankPageGo($event)">
-  </app-paginator>
+  <div *ngIf="recentAddress">
+    <p class="header-title-info" i18n>Recent addresses</p>
+    <table>
+      <thead>
+        <tr>
+          <th i18n class="addr-min-width">Address</th>
+          <th i18n>CreatedAt</th>
+          <th class="hidden middle-hidden" i18n>Last Transaction</th>
+          <th class="hidden" i18n>Transactions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of recentAddress; index as index">
+          <td class="addr-min-width td-link-btn"><a class="link-btn over-ellipsis" routerLink="/address/{{item?.address}}">{{item?.address}}</a></td>
+          <td>{{item?.createdAt | unixTime}}</td>
+          <td class="hidden middle-hidden over-ellipsis">{{item?.lastTransactionTime | unixTime}}</td>
+          <td class="hidden">{{item?.transAsset + item?.transNep5 | number}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-progress-bar mode="indeterminate" *ngIf="isAddrProgress"></mat-progress-bar>
+    <app-paginator 
+      [pageIndex]="pageIndex"
+      [pageSize]="addrPageSize"
+      [pageLength]="addrPageLength"
+      (onpageGo)="onaddrPageGo($event)">
+    </app-paginator>
+  </div>
+  <div *ngIf="rankAddr">
+    <p class="header-title-info" i18n>Balance rank</p>
+    <table>
+      <thead>
+        <tr>
+          <th i18n>Rank</th>
+          <th class="addr-min-width" i18n>Address</th>
+          <th class="hidden" i18n>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of rankAddr; index as index">
+          <td>{{index + 1 + page * rankPageSize}}</td>
+          <td class="addr-min-width td-link-btn over-ellipsis"><a class="link-btn" routerLink="/address/{{item?.address}}">{{item?.address}}</a></td>
+          <td class="hidden">{{item?.balance | unlimitedNumber}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-progress-bar mode="indeterminate" *ngIf="isRankProgress"></mat-progress-bar>
+    <app-paginator
+      [pageIndex]="pageIndex"
+      [pageSize]="rankPageSize"
+      [pageLength]="rankPageLength"
+      (onpageGo)="onrankPageGo($event)">
+    </app-paginator>
+  </div>
 </div>

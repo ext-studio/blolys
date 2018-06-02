@@ -31,7 +31,7 @@ export class AssetsComponent implements OnInit {
     this.isProgress = true;
     pageIndex = Number(pageIndex);
     this.assetService.Assets(pageIndex, pageSize).subscribe((res: any) => {
-      if (res.result) {
+      if (res.result.total > 0) {
         this.assets = res.result.data;
         this.pageLength = Math.ceil(res.result.total / this.pageSize);
         this.isProgress = false;
@@ -43,7 +43,7 @@ export class AssetsComponent implements OnInit {
     this.isProgress = true;
     pageIndex = Number(pageIndex);
     this.assetService.Nep5Assets(pageIndex, pageSize).subscribe((res: any) => {
-      if (res.result) {
+      if (res.result.total > 0) {
         this.assets = res.result.data;
         this.pageLength = Math.ceil(res.result.total / this.pageSize);
         this.isProgress = false;

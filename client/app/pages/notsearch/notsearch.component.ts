@@ -43,7 +43,7 @@ export class NotsearchComponent implements OnInit {
         });
       } else if (value[0] === '0' && value[1] === 'x' && value.length === 66) {
         value = value.toLowerCase(); // Datasource defaults to lowercase matches
-        this.transactionService.Script(value).subscribe((res: any) => {
+        this.transactionService.TxbyTxid(value).subscribe((res: any) => {
           if (res.result) {
             this.router.navigate([`/transaction/${value}`]);
           } else {
