@@ -27,8 +27,9 @@ export class UnlimitedNumberPipe implements PipeTransform {
     //     }
     //     return this.typeInteger(target);
     //   }
-    // } else
-    if (value.indexOf('-') >= 0) {
+    if (value.indexOf('e') >= 0) {
+      return value;
+    } else if (value.indexOf('-') >= 0) {
       if (window.location.href.indexOf('en') >= 0) {
         return 'Unlimited';
       } else {
