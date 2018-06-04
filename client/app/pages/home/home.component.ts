@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
@@ -16,10 +16,6 @@ import { TransactionService } from '../transaction/transaction.service';
 export class HomeComponent implements OnInit {
   public total: any = [];
   searchForm: FormGroup;
-  // btn: any = 'link-first';
-  @HostListener('click', ['$event']) public(btn: HTMLElement) {
-    console.log('button: ' + btn);
-  }
   ngOnInit() {
     this.searchForm = this.builder.group({
       searchName: ['', [Validators.required]]
@@ -62,6 +58,7 @@ export class HomeComponent implements OnInit {
       } else if (value[0] === '0' && value[1] === 'x' && value.length === 66) {
         value = value.toLowerCase(); // Datasource defaults to lowercase matches
         this.transactionService.TxbyTxid(value).subscribe((res: any) => {
+          console.log(res);
           if (res.result) {
             this.router.navigate([`/transaction/${value}`]);
           } else {

@@ -44,6 +44,7 @@ export class NotsearchComponent implements OnInit {
       } else if (value[0] === '0' && value[1] === 'x' && value.length === 66) {
         value = value.toLowerCase(); // Datasource defaults to lowercase matches
         this.transactionService.TxbyTxid(value).subscribe((res: any) => {
+          console.log(res);
           if (res.result) {
             this.router.navigate([`/transaction/${value}`]);
           } else {
@@ -59,9 +60,9 @@ export class NotsearchComponent implements OnInit {
             if (window.location.href.indexOf('en') >= 0) {
               this.dialog.open(AlertComponent,
                 {data: {type: 'warn', title: 'Search error', body: 'Your input is wrong, please re-enter', ok: 'ok', no: 'cancel'}});
-              } else {
-                this.dialog.open(AlertComponent,
-                  {data: {type: 'warn', title: '错误', body: '您的输入有误，请重新输入', ok: '确认', no: '取消'}});
+            } else {
+              this.dialog.open(AlertComponent,
+                {data: {type: 'warn', title: '错误', body: '您的输入有误，请重新输入', ok: '确认', no: '取消'}});
             }
             return;
           }
@@ -79,9 +80,9 @@ export class NotsearchComponent implements OnInit {
         if (window.location.href.indexOf('en') >= 0) {
           this.dialog.open(AlertComponent,
             {data: {type: 'warn', title: 'Search error', body: 'Your input is wrong, please re-enter', ok: 'ok', no: 'cancel'}});
-          } else {
-            this.dialog.open(AlertComponent,
-              {data: {type: 'warn', title: '错误', body: '您的输入有误，请重新输入', ok: '确认', no: '取消'}});
+        } else {
+          this.dialog.open(AlertComponent,
+            {data: {type: 'warn', title: '错误', body: '您的输入有误，请重新输入', ok: '确认', no: '取消'}});
         }
       }
     }

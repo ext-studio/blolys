@@ -10,6 +10,9 @@
           <span>{{ item?.name }}</span>
         </li>
       </ul>
+      <ul class="assets-info info" *ngIf="addrAssets.length === 0">
+        <li>该地址余额为 0</li>
+      </ul>
       <p class="header-title-info" *ngIf="transTotal > 0"><span i18n>Transactions</span> ({{ transTotal | number }})</p>
       <div class="tran-list" *ngIf="transTotal > 0">
         <div class="row-head">

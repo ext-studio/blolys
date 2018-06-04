@@ -198,22 +198,24 @@
   }
 }
 @media screen and (min-width: 420px) {
-  .info, .tran-info, .script {
-    margin-bottom: 70px;
+  .tran-info {
+    margin-top: 70px;
   }
   .header-title-info {
     font-size: 30px;
+    margin-top: 70px;
   }
   .info li {
     height: 150px;
   }
 }
 @media screen and (max-width: 419px) {
-  .info, .tran-info, .script {
-    margin-bottom: 30px;
+  .tran-info {
+    margin-top: 30px;
   }
   .header-title-info {
     font-size: 22px;
+    margin-top: 30px;
   }
   .info {
     li {

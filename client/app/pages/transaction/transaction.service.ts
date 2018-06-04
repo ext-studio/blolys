@@ -74,9 +74,7 @@ export class TransactionService {
   public getTxbyTxid(txid) {
     this.http.post(`${this.global.apiDomain}/api/transactions`,
       {'method': 'gettxbytxid', 'params': [txid]}).subscribe((res: any) => {
-      if (res.code === 200) {
-        this.$txInfo.next(res);
-      }
+      this.$txInfo.next(res);
     }, (err) => {
       console.log(err);
     });
@@ -84,9 +82,9 @@ export class TransactionService {
   public getScript(txid) {
     this.http.post(`${this.global.apiDomain}/api/transactions`,
     {'method': 'getscripts', 'params': [txid]}).subscribe((res: any) => {
-      // if (res.code === 200) {
-      this.$script.next(res);
-      // }
+      if (res.code === 200) {
+        this.$script.next(res);
+      }
   }, (err) => {
     console.log(err);
   });

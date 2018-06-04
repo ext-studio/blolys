@@ -10,11 +10,9 @@
   border-radius: 3px;
   .line-first {
     margin-bottom: 15px;
-    font-size: 24px;
     color: #fff;
   }
   .line-second {
-    font-size: 24px;
     color: #fff;
     margin-bottom: 25px;
   }
@@ -91,6 +89,9 @@
   .view-all {
     text-align: right;
   }
+  .welcome .line-first, .welcome .line-second {
+    font-size: 24px;
+  }
 }
 @media screen and (max-width: 419px) {
   .welcome {
@@ -102,5 +103,8 @@
   }
   .view-all {
     text-align: center;
+  }
+  .welcome .line-first, .welcome .line-second {
+    font-size: 18px;
   }
 }

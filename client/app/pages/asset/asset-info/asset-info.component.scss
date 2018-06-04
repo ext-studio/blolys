@@ -124,28 +124,24 @@ table {
   }
 }
 @media screen and (min-width: 420px) {
-  .address-info{
-    margin-bottom: 70px;
-    li {
-      padding: 0 30px;
-    }
+  .address-info li {
+    padding: 0 30px;
   }
   .header-title-info {
     font-size: 30px;
+    margin-top: 70px;
   }
   table tr {
     padding: 0 30px;
   }
 }
 @media screen and (max-width: 419px) {
-  .address-info {
-    margin-bottom: 30px;
-    li {
-      padding: 0 10px;
-    }
+  .address-info li {
+    padding: 0 10px;
   }
   .header-title-info {
     font-size: 22px;
+    margin-top: 30px;
   }
   .hidden {
     display: none !important;
