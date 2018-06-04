@@ -33,7 +33,6 @@
     align-items: center;
     box-sizing: border-box;
     height: 50px;
-    line-height: 50px;
     .col {
       flex: 1;
       overflow: hidden;
@@ -50,6 +49,7 @@
   .col-icon {
     width: 36px;
     height: 50px;
+    line-height: 50px;
     text-align: right;
     float: right;
     cursor: pointer;

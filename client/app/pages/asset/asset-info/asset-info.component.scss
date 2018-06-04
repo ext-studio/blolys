@@ -40,14 +40,16 @@
   font-size: 16px;
   li {
     list-style: none;
-    display: inline-block;
-    box-sizing: border-box;
     text-align: left;
+    display: flex;
+    align-items: center;
     min-height: 50px;
-    line-height: 50px;
     label {
-      display: inline-block;
-      width: 120px;
+      min-width: 120px;
+    }
+    span.des-content {
+      word-wrap: break-word;
+      padding: 16px 0;
     }
   }
 }
