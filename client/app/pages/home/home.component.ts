@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { AlertComponent } from '../../shared';
@@ -12,23 +12,11 @@ import { TransactionService } from '../transaction/transaction.service';
   styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   public total: any = [];
   searchForm: FormGroup;
+  public queryCountTime: any;
   ngOnInit() {
-    // this.router.events.subscribe((res: RouterEvent) => {
-    //   if (res instanceof NavigationEnd) {
-    //     if (res.url === '/' || res.url === '/home') {
-    //       setInterval(() => {
-    //         this.blockService.Allcounts().subscribe((countres: any) => {
-    //           if (countres.result) {
-    //             this.total = countres.result;
-    //           }
-    //         });
-    //       }, 20000);
-    //     }
-    //   }
-    // });
     this.searchForm = this.builder.group({
       searchName: ['', [Validators.required]]
     });
@@ -37,13 +25,16 @@ export class HomeComponent implements OnInit {
         this.total = res.result;
       }
     });
-    setInterval(() => {
+    this.queryCountTime = setInterval(() => {
       this.blockService.Allcounts().subscribe((countres: any) => {
         if (countres.result) {
           this.total = countres.result;
         }
       });
     }, 20000);
+  }
+  ngOnDestroy() {
+    window.clearInterval(this.queryCountTime);
   }
 
   constructor(
