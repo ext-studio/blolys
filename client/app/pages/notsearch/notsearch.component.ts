@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
 import { AlertComponent } from '../../shared';
 
 import { BlockService } from '../block/block.service';
@@ -18,7 +17,6 @@ export class NotsearchComponent implements OnInit {
   constructor(
     private builder: FormBuilder,
     private router: Router,
-    private dialog: MatDialog,
     private blockService: BlockService,
     private addressService: AddressService,
     private transactionService: TransactionService
@@ -57,14 +55,7 @@ export class NotsearchComponent implements OnInit {
           if (Number(value[i]) >= 0 && Number(value[i]) <= 9) {
             target = target * 10 + Number(value[i]);
           } else if (value[i] !== ',' && value[i] !== '，') {
-            if (window.location.href.indexOf('en') >= 0) {
-              this.dialog.open(AlertComponent,
-                {data: {type: 'warn', title: 'Search error', body: 'Your input is wrong, please re-enter', ok: 'ok', no: 'cancel'}});
-            } else {
-              this.dialog.open(AlertComponent,
-                {data: {type: 'warn', title: '错误', body: '您的输入有误，请重新输入', ok: '确认', no: '取消'}});
-            }
-            return;
+            this.router.navigate([`/search/${value}`]);
           }
         }
         if (target >= 0) {
@@ -77,13 +68,7 @@ export class NotsearchComponent implements OnInit {
           });
         }
       } else {
-        if (window.location.href.indexOf('en') >= 0) {
-          this.dialog.open(AlertComponent,
-            {data: {type: 'warn', title: 'Search error', body: 'Your input is wrong, please re-enter', ok: 'ok', no: 'cancel'}});
-        } else {
-          this.dialog.open(AlertComponent,
-            {data: {type: 'warn', title: '错误', body: '您的输入有误，请重新输入', ok: '确认', no: '取消'}});
-        }
+        this.router.navigate([`/search/${value}`]);
       }
     }
   }

@@ -26,6 +26,10 @@
   .header-title-address {
     font-size: 14px;
   }
+  .header-title-time {
+    font-size: 14px;
+    margin-top: 15px;
+  }
 }
 .header-title-info {
   margin-bottom: 20px;
@@ -203,7 +207,9 @@
   }
   .header-title-info {
     font-size: 30px;
-    margin-top: 70px;
+  }
+  .info, .script {
+    margin-bottom: 70px;
   }
   .info li {
     height: 150px;
@@ -215,7 +221,6 @@
   }
   .header-title-info {
     font-size: 22px;
-    margin-top: 30px;
   }
   .info {
     li {
@@ -226,6 +231,9 @@
         border-bottom: 1px solid #203067;
       }
     }
+  }
+  .info, .script {
+    margin-bottom: 30px;
   }
 }
 :host {

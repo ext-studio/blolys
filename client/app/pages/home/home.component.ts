@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { AlertComponent } from '../../shared';
 
 import { BlockService } from '../block/block.service';
@@ -17,6 +16,19 @@ export class HomeComponent implements OnInit {
   public total: any = [];
   searchForm: FormGroup;
   ngOnInit() {
+    // this.router.events.subscribe((res: RouterEvent) => {
+    //   if (res instanceof NavigationEnd) {
+    //     if (res.url === '/' || res.url === '/home') {
+    //       setInterval(() => {
+    //         this.blockService.Allcounts().subscribe((countres: any) => {
+    //           if (countres.result) {
+    //             this.total = countres.result;
+    //           }
+    //         });
+    //       }, 20000);
+    //     }
+    //   }
+    // });
     this.searchForm = this.builder.group({
       searchName: ['', [Validators.required]]
     });
@@ -26,9 +38,9 @@ export class HomeComponent implements OnInit {
       }
     });
     setInterval(() => {
-      this.blockService.Allcounts().subscribe((res: any) => {
-        if (res.result) {
-          this.total = res.result;
+      this.blockService.Allcounts().subscribe((countres: any) => {
+        if (countres.result) {
+          this.total = countres.result;
         }
       });
     }, 20000);
@@ -37,7 +49,6 @@ export class HomeComponent implements OnInit {
   constructor(
     private builder: FormBuilder,
     private router: Router,
-    private dialog: MatDialog,
     private blockService: BlockService,
     private addressService: AddressService,
     private transactionService: TransactionService
@@ -58,7 +69,6 @@ export class HomeComponent implements OnInit {
       } else if (value[0] === '0' && value[1] === 'x' && value.length === 66) {
         value = value.toLowerCase(); // Datasource defaults to lowercase matches
         this.transactionService.TxbyTxid(value).subscribe((res: any) => {
-          console.log(res);
           if (res.result) {
             this.router.navigate([`/transaction/${value}`]);
           } else {
@@ -71,14 +81,7 @@ export class HomeComponent implements OnInit {
           if (Number(value[i]) >= 0 && Number(value[i]) <= 9) {
             target = target * 10 + Number(value[i]);
           } else if (value[i] !== ',' && value[i] !== '，') {
-            if (window.location.href.indexOf('en') >= 0) {
-              this.dialog.open(AlertComponent,
-                {data: {type: 'warn', title: 'Search error', body: 'Your input is wrong, please re-enter', ok: 'ok', no: 'cancel'}});
-            } else {
-              this.dialog.open(AlertComponent,
-                {data: {type: 'warn', title: '错误', body: '您的输入有误，请重新输入', ok: '确认', no: '取消'}});
-            }
-            return;
+            this.router.navigate([`/search/${value}`]);
           }
         }
         if (target >= 0) {
@@ -91,13 +94,7 @@ export class HomeComponent implements OnInit {
           });
         }
       } else {
-        if (window.location.href.indexOf('en') >= 0) {
-          this.dialog.open(AlertComponent,
-            {data: {type: 'warn', title: 'Search error', body: 'Your input is wrong, please re-enter', ok: 'ok', no: 'cancel'}});
-        } else {
-          this.dialog.open(AlertComponent,
-            {data: {type: 'warn', title: '错误', body: '您的输入有误，请重新输入', ok: '确认', no: '取消'}});
-        }
+        this.router.navigate([`/search/${value}`]);
       }
     }
   }

@@ -2,6 +2,7 @@
   <div class="header-title" [appTransBorderColor]="txInfo?.type">
     <p class="header-title-info">{{ txInfo?.type | transType}} <span i18n>transaction</span></p>
     <p class="header-title-address over-ellipsis"><span i18n>Transaction hash</span>: {{ txInfo?.txid }}</p>
+    <p class="header-title-time"><span i18n>Time</span>: {{ txInfo?.blockTime | unixTime }}</p>
   </div>
   <div class="tran-info" *ngIf="transferType === 0 && (transfer?.TxUTXO !== null || transfer?.TxVouts !== null)">
     <div class="tran-info-from">

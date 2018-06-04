@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { AssetService } from '../asset.service';
 
 @Component({
@@ -9,12 +9,12 @@ import { AssetService } from '../asset.service';
 export class AssetInfoComponent implements OnInit {
   isAddrProgress: Boolean = true;
   isRankProgress: Boolean = true;
-  recentAddress: any = null;
-  rankAddr: any = null;
+  recentAddress: any = [];
+  rankAddr: any = [];
   assetInfo: any = [];
   assetRegisterInfo: any = [];
+  page: Number = 0;  // rank
   pageIndex: any = 0;
-  page: Number = 0;
   addrPageSize: any = 5;
   rankPageSize: any = 5;
   addrPageLength: Number = 0;
@@ -28,8 +28,20 @@ export class AssetInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getAddrByAssetid(1, this.addrPageSize);
-    this.getRankByAssetid(1, this.rankPageSize);
+    this.initPage();
+    this.router.events.subscribe((res: RouterEvent) => {
+      if (res instanceof NavigationEnd) {
+        if ((res.url.indexOf('/asset/') >= 0 || res.url.indexOf('/nep5/') >= 0) && this.assetId !== res.url.split('/')[2]) {
+          this.assetId = res.url.split('/')[2];
+          this.assetType = res.url.split('/')[1];
+          this.initPage();
+          this.onaddrPageGo(1);
+          this.onrankPageGo(1);
+        }
+      }
+    });
+  }
+  initPage() {
     if (this.assetType !== 'nep5') {
       this.assetService.AssetInfo(this.assetId).subscribe((res: any) => {
         if (res.result) {

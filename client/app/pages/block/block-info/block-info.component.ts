@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 
 import { BlockService } from '../block.service';
 import { TransactionService } from '../../transaction/transaction.service';
@@ -26,6 +26,21 @@ export class BlockInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.initPage();
+    this.router.events.subscribe((res: RouterEvent) => {
+      if (res instanceof NavigationEnd) {
+        if (res.url.indexOf('/block/') >= 0) {
+          if (this.height !== Number(res.url.split('/')[2])) {
+            this.height = Number(res.url.split('/')[2]);
+            this.initPage();
+          }
+        }
+      }
+    });
+  }
+  initPage() {
+    this.initShow();
+    this.isVisible = false;
     this.blockService.Allcounts().subscribe((res: any) => {
       if (res.result) {
         this.totalBlocks = res.result.blockCounts ;
@@ -46,7 +61,6 @@ export class BlockInfoComponent implements OnInit {
       if (res.result) {
         this.blockTransactions = res.result.data;
         this.transTotal = res.result.total;
-        this.initShow();
       }
     });
   }
@@ -83,24 +97,5 @@ export class BlockInfoComponent implements OnInit {
   showAllTrans() {
     this.getTxByHeight(1, this.transTotal);
     this.isVisible = true;
-  }
-  reHeight() {
-    if (this.height > 0) {
-      this.height -= 1;
-      this.initShow();
-      this.isVisible = false;
-      this.router.navigate([`/block/${this.height}`]);
-      this.getBlockByHeight();
-      this.getTxByHeight(1, this.pageSize);
-    }
-  }
-  addHeight() {
-    if (this.height < this.totalBlocks) {
-      this.height += 1;
-      this.isVisible = false;
-      this.router.navigate([`/block/${this.height}`]);
-      this.getBlockByHeight();
-      this.getTxByHeight(1, this.pageSize);
-    }
   }
 }

@@ -8,8 +8,8 @@
       <button><a routerLink="/blocks" i18n>back</a></button>
     </div>
     <div class="option-right">
-      <button class="pre-button" *ngIf="height > 0"><a (click)=reHeight() i18n>Previous block</a></button>
-      <button class="next-button" *ngIf="height < totalBlocks"><a (click)=addHeight() i18n>Next block</a></button>
+      <button class="pre-button" *ngIf="height > 0"><a routerLink="/block/{{height-1}}" i18n>Previous block</a></button>
+      <button class="next-button" *ngIf="height < totalBlocks"><a routerLink="/block/{{height+1}}" i18n>Next block</a></button>
     </div>
   </div>
   <ul class="info">

@@ -320,7 +320,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7faaaa08f56427999f3be41df1093ce4089bbd75" datatype="html">
@@ -343,7 +343,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">87</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8fe73a4787b8068b2ba61f54ab7e0f9af2ea1fc9" datatype="html">
@@ -389,7 +389,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
+          <context context-type="linenumber">57</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9d89e2872be2bfcda242f3b1b17ef1a02d3346e6" datatype="html">
@@ -420,11 +424,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">9</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="83d3c15511dbc2b18109ef351012e438b74f5cba" datatype="html">
@@ -455,11 +459,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">20</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="85807a0db361fe42b0edae5b05f98f5e348ccffd" datatype="html">
@@ -481,7 +485,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">81</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e9989acc7c8ce4e53c98e725c4ccddb26500a12c" datatype="html">
@@ -670,8 +674,8 @@
           <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="913836d35df4c7eda3ccd1933351d1875f6112bd" datatype="html">
-        <source>Balance rank</source>
+      <trans-unit id="0dbbce1a8784875c0b8a13744c5c5dd8bb085484" datatype="html">
+        <source>Balance rank (100)</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
           <context context-type="linenumber">56</context>
@@ -709,28 +713,28 @@
         <source>NetworkFee</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">69</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e3cd475bbc5d8479dfe6dbf32e8ba405b179c3a6" datatype="html">
         <source>SystemFee</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="edb147133cfeebaa2be91ff2e8dc668a99cf330a" datatype="html">
         <source>Invocation script</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">91</context>
+          <context context-type="linenumber">92</context>
         </context-group>
       </trans-unit>
       <trans-unit id="360081a80227ffa67760f20bf768fa6d5466887c" datatype="html">
         <source>Verification script</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">98</context>
+          <context context-type="linenumber">99</context>
         </context-group>
       </trans-unit>
       <trans-unit id="333aa0764ff8c611f037b32163a0f9497d732dde" datatype="html">

@@ -11,25 +11,10 @@ export class UnlimitedNumberPipe implements PipeTransform {
       return;
     }
     value = String(value);
-    // if (value.indexOf('e') >= 0) {
-    //   let target: any = '';
-    //   if (value[2] === '-') {
-    //     target = target.concat('0.');
-    //     for (let i = 1; i < Number(value.substr(value.indexOf('-') + 1, value.length)); i++) {
-    //       target = target.concat('0');
-    //     }
-    //     target = target.concat(value[0]);
-    //     return target;
-    //   } else if (value[2] === '+') {
-    //     target = value[0];
-    //     for (let i = 1; i < Number(value.substr(value.indexOf('+') + 1, value.length)); i++) {
-    //       target = target.concat('0');
-    //     }
-    //     return this.typeInteger(target);
-    //   }
     if (value.indexOf('e') >= 0) {
-      return value;
-    } else if (value.indexOf('-') >= 0) {
+      value =  String(Number(value));
+    }
+    if (value.indexOf('-') >= 0) {
       if (window.location.href.indexOf('en') >= 0) {
         return 'Unlimited';
       } else {

@@ -60,9 +60,13 @@
     float: left;
     background: #18244f;
     p {
-      // font-size: 28px;
       color: #359bd5;
     }
+  }
+  li.textmiddle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;    
   }
 }
 .tran-list {

@@ -4,7 +4,7 @@
     <p class="header-title-address">{{ this.address }}</p>
   </div>
   <ul class="assets-info info" *ngIf="addrAssets.length === 0">
-    <li i18n>The balance of this address is 0</li>
+    <li class="textmiddle" i18n>The balance of this address is 0</li>
   </ul>
   <ul class="assets-info info" *ngIf="addrAssets.length > 0">
     <li *ngFor="let item of addrAssets">

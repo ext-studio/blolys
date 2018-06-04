@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { AddressService } from '../address.service';
 import { TransactionService } from '../../transaction/transaction.service';
 
@@ -25,6 +25,19 @@ export class AddressInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.initPage();
+    this.router.events.subscribe((res: RouterEvent) => {
+      if (res instanceof NavigationEnd) {
+        if (res.url.indexOf('/address/') >= 0) {
+          if (this.address !== res.url.split('/')[2]) {
+            this.address = res.url.split('/')[2];
+            this.initPage();
+          }
+        }
+      }
+    });
+  }
+  initPage() {
     this.getTxByAddr(1, this.pageSize);
     this.getAddrAssets();
   }
@@ -49,6 +62,7 @@ export class AddressInfoComponent implements OnInit {
   gotoAddr (address: string) {
     this.address = address;
     this.isVisible = false;
+    this.initShow();
     this.getAddrAssets();
     this.getTxByAddr(1, this.pageSize);
   }
@@ -66,7 +80,6 @@ export class AddressInfoComponent implements OnInit {
       if (res.result) {
         this.addrTransactions = res.result.data;
         this.transTotal = res.result.total;
-        this.initShow();
       } else {
         this.transTotal = 0;
       }
