@@ -16,7 +16,6 @@ export class AddressInfoComponent implements OnInit {
   show: any = [];
   isVisible: Boolean = false;
   pageSize: Number = 5;
-  haveData: Boolean = false;
   address: String = this.router.url.split('/')[2];
 
   constructor(
@@ -56,9 +55,8 @@ export class AddressInfoComponent implements OnInit {
   getAddrAssets () {
     this.addressService.AddrAssets(this.address).subscribe((res: any) => {
       if (res.code === 1000) {
-        this.haveData = false;
+        this.addrAssets = [];
       } else if (res.code === 200) {
-        this.haveData = true;
         this.addrAssets = this.balanceFilter(res.result);
       }
     });
@@ -69,6 +67,8 @@ export class AddressInfoComponent implements OnInit {
         this.addrTransactions = res.result.data;
         this.transTotal = res.result.total;
         this.initShow();
+      } else {
+        this.transTotal = 0;
       }
     });
   }
