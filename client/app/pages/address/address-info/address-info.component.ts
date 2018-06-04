@@ -16,6 +16,7 @@ export class AddressInfoComponent implements OnInit {
   show: any = [];
   isVisible: Boolean = false;
   pageSize: Number = 5;
+  haveData: Boolean = false;
   address: String = this.router.url.split('/')[2];
 
   constructor(
@@ -54,8 +55,11 @@ export class AddressInfoComponent implements OnInit {
   }
   getAddrAssets () {
     this.addressService.AddrAssets(this.address).subscribe((res: any) => {
-      if (res.result) {
-        this.addrAssets = res.result;
+      if (res.code === 1000) {
+        this.haveData = false;
+      } else if (res.code === 200) {
+        this.haveData = true;
+        this.addrAssets = this.balanceFilter(res.result);
       }
     });
   }
@@ -83,5 +87,15 @@ export class AddressInfoComponent implements OnInit {
         this.transferType[res.index] = 1;
       }
     });
+  }
+  balanceFilter(balance) {
+    let target: any, j = 0;
+    target = [];
+    for (let i = 0; i < balance.length; i++) {
+      if (balance[i].balance !== '0') {
+        target[j++] = balance[i];
+      }
+    }
+    return target;
   }
 }

@@ -1,13 +1,13 @@
 <div class="block">
 	<div class="header-title">
     <span class="header-title-info" i18n>Assets</span>
-    <div class="pc-menu">
+    <!-- <div class="pc-menu">
       <button mat-raised-button class="pc-menu-btn" [matMenuTriggerFor]="pcAsset">{{assetType}}<mat-icon class="icon-link">keyboard_arrow_down</mat-icon></button>
       <mat-menu #pcAsset="matMenu">
         <button class="pc-menu-item" mat-menu-item (click)="changeAssetType('Assets')">Assets</button>
         <button class="pc-menu-item" mat-menu-item (click)="changeAssetType('Nep5')">Nep5</button>
       </mat-menu>
-    </div>
+    </div> -->
   </div>
   <table>
     <thead>
@@ -25,10 +25,10 @@
         <td class="td-link-btn" *ngIf="item?.type !== 'nep5'"><a class="link-btn" routerLink="/asset/{{item?.assetId}}">{{item?.name}}</a></td>
         <td class="td-link-btn" *ngIf="item?.type === 'nep5'"><a class="link-btn" routerLink="/nep5/{{item?.assetId}}">{{item?.name}}</a></td>
         <td [appAssetColor]="item?.type">{{item?.type}}</td>
-        <td class="hidden">{{item?.amount | unlimitedNumber}}</td>
+        <td class="hidden">{{item?.supply | unlimitedNumber}}</td>
         <td class="hidden">{{item?.addresses | number}}</td>
         <td class="hidden">{{item?.transactions | number}}</td>
-        <td class="hidden td-link-btn"><a class="link-btn" routerLink="/address/{{item?.admin}}">{{item?.admin}}</a></td>
+        <td class="hidden td-link-btn"><a class="link-btn" routerLink="/address/{{item?.registered}}">{{item?.registered}}</a></td>
       </tr>
     </tbody>
   </table>

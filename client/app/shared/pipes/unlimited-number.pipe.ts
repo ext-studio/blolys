@@ -34,8 +34,10 @@ export class UnlimitedNumberPipe implements PipeTransform {
         return '无限';
       }
     } else if (value.indexOf('.') >= 0) {
-      let integer = this.typeInteger(value.substr(0, value.indexOf('.')));
-      integer = integer.concat(value.substr(value.indexOf('.'), value.length));
+      let integer: any, decimal: any;
+      integer = this.typeInteger(value.substr(0, value.indexOf('.')));
+      decimal = this.typeDecimal(value.substr(value.indexOf('.'), value.length));
+      integer = integer.concat(decimal);
       return integer;
     } else {
       return this.typeInteger(value);
@@ -61,5 +63,19 @@ export class UnlimitedNumberPipe implements PipeTransform {
       integer = integer.concat(target[j]);
     }
     return integer;
+  }
+  public typeDecimal(decimal) {
+    let flag;
+    flag = 0;
+    for (let i = 1; i < decimal.length; i++) {
+      if (decimal[i] !== '0') {
+        flag = 1;
+      }
+    }
+    if (flag) {
+      return decimal;
+    } else {
+      return '';
+    }
   }
 }

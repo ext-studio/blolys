@@ -9,8 +9,8 @@ import { AssetService } from '../asset.service';
 export class AssetInfoComponent implements OnInit {
   isAddrProgress: Boolean = true;
   isRankProgress: Boolean = true;
-  recentAddress: any = [];
-  rankAddr: any = [];
+  recentAddress: any = null;
+  rankAddr: any = null;
   assetInfo: any = [];
   assetRegisterInfo: any = [];
   pageIndex: any = 0;

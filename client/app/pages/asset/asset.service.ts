@@ -24,10 +24,10 @@ export class AssetService {
     this.getAssets(pageIndex, pageSize);
     return this.$asset.publish().refCount();
   }
-  public Nep5Assets(pageIndex, pageSize): Observable<any> {
-    this.getNep5Assets(pageIndex, pageSize);
-    return this.$nep5Asset.publish().refCount();
-  }
+  // public Nep5Assets(pageIndex, pageSize): Observable<any> {
+  //   this.getNep5Assets(pageIndex, pageSize);
+  //   return this.$nep5Asset.publish().refCount();
+  // }
   public AssetInfo(assetId): Observable<any> {
     this.getAssetInfo(assetId);
     return this.$assetInfo.publish().refCount();
@@ -51,7 +51,7 @@ export class AssetService {
 
   public getAssets(pageIndex, pageSize) {
     this.http.post(`${this.global.apiDomain}/api/asset`,
-      { 'method': 'getassets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
+      { 'method': 'getallassets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
       if (res.code === 200) {
         this.$asset.next(res);
       }
@@ -59,16 +59,16 @@ export class AssetService {
       console.log(err);
     });
   }
-  public getNep5Assets(pageIndex, pageSize) {
-    this.http.post(`${this.global.apiDomain}/api/asset`,
-      { 'method': 'getnep5assets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
-        if (res.code === 200) {
-          this.$nep5Asset.next(res);
-        }
-    }, (err) => {
-      console.log(err);
-    });
-  }
+  // public getNep5Assets(pageIndex, pageSize) {
+  //   this.http.post(`${this.global.apiDomain}/api/asset`,
+  //     { 'method': 'getnep5assets', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
+  //       if (res.code === 200) {
+  //         this.$nep5Asset.next(res);
+  //       }
+  //   }, (err) => {
+  //     console.log(err);
+  //   });
+  // }
   public getAssetInfo(assetId) {
     this.http.post(`${this.global.apiDomain}/api/asset`,
         {'method': 'getassetinfo', 'params': [assetId]}).subscribe((res: any) => {

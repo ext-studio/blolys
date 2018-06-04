@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
       value = value.trim(); // Remove whitespace
       if (value[0] === 'A' && value.length === 34) {
         this.addressService.AddrAssets(value).subscribe((res: any) => {
-          if (res.result) {
+          if (res.code !== 1004) {
             this.router.navigate([`/address/${value}`]);
           } else {
             this.router.navigate([`/search/${value}`]);

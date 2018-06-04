@@ -34,9 +34,7 @@ export class AddressService {
   public getAddresses(pageIndex, pageSize) {
     this.http.post(`${this.global.apiDomain}/api/address`,
       { 'method': 'getaddresses', 'params': [pageIndex, pageSize] }).subscribe((res: any) => {
-      if (res.code === 200) {
-        this.$address.next(res);
-      }
+      this.$address.next(res);
     }, (err) => {
       console.log(err);
     });
