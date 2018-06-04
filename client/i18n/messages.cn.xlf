@@ -734,9 +734,9 @@
           <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0dbbce1a8784875c0b8a13744c5c5dd8bb085484" datatype="html">
-        <source>Balance rank (100)</source>
-        <target>资产排名 (100)</target>
+      <trans-unit id="913836d35df4c7eda3ccd1933351d1875f6112bd" datatype="html">
+        <source>Balance rank</source>
+        <target>资产排名</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
           <context context-type="linenumber">56</context>

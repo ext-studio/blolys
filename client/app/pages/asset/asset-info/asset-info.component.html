@@ -1,7 +1,7 @@
 <div class="block">
   <div class="header-title">
     <p class="header-title-info" i18n>Asset information</p>
-    <p class="header-title-address">{{assetInfo?.assetId}}</p>
+    <p class="header-title-address over-ellipsis">{{assetInfo?.assetId}}</p>
   </div>
   <ul class="address-info">
     <li class="color-one width-half"><label i18n>Name</label>{{assetInfo?.name}}</li>
@@ -53,7 +53,7 @@
     </app-paginator>
   </div>
   <div *ngIf="rankAddr">
-    <p class="header-title-info" i18n>Balance rank (100)</p>
+    <p class="header-title-info"><span i18n>Balance rank</span> ({{100 > rankPageTotal ? rankPageTotal : 100}})</p>
     <table>
       <thead>
         <tr>

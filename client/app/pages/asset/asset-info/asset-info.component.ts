@@ -19,6 +19,7 @@ export class AssetInfoComponent implements OnInit {
   rankPageSize: any = 5;
   addrPageLength: Number = 0;
   rankPageLength: Number = 0;
+  rankPageTotal: Number = 0;
   assetType: String = this.router.url.split('/')[1];
   assetId: String = this.router.url.split('/')[2];
 
@@ -78,6 +79,7 @@ export class AssetInfoComponent implements OnInit {
     this.assetService.RankByAssetid(pageIndex, pageSize, this.assetId).subscribe((res: any) => {
       if (res.result) {
         this.rankAddr = res.result.data;
+        this.rankPageTotal = res.result.total;
         this.rankPageLength = Math.ceil(res.result.total / pageSize) < 20 ? Math.ceil(res.result.total / pageSize) : 20;
         this.isRankProgress = false;
       }
