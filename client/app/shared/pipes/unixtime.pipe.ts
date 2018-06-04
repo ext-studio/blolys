@@ -19,16 +19,31 @@ export class UnixTimePipe implements PipeTransform {
     const sec = Math.floor(value);
     if (day > 1) {
       return this.getTime(res);
-    } else if (day === 1) {
-      return '1 day ago';
-    } else if (hour > 0) {
-      return hour + ' hour ago';
-    } else if (min > 0) {
-      return min + ' minutes ago';
-    } else if (sec > 10) {
-      return sec + ' seconds ago';
-    } else if (sec > 0) {
-      return 'just now';
+    }
+    if (window.location.href.indexOf('en') >= 0) {
+      if (day === 1) {
+        return '1 day ago';
+      } else if (hour > 0) {
+        return hour + ' hour ago';
+      } else if (min > 0) {
+        return min + ' minutes ago';
+      } else if (sec > 10) {
+        return sec + ' seconds ago';
+      } else if (sec > 0) {
+        return 'just now';
+      }
+    } else {
+      if (day === 1) {
+        return '1 天前';
+      } else if (hour > 0) {
+        return hour + ' 小时前';
+      } else if (min > 0) {
+        return min + ' 分钟前';
+      } else if (sec > 10) {
+        return sec + ' 秒前';
+      } else if (sec > 0) {
+        return '刚刚';
+      }
     }
   }
   getTime (time: any) {

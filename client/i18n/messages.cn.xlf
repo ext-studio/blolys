@@ -208,7 +208,7 @@
       </trans-unit>
       <trans-unit id="9e039855072809fc6b11de145affb2d304d5633c" datatype="html">
         <source>Block Height, Hash, Address or Transaction id </source>        
-        <target>区块高度、哈希、地址或者交易id </target>        
+        <target>区块高度、哈希、地址或者交易 id </target>        
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
           <context context-type="linenumber">7</context>
@@ -300,7 +300,7 @@
       </trans-unit>
       <trans-unit id="94c248797dd2b6af49068cb49c3b4bc26bec6a16" datatype="html">
         <source>TXID</source>        
-        <target>交易ID</target>        
+        <target>交易 ID</target>        
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/address/address-info/address-info.component.ts</context>
           <context context-type="linenumber">15</context>
@@ -344,7 +344,7 @@
       </trans-unit>
       <trans-unit id="7faaaa08f56427999f3be41df1093ce4089bbd75" datatype="html">
         <source>Size</source>        
-        <target>尺寸</target>        
+        <target>大小</target>        
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/address/address-info/address-info.component.ts</context>
           <context context-type="linenumber">17</context>
@@ -560,7 +560,7 @@
       </trans-unit>
       <trans-unit id="542ef638499635dec7641bdc2e499258094187cc" datatype="html">
         <source>size</source>        
-        <target>尺寸</target>        
+        <target>大小</target>        
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/block/block-info/block-info.component.ts</context>
           <context context-type="linenumber">31</context>
@@ -796,7 +796,7 @@
       </trans-unit>
       <trans-unit id="333aa0764ff8c611f037b32163a0f9497d732dde" datatype="html">
         <source>Sorry, Your search height, hash, address or transaction id does not exist.</source>
-        <target>对不起, 您查找的区块高度、哈希、地址或交易ID不存在。</target>
+        <target>对不起, 您查找的区块高度、哈希、地址或交易 ID 不存在。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/notsearch/notsearch.component.ts</context>
           <context context-type="linenumber">3</context>
