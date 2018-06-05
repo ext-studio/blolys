@@ -20,16 +20,16 @@ export class TransactionInfoComponent implements OnInit {
 
   ngOnInit() {
     this.initPage();
-    this.router.events.subscribe((res: RouterEvent) => {
-      if (res instanceof NavigationEnd) {
-        if (res.url.indexOf('/transaction/') >= 0) {
-          if (this.txid !== res.url.split('/')[2]) {
-            this.txid = res.url.split('/')[2];
-            this.initPage();
-          }
-        }
-      }
-    });
+    // this.router.events.subscribe((res: RouterEvent) => {
+    //   if (res instanceof NavigationEnd) {
+    //     if (res.url.indexOf('/transaction/') >= 0) {
+    //       if (this.txid !== res.url.split('/')[2]) {
+    //         this.txid = res.url.split('/')[2];
+    //         this.initPage();
+    //       }
+    //     }
+    //   }
+    // });
   }
   initPage() {
     this.transactionService.TxbyTxid(this.txid).subscribe((res: any) => {

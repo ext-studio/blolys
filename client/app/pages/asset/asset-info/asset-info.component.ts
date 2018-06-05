@@ -30,17 +30,17 @@ export class AssetInfoComponent implements OnInit {
 
   ngOnInit() {
     this.initPage();
-    this.router.events.subscribe((res: RouterEvent) => { // url
-      if (res instanceof NavigationEnd) {
-        if ((res.url.indexOf('/asset/') >= 0 || res.url.indexOf('/nep5/') >= 0) && this.assetId !== res.url.split('/')[2]) {
-          this.assetId = res.url.split('/')[2];
-          this.assetType = res.url.split('/')[1];
-          this.initPage();
-          this.onaddrPageGo(1);
-          this.onrankPageGo(1);
-        }
-      }
-    });
+    // this.router.events.subscribe((res: RouterEvent) => { // url
+    //   if (res instanceof NavigationEnd) {
+    //     if ((res.url.indexOf('/asset/') >= 0 || res.url.indexOf('/nep5/') >= 0) && this.assetId !== res.url.split('/')[2]) {
+    //       this.assetId = res.url.split('/')[2];
+    //       this.assetType = res.url.split('/')[1];
+    //       this.initPage();
+    //       this.onaddrPageGo(1);
+    //       this.onrankPageGo(1);
+    //     }
+    //   }
+    // });
   }
   initPage() {
     if (this.assetType !== 'nep5') {

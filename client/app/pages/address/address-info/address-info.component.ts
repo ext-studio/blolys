@@ -26,16 +26,16 @@ export class AddressInfoComponent implements OnInit {
 
   ngOnInit() {
     this.initPage();
-    this.router.events.subscribe((res: RouterEvent) => {
-      if (res instanceof NavigationEnd) {
-        if (res.url.indexOf('/address/') >= 0) {
-          if (this.address !== res.url.split('/')[2]) {
-            this.address = res.url.split('/')[2];
-            this.initPage();
-          }
-        }
-      }
-    });
+    // this.router.events.subscribe((res: RouterEvent) => {
+    //   if (res instanceof NavigationEnd) {
+    //     if (res.url.indexOf('/address/') >= 0) {
+    //       if (this.address !== res.url.split('/')[2]) {
+    //         this.address = res.url.split('/')[2];
+    //         this.initPage();
+    //       }
+    //     }
+    //   }
+    // });
   }
   initPage() {
     this.getTxByAddr(1, this.pageSize);

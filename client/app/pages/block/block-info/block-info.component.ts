@@ -27,16 +27,16 @@ export class BlockInfoComponent implements OnInit {
 
   ngOnInit() {
     this.initPage();
-    this.router.events.subscribe((res: RouterEvent) => {
-      if (res instanceof NavigationEnd) {
-        if (res.url.indexOf('/block/') >= 0) {
-          if (this.height !== Number(res.url.split('/')[2])) {
-            this.height = Number(res.url.split('/')[2]);
-            this.initPage();
-          }
-        }
-      }
-    });
+    // this.router.events.subscribe((res: RouterEvent) => {
+    //   if (res instanceof NavigationEnd) {
+    //     if (res.url.indexOf('/block/') >= 0) {
+    //       if (this.height !== Number(res.url.split('/')[2])) {
+    //         this.height = Number(res.url.split('/')[2]);
+    //         this.initPage();
+    //       }
+    //     }
+    //   }
+    // });
   }
   initPage() {
     this.initShow();
