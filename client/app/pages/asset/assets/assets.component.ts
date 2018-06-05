@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AssetService } from '../asset.service';
 
 @Component({
@@ -10,16 +11,26 @@ export class AssetsComponent implements OnInit {
   pageIndex: Number = 0;
   pageSize: any = 16;
   pageLength: number;
+  isProgress: Boolean = true;
   // assetType: String = 'Assets'; // 0 => assets, 1 => nep5Assets
   // showSortTran: Boolean = false;
   // showSortAddr: Boolean = false;
-  isProgress: Boolean = true;
 
   constructor(
+    private router: Router,
     private assetService: AssetService
   ) { }
 
   ngOnInit() { }
+  checkCondition (assetId) {
+    this.assetService.Nep5Info(assetId).subscribe((res: any) => {
+      if (typeof res.result === 'object') {
+        this.router.navigate([`/nep5/${assetId}`]);
+      } else if (typeof res.result === 'string') {
+        this.router.navigate([`/transaction/${res.result}`]);
+      }
+    });
+  }
   getAssets (pageIndex, pageSize) {
     this.assets = [];
     this.isProgress = true;

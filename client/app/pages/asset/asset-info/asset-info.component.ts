@@ -14,12 +14,12 @@ export class AssetInfoComponent implements OnInit {
   assetInfo: any = [];
   assetRegisterInfo: any = [];
   page: Number = 0;  // rank
-  pageIndex: any = 0;
-  addrPageSize: any = 5;
-  rankPageSize: any = 5;
-  addrPageLength: Number = 0;
-  rankPageLength: Number = 0;
-  rankPageTotal: Number = 0;
+  pageIndex: any = 0; // paginator
+  addrPageSize: any = 5; // paginator
+  rankPageSize: any = 5; // paginator
+  addrPageLength: Number = 0; // paginator
+  rankPageLength: Number = 0; // paginator
+  rankPageTotal: Number = 0; // paginator
   assetType: String = this.router.url.split('/')[1];
   assetId: String = this.router.url.split('/')[2];
 
@@ -30,7 +30,7 @@ export class AssetInfoComponent implements OnInit {
 
   ngOnInit() {
     this.initPage();
-    this.router.events.subscribe((res: RouterEvent) => {
+    this.router.events.subscribe((res: RouterEvent) => { // url
       if (res instanceof NavigationEnd) {
         if ((res.url.indexOf('/asset/') >= 0 || res.url.indexOf('/nep5/') >= 0) && this.assetId !== res.url.split('/')[2]) {
           this.assetId = res.url.split('/')[2];

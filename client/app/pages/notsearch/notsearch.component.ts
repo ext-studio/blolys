@@ -6,7 +6,8 @@ import { AlertComponent } from '../../shared';
 import { BlockService } from '../block/block.service';
 import { AddressService } from '../address/address.service';
 import { TransactionService } from '../transaction/transaction.service';
-
+import { NotsearchService } from './notsearch.service';
+import { AssetService } from '../asset/asset.service';
 @Component({
   selector: 'app-notsearch',
   templateUrl: './notsearch.component.html',
@@ -19,7 +20,9 @@ export class NotsearchComponent implements OnInit {
     private router: Router,
     private blockService: BlockService,
     private addressService: AddressService,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private notsearchService: NotsearchService,
+    private assetService: AssetService
   ) { }
 
   ngOnInit() {
@@ -31,20 +34,32 @@ export class NotsearchComponent implements OnInit {
     if ($event.keyCode === 13) {
       let value = $event.target.value;
       value = value.trim(); // Remove whitespace
-      if (value[0] === 'A' && value.length === 34) {
-        this.addressService.AddrAssets(value).subscribe((res: any) => {
-          if (res.code !== 1004) {
-            this.router.navigate([`/address/${value}`]);
+      if (value.length === 66) {
+        this.notsearchService.Condition(value).subscribe((res: any) => {
+          if (res.code === 200) {
+            if (res.result === '1') {
+              this.router.navigate([`/transaction/${value}`]);
+            } else if (res.result === '0') {
+              this.router.navigate([`/asset/${value}`]);
+            }
           } else {
             this.router.navigate([`/search/${value}`]);
           }
         });
-      } else if (value[0] === '0' && value[1] === 'x' && value.length === 66) {
-        value = value.toLowerCase(); // Datasource defaults to lowercase matches
-        this.transactionService.TxbyTxid(value).subscribe((res: any) => {
-          console.log(res);
-          if (res.result) {
-            this.router.navigate([`/transaction/${value}`]);
+      } else if (value.length === 40) {
+        this.assetService.Nep5Info(value).subscribe((res: any) => {
+          if (typeof res.result === 'string') {
+            this.router.navigate([`/transaction/${res.result}`]);
+          } else if (typeof res.result === 'object') {
+            this.router.navigate([`/nep5/${value}`]);
+          } else {
+            this.router.navigate([`/search/${value}`]);
+          }
+        });
+      } else if (value[0] === 'A' && value.length === 34) {
+        this.addressService.AddrAssets(value).subscribe((res: any) => {
+          if (res.code === 200) {
+            this.router.navigate([`/address/${value}`]);
           } else {
             this.router.navigate([`/search/${value}`]);
           }
