@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { collectExternalReferences } from '@angular/compiler';
+import { parse } from 'url';
 
 @Pipe({
   name: 'unlimitedNumber'
@@ -12,7 +13,20 @@ export class UnlimitedNumberPipe implements PipeTransform {
     }
     value = String(value);
     if (value.indexOf('e') >= 0) {
-      value =  String(Number(value));
+      if (value.indexOf('+') >= 0) {
+        value = String(Number(value));
+      } else if (value.indexOf('-') >= 0) {
+        let precision;
+        if (value[1] === '.') {
+          precision = value.indexOf('e') - value.indexOf('.') - 1 + Number(value.substr(value.indexOf('-') + 1, value.length - 1));
+        } else {
+          precision = Number(value.substr(value.indexOf('-') + 1, value.length - 1));
+        }
+        if (precision > 8) {
+          precision = 8;
+        }
+        value = String(Number(value).toFixed(precision));
+      }
     }
     if (value.indexOf('-') >= 0) {
       if (window.location.href.indexOf('en') >= 0) {
