@@ -21,10 +21,12 @@ export class AddressesComponent implements OnInit {
     this.addresses = [];
     this.isProgress = true;
     this.addressService.Addresses(pageIndex, pageSize).subscribe((res: any) => {
-      if (res.result.total > 0) {
-        this.addresses = res.result.data;
-        this.pageLength = Math.ceil(res.result.total / this.pageSize);
-        this.isProgress = false;
+      if (res.code === 200) {
+        if (res.result.total > 0) {
+          this.addresses = res.result.data;
+          this.pageLength = Math.ceil(res.result.total / this.pageSize);
+          this.isProgress = false;
+        }
       }
     });
   }

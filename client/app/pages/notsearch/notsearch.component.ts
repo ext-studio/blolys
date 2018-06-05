@@ -48,10 +48,12 @@ export class NotsearchComponent implements OnInit {
         });
       } else if (value.length === 40) {
         this.assetService.Nep5Info(value).subscribe((res: any) => {
-          if (typeof res.result === 'string') {
-            this.router.navigate([`/transaction/${res.result}`]);
-          } else if (typeof res.result === 'object') {
-            this.router.navigate([`/nep5/${value}`]);
+          if (res.code === 200) {
+            if (typeof res.result === 'string') {
+              this.router.navigate([`/transaction/${res.result}`]);
+            } else if (typeof res.result === 'object') {
+              this.router.navigate([`/nep5/${value}`]);
+            }
           } else {
             this.router.navigate([`/search/${value}`]);
           }

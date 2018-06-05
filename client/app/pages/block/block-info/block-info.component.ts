@@ -9,16 +9,19 @@ import { TransactionService } from '../../transaction/transaction.service';
   styleUrls: ['./block-info.component.scss']
 })
 export class BlockInfoComponent implements OnInit {
-  blockTransactions: any;
+  blockTransactions: any = [];
   transfer: any = [];
   transferType: any = [];
   blockInfo: any = [];
   transTotal: Number = 0;
   totalBlocks: Number = 0;
   show: any = [];
-  pageSize: Number = 5;
   isVisible: Boolean = false;
   height: number = Number(this.router.url.split('/')[2]);
+  pageIndex: any = 0;
+  pageSize: any = 5;
+  pageLength: any = 0;
+  isProgress: Boolean = true;
   constructor(
     private router: Router,
     private blockService: BlockService,
@@ -27,18 +30,22 @@ export class BlockInfoComponent implements OnInit {
 
   ngOnInit() {
     this.initPage();
-    // this.router.events.subscribe((res: RouterEvent) => {
-    //   if (res instanceof NavigationEnd) {
-    //     if (res.url.indexOf('/block/') >= 0) {
-    //       if (this.height !== Number(res.url.split('/')[2])) {
-    //         this.height = Number(res.url.split('/')[2]);
-    //         this.initPage();
-    //       }
-    //     }
-    //   }
-    // });
+    this.router.events.subscribe((res: RouterEvent) => {
+      if (res instanceof NavigationEnd) {
+        if (res.url.indexOf('/block/') >= 0) {
+          if (this.height !== Number(res.url.split('/')[2])) {
+            this.height = Number(res.url.split('/')[2]);
+            this.initPage();
+            this.onpageGo(1);
+          }
+        }
+      }
+    });
   }
   initPage() {
+    this.blockTransactions = [];
+    this.transfer = [];
+    this.blockInfo = [];
     this.initShow();
     this.isVisible = false;
     this.blockService.Allcounts().subscribe((res: any) => {
@@ -47,7 +54,6 @@ export class BlockInfoComponent implements OnInit {
       }
     });
     this.getBlockByHeight();
-    this.getTxByHeight(1, this.pageSize);
   }
   initShow () {
     for (let i = 0; i < this.transTotal; i++) {
@@ -57,10 +63,16 @@ export class BlockInfoComponent implements OnInit {
     }
   }
   getTxByHeight(pageIndex, pageSize) {
+    this.blockTransactions = [];
+    this.isProgress = true;
     this.blockService.TxByHeight(pageIndex, pageSize, this.height).subscribe((res: any) => {
       if (res.result) {
         this.blockTransactions = res.result.data;
         this.transTotal = res.result.total;
+        this.pageLength = Math.ceil(res.result.total / this.pageSize);
+        this.isProgress = false;
+      } else {
+        this.blockTransactions = false;
       }
     });
   }
@@ -73,17 +85,21 @@ export class BlockInfoComponent implements OnInit {
   }
   getTransferByTxid (index, txid) {
     this.transactionService.TransferByTxid(index, txid).subscribe((res: any) => {
-      if (res.result.TxUTXO != null || res.result.TxVouts != null) {
-        this.transfer[res.index] = res.result;
-        this.transferType[res.index] = 0;
+      if (res.code === 200) {
+        if (res.result.TxUTXO != null || res.result.TxVouts != null) {
+          this.transfer[index] = res.result;
+          this.transferType[index] = 0;
+        }
       }
     });
   }
   getNep5TransferByTxid (index, txid) {
     this.transactionService.Nep5TransferByTxid(index, txid).subscribe((res: any) => {
-      if (res.result.length > 0) {
-        this.transfer[res.index] = res.result;
-        this.transferType[res.index] = 1;
+      if (res.code === 200) {
+        if (res.result.length > 0) {
+          this.transfer[index] = res.result;
+          this.transferType[index] = 1;
+        }
       }
     });
   }
@@ -94,8 +110,12 @@ export class BlockInfoComponent implements OnInit {
       this.getNep5TransferByTxid(index, txid);
     }
   }
-  showAllTrans() {
-    this.getTxByHeight(1, this.transTotal);
-    this.isVisible = true;
+  // showAllTrans() {
+  //   this.getTxByHeight(1, this.transTotal);
+  //   this.isVisible = true;
+  // }
+  onpageGo(num: number) {
+    this.initShow();
+    this.getTxByHeight(num, this.pageSize);
   }
 }

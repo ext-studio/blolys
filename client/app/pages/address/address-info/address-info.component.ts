@@ -8,15 +8,18 @@ import { TransactionService } from '../../transaction/transaction.service';
   styleUrls: ['./address-info.component.scss']
 })
 export class AddressInfoComponent implements OnInit {
-  addrTransactions: any;
+  addrTransactions: any = [];
   transfer: any = [];
   transferType: any = [];
-  addrAssets: any = [];
+  addrAssets: any = ['0'];
   transTotal: Number = 0;
   show: any = [];
   isVisible: Boolean = false;
-  pageSize: Number = 5;
   address: String = this.router.url.split('/')[2];
+  pageIndex: any = 0;
+  pageSize: any = 5;
+  pageLength: any = 0;
+  isProgress: Boolean = true;
 
   constructor(
     private router: Router,
@@ -25,21 +28,18 @@ export class AddressInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.initPage();
-    // this.router.events.subscribe((res: RouterEvent) => {
-    //   if (res instanceof NavigationEnd) {
-    //     if (res.url.indexOf('/address/') >= 0) {
-    //       if (this.address !== res.url.split('/')[2]) {
-    //         this.address = res.url.split('/')[2];
-    //         this.initPage();
-    //       }
-    //     }
-    //   }
-    // });
-  }
-  initPage() {
-    this.getTxByAddr(1, this.pageSize);
     this.getAddrAssets();
+    this.router.events.subscribe((res: RouterEvent) => {
+      if (res instanceof NavigationEnd) {
+        if (res.url.indexOf('/address/') >= 0) {
+          if (this.address !== res.url.split('/')[2]) {
+            this.address = res.url.split('/')[2];
+            this.getAddrAssets();
+            this.onpageGo(1);
+          }
+        }
+      }
+    });
   }
   initShow () {
     for (let i = 0; i < this.transTotal; i++) {
@@ -55,10 +55,10 @@ export class AddressInfoComponent implements OnInit {
       this.getNep5TransferByTxid(index, txid);
     }
   }
-  showAllTrans () {
-    this.getTxByAddr(1, this.transTotal);
-    this.isVisible = true;
-  }
+  // showAllTrans () {
+  //   this.getTxByAddr(1, this.transTotal);
+  //   this.isVisible = true;
+  // }
   gotoAddr (address: string) {
     this.address = address;
     this.isVisible = false;
@@ -68,36 +68,46 @@ export class AddressInfoComponent implements OnInit {
   }
   getAddrAssets () {
     this.addressService.AddrAssets(this.address).subscribe((res: any) => {
-      if (res.code === 1000) {
-        this.addrAssets = [];
-      } else if (res.code === 200) {
+      if (res.code === 200) {
         this.addrAssets = this.balanceFilter(res.result);
+      } else if (res.code === 1000) {
+        this.addrAssets = [];
+      } else {
+        this.addrAssets = ['0'];
       }
     });
   }
   getTxByAddr (pageIndex, pageSize) {
+    this.addrTransactions = [];
+    this.isProgress = true;
     this.addressService.TxByAddr(pageIndex, pageSize, this.address).subscribe((res: any) => {
       if (res.result) {
         this.addrTransactions = res.result.data;
         this.transTotal = res.result.total;
+        this.pageLength = Math.ceil(res.result.total / this.pageSize);
+        this.isProgress = false;
       } else {
-        this.transTotal = 0;
+        this.addrTransactions = false;
       }
     });
   }
   getTransferByTxid (index, txid) {
     this.transactionService.TransferByTxid(index, txid).subscribe((res: any) => {
-      if (res.result.TxUTXO != null || res.result.TxVouts != null) {
-        this.transfer[res.index] = res.result;
-        this.transferType[res.index] = 0;
+      if (res.code === 200) {
+        if (res.result.TxUTXO != null || res.result.TxVouts != null) {
+          this.transfer[index] = res.result;
+          this.transferType[index] = 0;
+        }
       }
     });
   }
   getNep5TransferByTxid (index, txid) {
     this.transactionService.Nep5TransferByTxid(index, txid).subscribe((res: any) => {
-      if (res.result.length > 0) {
-        this.transfer[res.index] = res.result;
-        this.transferType[res.index] = 1;
+      if (res.code === 200) {
+        if (res.result.length > 0) {
+          this.transfer[index] = res.result;
+          this.transferType[index] = 1;
+        }
       }
     });
   }
@@ -110,5 +120,9 @@ export class AddressInfoComponent implements OnInit {
       }
     }
     return target;
+  }
+  onpageGo(num: number) {
+    this.initShow();
+    this.getTxByAddr(num, this.pageSize);
   }
 }

@@ -32,26 +32,32 @@ export class TransactionsComponent implements OnInit {
     this.transactions = [];
     this.isProgress = true;
     this.transactionService.Trans(pageIndex, pageSize, this.transType).subscribe((res: any) => {
-      if (res.result.total > 0) {
-        this.transactions = res.result.data;
-        this.pageLength = Math.ceil(res.result.total / this.pageSize);
-        this.isProgress = false;
+      if (res.code === 200) {
+        if (res.result.total > 0) {
+          this.transactions = res.result.data;
+          this.pageLength = Math.ceil(res.result.total / this.pageSize);
+          this.isProgress = false;
+        }
       }
     });
   }
   getTransferByTxid (index, txid) {
     this.transactionService.TransferByTxid(index, txid).subscribe((res: any) => {
-      if (res.result.TxUTXO != null || res.result.TxVouts != null) {
-        this.transfer[res.index] = res.result;
-        this.transferType[res.index] = 0;
+      if (res.code === 200) {
+        if (res.result.TxUTXO != null || res.result.TxVouts != null) {
+          this.transfer[index] = res.result;
+          this.transferType[index] = 0;
+        }
       }
     });
   }
   getNep5TransferByTxid (index, txid) {
     this.transactionService.Nep5TransferByTxid(index, txid).subscribe((res: any) => {
-      if (res.result.length > 0) {
-        this.transfer[res.index] = res.result;
-        this.transferType[res.index] = 1;
+      if (res.code === 200) {
+        if (res.result.length > 0) {
+          this.transfer[index] = res.result;
+          this.transferType[index] = 1;
+        }
       }
     });
   }

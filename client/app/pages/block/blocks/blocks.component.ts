@@ -20,10 +20,12 @@ export class BlocksComponent implements OnInit {
     this.blocks = [];
     this.isProgress = true;
     this.blockService.Block(pageIndex, pageSize).subscribe((res: any) => {
-      if (res.result.total > 0) {
-        this.blocks = res.result.data;
-        this.pageLength = Math.ceil(res.result.total / this.pageSize);
-        this.isProgress = false;
+      if (res.code === 200) {
+        if (res.result.total > 0) {
+          this.blocks = res.result.data;
+          this.pageLength = Math.ceil(res.result.total / this.pageSize);
+          this.isProgress = false;
+        }
       }
     });
   }

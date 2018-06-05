@@ -20,18 +20,22 @@ export class TransactionInfoComponent implements OnInit {
 
   ngOnInit() {
     this.initPage();
-    // this.router.events.subscribe((res: RouterEvent) => {
-    //   if (res instanceof NavigationEnd) {
-    //     if (res.url.indexOf('/transaction/') >= 0) {
-    //       if (this.txid !== res.url.split('/')[2]) {
-    //         this.txid = res.url.split('/')[2];
-    //         this.initPage();
-    //       }
-    //     }
-    //   }
-    // });
+    this.router.events.subscribe((res: RouterEvent) => {
+      if (res instanceof NavigationEnd) {
+        if (res.url.indexOf('/transaction/') >= 0) {
+          if (this.txid !== res.url.split('/')[2]) {
+            this.txid = res.url.split('/')[2];
+            this.initPage();
+          }
+        }
+      }
+    });
   }
   initPage() {
+    this.transfer = [];
+    this.transferType = -1;
+    this.txInfo = [];
+    this.scripts = {};
     this.transactionService.TxbyTxid(this.txid).subscribe((res: any) => {
       if (res.result) {
         this.txInfo = res.result;
@@ -43,15 +47,19 @@ export class TransactionInfoComponent implements OnInit {
       }
     });
     this.transactionService.TransferByTxid('1', this.txid).subscribe((res: any) => {
-      if (res.result.TxUTXO != null && res.result.TxVouts != null) {
-        this.transfer = res.result;
-        this.transferType = 0;
+      if (res.code === 200) {
+        if (res.result.TxUTXO != null && res.result.TxVouts != null) {
+          this.transfer = res.result;
+          this.transferType = 0;
+        }
       }
     });
     this.transactionService.Nep5TransferByTxid('1', this.txid).subscribe((res: any) => {
-      if (res.result.length > 0) {
-        this.transfer = res.result;
-        this.transferType = 1;
+      if (res.code === 200) {
+        if (res.result.length > 0) {
+          this.transfer = res.result;
+          this.transferType = 1;
+        }
       }
     });
   }

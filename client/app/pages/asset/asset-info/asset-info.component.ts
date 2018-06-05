@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterEvent, NavigationEnd } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { GlobalService } from '../../../core';
 import { AssetService } from '../asset.service';
 
 @Component({
@@ -25,24 +27,29 @@ export class AssetInfoComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private assetService: AssetService
+    private assetService: AssetService,
+    private http: HttpClient,
+    private global: GlobalService
   ) { }
-
   ngOnInit() {
-    this.initPage();
-    // this.router.events.subscribe((res: RouterEvent) => { // url
-    //   if (res instanceof NavigationEnd) {
-    //     if ((res.url.indexOf('/asset/') >= 0 || res.url.indexOf('/nep5/') >= 0) && this.assetId !== res.url.split('/')[2]) {
-    //       this.assetId = res.url.split('/')[2];
-    //       this.assetType = res.url.split('/')[1];
-    //       this.initPage();
-    //       this.onaddrPageGo(1);
-    //       this.onrankPageGo(1);
-    //     }
-    //   }
-    // });
+    this.checkCondition();
+    this.router.events.subscribe((res: RouterEvent) => { // url
+      if (res instanceof NavigationEnd) {
+        if ((res.url.indexOf('/asset/') >= 0 || res.url.indexOf('/nep5/') >= 0) && this.assetId !== res.url.split('/')[2]) {
+          this.assetType = res.url.split('/')[1];
+          this.assetId = res.url.split('/')[2];
+          this.checkCondition();
+          this.recentAddress = [];
+          this.rankAddr = [];
+          this.onaddrPageGo(1);
+          this.onrankPageGo(1);
+        }
+      }
+    });
   }
-  initPage() {
+  checkCondition () {
+    this.assetInfo = [];
+    this.assetRegisterInfo = [];
     if (this.assetType !== 'nep5') {
       this.assetService.AssetInfo(this.assetId).subscribe((res: any) => {
         if (res.result) {
@@ -51,13 +58,18 @@ export class AssetInfoComponent implements OnInit {
       });
     } else {
       this.assetService.Nep5Info(this.assetId).subscribe((res: any) => {
-        if (res.result) {
-          this.assetInfo = res.result;
-          this.assetService.Nep5RegisterInfo(res.result.id).subscribe((res2: any) => {
-            if (res2.result) {
-              this.assetRegisterInfo = res2.result;
-            }
-          });
+        if (res.code === 200) {
+          if (typeof res.result === 'object') {
+            this.assetInfo = res.result;
+            this.assetService.Nep5RegisterInfo(res.result.id).subscribe((res2: any) => {
+              if (res2.result) {
+                this.assetRegisterInfo = res2.result;
+              }
+            });
+          } else if (typeof res.result === 'string') {
+            this.router.navigate([`/transaction/${res.result}`]);
+            return ;
+          }
         }
       });
     }

@@ -28,9 +28,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     });
     this.queryCountTime = setInterval(() => {
-      this.blockService.Allcounts().subscribe((countres: any) => {
-        if (countres.result) {
-          this.total = countres.result;
+      this.blockService.Allcounts().subscribe((res: any) => {
+        if (res.result) {
+          this.total = res.result;
         }
       });
     }, 20000);
@@ -67,10 +67,12 @@ export class HomeComponent implements OnInit, OnDestroy {
         });
       } else if (value.length === 40) {
         this.assetService.Nep5Info(value).subscribe((res: any) => {
-          if (typeof res.result === 'string') {
-            this.router.navigate([`/transaction/${res.result}`]);
-          } else if (typeof res.result === 'object') {
-            this.router.navigate([`/nep5/${value}`]);
+          if (res.code === 200) {
+            if (typeof res.result === 'string') {
+              this.router.navigate([`/transaction/${res.result}`]);
+            } else if (typeof res.result === 'object') {
+              this.router.navigate([`/nep5/${value}`]);
+            }
           } else {
             this.router.navigate([`/search/${value}`]);
           }

@@ -22,24 +22,17 @@ export class AssetsComponent implements OnInit {
   ) { }
 
   ngOnInit() { }
-  checkCondition (assetId) {
-    this.assetService.Nep5Info(assetId).subscribe((res: any) => {
-      if (typeof res.result === 'object') {
-        this.router.navigate([`/nep5/${assetId}`]);
-      } else if (typeof res.result === 'string') {
-        this.router.navigate([`/transaction/${res.result}`]);
-      }
-    });
-  }
   getAssets (pageIndex, pageSize) {
     this.assets = [];
     this.isProgress = true;
     pageIndex = Number(pageIndex);
     this.assetService.Assets(pageIndex, pageSize).subscribe((res: any) => {
-      if (res.result.total > 0) {
-        this.assets = res.result.data;
-        this.pageLength = Math.ceil(res.result.total / this.pageSize);
-        this.isProgress = false;
+      if (res.code === 200) {
+        if (res.result.total > 0) {
+          this.assets = res.result.data;
+          this.pageLength = Math.ceil(res.result.total / this.pageSize);
+          this.isProgress = false;
+        }
       }
     });
   }
