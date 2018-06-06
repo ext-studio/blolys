@@ -4,27 +4,27 @@
     <div class="line-second" i18n>Your home for all NEO related blockchain information</div>
     <div class="example-container" [formGroup]="searchForm">
       <mat-form-field >
-        <mat-label><span i18n>Block Height, Hash, Address or Transaction id </span><img src="/assets/icon_search@2x.png"></mat-label>
+        <mat-label><span i18n>Block height, hash, address or transaction id </span><img src="/assets/icon_search@2x.png"></mat-label>
         <input matInput formcControlName="searchText" (keyup)="applyFilter($event)">
       </mat-form-field>
     </div>
   </div>
   <div class="links">
     <div class="link-item">
-      <p i18n>Total Blocks</p>
-      <span class="link-btn" routerLink="/blocks">{{ total?.blockCounts | number }}</span>
+      <p i18n>Total blocks</p>
+      <span class="link-btn" routerLink="/{{netDo}}/blocks">{{ total?.blockCounts | number }}</span>
     </div>
     <div class="link-item">
-      <p i18n>Total Assets</p>
-      <span class="link-btn" routerLink="/assets">{{ total?.assetCounts | unlimitedNumber }}</span>
+      <p i18n>Total assets</p>
+      <span class="link-btn" routerLink="/{{netDo}}/assets">{{ total?.assetCounts | unlimitedNumber }}</span>
     </div>
     <div class="link-item">
-      <p i18n>Total Transactions</p>
-      <span class="link-btn" routerLink="/transactions">{{ total?.txCounts | number }}</span>
+      <p i18n>Total transactions</p>
+      <span class="link-btn" routerLink="/{{netDo}}/transactions">{{ total?.txCounts | number }}</span>
     </div>
     <div class="link-item">
-      <p i18n>Total Addresses</p>
-      <span class="link-btn" routerLink="/addresses">{{ total?.addressCounts | number }}</span>
+      <p i18n>Total addresses</p>
+      <span class="link-btn" routerLink="/{{netDo}}/addresses">{{ total?.addressCounts | number }}</span>
     </div>
   </div>
 </div>

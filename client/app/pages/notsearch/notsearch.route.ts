@@ -3,7 +3,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { NotsearchComponent } from './notsearch.component';
 
 const routes: Routes = [
-  { path: 'search/:id', component: NotsearchComponent}
+  {
+    path: 'mainnet',
+    children: [
+      { path: 'search/:id', component: NotsearchComponent}
+    ]
+  },
+  {
+    path: 'testnet',
+    children: [
+      { path: 'search/:id', component: NotsearchComponent}
+    ]
+  }
 ];
 
 @NgModule({

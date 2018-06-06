@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { TransactionService } from '../transaction.service';
 import { Subscription } from 'rxjs/Subscription';
+import { GlobalService } from '../../../core';
 
 @Component({
   templateUrl: './transactions.component.html',
@@ -16,16 +18,27 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   pageLength: number;
   pageIndex: any = 0;
   isProgress: Boolean = true;
+  apiDo: String;
+  netDo: String;
 
   transSub: Subscription = null;
   transferByTxidSub: Subscription = null;
   nep5TransferByTxidSub: Subscription = null;
 
   constructor(
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private global: GlobalService,
+    private router: Router
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.netDo = this.router.url.split('/')[1];
+    if (this.global.net === 'mainnet') {
+      this.apiDo = this.global.apiDomain;
+    } else {
+      this.apiDo = this.global.teApiDomain;
+    }
+  }
   ngOnDestroy() {
     if (this.transSub) {
       this.transSub.unsubscribe();
@@ -47,7 +60,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   getTrans (pageIndex, pageSize) {
     this.transactions = [];
     this.isProgress = true;
-    this.transSub = this.transactionService.Trans(pageIndex, pageSize, this.transType).subscribe((res: any) => {
+    this.transSub = this.transactionService.Trans(this.apiDo, pageIndex, pageSize, this.transType).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.total > 0) {
           this.transactions = res.result.data;
@@ -58,7 +71,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     });
   }
   getTransferByTxid (index, txid) {
-    this.transferByTxidSub = this.transactionService.TransferByTxid(index, txid).subscribe((res: any) => {
+    this.transferByTxidSub = this.transactionService.TransferByTxid(this.apiDo, txid).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.TxUTXO != null || res.result.TxVouts != null) {
           this.transfer[index] = res.result;
@@ -68,7 +81,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     });
   }
   getNep5TransferByTxid (index, txid) {
-    this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid(index, txid).subscribe((res: any) => {
+    this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid(this.apiDo, txid).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.length > 0) {
           this.transfer[index] = res.result;

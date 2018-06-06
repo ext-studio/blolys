@@ -10,20 +10,20 @@ export class BlockService {
     private global: GlobalService
   ) { }
 
-  public Block(pageIndex, pageSize): Observable<any> {
-    return  this.http.post(`${this.global.apiDomain}/api/block`,
+  public Block(apiDo, pageIndex, pageSize): Observable<any> {
+    return  this.http.post(`${apiDo}/api/block`,
       { 'method': 'getblocks', 'params': [pageIndex, pageSize] });
   }
-  public Allcounts(): Observable<any> {
-    return this.http.post(`${this.global.apiDomain}/api/index`,
+  public Allcounts(apiDo): Observable<any> {
+    return this.http.post(`${apiDo}/api/index`,
       { 'method': 'queryallcounts' });
   }
-  public TxByHeight(pageIndex, pageSize, height): Observable<any> {
-    return this.http.post(`${this.global.apiDomain}/api/transactions`,
+  public TxByHeight(apiDo, pageIndex, pageSize, height): Observable<any> {
+    return this.http.post(`${apiDo}/api/transactions`,
       { 'method': 'gettxbyheight', 'params': [pageIndex, pageSize, height] });
   }
-  public BlockByHeight(height): Observable<any> {
-    return this.http.post(`${this.global.apiDomain}/api/block`,
+  public BlockByHeight(apiDo, height): Observable<any> {
+    return this.http.post(`${apiDo}/api/block`,
       { 'method': 'getblockbyheight', 'params': [height]} );
   }
 }

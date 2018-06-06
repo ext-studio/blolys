@@ -5,8 +5,20 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { TransactionInfoComponent } from './transaction-info/transaction-info.component';
 
 const routes: Routes = [
-  { path: 'transactions', component: TransactionsComponent },
-  { path: 'transaction/:id', component: TransactionInfoComponent }
+  {
+    path: 'mainnet',
+    children: [
+      { path: 'transactions', component: TransactionsComponent },
+      { path: 'transaction/:id', component: TransactionInfoComponent }
+    ]
+  },
+  {
+    path: 'testnet',
+    children: [
+      { path: 'transactions', component: TransactionsComponent },
+      { path: 'transaction/:id', component: TransactionInfoComponent }
+    ]
+  }
 ];
 
 @NgModule({

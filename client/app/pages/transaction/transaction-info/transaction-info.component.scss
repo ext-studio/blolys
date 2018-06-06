@@ -16,6 +16,9 @@
 .break-word {
   word-wrap: break-word;
 }
+.header-title-info {
+  margin-bottom: 20px;
+}
 .header-title {
   margin-bottom: 25px;
   border-left: 3px solid #27d357;
@@ -31,43 +34,32 @@
     margin-top: 15px;
   }
 }
-.header-title-info {
-  margin-bottom: 20px;
-}
 .info {
   box-shadow: 3px 3px 25px #0a1331;
   width: 100%;
   background: #18244f;
-  border-radius: 2px;
+  border-radius: 5px;
   overflow: hidden;
   li {
-    list-style: none;
-    box-sizing: border-box;
-    position: relative;
     float: left;   
+    list-style: none;
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
     div {
-      position: absolute;
-      bottom: 40px;
-      text-align: center;
-      width: 100%;
-      padding: 0 10px;
-    }
-    p {
-      word-break: break-all; 
-      margin-bottom: 10px;
-    }
-    span {
-      bottom: 0;
-      font-size: 14px;
-      padding-bottom: 40px;
-      color: #134699; 
+      p {
+        margin-bottom: 15px;
+        word-wrap: break-word;
+      }
+      span {
+        font-size: 16px;
+        color: #3a76d7; 
+      }  
     }
   }
-}
-.block-info-address {
-  border-radius: 2px;
-  box-shadow: 3px 3px 25px #0a1331;
-  background: #18244f;
 }
 .tran-info {
   padding: 0 10px;
@@ -110,27 +102,6 @@
   }
 }
 @media screen and (min-width: 870px) {
-  .block-info-address {
-    li {
-      width: 33.33%;
-      min-height: 135px;
-      float: left;
-      &:not(:nth-child(3n)) {
-        border-right: 1px solid #203067;
-      }
-      &:nth-child(-n + 3) {
-        border-bottom: 1px solid #203067;
-      }
-      p {
-        &:nth-child(3n) {
-          font-size: 14px;
-        }
-        &:not(::nth-child(3n)) {
-          font-size: 24px;
-        }
-      }
-    }
-  }
   .info {
     li {
       width: 33.33%;
@@ -222,14 +193,11 @@
   .header-title-info {
     font-size: 22px;
   }
-  .info {
-    li {
-      width: 100%;
-      min-height: 120px;
-      float: left;
-      &:not(:last-child) {
-        border-bottom: 1px solid #203067;
-      }
+  .info li {
+    width: 100%;
+    height: 120px;
+    &:not(:last-child) {
+      border-bottom: 1px solid #203067;
     }
   }
   .info, .script {

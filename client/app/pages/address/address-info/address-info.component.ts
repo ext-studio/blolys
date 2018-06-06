@@ -3,6 +3,7 @@ import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { AddressService } from '../address.service';
 import { TransactionService } from '../../transaction/transaction.service';
 import { Subscription } from 'rxjs/Subscription';
+import { GlobalService } from '../../../core';
 
 @Component({
   templateUrl: './address-info.component.html',
@@ -16,11 +17,13 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
   transTotal: Number = 0;
   show: any = [];
   isVisible: Boolean = false;
-  address: String = this.router.url.split('/')[2];
+  address: String = this.router.url.split('/')[3];
   pageIndex: any = 0;
   pageSize: any = 5;
   pageLength: any = 0;
   isProgress: Boolean = true;
+  apiDo: String;
+  netDo: String;
 
   routerSub: Subscription = null;
   addrAssetsSub: Subscription = null;
@@ -31,7 +34,8 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private addressService: AddressService,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private global: GlobalService
   ) { }
 
   ngOnDestroy() {
@@ -52,11 +56,17 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
     }
   }
   ngOnInit() {
+    this.netDo = this.router.url.split('/')[1];
+    if (this.global.net === 'mainnet') {
+      this.apiDo = this.global.apiDomain;
+    } else {
+      this.apiDo = this.global.teApiDomain;
+    }
     this.getAddrAssets();
     this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
       if (res instanceof NavigationEnd) {
-        if (this.address !== res.url.split('/')[2]) {
-          this.address = res.url.split('/')[2];
+        if (this.address !== res.url.split('/')[3]) {
+          this.address = res.url.split('/')[3];
           this.getAddrAssets();
           this.onpageGo(1);
         }
@@ -83,7 +93,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
   //   this.isVisible = true;
   // }
   getAddrAssets () {
-    this.addrAssetsSub = this.addressService.AddrAssets(this.address).subscribe((res: any) => {
+    this.addrAssetsSub = this.addressService.AddrAssets(this.apiDo, this.address).subscribe((res: any) => {
       if (res.code === 200) {
         this.addrAssets = this.balanceFilter(res.result);
       } else if (res.code === 1000) {
@@ -96,7 +106,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
   getTxByAddr (pageIndex, pageSize) {
     this.addrTransactions = [];
     this.isProgress = true;
-    this.txByAddrSub = this.addressService.TxByAddr(pageIndex, pageSize, this.address).subscribe((res: any) => {
+    this.txByAddrSub = this.addressService.TxByAddr(this.apiDo, pageIndex, pageSize, this.address).subscribe((res: any) => {
       if (res.result) {
         this.addrTransactions = res.result.data;
         this.transTotal = res.result.total;
@@ -108,7 +118,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
     });
   }
   getTransferByTxid (index, txid) {
-    this.transferByTxidSub = this.transactionService.TransferByTxid(index, txid).subscribe((res: any) => {
+    this.transferByTxidSub = this.transactionService.TransferByTxid(this.apiDo, txid).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.TxUTXO != null || res.result.TxVouts != null) {
           this.transfer[index] = res.result;
@@ -118,7 +128,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
     });
   }
   getNep5TransferByTxid (index, txid) {
-    this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid(index, txid).subscribe((res: any) => {
+    this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid(this.apiDo, txid).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.length > 0) {
           this.transfer[index] = res.result;

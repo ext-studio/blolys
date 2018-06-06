@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { TransactionService } from '../transaction.service';
 import { Subscription } from 'rxjs/Subscription';
+import { GlobalService } from '../../../core';
 
 @Component({
   templateUrl: './transaction-info.component.html',
@@ -12,7 +13,9 @@ export class TransactionInfoComponent implements OnInit, OnDestroy {
   transferType: Number = -1;
   txInfo: any = [];
   scripts: any = {};
-  txid: String = this.router.url.split('/')[2];
+  txid: String = this.router.url.split('/')[3];
+  apiDo: String;
+  netDo: String;
 
   routerSub: Subscription = null;
   txbyTxidSub: Subscription = null;
@@ -22,15 +25,22 @@ export class TransactionInfoComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private global: GlobalService
   ) { }
 
   ngOnInit() {
+    this.netDo = this.router.url.split('/')[1];
+    if (this.global.net === 'mainnet') {
+      this.apiDo = this.global.apiDomain;
+    } else {
+      this.apiDo = this.global.teApiDomain;
+    }
     this.initPage();
     this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
       if (res instanceof NavigationEnd) {
-        if (this.txid !== res.url.split('/')[2]) {
-          this.txid = res.url.split('/')[2];
+        if (this.txid !== res.url.split('/')[3]) {
+          this.txid = res.url.split('/')[3];
           this.initPage();
         }
       }
@@ -58,17 +68,17 @@ export class TransactionInfoComponent implements OnInit, OnDestroy {
     this.transferType = -1;
     this.txInfo = [];
     this.scripts = {};
-    this.txbyTxidSub = this.transactionService.TxbyTxid(this.txid).subscribe((res: any) => {
+    this.txbyTxidSub = this.transactionService.TxbyTxid(this.apiDo, this.txid).subscribe((res: any) => {
       if (res.result) {
         this.txInfo = res.result;
       }
     });
-    this.scriptSub = this.transactionService.Script(this.txid).subscribe((res: any) => {
+    this.scriptSub = this.transactionService.Script(this.apiDo, this.txid).subscribe((res: any) => {
       if (res.result) {
         this.scripts = res.result;
       }
     });
-    this.transferByTxidSub = this.transactionService.TransferByTxid('1', this.txid).subscribe((res: any) => {
+    this.transferByTxidSub = this.transactionService.TransferByTxid(this.apiDo, this.txid).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.TxUTXO != null && res.result.TxVouts != null) {
           this.transfer = res.result;
@@ -76,7 +86,7 @@ export class TransactionInfoComponent implements OnInit, OnDestroy {
         }
       }
     });
-    this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid('1', this.txid).subscribe((res: any) => {
+    this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid(this.apiDo, this.txid).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.length > 0) {
           this.transfer = res.result;

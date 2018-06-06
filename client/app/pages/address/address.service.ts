@@ -10,16 +10,16 @@ export class AddressService {
     private global: GlobalService
   ) { }
 
-  public Addresses(pageIndex, pageSize): Observable<any> {
-    return this.http.post(`${this.global.apiDomain}/api/address`,
+  public Addresses(apiDo, pageIndex, pageSize): Observable<any> {
+    return this.http.post(`${apiDo}/api/address`,
       { 'method': 'getaddresses', 'params': [pageIndex, pageSize] });
   }
-  public TxByAddr(pageIndex, pageSize, address): Observable<any> {
-    return this.http.post(`${this.global.apiDomain}/api/transactions`,
+  public TxByAddr(apiDo, pageIndex, pageSize, address): Observable<any> {
+    return this.http.post(`${apiDo}/api/transactions`,
       {'method': 'getpagetxbyaddress', 'params': [pageIndex, pageSize, address]});
   }
-  public AddrAssets(address): Observable<any> {
-    return this.http.post(`${this.global.apiDomain}/api/asset`,
+  public AddrAssets(apiDo, address): Observable<any> {
+    return this.http.post(`${apiDo}/api/asset`,
       {'method': 'getaddrassets', 'params': [address]});
   }
 }

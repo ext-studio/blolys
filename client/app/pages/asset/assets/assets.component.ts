@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AssetService } from '../asset.service';
 import { Subscription } from 'rxjs/Subscription';
+import { GlobalService } from '../../../core';
 
 @Component({
   templateUrl: './assets.component.html',
@@ -13,6 +14,8 @@ export class AssetsComponent implements OnInit, OnDestroy {
   pageSize: any = 16;
   pageLength: number;
   isProgress: Boolean = true;
+  apiDo: String;
+  netDo: String;
   // assetType: String = 'Assets'; // 0 => assets, 1 => nep5Assets
   // showSortTran: Boolean = false;
   // showSortAddr: Boolean = false;
@@ -21,10 +24,18 @@ export class AssetsComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private assetService: AssetService
+    private assetService: AssetService,
+    private global: GlobalService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.netDo = this.router.url.split('/')[1];
+    if (this.global.net === 'mainnet') {
+      this.apiDo = this.global.apiDomain;
+    } else {
+      this.apiDo = this.global.teApiDomain;
+    }
+  }
   ngOnDestroy() {
     if (this.assetsSub) {
       this.assetsSub.unsubscribe();
@@ -34,7 +45,7 @@ export class AssetsComponent implements OnInit, OnDestroy {
     this.assets = [];
     this.isProgress = true;
     pageIndex = Number(pageIndex);
-    this.assetsSub =  this.assetService.Assets(pageIndex, pageSize).subscribe((res: any) => {
+    this.assetsSub =  this.assetService.Assets(this.apiDo, pageIndex, pageSize).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.total > 0) {
           this.assets = res.result.data;

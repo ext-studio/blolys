@@ -4,6 +4,7 @@ import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { BlockService } from '../block.service';
 import { TransactionService } from '../../transaction/transaction.service';
 import { Subscription } from 'rxjs/Subscription';
+import { GlobalService } from '../../../core';
 
 @Component({
   templateUrl: './block-info.component.html',
@@ -18,11 +19,13 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
   totalBlocks: Number = 0;
   show: any = [];
   isVisible: Boolean = false;
-  height: number = Number(this.router.url.split('/')[2]);
+  height: number = Number(this.router.url.split('/')[3]);
   pageIndex: any = 0;
   pageSize: any = 5;
   pageLength: any = 0;
   isProgress: Boolean = true;
+  apiDo: String;
+  netDo: String;
 
   routerSub: Subscription = null;
   allcountsSub: Subscription = null;
@@ -34,7 +37,8 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private blockService: BlockService,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private global: GlobalService
   ) { }
 
   ngOnDestroy() {
@@ -58,11 +62,17 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
     }
   }
   ngOnInit() {
+    this.netDo = this.router.url.split('/')[1];
+    if (this.global.net === 'mainnet') {
+      this.apiDo = this.global.apiDomain;
+    } else {
+      this.apiDo = this.global.teApiDomain;
+    }
     this.initPage();
     this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
       if (res instanceof NavigationEnd) {
-        if (this.height !== Number(res.url.split('/')[2])) {
-          this.height = Number(res.url.split('/')[2]);
+        if (this.height !== Number(res.url.split('/')[3])) {
+          this.height = Number(res.url.split('/')[3]);
           this.initPage();
           this.onpageGo(1);
         }
@@ -72,7 +82,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
   initPage() {
     this.blockTransactions = [];
     this.isVisible = false;
-    this.allcountsSub = this.blockService.Allcounts().subscribe((res: any) => {
+    this.allcountsSub = this.blockService.Allcounts(this.apiDo, ).subscribe((res: any) => {
       if (res.result) {
         this.totalBlocks = res.result.blockCounts ;
       }
@@ -89,7 +99,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
   getTxByHeight(pageIndex, pageSize) {
     this.blockTransactions = [];
     this.isProgress = true;
-    this.txByHeightSub = this.blockService.TxByHeight(pageIndex, pageSize, this.height).subscribe((res: any) => {
+    this.txByHeightSub = this.blockService.TxByHeight(this.apiDo, pageIndex, pageSize, this.height).subscribe((res: any) => {
       if (res.result) {
         this.blockTransactions = res.result.data;
         this.transTotal = res.result.total;
@@ -101,14 +111,14 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
     });
   }
   getBlockByHeight() {
-    this.blockByHeightSub = this.blockService.BlockByHeight(this.height).subscribe((res: any) => {
+    this.blockByHeightSub = this.blockService.BlockByHeight(this.apiDo, this.height).subscribe((res: any) => {
       if (res.result) {
         this.blockInfo = res.result;
       }
     });
   }
   getTransferByTxid (index, txid) {
-    this.transferByTxidSub = this.transactionService.TransferByTxid(index, txid).subscribe((res: any) => {
+    this.transferByTxidSub = this.transactionService.TransferByTxid(this.apiDo, txid).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.TxUTXO != null || res.result.TxVouts != null) {
           this.transfer[index] = res.result;
@@ -118,7 +128,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
     });
   }
   getNep5TransferByTxid (index, txid) {
-    this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid(index, txid).subscribe((res: any) => {
+    this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid(this.apiDo, txid).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.length > 0) {
           this.transfer[index] = res.result;

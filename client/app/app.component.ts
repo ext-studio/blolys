@@ -4,6 +4,7 @@ import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { AlertComponent } from './shared';
 import { Subscription } from 'rxjs/Subscription';
+import { GlobalService } from './core';
 
 @Component({
   selector: 'app-blolys',
@@ -16,6 +17,8 @@ export class AppComponent implements OnInit, OnDestroy {
   dropContentOpened: Boolean = false;
   delanguage: String = '中文简体';
   denet: String = '主网';
+  apiDo: String;
+  netDo: String;
 
   routerSub: Subscription = null;
 
@@ -23,12 +26,19 @@ export class AppComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private router: Router,
     private dialog: MatDialog,
+    private global: GlobalService
   ) {}
   public ngOnInit() {
+    if (this.global.net === 'mainnet') {
+      this.apiDo = this.global.apiDomain;
+    } else {
+      this.apiDo = this.global.teApiDomain;
+    }
     this.renderMenu();
     this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
       if (res instanceof NavigationEnd) {
         this.currentPage = res.url;
+        this.netDo = this.global.net;
       }
     });
     if (window.location.href.indexOf('en') >= 0) {
@@ -64,19 +74,31 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
   changelang (lang) {
-    let href, hrefstart, hrefend, targethref;
+    let href, starthref, endhref, targethref;
     href = window.location.href;
     if (lang === 'en' && href.indexOf('en') < 0) {
-      hrefstart = href.substr(0, href.indexOf('#'));
-      hrefend = href.substr(href.indexOf('#'), href.length);
-      targethref = hrefstart.concat('en/');
-      targethref = targethref.concat(hrefend);
+      starthref = href.substr(0, href.indexOf('#'));
+      endhref = href.substr(href.indexOf('#'), href.length);
+      targethref = starthref.concat('en/');
+      targethref = targethref.concat(endhref);
       window.location.href = targethref;
     } else if (lang === 'cn' && href.indexOf('en') >= 0) {
-      hrefstart = href.substr(0, href.indexOf('/en/#/'));
-      hrefend = href.substr(href.indexOf('/#/'), href.length);
-      targethref = hrefstart.concat(hrefend);
+      starthref = href.substr(0, href.indexOf('/en/#/'));
+      endhref = href.substr(href.indexOf('/#/'), href.length);
+      targethref = starthref.concat(endhref);
       window.location.href = targethref;
+    }
+  }
+  changenet(net) {
+    let url: String, endhref: string, targethref: string;
+    url = this.router.url;
+    endhref = url.substr(8, url.length - 1);
+    targethref = net.concat(endhref);
+    this.global.net = net;
+    if (net === 'mainnet' && url.indexOf('mainnet') < 0) {
+      this.router.navigate([targethref]);
+    } else if (net === 'testnet' && url.indexOf('testnet') < 0) {
+      this.router.navigate([targethref]);
     }
   }
 }

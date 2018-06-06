@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { BlockService } from '../block.service';
 import { Subscription } from 'rxjs/Subscription';
+import { GlobalService } from '../../../core';
 
 @Component({
   templateUrl: './blocks.component.html',
@@ -12,14 +14,25 @@ export class BlocksComponent implements OnInit, OnDestroy {
   pageSize: any = 16;
   pageLength: number;
   isProgress: Boolean = true;
+  apiDo: String;
+  netDo: String;
 
   blockSub: Subscription = null;
 
   constructor(
     private blockService: BlockService,
+    private global: GlobalService,
+    private router: Router
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.netDo = this.router.url.split('/')[1];
+    if (this.global.net === 'mainnet') {
+      this.apiDo = this.global.apiDomain;
+    } else {
+      this.apiDo = this.global.teApiDomain;
+    }
+  }
   ngOnDestroy() {
     if (this.blockSub) {
       this.blockSub.unsubscribe();
@@ -28,7 +41,7 @@ export class BlocksComponent implements OnInit, OnDestroy {
   getIssues(pageIndex, pageSize) {
     this.blocks = [];
     this.isProgress = true;
-    this.blockSub = this.blockService.Block(pageIndex, pageSize).subscribe((res: any) => {
+    this.blockSub = this.blockService.Block(this.apiDo, pageIndex, pageSize).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.total > 0) {
           this.blocks = res.result.data;

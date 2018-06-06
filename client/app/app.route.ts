@@ -5,8 +5,23 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent }
+  // { path: '', component: HomeComponent },
+  // { path: 'home', component: HomeComponent }
+  { path: 'mainnet', component: HomeComponent },
+  { path: 'testnet', component: HomeComponent },
+  { path: '', redirectTo: 'mainnet', pathMatch: 'full' },
+  {
+    path: 'mainnet',
+    children: [
+      { path: 'home', component: HomeComponent }
+    ]
+  },
+  {
+    path: 'testnet',
+    children: [
+      { path: 'home', component: HomeComponent }
+    ]
+  }
 ];
 
 @NgModule({

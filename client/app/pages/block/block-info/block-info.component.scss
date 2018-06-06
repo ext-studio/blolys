@@ -17,6 +17,9 @@
   color: #1770ea;
   cursor: pointer;
 }
+.header-title-info {
+  margin-bottom: 20px;
+}
 .header-title {
   margin-bottom: 25px;
   border-left: 3px solid #1770ea;
@@ -27,9 +30,6 @@
   .header-title-address {
     font-size: 14px;
   }
-}
-.header-title-info {
-  margin-bottom: 20px;
 }
 .option-btn {
   position: relative;
@@ -72,29 +72,25 @@
   box-shadow: 3px 3px 25px #0a1331;
   width: 100%;
   background: #18244f;
-  border-radius: 2px;
+  border-radius: 5px;
   overflow: hidden;
   li {
-    list-style: none;
-    box-sizing: border-box;
-    position: relative;
     float: left;   
+    list-style: none;
+    text-align: center;
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     div {
-      position: absolute;
-      bottom: 40px;
-      text-align: center;
-      width: 100%;
-      padding: 0 10px;
-    }
-    p {
-      word-break: break-all; 
-      margin-bottom: 10px;
-    }
-    span {
-      bottom: 0;
-      font-size: 14px;
-      padding-bottom: 40px;
-      color: #134699; 
+      p {
+        margin-bottom: 15px;
+        overflow: hidden;
+      }
+      span {
+        font-size: 16px;
+        color: #3a76d7; 
+      }  
     }
   }
 }
@@ -182,22 +178,6 @@
     }
   }
 }
-.view-all {
-  width: 100%;
-  text-align: center;
-  button {
-    background-color: #1770ea;
-    color: #fff;
-    width: 120px;
-    font-size: 14px;
-    height: 32px;
-    line-height: 32px;
-    border-radius: 5px;
-    &:hover {
-      background: #134699;
-    }
-  }
-}
 @media screen and (min-width: 870px) {
   .info {
     li {
@@ -275,9 +255,6 @@
       padding: 0 30px;
     }
   }
-  .view-all {
-    margin-bottom: 70px;
-  }
   .header-title-info {
     font-size: 30px;
     margin-top: 70px;
@@ -295,9 +272,6 @@
   }
 }
 @media screen and (max-width: 419px) {
-  .view-all {
-    margin-bottom: 30px;
-  }
   .header-title-info {
     font-size: 22px;
     margin-top: 30px;
@@ -313,8 +287,7 @@
   .info {
     li {
       width: 100%;
-      min-height: 120px;
-      float: left;
+      height: 120px;
       &:not(:last-child) {
         border-bottom: 1px solid #203067;
       }

@@ -8,6 +8,13 @@
 .isVisibilty {
   visibility: hidden;
 }
+.link-btn {
+  color: #1770ea;
+  cursor: pointer;
+}
+.header-title-info {
+  margin-bottom: 20px;
+}
 .header-title {
   margin-bottom: 25px;
   border-left: 3px solid #1770ea;
@@ -19,49 +26,25 @@
     font-size: 14px;
   }
 }
-.link-btn {
-  color: #1770ea;
-  cursor: pointer;
-}
-.header-title-info {
-  margin-bottom: 20px;
-}
-.info {
-  width: 100%;
-  overflow: hidden;
-  li {
-    list-style: none;
-    display: inline-block;
-    box-sizing: border-box;
-    text-align: center;
-    padding: 40px 0;
-    p {
-      word-wrap: break-word;
-      margin-bottom: 10px;
-    }
-    span {
-      font-size: 14px;
-      color: #134699; 
-      &:nth-child(9) {
-        color: #1770ea;
-      }
-    }
-  }
-}
-.address-info {
-  border-radius: 2px;
-  box-shadow: 3px 3px 25px #0a1331;
-  background: #18244f;
-}
 .assets-info {
+  width: 100%;
   li {
-    padding-left: 3px;
-    padding-right: 3px;
-    float: left;
+    border-radius: 5px;
+    list-style: none;
+    text-align: center;
     background: #18244f;
-    p {
-      color: #359bd5;
-    }
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    div {      
+      p.data {
+        color: #359bd5;
+        margin-bottom: 20px;
+      }
+      p.name {
+        color: #3a76d7; 
+      }
+    }   
   }
   li.textmiddle {
     display: inline-flex;
@@ -153,44 +136,17 @@
     }
   }
 }
-.view-all {
-  width: 100%;
-  text-align: center;
-  button {
-    background-color: #1770ea;
-    color: #fff;
-    width: 120px;
-    font-size: 14px;
-    height: 32px;
-    line-height: 32px;
-    border-radius: 5px;
-    &:hover {
-      background:  #134699;
-    }
+@media screen and (min-width: 1100px) {
+  .assets-info li p.data {
+    font-size: 28px;
+  }
+}
+@media screen and (max-width: 1099px) {
+  .assets-info li p.data {
+    font-size: 22px;  
   }
 }
 @media screen and (min-width: 870px) {
-  .address-info {
-    li {
-      width: 33.33%;
-      min-height: 135px;
-      float: left;
-      &:not(:nth-child(3n)) {
-        border-right: 1px solid #203067;
-      }
-      &:nth-child(-n + 3) {
-        border-bottom: 1px solid #203067;
-      }
-      p {
-        &:nth-child(3n) {
-          font-size: 14px;
-        }
-        &:not(::nth-child(3n)) {
-          font-size: 24px;
-        }
-      }
-    }
-  }
   .tran-info {
     display: flex;  
     flex-wrap: wrap;
@@ -211,6 +167,19 @@
       transform: translate(-50%, -50%);
     }
   }
+  .assets-info {
+    li {
+      margin-bottom: 10px;
+      width: 32.66%;
+      height: 180px;
+      &:not(:nth-child(3n)) {
+        margin-right: 1%;
+      }
+      p.name {
+        font-size: 16px;
+      }
+    }
+  }
 }
 @media screen and (max-width: 869px) {
   .tran-info {
@@ -226,27 +195,29 @@
       }
     }
   }
+  .assets-info {
+    li {
+      margin-bottom: 8px;
+      width: 49%;
+      height: 160px;
+      &:not(:nth-child(2n)) {
+        margin-right: 2%;
+      }
+      p.name {
+        font-size: 14px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .assets-info li p.data {
+    font-size: 16px;
+  }
 }
 @media screen and (min-width: 420px) {
   .tran-list {
     .row, .row-head {
       padding: 0 30px;
-    }
-  }
-  .view-all {
-    margin-bottom: 70px;
-  }
-  .assets-info {
-    li {
-      margin-bottom: 10px;
-      width: 32.66%;
-      height: 150px;
-      &:not(:nth-child(3n)) {
-        margin-right: 1%;
-      }
-      p {
-        font-size: 28px;
-      }
     }
   }
   .header-title-info {
@@ -260,28 +231,22 @@
       padding: 0 10px;
     }
   }
-  .view-all {
-    margin-bottom: 30px;
-  }
   .hidden {
     display: none !important;
-  }
-  .assets-info {
-    li {
-      margin-bottom: 8px;
-      width: 49%;
-      height: 120px;
-      &:not(:nth-child(2n)) {
-        margin-right: 2%;
-      }
-      p {
-        font-size: 18px;
-      }
-    }
   }
   .header-title-info {
     font-size: 22px;
     margin-top: 30px;
+  }
+}
+@media screen and (max-width: 418px) {
+  .assets-info {
+    li {
+      width: 100%;
+      &:not(:last-child) {
+        margin-bottom: 8px;
+      }
+    }
   }
 }
 :host {

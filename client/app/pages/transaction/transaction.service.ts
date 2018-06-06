@@ -9,24 +9,24 @@ export class TransactionService {
     private http: HttpClient,
     private global: GlobalService
   ) { }
-  public TransferByTxid(index, txid): Observable<any> {
-    return this.http.post(`${this.global.apiDomain}/api/transactions`,
+  public TransferByTxid(apiDo, txid): Observable<any> {
+    return this.http.post(`${apiDo}/api/transactions`,
       { 'method': 'gettransferbytxid', 'params': [txid] });
   }
-  public Nep5TransferByTxid(index, txid): Observable<any> {
-    return this.http.post(`${this.global.apiDomain}/api/transactions`,
+  public Nep5TransferByTxid(apiDo, txid): Observable<any> {
+    return this.http.post(`${apiDo}/api/transactions`,
       { 'method': 'getnep5transferbytxid', 'params': [txid] });
   }
-  public Trans(pageIndex, pageSize, transType): Observable<any> {
-    return this.http.post(`${this.global.apiDomain}/api/transactions`,
+  public Trans(apiDo, pageIndex, pageSize, transType): Observable<any> {
+    return this.http.post(`${apiDo}/api/transactions`,
       { 'method': 'gettransactions', 'params': [pageIndex, pageSize, transType] });
   }
-  public TxbyTxid(txid): Observable<any> {
-    return this.http.post(`${this.global.apiDomain}/api/transactions`,
+  public TxbyTxid(apiDo, txid): Observable<any> {
+    return this.http.post(`${apiDo}/api/transactions`,
       {'method': 'gettxbytxid', 'params': [txid]});
   }
-  public Script(txid): Observable<any> {
-    return this.http.post(`${this.global.apiDomain}/api/transactions`,
+  public Script(apiDo, txid): Observable<any> {
+    return this.http.post(`${apiDo}/api/transactions`,
       {'method': 'getscripts', 'params': [txid]});
   }
 }

@@ -9,8 +9,8 @@ export class NotsearchService {
     private http: HttpClient,
     private global: GlobalService
   ) { }
-  public Condition(hash): Observable<any> {
-    return this.http.post(`${this.global.apiDomain}/api/index`,
+  public Condition(apiDo, hash): Observable<any> {
+    return this.http.post(`${apiDo}/api/index`,
       { 'method': 'checkcondition', 'params': [hash] });
   }
 }
