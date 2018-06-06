@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class GlobalService {
-  // public apiDomain: String = 'http://192.168.1.39:8001';  // Mainnet
+  // public apiDomain: String = 'http://192.168.1.39:8080';  // Mainnet
   // public apiDotest: String = 'http://192.168.1.39:8002';  // Testnet
   public apiDomain: String = 'https://api.iwallic.com';
   public teApiDomain: String = 'https://teapi.iwallic.com';

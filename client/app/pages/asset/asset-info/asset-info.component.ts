@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../../../core';
 import { AssetService } from '../asset.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   templateUrl: './asset-info.component.html',
   styleUrls: ['./asset-info.component.scss']
 })
-export class AssetInfoComponent implements OnInit {
+export class AssetInfoComponent implements OnInit, OnDestroy {
   isAddrProgress: Boolean = true;
   isRankProgress: Boolean = true;
   recentAddress: any = [];
@@ -25,6 +26,14 @@ export class AssetInfoComponent implements OnInit {
   assetType: String = this.router.url.split('/')[1];
   assetId: String = this.router.url.split('/')[2];
 
+  routerSub: Subscription = null;
+  nep5InfoSub: Subscription = null;
+  nep5RegisterInfoSub: Subscription = null;
+  assetInfoSub: Subscription = null;
+  addrByAssetidSub: Subscription = null;
+  rankByAssetidSub: Subscription = null;
+  // pattern = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
+
   constructor(
     private router: Router,
     private assetService: AssetService,
@@ -33,9 +42,9 @@ export class AssetInfoComponent implements OnInit {
   ) { }
   ngOnInit() {
     this.checkCondition();
-    this.router.events.subscribe((res: RouterEvent) => { // url
+    this.routerSub = this.router.events.subscribe((res: RouterEvent) => { // url
       if (res instanceof NavigationEnd) {
-        if ((res.url.indexOf('/asset/') >= 0 || res.url.indexOf('/nep5/') >= 0) && this.assetId !== res.url.split('/')[2]) {
+        if (this.assetId !== res.url.split('/')[2]) {
           this.assetType = res.url.split('/')[1];
           this.assetId = res.url.split('/')[2];
           this.checkCondition();
@@ -47,21 +56,41 @@ export class AssetInfoComponent implements OnInit {
       }
     });
   }
+  ngOnDestroy() {
+    if (this.routerSub) {
+      this.routerSub.unsubscribe();
+    }
+    if (this.nep5InfoSub) {
+      this.nep5InfoSub.unsubscribe();
+    }
+    if (this.nep5RegisterInfoSub) {
+      this.nep5RegisterInfoSub.unsubscribe();
+    }
+    if (this.assetInfoSub) {
+      this.assetInfoSub.unsubscribe();
+    }
+    if (this.addrByAssetidSub) {
+      this.addrByAssetidSub.unsubscribe();
+    }
+    if (this.rankByAssetidSub) {
+      this.rankByAssetidSub.unsubscribe();
+    }
+  }
   checkCondition () {
     this.assetInfo = [];
     this.assetRegisterInfo = [];
     if (this.assetType !== 'nep5') {
-      this.assetService.AssetInfo(this.assetId).subscribe((res: any) => {
+      this.assetInfoSub = this.assetService.AssetInfo(this.assetId).subscribe((res: any) => {
         if (res.result) {
           this.assetInfo = res.result;
         }
       });
     } else {
-      this.assetService.Nep5Info(this.assetId).subscribe((res: any) => {
+      this.nep5InfoSub = this.assetService.Nep5Info(this.assetId).subscribe((res: any) => {
         if (res.code === 200) {
           if (typeof res.result === 'object') {
             this.assetInfo = res.result;
-            this.assetService.Nep5RegisterInfo(res.result.id).subscribe((res2: any) => {
+            this.nep5RegisterInfoSub = this.assetService.Nep5RegisterInfo(res.result.id).subscribe((res2: any) => {
               if (res2.result) {
                 this.assetRegisterInfo = res2.result;
               }
@@ -77,7 +106,7 @@ export class AssetInfoComponent implements OnInit {
   getAddrByAssetid (pageIndex, pageSize) {
     this.recentAddress = [];
     this.isAddrProgress = true;
-    this.assetService.AddrByAssetid(pageIndex, pageSize, this.assetId).subscribe((res: any) => {
+    this.addrByAssetidSub = this.assetService.AddrByAssetid(pageIndex, pageSize, this.assetId).subscribe((res: any) => {
       if (res.result) {
         this.recentAddress = res.result.data;
         this.addrPageLength = Math.ceil(res.result.total / pageSize);
@@ -88,7 +117,7 @@ export class AssetInfoComponent implements OnInit {
   getRankByAssetid (pageIndex, pageSize) {
     this.rankAddr = [];
     this.isRankProgress = true;
-    this.assetService.RankByAssetid(pageIndex, pageSize, this.assetId).subscribe((res: any) => {
+    this.rankByAssetidSub = this.assetService.RankByAssetid(pageIndex, pageSize, this.assetId).subscribe((res: any) => {
       if (res.result) {
         this.rankAddr = res.result.data;
         this.rankPageTotal = res.result.total;

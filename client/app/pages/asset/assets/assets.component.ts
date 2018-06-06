@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AssetService } from '../asset.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   templateUrl: './assets.component.html',
   styleUrls: ['./assets.component.scss']
 })
-export class AssetsComponent implements OnInit {
+export class AssetsComponent implements OnInit, OnDestroy {
   assets: any = [];
   pageIndex: Number = 0;
   pageSize: any = 16;
@@ -16,17 +17,24 @@ export class AssetsComponent implements OnInit {
   // showSortTran: Boolean = false;
   // showSortAddr: Boolean = false;
 
+  assetsSub: Subscription = null;
+
   constructor(
     private router: Router,
     private assetService: AssetService
   ) { }
 
   ngOnInit() { }
+  ngOnDestroy() {
+    if (this.assetsSub) {
+      this.assetsSub.unsubscribe();
+    }
+  }
   getAssets (pageIndex, pageSize) {
     this.assets = [];
     this.isProgress = true;
     pageIndex = Number(pageIndex);
-    this.assetService.Assets(pageIndex, pageSize).subscribe((res: any) => {
+    this.assetsSub =  this.assetService.Assets(pageIndex, pageSize).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.total > 0) {
           this.assets = res.result.data;

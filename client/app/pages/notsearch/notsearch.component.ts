@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertComponent } from '../../shared';
@@ -8,13 +8,21 @@ import { AddressService } from '../address/address.service';
 import { TransactionService } from '../transaction/transaction.service';
 import { NotsearchService } from './notsearch.service';
 import { AssetService } from '../asset/asset.service';
+import { Subscription } from 'rxjs/Subscription';
+
 @Component({
   selector: 'app-notsearch',
   templateUrl: './notsearch.component.html',
   styleUrls: ['./notsearch.component.scss']
 })
-export class NotsearchComponent implements OnInit {
+export class NotsearchComponent implements OnInit, OnDestroy {
   searchForm: FormGroup;
+
+  conditionSub: Subscription = null;
+  nep5InfoSub: Subscription = null;
+  addrAssetsSub: Subscription = null;
+  blockByHeightSub: Subscription = null;
+
   constructor(
     private builder: FormBuilder,
     private router: Router,
@@ -30,12 +38,26 @@ export class NotsearchComponent implements OnInit {
       searchName: ['', [Validators.required]]
     });
   }
+  ngOnDestroy() {
+    if (this.conditionSub) {
+      this.conditionSub.unsubscribe();
+    }
+    if (this.nep5InfoSub) {
+      this.nep5InfoSub.unsubscribe();
+    }
+    if (this.addrAssetsSub) {
+      this.addrAssetsSub.unsubscribe();
+    }
+    if (this.blockByHeightSub) {
+      this.blockByHeightSub.unsubscribe();
+    }
+  }
   applyFilter($event) {
     if ($event.keyCode === 13) {
       let value = $event.target.value;
       value = value.trim(); // Remove whitespace
       if (value.length === 66) {
-        this.notsearchService.Condition(value).subscribe((res: any) => {
+        this.conditionSub = this.notsearchService.Condition(value).subscribe((res: any) => {
           if (res.code === 200) {
             if (res.result === '1') {
               this.router.navigate([`/transaction/${value}`]);
@@ -47,7 +69,7 @@ export class NotsearchComponent implements OnInit {
           }
         });
       } else if (value.length === 40) {
-        this.assetService.Nep5Info(value).subscribe((res: any) => {
+        this.nep5InfoSub = this.assetService.Nep5Info(value).subscribe((res: any) => {
           if (res.code === 200) {
             if (typeof res.result === 'string') {
               this.router.navigate([`/transaction/${res.result}`]);
@@ -59,7 +81,7 @@ export class NotsearchComponent implements OnInit {
           }
         });
       } else if (value[0] === 'A' && value.length === 34) {
-        this.addressService.AddrAssets(value).subscribe((res: any) => {
+        this.addrAssetsSub = this.addressService.AddrAssets(value).subscribe((res: any) => {
           if (res.code === 200) {
             this.router.navigate([`/address/${value}`]);
           } else {
@@ -76,7 +98,7 @@ export class NotsearchComponent implements OnInit {
           }
         }
         if (target >= 0) {
-          this.blockService.BlockByHeight(target).subscribe((res: any) => {
+          this.blockByHeightSub = this.blockService.BlockByHeight(target).subscribe((res: any) => {
             if (res.result) {
               this.router.navigate([`/block/${target}`]);
             } else {

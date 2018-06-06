@@ -32,11 +32,11 @@
           <div class="col hidden">{{ item?.blockTime | unixTime }}</div> 
           <div class="hidden col-icon" (click)="showInfo(index, item?.txid)"><img [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
         </div>
-        <div class="tran-info" *ngIf="show[index] && transferType[index] === 0 && (transfer[index]?.TxUTXO !== null || transfer[index]?.TxVouts !== null)">
+        <div class="tran-info" *ngIf="show[index] && transferType[index] === 0">
           <div class="tran-info-from">
             <p class="info-title" *ngIf="transfer[index]?.TxUTXO !== null" i18n>Sent from</p>
             <div *ngFor="let txUTXO of transfer[index]?.TxUTXO">
-              <div class="info-address"><a class="link-btn" (click)=gotoAddr(txUTXO?.address) routerLink="/address/{{txUTXO?.address}}">{{ txUTXO?.address }}</a></div>
+              <div class="info-address"><a class="link-btn" routerLink="/address/{{txUTXO?.address}}">{{ txUTXO?.address }}</a></div>
               <div class="info-amount">
                 <span>{{ txUTXO?.value | unlimitedNumber }}</span>
                 <span class="link-btn" routerLink="/asset/{{txUTXO?.assetId}}">{{ txUTXO?.name }}</span>
@@ -47,7 +47,7 @@
           <div class="tran-info-to">
             <p class="info-title" *ngIf="transfer[index]?.TxVouts !== null" i18n>Sent to</p>
             <div *ngFor="let txVout of transfer[index]?.TxVouts">
-              <div class="info-address"><a class="link-btn" (click)=gotoAddr(txVout?.address) routerLink="/address/{{txVout?.address}}">{{ txVout?.address }}</a></div>
+              <div class="info-address"><a class="link-btn" routerLink="/address/{{txVout?.address}}">{{ txVout?.address }}</a></div>
               <div class="info-amount">
                 <span>{{ txVout?.value | unlimitedNumber }}</span>
                 <span class="link-btn" routerLink="/asset/{{txVout?.assetId}}">{{ txVout?.name }}</span>
@@ -55,11 +55,11 @@
             </div>
           </div>
         </div>
-        <div class="tran-info" *ngIf="show[index] && transferType[index] === 1 && transfer[index] !== null">
+        <div class="tran-info" *ngIf="show[index] && transferType[index] === 1">
           <div class="tran-info-from">
             <p class="info-title" i18n *ngIf="transfer[index][0].from !== ''">Sent from</p>
             <div *ngFor="let txfrom of transfer[index]">
-              <div class="info-address"><a class="link-btn" (click)="gotoAddr(txfrom?.from)" routerLink="/address/{{txfrom?.from}}">{{ txfrom?.from }}</a></div>
+              <div class="info-address"><a class="link-btn" routerLink="/address/{{txfrom?.from}}">{{ txfrom?.from }}</a></div>
               <div class="info-amount" *ngIf="transfer[index][0].from !== ''">
                 <span>{{ txfrom?.value | unlimitedNumber }}</span>
                 <span class="link-btn" routerLink="/nep5/{{txfrom?.assetId}}">{{ txfrom?.name }}</span>
@@ -70,7 +70,7 @@
           <div class="tran-info-to">
             <p class="info-title" i18n *ngIf="transfer[index][0].to !== ''">Sent to</p>
             <div *ngFor="let txto of transfer[index]">
-              <div class="info-address"><a class="link-btn" (click)="gotoAddr(txto?.to)" routerLink="/address/{{txto?.to}}">{{ txto?.to }}</a></div>
+              <div class="info-address"><a class="link-btn" routerLink="/address/{{txto?.to}}">{{ txto?.to }}</a></div>
               <div class="info-amount" *ngIf="transfer[index][0].to !== ''">
                 <span>{{ txto?.value | unlimitedNumber }}</span>
                 <span class="link-btn" routerLink="/nep5/{{txto?.assetId}}">{{ txto?.name }}</span>

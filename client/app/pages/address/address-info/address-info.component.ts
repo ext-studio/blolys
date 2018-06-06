@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { AddressService } from '../address.service';
 import { TransactionService } from '../../transaction/transaction.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   templateUrl: './address-info.component.html',
   styleUrls: ['./address-info.component.scss']
 })
-export class AddressInfoComponent implements OnInit {
+export class AddressInfoComponent implements OnInit, OnDestroy {
   addrTransactions: any = [];
   transfer: any = [];
   transferType: any = [];
@@ -21,36 +22,58 @@ export class AddressInfoComponent implements OnInit {
   pageLength: any = 0;
   isProgress: Boolean = true;
 
+  routerSub: Subscription = null;
+  addrAssetsSub: Subscription = null;
+  txByAddrSub: Subscription = null;
+  transferByTxidSub: Subscription = null;
+  nep5TransferByTxidSub: Subscription = null;
+
   constructor(
     private router: Router,
     private addressService: AddressService,
     private transactionService: TransactionService
   ) { }
 
+  ngOnDestroy() {
+    if (this.routerSub) {
+      this.routerSub.unsubscribe();
+    }
+    if (this.addrAssetsSub) {
+      this.addrAssetsSub.unsubscribe();
+    }
+    if (this.txByAddrSub) {
+      this.txByAddrSub.unsubscribe();
+    }
+    if (this.transferByTxidSub) {
+      this.transferByTxidSub.unsubscribe();
+    }
+    if (this.nep5TransferByTxidSub) {
+      this.nep5TransferByTxidSub.unsubscribe();
+    }
+  }
   ngOnInit() {
     this.getAddrAssets();
-    this.router.events.subscribe((res: RouterEvent) => {
+    this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
       if (res instanceof NavigationEnd) {
-        if (res.url.indexOf('/address/') >= 0) {
-          if (this.address !== res.url.split('/')[2]) {
-            this.address = res.url.split('/')[2];
-            this.getAddrAssets();
-            this.onpageGo(1);
-          }
+        if (this.address !== res.url.split('/')[2]) {
+          this.address = res.url.split('/')[2];
+          this.getAddrAssets();
+          this.onpageGo(1);
         }
       }
     });
   }
   initShow () {
-    for (let i = 0; i < this.transTotal; i++) {
+    for (let i = 0; i < this.pageSize; i++) {
       this.show[i] = false;
-      this.transfer[i] = '';
+      this.transfer[i] = -1;
       this.transferType[i] = -1;
     }
   }
   showInfo (index, txid) {
     this.show[index] = !this.show[index];
-    if (this.show[index]) {
+    if (this.show[index] && this.transfer[index] === -1) {
+      this.transfer[index] = '';
       this.getTransferByTxid(index, txid);
       this.getNep5TransferByTxid(index, txid);
     }
@@ -59,15 +82,8 @@ export class AddressInfoComponent implements OnInit {
   //   this.getTxByAddr(1, this.transTotal);
   //   this.isVisible = true;
   // }
-  gotoAddr (address: string) {
-    this.address = address;
-    this.isVisible = false;
-    this.initShow();
-    this.getAddrAssets();
-    this.getTxByAddr(1, this.pageSize);
-  }
   getAddrAssets () {
-    this.addressService.AddrAssets(this.address).subscribe((res: any) => {
+    this.addrAssetsSub = this.addressService.AddrAssets(this.address).subscribe((res: any) => {
       if (res.code === 200) {
         this.addrAssets = this.balanceFilter(res.result);
       } else if (res.code === 1000) {
@@ -80,7 +96,7 @@ export class AddressInfoComponent implements OnInit {
   getTxByAddr (pageIndex, pageSize) {
     this.addrTransactions = [];
     this.isProgress = true;
-    this.addressService.TxByAddr(pageIndex, pageSize, this.address).subscribe((res: any) => {
+    this.txByAddrSub = this.addressService.TxByAddr(pageIndex, pageSize, this.address).subscribe((res: any) => {
       if (res.result) {
         this.addrTransactions = res.result.data;
         this.transTotal = res.result.total;
@@ -92,7 +108,7 @@ export class AddressInfoComponent implements OnInit {
     });
   }
   getTransferByTxid (index, txid) {
-    this.transactionService.TransferByTxid(index, txid).subscribe((res: any) => {
+    this.transferByTxidSub = this.transactionService.TransferByTxid(index, txid).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.TxUTXO != null || res.result.TxVouts != null) {
           this.transfer[index] = res.result;
@@ -102,7 +118,7 @@ export class AddressInfoComponent implements OnInit {
     });
   }
   getNep5TransferByTxid (index, txid) {
-    this.transactionService.Nep5TransferByTxid(index, txid).subscribe((res: any) => {
+    this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid(index, txid).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.length > 0) {
           this.transfer[index] = res.result;
@@ -111,7 +127,7 @@ export class AddressInfoComponent implements OnInit {
       }
     });
   }
-  balanceFilter(balance) {
+  balanceFilter(balance) { // remove balance = 0
     let target: any, j = 0;
     target = [];
     for (let i = 0; i < balance.length; i++) {
