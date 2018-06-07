@@ -80,7 +80,7 @@ export class TransactionInfoComponent implements OnInit, OnDestroy {
     });
     this.transferByTxidSub = this.transactionService.TransferByTxid(this.apiDo, this.txid).subscribe((res: any) => {
       if (res.code === 200) {
-        if (res.result.TxUTXO != null && res.result.TxVouts != null) {
+        if (res.result.TxUTXO != null || res.result.TxVouts != null) {
           this.transfer = res.result;
           this.transferType = 0;
         }

@@ -17,9 +17,9 @@ import { GlobalService } from '../../core';
 })
 
 export class HomeComponent implements OnInit, OnDestroy {
-  public total: any = [];
+  total: any = [];
   searchForm: FormGroup;
-  public queryCountTime: any;
+  queryCountTime: any;
   apiDo: String;
   netDo: String;
 
@@ -84,9 +84,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   applyFilter($event) {
     if ($event.keyCode === 13) {
-      let value = $event.target.value;
+      let value = $event.target.value, isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
       value = value.trim(); // Remove whitespace
-      if (value.length === 66) {
+      isHashPattern = /^(0x)([0-9a-f]{64})$/;
+      isAssetPattern = /^([0-9a-f]{40})$/;
+      isAddressPattern = /^A([0-9a-zA-Z]{33})$/;
+      if (isHashPattern.test(value)) {
         this.conditionSub = this.notsearchService.Condition(this.apiDo, value).subscribe((res: any) => {
           if (res.code === 200) {
             if (res.result === '1') {
@@ -98,7 +101,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.router.navigate([`${this.netDo}/search/${value}`]);
           }
         });
-      } else if (value.length === 40) {
+      } else if (isAssetPattern.test(value)) {
         this.nep5InfoSub = this.assetService.Nep5Info(this.apiDo, value).subscribe((res: any) => {
           if (res.code === 200) {
             if (typeof res.result === 'string') {
@@ -110,7 +113,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.router.navigate([`${this.netDo}/search/${value}`]);
           }
         });
-      } else if (value[0] === 'A' && value.length === 34) {
+      } else if (isAddressPattern.test(value)) {
         this.addrAssetsSub = this.addressService.AddrAssets(this.apiDo, value).subscribe((res: any) => {
           if (res.code === 200) {
             this.router.navigate([`${this.netDo}/address/${value}`]);
@@ -119,23 +122,17 @@ export class HomeComponent implements OnInit, OnDestroy {
           }
         });
       } else if (Number(value[0]) >= 0) {
-        let target: any = 0;
-        for (let i = 0; i < value.length; i++) {
-          if (Number(value[i]) >= 0 && Number(value[i]) <= 9) {
-            target = target * 10 + Number(value[i]);
-          } else if (value[i] !== ',' && value[i] !== '，') {
-            this.router.navigate([`${this.netDo}/search/${value}`]);
+        let target = value.replace(/[,，]/g, '');
+        let isNumberPattern: any;
+        isNumberPattern = /^\d+$/;
+        if (!isNaN(target) && isNumberPattern.test(value)) {
+          target = Number(target);
+          if (Number.isInteger(target) && target <= this.total.blockCounts) {
+            this.router.navigate([`${this.netDo}/block/${target}`]);
+            return;
           }
         }
-        if (target >= 0) {
-          this.blockByHeightSub = this.blockService.BlockByHeight(this.apiDo, target).subscribe((res: any) => {
-            if (res.result) {
-              this.router.navigate([`${this.netDo}/block/${target}`]);
-            } else {
-              this.router.navigate([`${this.netDo}/search/${value}`]);
-            }
-          });
-        }
+        this.router.navigate([`${this.netDo}/search/${value}`]);
       } else {
         this.router.navigate([`${this.netDo}/search/${value}`]);
       }

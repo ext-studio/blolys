@@ -5,7 +5,7 @@
         <img src="../assets/logo.svg" alt="logo">
       </div>      
       <div class="flex-1 menu">
-        <button class="menu-item" [ngClass]="{active: currentPage.indexOf('home') >= 0}" routerLink="/{{netDo}}/home" i18n>Home</button>
+        <button class="menu-item" [ngClass]="{active: currentPage.indexOf('home') >= 0 || currentPage === '/' || currentPage === '/mainnet' || currentPage === '/testnet'}" routerLink="/{{netDo}}/home" i18n>Home</button>
         <button class="menu-item" [ngClass]="{active: currentPage.indexOf('block') >= 0}" routerLink="/{{netDo}}/blocks" i18n>Blocks</button>
         <button class="menu-item" [ngClass]="{active: currentPage.indexOf('transaction') >= 0}" routerLink="/{{netDo}}/transactions" i18n>Transactions</button>
         <button class="menu-item" [ngClass]="{active: currentPage.indexOf('address') >= 0}" routerLink="/{{netDo}}/addresses" i18n>Addresses</button>

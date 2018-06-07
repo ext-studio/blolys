@@ -38,7 +38,7 @@
   box-shadow: 3px 3px 25px #0a1331;
   width: 100%;
   background: #18244f;
-  border-radius: 5px;
+  border-radius: 3px;
   overflow: hidden;
   li {
     float: left;   
@@ -48,8 +48,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-flow: column wrap;
+    flex-direction: column;
     div {
+      width: 100%;
+      padding: 0 15px;
       p {
         margin-bottom: 15px;
         word-wrap: break-word;
@@ -63,6 +65,7 @@
 }
 .tran-info {
   padding: 0 10px;
+  border-radius: 3px;
   background: #18244f;
   box-shadow: 3px 3px 25px #0a1331;
   .tran-info-from {
@@ -95,6 +98,7 @@
     padding: 32px;
     min-height: 180px;
     background: #18244f;
+    border-radius: 3px;
     box-shadow: 3px 3px 25px #0a1331;
     p {
       margin-bottom: 15px;

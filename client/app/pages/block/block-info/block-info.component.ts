@@ -18,7 +18,6 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
   transTotal: Number = 0;
   totalBlocks: Number = 0;
   show: any = [];
-  isVisible: Boolean = false;
   height: number = Number(this.router.url.split('/')[3]);
   pageIndex: any = 0;
   pageSize: any = 5;
@@ -80,14 +79,12 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
     });
   }
   initPage() {
-    this.blockTransactions = [];
-    this.isVisible = false;
+    this.getBlockByHeight();
     this.allcountsSub = this.blockService.Allcounts(this.apiDo, ).subscribe((res: any) => {
       if (res.result) {
-        this.totalBlocks = res.result.blockCounts ;
+        this.totalBlocks = res.result.blockCounts;
       }
     });
-    this.getBlockByHeight();
   }
   initShow () {
     for (let i = 0; i < this.pageSize; i++) {
@@ -97,7 +94,6 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
     }
   }
   getTxByHeight(pageIndex, pageSize) {
-    this.blockTransactions = [];
     this.isProgress = true;
     this.txByHeightSub = this.blockService.TxByHeight(this.apiDo, pageIndex, pageSize, this.height).subscribe((res: any) => {
       if (res.result) {
@@ -111,6 +107,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
     });
   }
   getBlockByHeight() {
+    this.blockInfo = [];
     this.blockByHeightSub = this.blockService.BlockByHeight(this.apiDo, this.height).subscribe((res: any) => {
       if (res.result) {
         this.blockInfo = res.result;
@@ -145,10 +142,6 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
       this.getNep5TransferByTxid(index, txid);
     }
   }
-  // showAllTrans() {
-  //   this.getTxByHeight(1, this.transTotal);
-  //   this.isVisible = true;
-  // }
   onpageGo(num: number) {
     this.initShow();
     this.getTxByHeight(num, this.pageSize);

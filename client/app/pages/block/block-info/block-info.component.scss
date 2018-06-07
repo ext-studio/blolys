@@ -40,7 +40,7 @@
     border: 1px solid #1770ea;
     color: #1770ea;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
     &:hover {
       background: #1c2b5d;
@@ -72,20 +72,23 @@
   box-shadow: 3px 3px 25px #0a1331;
   width: 100%;
   background: #18244f;
-  border-radius: 5px;
+  border-radius: 3px;
   overflow: hidden;
   li {
     float: left;   
     list-style: none;
     text-align: center;
     box-sizing: border-box;
-    display: inline-flex;
-    justify-content: center;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     div {
+      width: 100%;
+      padding: 0 15px;
       p {
+        word-wrap: break-word;
         margin-bottom: 15px;
-        overflow: hidden;
       }
       span {
         font-size: 16px;
@@ -110,6 +113,14 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+  }
+  .row-head {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  .warpper:last-child {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
   }
   .td-link-btn {
     color: #1770ea;

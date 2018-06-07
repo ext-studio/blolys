@@ -39,6 +39,14 @@
       text-overflow: ellipsis;
     }
   }
+  .row-head {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  .warpper:last-child {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
   .td-link-btn {
     color: #1770ea;
   }
