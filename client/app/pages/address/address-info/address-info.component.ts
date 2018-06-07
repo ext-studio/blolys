@@ -56,6 +56,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
     }
   }
   ngOnInit() {
+    console.log(this.global.net);
     this.netDo = this.router.url.split('/')[1];
     if (this.global.net === 'mainnet') {
       this.apiDo = this.global.apiDomain;

@@ -35,15 +35,30 @@ export class AppComponent implements OnInit, OnDestroy {
       this.apiDo = this.global.teApiDomain;
     }
     this.renderMenu();
+    this.checkLangNet();
     this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
       if (res instanceof NavigationEnd) {
         this.currentPage = res.url;
         this.netDo = this.global.net;
+        this.checkLangNet();
       }
     });
+  }
+  checkLangNet() {
     if (window.location.href.indexOf('en') >= 0) {
       this.delanguage = 'English';
-      this.denet = 'MainNet';
+      if (window.location.href.indexOf('mainnet') >= 0) {
+        this.denet = 'Mainnet';
+      } else {
+        this.denet = 'TestNet';
+      }
+    } else {
+      this.delanguage = '中文简体';
+      if (window.location.href.indexOf('mainnet') >= 0) {
+        this.denet = '主网';
+      } else {
+        this.denet = '测试网';
+      }
     }
   }
   ngOnDestroy() {
