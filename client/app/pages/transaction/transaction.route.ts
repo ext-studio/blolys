@@ -5,6 +5,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { TransactionInfoComponent } from './transaction-info/transaction-info.component';
 
 const routes: Routes = [
+  { path: 'transaction/:id', component: TransactionInfoComponent },
   {
     path: 'mainnet',
     children: [

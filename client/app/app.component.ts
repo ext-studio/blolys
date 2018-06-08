@@ -81,15 +81,6 @@ export class AppComponent implements OnInit, OnDestroy {
       return;
     }
   }
-  alertDialog() {
-    if (window.location.href.indexOf('en') >= 0) {
-      this.dialog.open(AlertComponent,
-        {data: {type: 'accent', title: 'Search error', body: 'coming soon...', ok: 'ok', no: 'cancel'}});
-    } else {
-      this.dialog.open(AlertComponent,
-        {data: {type: 'accent', title: '错误', body: '即将到来', ok: '确认', no: '取消'}});
-    }
-  }
   changelang (lang) {
     let href, starthref, endhref, targethref;
     href = window.location.href;

@@ -13,7 +13,8 @@ export class TransactionInfoComponent implements OnInit, OnDestroy {
   transferType: Number = -1;
   txInfo: any = [];
   scripts: any = {};
-  txid: String = this.router.url.split('/')[3];
+  txid: String = this.router.url.split('/')[2] === 'transaction' ? this.router.url.split('/')[3]
+    : this.router.url.split('/')[2];
   apiDo: String;
   netDo: String;
   isHashPattern: any = /^(0x)([0-9a-f]{64})$/;
@@ -37,7 +38,7 @@ export class TransactionInfoComponent implements OnInit, OnDestroy {
       this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
         if (res instanceof NavigationEnd) {
           let newTxid: any;
-          newTxid = res.url.split('/')[3];
+          newTxid = res.url.split('/')[2] === 'transaction' ? res.url.split('/')[3] : res.url.split('/')[2];
           if (this.txid !== newTxid) {
             if (this.isHashPattern.test(newTxid)) {
               this.txid = newTxid;
