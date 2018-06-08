@@ -125,7 +125,6 @@
   }
   .tran-info {
     display: flex;  
-    flex-wrap: wrap;
     flex-direction: row;
     .tran-info-from {
       width: 45%;
@@ -164,8 +163,15 @@
   }
   .tran-info {
     display: flex;  
-    flex-wrap: wrap;
     flex-direction: column;
+    .tran-info-from {
+      width: 100%;
+      word-wrap: break-word;
+    }
+    .tran-info-to {
+      width: 100%;
+      word-wrap: break-word;
+    }
     .tran-info-icon {
       height: 40px;
       line-height: 40px;

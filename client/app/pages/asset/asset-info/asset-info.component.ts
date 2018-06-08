@@ -27,6 +27,8 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
   assetId: String = this.router.url.split('/')[3];
   apiDo: String;
   netDo: String;
+  isHashPattern: any = /^(0x)([0-9a-f]{64})$/;
+  isAssetPattern: any = /^([0-9a-f]{40})$/;
 
   routerSub: Subscription = null;
   nep5InfoSub: Subscription = null;
@@ -34,7 +36,6 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
   assetInfoSub: Subscription = null;
   addrByAssetidSub: Subscription = null;
   rankByAssetidSub: Subscription = null;
-  // pattern = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
 
   constructor(
     private router: Router,
@@ -43,21 +44,31 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
     private global: GlobalService,
   ) { }
   ngOnInit() {
-    this.checkLangNet();
-    this.checkCondition();
-    this.routerSub = this.router.events.subscribe((res: RouterEvent) => { // url
-      if (res instanceof NavigationEnd) {
-        if (this.assetId !== res.url.split('/')[3]) {
-          this.assetType = res.url.split('/')[2];
-          this.assetId = res.url.split('/')[3];
-          this.checkCondition();
-          this.recentAddress = [];
-          this.rankAddr = [];
-          this.onaddrPageGo(1);
-          this.onrankPageGo(1);
+    if (this.isHashPattern.test(this.assetId) || this.isAssetPattern.test(this.assetId)) {
+      this.checkLangNet();
+      this.checkCondition();
+      this.routerSub = this.router.events.subscribe((res: RouterEvent) => { // url
+        if (res instanceof NavigationEnd) {
+          let newAssetId: any;
+          newAssetId = res.url.split('/')[3];
+          if (this.assetId !== newAssetId) {
+            if (this.isHashPattern.test(newAssetId) || this.isAssetPattern.test(newAssetId)) {
+              this.assetType = res.url.split('/')[2];
+              this.assetId = newAssetId;
+              this.checkCondition();
+              this.recentAddress = [];
+              this.rankAddr = [];
+              this.onaddrPageGo(1);
+              this.onrankPageGo(1);
+            } else {
+              this.router.navigate(['/notfound']);
+            }
+          }
         }
-      }
-    });
+      });
+    } else {
+      this.router.navigate(['/notfound']);
+    }
   }
   ngOnDestroy() {
     if (this.routerSub) {

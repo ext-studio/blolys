@@ -16,6 +16,7 @@ export class TransactionInfoComponent implements OnInit, OnDestroy {
   txid: String = this.router.url.split('/')[3];
   apiDo: String;
   netDo: String;
+  isHashPattern: any = /^(0x)([0-9a-f]{64})$/;
 
   routerSub: Subscription = null;
   txbyTxidSub: Subscription = null;
@@ -30,16 +31,26 @@ export class TransactionInfoComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.checkLangNet();
-    this.initPage();
-    this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
-      if (res instanceof NavigationEnd) {
-        if (this.txid !== res.url.split('/')[3]) {
-          this.txid = res.url.split('/')[3];
-          this.initPage();
+    if (this.isHashPattern.test(this.txid)) {
+      this.checkLangNet();
+      this.initPage();
+      this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
+        if (res instanceof NavigationEnd) {
+          let newTxid: any;
+          newTxid = res.url.split('/')[3];
+          if (this.txid !== newTxid) {
+            if (this.isHashPattern.test(newTxid)) {
+              this.txid = newTxid;
+              this.initPage();
+            } else {
+              this.router.navigate(['/notfound']);
+            }
+          }
         }
-      }
-    });
+      });
+    } else {
+      this.router.navigate(['/notfound']);
+    }
   }
   ngOnDestroy() {
     if (this.routerSub) {

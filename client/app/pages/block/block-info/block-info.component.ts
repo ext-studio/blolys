@@ -25,6 +25,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
   isProgress: Boolean = true;
   apiDo: String;
   netDo: String;
+  isNumberPattern: any = /^\d+$/;
 
   routerSub: Subscription = null;
   allcountsSub: Subscription = null;
@@ -61,17 +62,27 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
     }
   }
   ngOnInit() {
-    this.checkLangNet();
-    this.initPage();
-    this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
-      if (res instanceof NavigationEnd) {
-        if (this.height !== Number(res.url.split('/')[3])) {
-          this.height = Number(res.url.split('/')[3]);
-          this.initPage();
-          this.onpageGo(1);
+    if (this.isNumberPattern.test(this.height)) {
+      this.checkLangNet();
+      this.initPage();
+      this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
+        if (res instanceof NavigationEnd) {
+          let newHeight: any;
+          newHeight = Number(res.url.split('/')[3]);
+          if (this.height !== newHeight) {
+            if (this.isNumberPattern.test(newHeight)) {
+              this.height = newHeight;
+              this.initPage();
+              this.onpageGo(1);
+            } else {
+              this.router.navigate(['/notfound']);
+            }
+          }
         }
-      }
-    });
+      });
+    } else {
+      this.router.navigate(['/notfound']);
+    }
   }
   checkLangNet() {
     if (this.router.url.indexOf('/testnet') < 0) {

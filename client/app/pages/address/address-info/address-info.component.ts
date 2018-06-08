@@ -24,6 +24,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
   isProgress: Boolean = true;
   apiDo: String;
   netDo: String;
+  isAddressPattern: any = /^A([0-9a-zA-Z]{33})$/;
 
   routerSub: Subscription = null;
   addrAssetsSub: Subscription = null;
@@ -56,17 +57,27 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
     }
   }
   ngOnInit() {
-    this.checkLangNet();
-    this.getAddrAssets();
-    this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
-      if (res instanceof NavigationEnd) {
-        if (this.address !== res.url.split('/')[3]) {
-          this.address = res.url.split('/')[3];
-          this.getAddrAssets();
-          this.onpageGo(1);
+    if (this.isAddressPattern.test(this.address)) {
+      this.checkLangNet();
+      this.getAddrAssets();
+      this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
+        if (res instanceof NavigationEnd) {
+          let newAddress: any;
+          newAddress = res.url.split('/')[3];
+          if (this.address !== newAddress) {
+            if (this.isAddressPattern.test(newAddress)) {
+              this.address = newAddress;
+              this.getAddrAssets();
+              this.onpageGo(1);
+            } else {
+              this.router.navigate(['/notfound']);
+            }
+          }
         }
-      }
-    });
+      });
+    } else {
+      this.router.navigate(['/notfound']);
+    }
   }
   checkLangNet() {
     if (this.router.url.indexOf('/testnet') < 0) {

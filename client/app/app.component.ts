@@ -93,13 +93,13 @@ export class AppComponent implements OnInit, OnDestroy {
   changelang (lang) {
     let href, starthref, endhref, targethref;
     href = window.location.href;
-    if (lang === 'en' && href.indexOf('en') < 0) {
+    if (lang === 'en' && href.indexOf('/en/') < 0) {
       starthref = href.substr(0, href.indexOf('#'));
       endhref = href.substr(href.indexOf('#'), href.length);
       targethref = starthref.concat('en/');
       targethref = targethref.concat(endhref);
       window.location.href = targethref;
-    } else if (lang === 'cn' && href.indexOf('en') >= 0) {
+    } else if (lang === 'cn' && href.indexOf('/en/') >= 0) {
       starthref = href.substr(0, href.indexOf('/en/#/'));
       endhref = href.substr(href.indexOf('/#/'), href.length);
       targethref = starthref.concat(endhref);
