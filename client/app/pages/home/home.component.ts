@@ -34,13 +34,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.searchForm = this.builder.group({
       searchName: ['', [Validators.required]]
     });
-    this.allcountsSub = this.blockService.Allcounts(this.apiDo, ).subscribe((res: any) => {
+    this.allcountsSub = this.blockService.Allcounts(this.apiDo).subscribe((res: any) => {
       if (res.result) {
         this.total = res.result;
       }
     });
     this.queryCountTime = setInterval(() => {
-      this.allcountsSub = this.blockService.Allcounts(this.apiDo, ).subscribe((res: any) => {
+      this.allcountsSub = this.blockService.Allcounts(this.apiDo).subscribe((res: any) => {
         if (res.result) {
           this.total = res.result;
         }

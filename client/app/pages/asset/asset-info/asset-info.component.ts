@@ -27,8 +27,8 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
   assetId: String = this.router.url.split('/')[3];
   apiDo: String;
   netDo: String;
-  isHashPattern: any = /^(0x)([0-9a-f]{64})$/;
-  isAssetPattern: any = /^([0-9a-f]{40})$/;
+  isAssetPattern: any = /^(0x)([0-9a-f]{64})$/;
+  isNep5Pattern: any = /^([0-9a-f]{40})$/;
 
   routerSub: Subscription = null;
   nep5InfoSub: Subscription = null;
@@ -44,7 +44,8 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
     private global: GlobalService,
   ) { }
   ngOnInit() {
-    if (this.isHashPattern.test(this.assetId) || this.isAssetPattern.test(this.assetId)) {
+    if ((this.assetType === 'asset' && this.isAssetPattern.test(this.assetId))
+      || (this.assetType === 'nep5' && this.isNep5Pattern.test(this.assetId))) {
       this.checkLangNet();
       this.checkCondition();
       this.routerSub = this.router.events.subscribe((res: RouterEvent) => { // url
@@ -52,7 +53,8 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
           let newAssetId: any;
           newAssetId = res.url.split('/')[3];
           if (this.assetId !== newAssetId) {
-            if (this.isHashPattern.test(newAssetId) || this.isAssetPattern.test(newAssetId)) {
+            if ((this.assetType === 'asset' && this.isAssetPattern.test(newAssetId))
+              || (this.assetType === 'nep5' && this.isNep5Pattern.test(newAssetId))) {
               this.assetType = res.url.split('/')[2];
               this.assetId = newAssetId;
               this.checkCondition();

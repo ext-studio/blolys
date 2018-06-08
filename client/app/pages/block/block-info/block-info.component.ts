@@ -95,7 +95,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
   }
   initPage() {
     this.getBlockByHeight();
-    this.allcountsSub = this.blockService.Allcounts(this.apiDo, ).subscribe((res: any) => {
+    this.allcountsSub = this.blockService.Allcounts(this.apiDo).subscribe((res: any) => {
       if (res.result) {
         this.totalBlocks = res.result.blockCounts;
       }
