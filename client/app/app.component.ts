@@ -29,35 +29,37 @@ export class AppComponent implements OnInit, OnDestroy {
     private global: GlobalService
   ) {}
   public ngOnInit() {
-    if (this.global.net === 'mainnet') {
-      this.apiDo = this.global.apiDomain;
-    } else {
-      this.apiDo = this.global.teApiDomain;
-    }
     this.renderMenu();
     this.checkLangNet();
     this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
       if (res instanceof NavigationEnd) {
         this.currentPage = res.url;
-        this.netDo = this.global.net;
         this.checkLangNet();
       }
     });
   }
   checkLangNet() {
-    if (window.location.href.indexOf('en') >= 0) {
+    if (window.location.href.indexOf('/en/#/') >= 0) {
       this.delanguage = 'English';
-      if (window.location.href.indexOf('mainnet') >= 0) {
+      if (this.router.url.indexOf('/testnet') < 0) {
         this.denet = 'Mainnet';
+        this.apiDo = this.global.apiDomain;
+        this.netDo = this.global.netDomain;
       } else {
         this.denet = 'TestNet';
+        this.apiDo = this.global.apiDotest;
+        this.netDo = this.global.netDotest;
       }
     } else {
       this.delanguage = '中文简体';
-      if (window.location.href.indexOf('mainnet') >= 0) {
+      if (this.router.url.indexOf('/testnet') < 0) {
         this.denet = '主网';
+        this.apiDo = this.global.apiDomain;
+        this.netDo = this.global.netDomain;
       } else {
         this.denet = '测试网';
+        this.apiDo = this.global.apiDotest;
+        this.netDo = this.global.netDotest;
       }
     }
   }
@@ -70,11 +72,11 @@ export class AppComponent implements OnInit, OnDestroy {
     this.renderMenu();
   }
   private renderMenu() {
-    if (window.innerWidth < 870 && this.isWide) {
+    if (window.innerWidth < 830 && this.isWide) {
       this.isWide = false;
       return;
     }
-    if (window.innerWidth > 870 && !this.isWide) {
+    if (window.innerWidth > 830 && !this.isWide) {
       this.isWide = true;
       return;
     }
@@ -109,10 +111,9 @@ export class AppComponent implements OnInit, OnDestroy {
     url = this.router.url;
     endhref = url.substr(8, url.length - 1);
     targethref = net.concat(endhref);
-    this.global.net = net;
-    if (net === 'mainnet' && url.indexOf('mainnet') < 0) {
+    if (net === 'mainnet' && url.indexOf('/testnet') >= 0) {
       this.router.navigate([targethref]);
-    } else if (net === 'testnet' && url.indexOf('testnet') < 0) {
+    } else if (net === 'testnet' && url.indexOf('/testnet') < 0) {
       this.router.navigate([targethref]);
     }
   }

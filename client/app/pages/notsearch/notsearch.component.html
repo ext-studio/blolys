@@ -1,12 +1,14 @@
 <div class="block">
   <div class="welcome">
-    <div class="line-first" i18n>Sorry, Your search height, hash, address or transaction id does not exist.</div>
-    <div class="line-second" i18n>Try going back to where you were or heading to the home page.</div>
-    <div class="example-container" [formGroup]="searchForm">
-      <mat-form-field >
-        <mat-label><span i18n>Block Height, Hash, Address or Transaction id </span><img src="/assets/icon_search@2x.png"></mat-label>
-        <input matInput formcControlName="searchText" (keyup)="applyFilter($event)">
-      </mat-form-field>
+    <div class="welcome-content">
+      <div class="line-first" i18n>Sorry, Your search height, hash, address or transaction id does not exist.</div>
+      <div class="line-second" i18n>Try going back to where you were or heading to the home page.</div>
+      <div class="example-container" [formGroup]="searchForm">
+        <mat-form-field >
+          <mat-label><span i18n>Block Height, Hash, Address or Transaction id </span><img src="/assets/icon_search@2x.png"></mat-label>
+          <input matInput formcControlName="searchText" (keyup)="applyFilter($event)">
+        </mat-form-field>
+      </div>
     </div>
   </div>
   <div class="view-all">

@@ -30,12 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   allcountsSub: Subscription = null;
 
   ngOnInit() {
-    this.netDo = this.router.url.split('/')[1];
-    if (this.global.net === 'mainnet') {
-      this.apiDo = this.global.apiDomain;
-    } else {
-      this.apiDo = this.global.teApiDomain;
-    }
+    this.checkLangNet();
     this.searchForm = this.builder.group({
       searchName: ['', [Validators.required]]
     });
@@ -82,6 +77,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     private global: GlobalService
   ) { }
 
+  checkLangNet() {
+    if (this.router.url.indexOf('/testnet') < 0) {
+      this.apiDo = this.global.apiDomain;
+      this.netDo = this.global.netDomain;
+    } else {
+      this.apiDo = this.global.apiDotest;
+      this.netDo = this.global.netDotest;
+    }
+  }
   applyFilter($event) {
     if ($event.keyCode === 13) {
       let value = $event.target.value, isHashPattern: any, isAssetPattern: any, isAddressPattern: any;

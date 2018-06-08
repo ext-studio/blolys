@@ -3,34 +3,41 @@
   position: relative;
 }
 .welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   min-height: 380px;
   background: #18244f;
   box-shadow: 3px 3px 18px #101938;
   border-radius: 3px;
-  .line-first {
-    margin-bottom: 15px;
-    color: #fff;
-  }
-  .line-second {
-    color: #fff;
-    margin-bottom: 25px;
-  }
-  .example-container {
-    display: flex;
-    flex-direction: column;
-    img {
-      width: 20px;
-      height: 20px;        
+  div.welcome-content {
+    width: 100%;
+    margin-top: 20px;
+    .line-first {
+      margin-bottom: 15px;
+      color: #fff;
     }
-  }    
+    .line-second {
+      color: #fff;
+      margin-bottom: 25px;
+    }
+    .example-container {
+      display: flex;
+      flex-direction: column;
+      img {
+        width: 20px;
+        height: 20px;        
+      }
+    }    
+  }
 }
 .view-all {
   width: 100%;
   button {
     background-color: #18244f;
     color: #fff;
-    width: 300px;
     height: 48px;
     cursor: pointer;
     border-radius: 3px;
@@ -80,7 +87,7 @@
 }
 @media screen and (min-width: 420px) {
   .welcome {
-    padding: 100px 10% 0 10%;
+    padding: 0 10%;
     margin-bottom: 38px;
     img {
       margin-left: 20px;
@@ -88,6 +95,9 @@
   }
   .view-all {
     text-align: right;
+    button {
+      width: 300px;
+    }
   }
   .welcome .line-first, .welcome .line-second {
     font-size: 24px;
@@ -95,7 +105,7 @@
 }
 @media screen and (max-width: 419px) {
   .welcome {
-    padding: 85px 10px;
+    padding: 0 10px;
     margin-bottom: 30px;
     img {
       margin-left: 5px;
@@ -103,6 +113,10 @@
   }
   .view-all {
     text-align: center;
+    margin-bottom: 30px;
+    button {
+      width: 200px;
+    }
   }
   .welcome .line-first, .welcome .line-second {
     font-size: 18px;

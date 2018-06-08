@@ -7,17 +7,14 @@
 }
 .top-nav {
   width: 100%;
-  position: relative;
-  background: #151e40 !important;
+  background: #151e40;
   border-bottom: 1px solid #132f5a;
   font-size: 16px;
-  color: #1770ea !important;
+  color: #1770ea;
   .wide-title {
-    text-align: left;
-    width: 25%;
     height: 100%;
-    margin-right: 16px;
-    padding-top: 14px;
+    display: inline-flex;
+    align-items: center;
     img {
       cursor: pointer;
       width: 126px;
@@ -25,8 +22,9 @@
     }
   }
   .menu {
+    text-align: center;
     height: 100%;
-    margin-right: 16px;
+    margin: 0 16px;
     .menu-item {
       height: 100%;
       min-width: 60px;
@@ -35,9 +33,6 @@
       font-size: 16px;
       color: #1770ea;
       cursor: pointer;
-      &:not(:last-child) {
-        margin-right: 30px;
-      }
     }
     .menu-item.active {
       color: #fff;
@@ -109,12 +104,26 @@
 ::ng-deep mat-toolbar-row {
   padding: 0 !important;
 }
+@media screen and (min-width: 921px) {
+  .top-nav .menu .menu-item {
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+}
+@media screen and (max-width: 920px) {
+  .top-nav .menu .menu-item {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+}
 @media screen and (min-width: 420px) {
   .top-nav {
     margin-bottom: 70px !important;
   }
   .main {
-    padding: 0 20px 10px 20px;
+    padding: 0 20px 30px 20px;
   }
 }
 @media screen and (max-width: 419px) {
@@ -122,7 +131,7 @@
     margin-bottom: 30px !important;
   }
   .main {
-    padding: 0 10px 10px 10px;
+    padding: 0 10px 30px 10px;
   }
 }
 

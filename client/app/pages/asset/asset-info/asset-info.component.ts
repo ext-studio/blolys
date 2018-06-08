@@ -43,12 +43,7 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
     private global: GlobalService,
   ) { }
   ngOnInit() {
-    this.netDo = this.router.url.split('/')[1];
-    if (this.global.net === 'mainnet') {
-      this.apiDo = this.global.apiDomain;
-    } else {
-      this.apiDo = this.global.teApiDomain;
-    }
+    this.checkLangNet();
     this.checkCondition();
     this.routerSub = this.router.events.subscribe((res: RouterEvent) => { // url
       if (res instanceof NavigationEnd) {
@@ -82,6 +77,15 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
     }
     if (this.rankByAssetidSub) {
       this.rankByAssetidSub.unsubscribe();
+    }
+  }
+  checkLangNet() {
+    if (this.router.url.indexOf('/testnet') < 0) {
+      this.apiDo = this.global.apiDomain;
+      this.netDo = this.global.netDomain;
+    } else {
+      this.apiDo = this.global.apiDotest;
+      this.netDo = this.global.netDotest;
     }
   }
   checkCondition () {

@@ -40,12 +40,7 @@ export class NotsearchComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.netDo = this.router.url.split('/')[1];
-    if (this.global.net === 'mainnet') {
-      this.apiDo = this.global.apiDomain;
-    } else {
-      this.apiDo = this.global.teApiDomain;
-    }
+    this.checkLangNet();
     this.searchForm = this.builder.group({
       searchName: ['', [Validators.required]]
     });
@@ -70,6 +65,15 @@ export class NotsearchComponent implements OnInit, OnDestroy {
     }
     if (this.allcountsSub) {
       this.allcountsSub.unsubscribe();
+    }
+  }
+  checkLangNet() {
+    if (this.router.url.indexOf('/testnet') < 0) {
+      this.apiDo = this.global.apiDomain;
+      this.netDo = this.global.netDomain;
+    } else {
+      this.apiDo = this.global.apiDotest;
+      this.netDo = this.global.netDotest;
     }
   }
   applyFilter($event) {

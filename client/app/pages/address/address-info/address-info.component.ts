@@ -56,13 +56,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
     }
   }
   ngOnInit() {
-    console.log(this.global.net);
-    this.netDo = this.router.url.split('/')[1];
-    if (this.global.net === 'mainnet') {
-      this.apiDo = this.global.apiDomain;
-    } else {
-      this.apiDo = this.global.teApiDomain;
-    }
+    this.checkLangNet();
     this.getAddrAssets();
     this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
       if (res instanceof NavigationEnd) {
@@ -73,6 +67,15 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
         }
       }
     });
+  }
+  checkLangNet() {
+    if (this.router.url.indexOf('/testnet') < 0) {
+      this.apiDo = this.global.apiDomain;
+      this.netDo = this.global.netDomain;
+    } else {
+      this.apiDo = this.global.apiDotest;
+      this.netDo = this.global.netDotest;
+    }
   }
   initShow () {
     for (let i = 0; i < this.pageSize; i++) {
