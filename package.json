@@ -5,8 +5,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
-    "lint": "ng lint"
+    "build": "ng build -prod --i18n-file=client/i18n/messages.cn.xlf --i18n-format=xlf --locale=zh",
+    "lint": "ng lint",
+    "http": "http-server dist",
+    "prebuild-i18n": "ng xi18n --output-path client/i18n",
+    "build:all": "yarn build && yarn build-i18n:en",
+    "build-i18n:en": "ng build --output-path=dist/en --aot -prod -vc=true --bh /en/"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +26,9 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "core-js": "^2.4.1",
+    "http-server": "^0.11.1",
+    "ngtouchstart": "^1.0.1",
+    "protractor": "^5.3.2",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },
@@ -29,13 +36,10 @@
     "@angular/cli": "~1.7.4",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
-    "@types/jasmine": "~2.8.3",
-    "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "^4.0.1",
-    "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
-    "typescript": "~2.5.3"
+    "typescript": ">=2.4.2 <2.7.0"
   }
 }

@@ -1,72 +1,75 @@
 // @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @font-face {
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Material Icons'), local('MaterialIcons-Regular'), url(/assets/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(/assets/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
 }
-  
+
 .material-icons {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    font-feature-settings: 'liga';
-    -webkit-font-feature-settings: 'liga';
-    -webkit-font-smoothing: antialiased;
+  font-family: 'Material Icons', 'Microsoft YaHei';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
 }
 
 html, body {
-    height: 100%;
-    width: 100%;
-    color: #fefefe;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", "WenQuanYi Micro Hei", sans-serif;
 }
 body {
-    background-image: url('/assets/back-bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-color: #151e40;
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center;
 }
 * {
-    margin: 0;padding: 0;
-    box-sizing: border-box;
-    outline: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
 }
 .flex {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
 }
 .flex-y {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    flex-flow: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: column;
 }
 .flex-1 {
-    flex: 1;
+  flex: 1;
 }
 
 .mat-drawer-container {
-    color: #fefefe;
+  color: #fefefe;
 }
 
 div.mat-horizontal-stepper-header-container {
-    display: none;
+  display: none;
 }
 
 mat-dialog-container.mat-dialog-container {
-    padding: 0;
-    background: none;
+  padding: 0;
+  background: none;
 }
 a, a:active, a:checked {
-    outline: none;
-    color: #fefefe;
+  text-decoration: none;
+  outline: none;
+  color: #fefefe;
 }

@@ -1,0 +1,82 @@
+<div class="block">
+  <div class="header-title">
+    <p class="header-title-info" i18n>Asset information</p>
+    <p class="header-title-address over-ellipsis">{{assetId}}</p>
+  </div>
+  <ul class="address-info">
+    <li class="color-one width-half"><label i18n>Name</label>{{assetInfo?.name}}</li>
+    <li class="color-one width-half"><label i18n>Total supply</label>{{assetInfo?.amount | unlimitedNumber}}</li>
+    <li class="color-two width-half"><label i18n>Type</label>{{assetInfo?.type}}</li>
+    <li class="color-two width-half"><label i18n>Addresses</label>{{assetInfo?.addresses | number}}</li>
+    <li class="color-one width-half"><label i18n>Blocks</label><span class="link-btn" routerLink="/{{netDo}}/block/{{assetInfo?.blockIndex}}">{{assetInfo?.blockIndex | number}}</span></li>
+    <li class="color-one width-half"><label i18n>Transactions</label>{{assetInfo?.transactions | number}}</li>
+    <li class="color-two width-half"><label i18n>Precision</label>{{assetInfo?.precision}}</li>
+    <li class="color-two width-half" *ngIf="assetInfo?.type === 'nep5'"><label i18n>Symbol</label>{{assetInfo?.symbol}}</li>
+    <li class="color-two width-half" *ngIf="assetInfo?.type !== 'nep5'"><label i18n>Created</label>{{assetInfo?.time * 1000 | date: 'yyyy-MM-dd'}}</li>
+    <li class="color-one width-all"><label i18n>Owner</label><span class="link-btn over-ellipsis" routerLink="/{{netDo}}/address/{{assetInfo?.admin}}">{{assetInfo?.admin}}</span></li>
+    <li class="color-two width-all"><label i18n>AssetId</label><span class="over-ellipsis">{{assetInfo?.assetId}}</span></li>
+    <li class="color-one width-all" *ngIf="assetInfo?.type === 'nep5'"><label i18n>TransactionId</label><span class="link-btn over-ellipsis" routerLink="/{{netDo}}/transaction/{{assetInfo?.txid}}">{{assetInfo?.txid}}</span></li>
+  </ul>
+  <p class="header-title-info"  *ngIf="assetInfo?.type === 'nep5'" i18n>Asset register information</p>
+  <ul class="address-info" *ngIf="assetInfo?.type === 'nep5'">
+    <li class="color-one width-half"><label i18n>Name</label>{{assetRegisterInfo?.name}}</li>
+    <li class="color-one width-half"><label i18n>Version</label>{{assetRegisterInfo?.version}}</li>
+    <li class="color-two width-half"><label i18n>Author</label>{{assetRegisterInfo?.author}}</li>
+    <li class="color-two width-half"><label i18n>Email</label>{{assetRegisterInfo?.email}}</li>
+    <li class="color-one width-all"><label i18n>Description</label><span class="des-content">{{assetRegisterInfo?.description}}</span></li>
+  </ul>
+  <div *ngIf="rankAddr">
+    <p class="header-title-info"><span i18n>Balance rank</span> ({{100 > rankPageTotal ? rankPageTotal : 100}})</p>
+    <table>
+      <thead>
+        <tr>
+          <th i18n>Rank</th>
+          <th class="addr-min-width" i18n>Address</th>
+          <th class="hidden" i18n>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of rankAddr; index as index">
+          <td>{{index + 1 + page * rankPageSize}}</td>
+          <td class="addr-min-width td-link-btn over-ellipsis"><a class="link-btn" routerLink="/{{netDo}}/address/{{item?.address}}">{{item?.address}}</a></td>
+          <td class="hidden">{{item?.balance | unlimitedNumber}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-progress-bar mode="indeterminate" *ngIf="isRankProgress"></mat-progress-bar>
+    <app-paginator
+      [pageIndex]="pageIndex"
+      [pageSize]="rankPageSize"
+      [pageLength]="rankPageLength"
+      (onpageGo)="onrankPageGo($event)">
+    </app-paginator>
+  </div>
+  <div *ngIf="recentAddress">
+    <p class="header-title-info" i18n>Recent addresses</p>
+    <table>
+      <thead>
+        <tr>
+          <th i18n class="addr-min-width">Address</th>
+          <th i18n>First transaction</th>
+          <th class="hidden middle-hidden" i18n>Last transaction</th>
+          <th class="hidden" i18n>Transactions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of recentAddress; index as index">
+          <td class="addr-min-width td-link-btn"><a class="link-btn over-ellipsis" routerLink="/{{netDo}}/address/{{item?.address}}">{{item?.address}}</a></td>
+          <td>{{item?.createdAt | unixTime}}</td>
+          <td class="hidden middle-hidden over-ellipsis">{{item?.lastTransactionTime | unixTime}}</td>
+          <td class="hidden">{{item?.transAsset + item?.transNep5 | number}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-progress-bar mode="indeterminate" *ngIf="isAddrProgress"></mat-progress-bar>
+    <app-paginator 
+      [pageIndex]="pageIndex"
+      [pageSize]="addrPageSize"
+      [pageLength]="addrPageLength"
+      (onpageGo)="onaddrPageGo($event)">
+    </app-paginator>
+  </div>
+</div>

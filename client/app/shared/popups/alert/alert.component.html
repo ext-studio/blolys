@@ -1,10 +1,10 @@
 <div class="title" [ngClass]="data.type">
-    <span *ngIf="data.type === 'accent'" i18n>Tip</span>
-    <span *ngIf="data.type === 'warn'" i18n>Caution</span>
-    <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
+  <span *ngIf="data.type === 'accent'" i18n>Tip</span>
+  <span *ngIf="data.type === 'warn'" i18n>Caution</span>
+  <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
 </div>
 <div class="body" [ngClass]="data.type">{{data.body}}</div>
 <div class="options" [ngClass]="data.type">
-    <button mat-raised-button (click)="ok()" *ngIf="data.ok?.length">{{data.ok}}</button>
-    <button mat-button class="no" mat-dialog-close *ngIf="data.no?.length">{{data.no}}</button>
+  <button mat-raised-button (click)="ok()" *ngIf="data.ok?.length">{{data.ok}}</button>
+  <button mat-button class="no" mat-dialog-close *ngIf="data.no?.length">{{data.no}}</button>
 </div>

@@ -1,0 +1,95 @@
+<div class="block">
+  <div class="header-title">
+    <p class="header-title-info" i18n>Addresses information</p>
+    <p class="header-title-address">{{ this.address }}</p>
+  </div>
+  <ul class="assets-info" *ngIf="addrAssets.length > 0">
+    <li *ngFor="let item of addrAssets">
+      <div>
+        <p class="data">{{ item?.balance | unlimitedNumber }}</p>
+        <p class="name">{{ item?.name }}</p>
+      </div>
+    </li>
+  </ul>
+  <ul class="assets-info" *ngIf="addrAssets.length === 0">
+    <li class="textmiddle" i18n>The balance of this address is 0</li>
+  </ul>
+  <div *ngIf="addrTransactions">
+    <p class="header-title-info"><span i18n>Transactions</span> ({{ transTotal | number }})</p>
+    <div class="tran-list">
+      <div class="row-head">
+        <div class="col" i18n>TXID</div>
+        <div class="col" i18n>Type</div>
+        <div class="col hidden" i18n>Size</div>
+        <div class="col hidden" i18n>Version</div>
+        <div class="col hidden" i18n>Time</div>
+        <div class="hidden col-icon-empty"></div>
+      </div>
+      <div class="warpper" *ngFor="let item of addrTransactions; index as index">
+        <div class="row">
+          <div class="col td-link-btn"><a class="link-btn" routerLink="/{{netDo}}/transaction/{{item?.txid}}">{{ item?.txid }}</a></div>
+          <div class="col" [appTransColor]="item?.type">{{ item?.type | transType }}</div>
+          <div class="col hidden">{{ item?.size | number }} Bytes</div>
+          <div class="col hidden">{{ item?.version }}</div>
+          <div class="col hidden">{{ item?.blockTime | unixTime }}</div> 
+          <div class="hidden col-icon" (click)="showInfo(index, item?.txid)"><img [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
+        </div>
+        <div class="tran-info" *ngIf="show[index] && (transfer[index] || transferNep5[index])">
+          <div class="tran-info-from">
+            <p class="info-title" *ngIf="(transfer[index] && transfer[index]?.TxUTXO !== null) || (transferNep5[index] && transferNep5[index][0]?.from !== '')" i18n>Sent from</p>
+            <div *ngIf="transfer[index] && transfer[index]?.TxUTXO !== null">
+              <div *ngFor="let txUTXO of transfer[index]?.TxUTXO">
+                <div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txUTXO?.address}}">{{ txUTXO?.address }}</a></div>
+                <div class="info-amount">
+                  <span>{{ txUTXO?.value | unlimitedNumber }}</span>
+                  <span class="link-btn" routerLink="/{{netDo}}/asset/{{txUTXO?.assetId}}">{{ txUTXO?.name }}</span>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="transferNep5[index] && transferNep5[index][0]?.from !== ''">
+              <div *ngFor="let txfrom of transferNep5[index]">
+                <div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txfrom?.from}}">{{ txfrom?.from }}</a></div>
+                <div class="info-amount">
+                  <span>{{ txfrom?.value | unlimitedNumber }}</span>
+                  <span class="link-btn" routerLink="/{{netDo}}/nep5/{{txfrom?.assetId}}">{{ txfrom?.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
+          <div class="tran-info-to">
+            <p class="info-title" *ngIf="(transfer[index] && transfer[index]?.TxVouts !== null) || (transferNep5[index] && transferNep5[index][0]?.to !== '')" i18n>Sent to</p>
+            <div *ngIf="transfer[index] && transfer[index]?.TxVouts !== null">
+              <div *ngFor="let txVout of transfer[index]?.TxVouts">
+                <div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txVout?.address}}">{{ txVout?.address }}</a></div>
+                <div class="info-amount">
+                  <span>{{ txVout?.value | unlimitedNumber }}</span>
+                  <span class="link-btn" routerLink="/{{netDo}}/asset/{{txVout?.assetId}}">{{ txVout?.name }}</span>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="transferNep5[index] && transferNep5[index][0]?.to !== ''">
+              <div *ngFor="let txto of transferNep5[index]">
+                <div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txto?.to}}">{{ txto?.to }}</a></div>
+                <div class="info-amount">
+                  <span>{{ txto?.value | unlimitedNumber }}</span>
+                  <span class="link-btn" routerLink="/{{netDo}}/nep5/{{txto?.assetId}}">{{ txto?.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-progress-bar mode="indeterminate" *ngIf="isProgress"></mat-progress-bar> 
+    <app-paginator 
+      [pageIndex]="pageIndex"
+      [pageSize]="pageSize"
+      [pageLength]="pageLength"
+      (onpageGo)="onpageGo($event)">
+    </app-paginator>
+  </div>
+  <!-- <div class="view-all" *ngIf="transTotal > pageSize">
+    <button mat-raised-button (click)="showAllTrans()" [ngClass]="{isVisible: isVisible}" i18n>View All</button>
+  </div> -->
+</div>

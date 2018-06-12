@@ -1,23 +1,68 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-    name: 'unixTime'
+  name: 'unixTime'
 })
 export class UnixTimePipe implements PipeTransform {
-    transform(value: any): any {
-        if (!value || typeof value !== 'number') {
-            return value;
-        }
-        let day = Math.floor(value / (24 * 3600));
-        value -= day * 24 * 3600;
-        let hour = Math.floor(value / 3600);
-        value -= hour * 3600;
-        let min = Math.floor(value / 60);
-        value -= min * 60;
-        let sec = Math.floor(value);
-        return (day < 10 ? '0' + day : day) + ' : ' +
-        (hour < 10 ? '0' + hour : hour) + ' : ' +
-        (min < 10 ? '0' + min : min) + ' : ' +
-        (sec < 10 ? '0' + sec : sec);
+  transform(value: any): any {
+    if (!value || typeof value !== 'number') {
+      return value;
     }
+    const res = value * 1000;
+    value = (new Date().getTime() - value * 1000) / 1000;
+    const day = Math.floor(value / (24 * 3600));
+    value -= day * 24 * 3600;
+    const hour = Math.floor(value / 3600);
+    value -= hour * 3600;
+    const min = Math.floor(value / 60);
+    value -= min * 60;
+    const sec = Math.floor(value);
+    if (day > 1) {
+      return this.getTime(res);
+    }
+    if (window.location.href.indexOf('en') >= 0) {
+      if (day === 1) {
+        return '1 day ago';
+      } else if (hour > 0) {
+        return hour + ' hour ago';
+      } else if (min > 0) {
+        return min + ' minutes ago';
+      } else if (sec > 10) {
+        return sec + ' seconds ago';
+      } else if (sec > 0) {
+        return 'just now';
+      }
+    } else {
+      if (day === 1) {
+        return '1 天前';
+      } else if (hour > 0) {
+        return hour + ' 小时前';
+      } else if (min > 0) {
+        return min + ' 分钟前';
+      } else if (sec > 10) {
+        return sec + ' 秒前';
+      } else if (sec > 0) {
+        return '刚刚';
+      }
+    }
+  }
+  getTime (time: any) {
+    time = new Date(time);
+    const year = time.getFullYear();
+    let month = time.getMonth() + 1;
+    let day = time.getDate();
+    let hour = time.getHours();
+    let minute = time.getMinutes();
+    let second = time.getSeconds();
+    month = this.PrefixInteger(month, 2);
+    day = this.PrefixInteger(day, 2);
+    hour = this.PrefixInteger(hour, 2);
+    minute = this.PrefixInteger(minute, 2);
+    second = this.PrefixInteger(second, 2);
+    const times = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+    return times;
+  }
+  PrefixInteger(num, length) {
+    return (Array(length).join('0') + num).slice(-length);
+  }
 }
