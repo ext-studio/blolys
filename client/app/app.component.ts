@@ -17,6 +17,7 @@ export class AppComponent implements OnInit, OnDestroy {
   dropContentOpened: Boolean = false;
   delanguage: String = '中文简体';
   denet: String = '主网';
+  dewallet: String = '关于钱包';
   apiDo: String;
   netDo: String;
 
@@ -41,6 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
   checkLangNet() {
     if (window.location.href.indexOf('/en/#/') >= 0) {
       this.delanguage = 'English';
+      this.dewallet = 'About wallet';
       if (this.router.url.indexOf('/testnet') < 0) {
         this.denet = 'Mainnet';
         this.apiDo = this.global.apiDomain;
@@ -52,12 +54,13 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     } else {
       this.delanguage = '中文简体';
+      this.dewallet = '关于钱包';
       if (this.router.url.indexOf('/testnet') < 0) {
-        this.denet = '主网';
+        this.denet = '主    网';
         this.apiDo = this.global.apiDomain;
         this.netDo = this.global.netDomain;
       } else {
-        this.denet = '测试网';
+        this.denet = '测试网  ';
         this.apiDo = this.global.apiDotest;
         this.netDo = this.global.netDotest;
       }

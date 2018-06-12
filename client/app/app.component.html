@@ -11,6 +11,11 @@
         <button class="menu-item" [ngClass]="{active: currentPage.indexOf('address') >= 0}" routerLink="/{{netDo}}/addresses" i18n>Addresses</button>
         <button class="menu-item" [ngClass]="{active: currentPage.indexOf('asset') >= 0 || currentPage.indexOf('nep5') >= 0}" routerLink="/{{netDo}}/assets" i18n>Assets</button>
       </div>
+      <div mat-button class="pc-menu-btn" [matMenuTriggerFor]="wallet" style="text-align: center; margin-right: 10px;"><span class="toggle-lang">{{dewallet}}</span><mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></div>
+      <mat-menu #wallet="matMenu">
+        <a class="pc-menu-item" mat-menu-item href="https://api.iwallic.com/download/iWallic.beta.0.0.3.apk" i18n>Wallet app</a>
+        <a class="pc-menu-item" mat-menu-item href="https://app.iwallic.com" i18n>Web wallet</a>
+      </mat-menu>
       <div mat-button class="pc-menu-btn" [matMenuTriggerFor]="pcLanguage" style="text-align: center; margin-right: 10px;"><span class="toggle-lang">{{delanguage}}</span><mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></div>
       <mat-menu #pcLanguage="matMenu">
         <a class="pc-menu-item" mat-menu-item (click)="changelang('en')">English</a>
