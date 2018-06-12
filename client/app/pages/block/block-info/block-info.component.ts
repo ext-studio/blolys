@@ -13,7 +13,7 @@ import { GlobalService } from '../../../core';
 export class BlockInfoComponent implements OnInit, OnDestroy {
   blockTransactions: any = [];
   transfer: any = [];
-  transferType: any = [];
+  transferNep5: any = [];
   blockInfo: any = [];
   transTotal: Number = 0;
   totalBlocks: Number = 0;
@@ -104,8 +104,8 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
   initShow () {
     for (let i = 0; i < this.pageSize; i++) {
       this.show[i] = false;
-      this.transfer[i] = -1;
-      this.transferType[i] = -1;
+      this.transfer[i] = 0;
+      this.transferNep5[i] = 0;
     }
   }
   getTxByHeight(pageIndex, pageSize) {
@@ -134,7 +134,6 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
       if (res.code === 200) {
         if (res.result.TxUTXO != null || res.result.TxVouts != null) {
           this.transfer[index] = res.result;
-          this.transferType[index] = 0;
         }
       }
     });
@@ -143,16 +142,16 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
     this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid(this.apiDo, txid).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.length > 0) {
-          this.transfer[index] = res.result;
-          this.transferType[index] = 1;
+          this.transferNep5[index] = res.result;
         }
       }
     });
   }
   showInfo (index, txid) {
     this.show[index] = !this.show[index];
-    if (this.show[index] && this.transfer[index] === -1) {
+    if (this.show[index] && this.transfer[index] === 0 && this.transferNep5[index] === 0) {
       this.transfer[index] = '';
+      this.transferNep5[index] = '';
       this.getTransferByTxid(index, txid);
       this.getNep5TransferByTxid(index, txid);
     }

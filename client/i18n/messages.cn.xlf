@@ -123,7 +123,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">62</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transactions/transactions.component.ts</context>
@@ -263,11 +263,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">34</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="bc9b75b5af0b69c4b039c3c7d70c16fe96cee1e6" datatype="html">
@@ -279,7 +279,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">60</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8a01f36b0d0b479167315cb4c4aa98603057f45e" datatype="html">
@@ -291,7 +291,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dba926658858589d65fb34451058140ce791e7d7" datatype="html">
@@ -351,7 +351,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">63</context>
+          <context context-type="linenumber">62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7faaaa08f56427999f3be41df1093ce4089bbd75" datatype="html">
@@ -379,7 +379,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">87</context>
+          <context context-type="linenumber">86</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8fe73a4787b8068b2ba61f54ab7e0f9af2ea1fc9" datatype="html">
@@ -435,79 +435,47 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">56</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9d89e2872be2bfcda242f3b1b17ef1a02d3346e6" datatype="html">
-        <source>Sent from</source>        
-        <target>来自</target>        
+       <trans-unit id="9d89e2872be2bfcda242f3b1b17ef1a02d3346e6" datatype="html">
+        <source>Sent from</source>
+        <target>来自</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/address/address-info/address-info.component.ts</context>
           <context context-type="linenumber">39</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/address/address-info/address-info.component.ts</context>
-          <context context-type="linenumber">62</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/block/block-info/block-info.component.ts</context>
           <context context-type="linenumber">75</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/block/block-info/block-info.component.ts</context>
-          <context context-type="linenumber">98</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transactions/transactions.component.ts</context>
           <context context-type="linenumber">39</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/transaction/transactions/transactions.component.ts</context>
-          <context context-type="linenumber">62</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
           <context context-type="linenumber">9</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="83d3c15511dbc2b18109ef351012e438b74f5cba" datatype="html">
-        <source>Sent to</source>        
-        <target>发给</target>        
+        <source>Sent to</source>
+        <target>发给</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/address/address-info/address-info.component.ts</context>
-          <context context-type="linenumber">50</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/address/address-info/address-info.component.ts</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="linenumber">61</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/block/block-info/block-info.component.ts</context>
-          <context context-type="linenumber">86</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/block/block-info/block-info.component.ts</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">97</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transactions/transactions.component.ts</context>
-          <context context-type="linenumber">50</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/transaction/transactions/transactions.component.ts</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="linenumber">61</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">20</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="170f7de02b14690fb9c1999a16926c0044bfd5c1" datatype="html">
@@ -519,7 +487,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">80</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e9989acc7c8ce4e53c98e725c4ccddb26500a12c" datatype="html">
@@ -710,36 +678,36 @@
           <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="58132c65c191b663e3c1a8ab4537290c6bcd6f1a" datatype="html">
-        <source>Recent addresses</source>        
-        <target>最近地址</target>        
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="913836d35df4c7eda3ccd1933351d1875f6112bd" datatype="html">
         <source>Balance rank</source>
         <target>资产排名</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3c3a423d91e36ac6624e909fcd2669a25685f847" datatype="html">
-        <source>Rank</source>        
-        <target>排名</target>        
+        <source>Rank</source>
+        <target>排名</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7e69426bd97a606d8ae6026762858e6e7c86a1fd" datatype="html">
-        <source>Balance</source>        
-        <target>资产</target>        
+        <source>Balance</source>
+        <target>资产</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
-          <context context-type="linenumber">63</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="58132c65c191b663e3c1a8ab4537290c6bcd6f1a" datatype="html">
+        <source>Recent addresses</source>
+        <target>最新地址</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/asset/asset-info/asset-info.component.ts</context>
+          <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b7c3668760683759f7d4d21d422bbd5b44b70556" datatype="html">
@@ -763,7 +731,7 @@
         <target>网络费用</target>        
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e3cd475bbc5d8479dfe6dbf32e8ba405b179c3a6" datatype="html">
@@ -771,7 +739,7 @@
         <target>系统费用</target>        
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">75</context>
+          <context context-type="linenumber">74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="edb147133cfeebaa2be91ff2e8dc668a99cf330a" datatype="html">
@@ -779,7 +747,7 @@
         <target>调用脚本</target>        
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">92</context>
+          <context context-type="linenumber">91</context>
         </context-group>
       </trans-unit>
       <trans-unit id="360081a80227ffa67760f20bf768fa6d5466887c" datatype="html">
@@ -787,7 +755,7 @@
         <target>验证脚本</target>        
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/transaction/transaction-info/transaction-info.component.ts</context>
-          <context context-type="linenumber">99</context>
+          <context context-type="linenumber">98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="333aa0764ff8c611f037b32163a0f9497d732dde" datatype="html">

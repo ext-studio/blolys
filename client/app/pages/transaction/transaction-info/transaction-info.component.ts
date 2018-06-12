@@ -10,7 +10,7 @@ import { GlobalService } from '../../../core';
 })
 export class TransactionInfoComponent implements OnInit, OnDestroy {
   transfer: any = [];
-  transferType: Number = -1;
+  transferNep5: any = [];
   txInfo: any = [];
   scripts: any = {};
   txid: String = this.router.url.split('/')[2] === 'transaction' ? this.router.url.split('/')[3]
@@ -80,8 +80,8 @@ export class TransactionInfoComponent implements OnInit, OnDestroy {
     }
   }
   initPage() {
-    this.transfer = [];
-    this.transferType = -1;
+    this.transfer = '';
+    this.transferNep5 = '';
     this.txInfo = [];
     this.scripts = {};
     this.txbyTxidSub = this.transactionService.TxbyTxid(this.apiDo, this.txid).subscribe((res: any) => {
@@ -98,15 +98,13 @@ export class TransactionInfoComponent implements OnInit, OnDestroy {
       if (res.code === 200) {
         if (res.result.TxUTXO != null || res.result.TxVouts != null) {
           this.transfer = res.result;
-          this.transferType = 0;
         }
       }
     });
     this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid(this.apiDo, this.txid).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.length > 0) {
-          this.transfer = res.result;
-          this.transferType = 1;
+          this.transferNep5 = res.result;
         }
       }
     });

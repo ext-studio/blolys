@@ -11,7 +11,7 @@ import { GlobalService } from '../../../core';
 export class TransactionsComponent implements OnInit, OnDestroy {
   transactions: any = [];
   transfer: any = [];
-  transferType: any = [];
+  transferNep5: any = [];
   show: any = [];
   transType: String = 'all';
   pageSize: any = 16;
@@ -57,8 +57,8 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   initShow () {
     for (let i = 0; i < this.pageSize; i++) {
       this.show[i] = false;
-      this.transfer[i] = -1;
-      this.transferType[i] = -1;
+      this.transfer[i] = 0;
+      this.transferNep5[i] = 0;
     }
   }
   getTrans (pageIndex, pageSize) {
@@ -79,7 +79,6 @@ export class TransactionsComponent implements OnInit, OnDestroy {
       if (res.code === 200) {
         if (res.result.TxUTXO != null || res.result.TxVouts != null) {
           this.transfer[index] = res.result;
-          this.transferType[index] = 0;
         }
       }
     });
@@ -88,16 +87,16 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid(this.apiDo, txid).subscribe((res: any) => {
       if (res.code === 200) {
         if (res.result.length > 0) {
-          this.transfer[index] = res.result;
-          this.transferType[index] = 1;
+          this.transferNep5[index] = res.result;
         }
       }
     });
   }
   showInfo (index, txid) {
     this.show[index] = !this.show[index];
-    if (this.show[index] && this.transfer[index] === -1) {
+    if (this.show[index] && this.transfer[index] === 0 && this.transferNep5[index] === 0) {
       this.transfer[index] = '';
+      this.transferNep5[index] = '';
       this.getTransferByTxid(index, txid);
       this.getNep5TransferByTxid(index, txid);
     }
@@ -105,7 +104,8 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   changeTransType (type: string) {
     this.transType = type;
     this.pageIndex += 1;
-    this.onpageGo(1);
+    this.initShow();
+    // this.onpageGo(1);
   }
   onpageGo(num: number) {
     this.initShow();
