@@ -270,9 +270,9 @@
           <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="bc9b75b5af0b69c4b039c3c7d70c16fe96cee1e6" datatype="html">
-        <source>CreatedAt</source>        
-        <target>时间</target>        
+      <trans-unit id="ca2d2a3c593fa0dc4e496ff359ad00bbc4fef652" datatype="html">
+        <source>First transaction</source>        
+        <target>首次交易时间</target>        
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/address/addresses/addresses.component.ts</context>
           <context context-type="linenumber">7</context>
@@ -284,7 +284,7 @@
       </trans-unit>
       <trans-unit id="8a01f36b0d0b479167315cb4c4aa98603057f45e" datatype="html">
         <source>Last transaction</source>        
-        <target>最新交易</target>        
+        <target>最新交易时间</target>        
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/address/addresses/addresses.component.ts</context>
           <context context-type="linenumber">8</context>
