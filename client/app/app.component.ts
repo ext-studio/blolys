@@ -37,7 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
   checkLangNet() {
     if (window.location.href.indexOf('/en/#/') >= 0) {
       this.delanguage = 'English';
-      this.dewallet = 'About wallet';
+      this.dewallet = 'Wallet';
       if (this.router.url.indexOf('/testnet') < 0) {
         this.denet = 'Mainnet';
         this.apiDo = this.global.apiDomain;
