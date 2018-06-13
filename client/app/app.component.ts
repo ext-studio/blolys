@@ -70,11 +70,11 @@ export class AppComponent implements OnInit, OnDestroy {
     this.renderMenu();
   }
   private renderMenu() {
-    if (window.innerWidth < 830 && this.isWide) {
+    if (window.innerWidth < 1030 && this.isWide) {
       this.isWide = false;
       return;
     }
-    if (window.innerWidth > 830 && !this.isWide) {
+    if (window.innerWidth > 1030 && !this.isWide) {
       this.isWide = true;
       return;
     }
