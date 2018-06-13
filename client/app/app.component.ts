@@ -80,30 +80,27 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
   changelang (lang) {
-    let href, starthref, endhref, targethref;
+    let href;
     href = window.location.href;
     if (lang === 'en' && href.indexOf('/en/') < 0) {
-      starthref = href.substr(0, href.indexOf('#'));
-      endhref = href.substr(href.indexOf('#'), href.length);
-      targethref = starthref.concat('en/');
-      targethref = targethref.concat(endhref);
-      window.location.href = targethref;
+      if (href.indexOf('/cn/') >= 0) {
+        href = href.replace('/cn/', '/en/');
+      } else {
+        href = href.replace('/#/', '/en/#/');
+      }
     } else if (lang === 'cn' && href.indexOf('/en/') >= 0) {
-      starthref = href.substr(0, href.indexOf('/en/#/'));
-      endhref = href.substr(href.indexOf('/#/'), href.length);
-      targethref = starthref.concat(endhref);
-      window.location.href = targethref;
+      href = href.replace('/en/', '/cn/');
     }
+    window.location.href = href;
   }
   changenet(net) {
-    let url: String, endhref: string, targethref: string;
+    let url: String;
     url = this.router.url;
-    endhref = url.substr(8, url.length - 1);
-    targethref = net.concat(endhref);
     if (net === 'mainnet' && url.indexOf('/testnet') >= 0) {
-      this.router.navigate([targethref]);
+      url = url.replace('/testnet', '/mainnet');
     } else if (net === 'testnet' && url.indexOf('/testnet') < 0) {
-      this.router.navigate([targethref]);
+      url = url.replace('/mainnet', '/testnet');
     }
+    this.router.navigate([url]);
   }
 }
