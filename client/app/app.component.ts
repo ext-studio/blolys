@@ -51,7 +51,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.delanguage = '中文简体';
       this.dewallet = '关于钱包';
       if (this.router.url.indexOf('/testnet') < 0) {
-        this.denet = '主    网';
+        this.denet = '主网';
         this.apiDo = this.global.apiDomain;
         this.netDo = this.global.netDomain;
       } else {
@@ -105,8 +105,5 @@ export class AppComponent implements OnInit, OnDestroy {
     } else if (net === 'testnet' && url.indexOf('/testnet') < 0) {
       this.router.navigate([targethref]);
     }
-  }
-  pageTo() {
-    window.location.reload();
   }
 }

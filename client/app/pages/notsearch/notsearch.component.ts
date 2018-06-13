@@ -64,8 +64,10 @@ export class NotsearchComponent implements OnInit, OnDestroy {
       this.allcountsSub.unsubscribe();
     }
   }
-  @HostListener('window:reload') public onReload() {
-    this.search(this.router.url.split('/')[4]);
+  @HostListener('window:load') public onReload() {
+    let value: any;
+    value = this.router.url.split('/')[3];
+    this.search(value);
   }
   checkLangNet() {
     if (this.router.url.indexOf('/testnet') < 0) {
@@ -82,8 +84,8 @@ export class NotsearchComponent implements OnInit, OnDestroy {
     }
   }
   search(value) {
-    let isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
     value = value.trim(); // Remove whitespace
+    let isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
     isHashPattern = /^(0x)([0-9a-f]{64})$/;
     isAssetPattern = /^([0-9a-f]{40})$/;
     isAddressPattern = /^A([0-9a-zA-Z]{33})$/;
@@ -125,7 +127,7 @@ export class NotsearchComponent implements OnInit, OnDestroy {
       isNumberPattern = /^\d+$/;
       if (!isNaN(target) && isNumberPattern.test(value)) {
         target = Number(target);
-        if (Number.isInteger(target) && target <= this.total.blockCounts) {
+        if (Number.isInteger(target)) {
           this.router.navigate([`${this.netDo}/block/${target}`]);
           return;
         }
