@@ -94,12 +94,16 @@ export class AppComponent implements OnInit, OnDestroy {
     window.location.href = href;
   }
   changenet(net) {
-    let url: String;
+    let url: any;
     url = this.router.url;
     if (net === 'mainnet' && url.indexOf('/testnet') >= 0) {
       url = url.replace('/testnet', '/mainnet');
     } else if (net === 'testnet' && url.indexOf('/testnet') < 0) {
-      url = url.replace('/mainnet', '/testnet');
+      if (url.indexOf('/mainnet') >= 0) {
+        url = url.replace('/mainnet', '/testnet');
+      } else {
+        url = '/testnet'.concat(url);
+      }
     }
     this.router.navigate([url]);
   }
