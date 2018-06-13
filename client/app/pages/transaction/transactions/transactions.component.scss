@@ -55,10 +55,10 @@
     height: 50px;
   }
   .col-icon {
-    width: 36px;
+    width: 66px;
     height: 50px;
     line-height: 50px;
-    text-align: right;
+    text-align: center;
     float: right;
     cursor: pointer;
   }
@@ -191,6 +191,9 @@
     }
     .row, .row-head {
       padding: 0 30px;
+    }
+    .row {
+      padding-right: 0;
     }
   }
   .header-title-info {
