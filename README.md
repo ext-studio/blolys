@@ -1,7 +1,13 @@
-# Development server
+# Blolys
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+A cool blockchain browser on NEO. [Visit it here](https://blolys.com).
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+1. Block imformation .e.g block height, tx counts.
+2. Transaction detail browse.
+3. Whole NEP-5 Token support (info & tx).
+4. Testnet support.
+5. Multi language support. (Currently include ``Chinese Simplified`` & ``English``).
+
+*This doc is waiting for perfection.*
