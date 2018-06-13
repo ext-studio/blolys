@@ -1,8 +1,5 @@
-import { Component, HostBinding, HostListener, OnInit, OnDestroy } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Router, RouterEvent, NavigationEnd } from '@angular/router';
-import { MatDialog } from '@angular/material';
-import { AlertComponent } from './shared';
 import { Subscription } from 'rxjs/Subscription';
 import { GlobalService } from './core';
 
@@ -24,9 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
   routerSub: Subscription = null;
 
   constructor(
-    private http: HttpClient,
     private router: Router,
-    private dialog: MatDialog,
     private global: GlobalService
   ) {}
   public ngOnInit() {
@@ -110,5 +105,8 @@ export class AppComponent implements OnInit, OnDestroy {
     } else if (net === 'testnet' && url.indexOf('/testnet') < 0) {
       this.router.navigate([targethref]);
     }
+  }
+  pageTo() {
+    window.location.reload();
   }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, RouterEvent, NavigationEnd } from '@angular/router';
-import { AlertComponent } from '../../shared';
+import { Router } from '@angular/router';
 
 import { BlockService } from '../block/block.service';
 import { AddressService } from '../address/address.service';

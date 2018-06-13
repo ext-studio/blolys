@@ -1,6 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { collectExternalReferences } from '@angular/compiler';
-import { parse } from 'url';
 
 @Pipe({
   name: 'unlimitedNumber'

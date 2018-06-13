@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { GlobalService } from '../../core';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AddressService {
   constructor(
     private http: HttpClient,
-    private global: GlobalService
   ) { }
 
   public Addresses(apiDo, pageIndex, pageSize): Observable<any> {

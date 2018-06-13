@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TransTypePipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
+  transform(value: any): any {
     if (!value || typeof value !== 'string') {
       return value;
     }
