@@ -210,8 +210,8 @@
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c11d0d7c7532ed8ed753ff0b5765cfe3f1b6945c" datatype="html">
-        <source>Your home for all NEO related blockchain information</source>
+      <trans-unit id="256f90adda386db8059aae449ea6d6d6550a6097" datatype="html">
+        <source>Fast, correct, handy NEO blockchain information platform</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
           <context context-type="linenumber">5</context>

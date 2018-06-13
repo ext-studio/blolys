@@ -55,7 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.apiDo = this.global.apiDomain;
         this.netDo = this.global.netDomain;
       } else {
-        this.denet = '测试网  ';
+        this.denet = '测试网';
         this.apiDo = this.global.apiDotest;
         this.netDo = this.global.netDotest;
       }
