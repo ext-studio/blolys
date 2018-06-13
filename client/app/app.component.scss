@@ -48,6 +48,7 @@
   min-width: 100px;
   text-align: right;
   cursor: pointer;
+  position: relative;
 }
 .pc-menu-item {
   color: #1770ea;
@@ -87,7 +88,7 @@
   background: #18244f;  
   box-shadow: 3px 3px 18px #101938;
   transform-origin: right top !important;
-  min-width: 100px !important;
+  min-width: 90px !important;
   max-width: 140px !important;
   text-align: center;
 }
