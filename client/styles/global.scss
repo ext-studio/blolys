@@ -55,7 +55,11 @@ body {
 .flex-1 {
   flex: 1;
 }
-
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .mat-drawer-container {
   color: #fefefe;
 }

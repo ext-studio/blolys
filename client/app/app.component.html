@@ -1,31 +1,35 @@
 <div class="main">
-  <mat-toolbar class="top-nav">
+  <mat-toolbar class="top-nav" [ngClass]="{isSearch: !isSearch}">
     <mat-toolbar-row *ngIf="isWide">
       <div class="wide-title" routerLink="/{{netDo}}">
         <img src="../assets/logo.svg" alt="logo">
-      </div>      
-      <div class="menu flex-1">
+      </div>    
+      <div class="flex-1 search">
+        <div class="search-content" (click)="isSearch = !isSearch" [ngClass]="{search_bg: isSearch}">
+          <img src="../assets/icon_search@2x.png" alt="search">
+        </div>
+      </div> 
+      <div class="menu">
         <button class="menu-item" [ngClass]="{active: currentPage.indexOf('home') >= 0 || currentPage === '/' || currentPage === '/mainnet' || currentPage === '/testnet'}" routerLink="/{{netDo}}/home" i18n>Home</button>
         <button class="menu-item" [ngClass]="{active: currentPage.indexOf('block') >= 0}" routerLink="/{{netDo}}/blocks" i18n>Blocks</button>
         <button class="menu-item" [ngClass]="{active: currentPage.indexOf('transaction') >= 0}" routerLink="/{{netDo}}/transactions" i18n>Transactions</button>
         <button class="menu-item" [ngClass]="{active: currentPage.indexOf('address') >= 0}" routerLink="/{{netDo}}/addresses" i18n>Addresses</button>
         <button class="menu-item" [ngClass]="{active: currentPage.indexOf('asset') >= 0 || currentPage.indexOf('nep5') >= 0}" routerLink="/{{netDo}}/assets" i18n>Assets</button>
       </div>
-      <div mat-button class="pc-menu-btn" [matMenuTriggerFor]="pcwallet" style="text-align: center; margin-right: 10px;"><span class="toggle-lang">{{dewallet}}</span><mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></div>
+      <div mat-button class="pc-menu-btn" [matMenuTriggerFor]="pcwallet" style="text-align: right;"><span class="toggle-lang">{{dewallet}}</span><mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></div>
       <mat-menu #pcwallet="matMenu">
-        <a class="pc-menu-item" mat-menu-item href="https://api.iwallic.com/download/iWallic.beta.0.0.4.apk" i18n>Wallet app</a>
-        <a class="pc-menu-item" mat-menu-item href="https://app.iwallic.com" target="_blank" i18n>Web wallet</a>
+        <a class="pc-menu-item" mat-menu-item href="https://api.iwallic.com/download/iWallic.beta.0.0.4.apk"><span i18n>Wallet app</span><mat-icon>arrow_forward</mat-icon></a>
+        <a class="pc-menu-item" mat-menu-item href="https://app.iwallic.com" target="_blank"><span i18n>Web wallet</span><mat-icon>arrow_forward</mat-icon></a>
       </mat-menu>
-      <div mat-button class="pc-menu-btn" [matMenuTriggerFor]="pcLanguage" style="text-align: center; margin-right: 10px;"><span class="toggle-lang">{{delanguage}}</span><mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></div>
-      <mat-menu #pcLanguage="matMenu">
-        <a class="pc-menu-item" mat-menu-item (click)="changelang('en')">English</a>
-        <a class="pc-menu-item" mat-menu-item (click)="changelang('cn')">中文简体</a>
-      </mat-menu>
-      <div mat-button class="pc-menu-btn" [matMenuTriggerFor]="pcNet"><span class="toggle-net">{{denet}}</span><mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></div>
-      <mat-menu #pcNet="matMenu">
-        <a class="pc-menu-item" mat-menu-item (click)="changenet('mainnet')" i18n>MainNet</a>
-        <a class="pc-menu-item" mat-menu-item (click)="changenet('testnet')" i18n>TestNet</a>
-      </mat-menu>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="isSearch" class="nav-search">
+      <div class="example-container">
+        <mat-form-field >
+          <mat-label><span i18n>Block Height, Hash, Address or Transaction id </span></mat-label>
+          <input matInput [formControl]="searchText" (keyup)="navApplyFilter($event)" required>
+        </mat-form-field>
+      </div>
+      <button (click)="navSearch()" i18n>search</button>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="!isWide">
       <div class="wide-title" routerLink="/{{netDo}}">
@@ -39,17 +43,7 @@
         <button class="pc-menu-item pc-phone-wide" mat-menu-item routerLink="/{{netDo}}/transactions" i18n>Transactions</button>
         <button class="pc-menu-item pc-phone-wide" mat-menu-item routerLink="/{{netDo}}/addresses" i18n>Addresses</button>
         <button class="pc-menu-item pc-phone-wide" mat-menu-item routerLink="/{{netDo}}/assets" i18n>Assets</button>
-        <button class="pc-menu-item pc-phone-wide" mat-menu-item [matMenuTriggerFor]="language">{{delanguage}}</button>
-        <button class="pc-menu-item pc-phone-wide" mat-menu-item [matMenuTriggerFor]="net">{{denet}}</button>
         <button class="pc-menu-item pc-phone-wide" mat-menu-item [matMenuTriggerFor]="wallet">{{dewallet}}</button>
-      </mat-menu>
-      <mat-menu #language="matMenu" class="lang-menu">
-        <a class="pc-menu-item" mat-menu-item (click)="changelang('en')">English</a>
-        <a class="pc-menu-item" mat-menu-item (click)="changelang('cn')">中文简体</a>
-      </mat-menu>
-      <mat-menu #net="matMenu" class="net-menu">
-        <a class="pc-menu-item" mat-menu-item (click)="changenet('mainnet')" i18n>MainNet</a>
-        <a class="pc-menu-item" mat-menu-item (click)="changenet('testnet')" i18n>TestNet</a>
       </mat-menu>
       <mat-menu #wallet="matMenu" class="net-menu">
         <a class="pc-menu-item" mat-menu-item href="https://api.iwallic.com/download/iWallic.beta.0.0.4.apk" i18n>Wallet app</a>
@@ -58,4 +52,36 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <router-outlet></router-outlet>
+  <footer>
+    <div *ngIf="isWide" class="flex-center">
+      <div class="footer-net">
+        <label for="" i18n>Switch net: </label>
+        <a href="javascript: ;" (click)="changenet()">{{tonet}}</a>
+      </div>
+      <div>
+        <label for="" i18n>Switch language: </label>
+        <a href="javascript: ;" (click)="changelang()">{{tolanguage}}</a>
+      </div>
+      <div class="flex-1 flex-center footer-logo">
+        <img src="../assets/logo.png" alt="logo">
+      </div>
+      <div class="footer-wallet-download">
+        <a class="pc-menu-item" mat-menu-item href="https://api.iwallic.com/download/iWallic.beta.0.0.4.apk"><span i18n>Wallet app</span><mat-icon>arrow_forward</mat-icon></a>
+      </div>
+      <div>
+        <a class="pc-menu-item" mat-menu-item href="https://app.iwallic.com" target="_blank"><span i18n>Web wallet</span><mat-icon>arrow_forward</mat-icon></a>
+      </div>
+    </div>
+    <div *ngIf="!isWide" class="flex footer-switch">
+      <div class="footer-switch-net">
+        <label for="" i18n>Switch net: </label>
+        <a href="javascript: ;" (click)="changenet()">{{tonet}}</a>
+      </div>
+      <div>
+        <label for="" i18n>Switch language: </label>
+        <a href="javascript: ;" (click)="changelang()">{{tolanguage}}</a>
+      </div>
+    </div>
+  </footer>
 </div>
+

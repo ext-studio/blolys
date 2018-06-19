@@ -122,13 +122,13 @@ export class NotsearchComponent implements OnInit, OnDestroy {
         }
       });
     } else if (Number(value[0]) >= 0) {
-      let target = value.replace(/[,，]/g, '');
+      value = value.replace(/[,，]/g, '');
       let isNumberPattern: any;
       isNumberPattern = /^\d+$/;
-      if (!isNaN(target) && isNumberPattern.test(value)) {
-        target = Number(target);
-        if (Number.isInteger(target)) {
-          this.router.navigate([`${this.netDo}/block/${target}`]);
+      if (!isNaN(value) && isNumberPattern.test(value)) {
+        value = Number(value);
+        if (Number.isInteger(value)) {
+          this.router.navigate([`${this.netDo}/block/${value}`]);
           return;
         }
       }

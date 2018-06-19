@@ -3,10 +3,7 @@
   position: relative;
 }
 .welcome {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
   min-height: 380px;
   background: #18244f;
@@ -59,6 +56,9 @@
 :host ::ng-deep mat-form-field * {
   text-align: center !important;
 }
+:host ::ng-deep .mat-form-field {
+  line-height: 1;
+}
 :host ::ng-deep mat-label {
   color: #1770ea;
   span {
@@ -95,6 +95,7 @@
   }
   .view-all {
     text-align: right;
+    margin-bottom: 70px;
     button {
       width: 300px;
     }

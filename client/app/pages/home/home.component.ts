@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 
 import { BlockService } from '../block/block.service';
 import { AddressService } from '../address/address.service';
-import { TransactionService } from '../transaction/transaction.service';
 import { NotsearchService } from '../notsearch/notsearch.service';
 import { AssetService } from '../asset/asset.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -31,7 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.checkLangNet();
     this.searchForm = this.builder.group({
-      searchName: ['', [Validators.required]]
+      searchText: ['', [Validators.required]]
     });
     this.allcountsSub = this.blockService.Allcounts(this.apiDo).subscribe((res: any) => {
       if (res.result) {
@@ -70,7 +69,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     private router: Router,
     private blockService: BlockService,
     private addressService: AddressService,
-    private transactionService: TransactionService,
     private notsearchService: NotsearchService,
     private assetService: AssetService,
     private global: GlobalService
@@ -125,13 +123,13 @@ export class HomeComponent implements OnInit, OnDestroy {
           }
         });
       } else if (Number(value[0]) >= 0) {
-        let target = value.replace(/[,，]/g, '');
+        value = value.replace(/[,，]/g, '');
         let isNumberPattern: any;
         isNumberPattern = /^\d+$/;
-        if (!isNaN(target) && isNumberPattern.test(value)) {
-          target = Number(target);
-          if (Number.isInteger(target) && target <= this.total.blockCounts) {
-            this.router.navigate([`${this.netDo}/block/${target}`]);
+        if (!isNaN(value) && isNumberPattern.test(value)) {
+          value = Number(value);
+          if (Number.isInteger(value) && value <= this.total.blockCounts) {
+            this.router.navigate([`${this.netDo}/block/${value}`]);
             return;
           }
         }

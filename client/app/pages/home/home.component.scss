@@ -14,10 +14,7 @@
 }
 .welcome {
   text-align: center;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   min-height: 190px;
   background: #18244f;
   box-shadow: 3px 3px 18px #101938;
@@ -82,6 +79,9 @@
 :host ::ng-deep mat-form-field * {
   text-align: center !important;
 }
+:host ::ng-deep .mat-form-field {
+  line-height: 1;
+}
 :host ::ng-deep mat-label {
   color: #1770ea;
   span {
@@ -101,6 +101,7 @@
 }
 :host ::ng-deep .mat-input-element {
   caret-color: #fff;
+  color: #fff;
 }
 :host ::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-input-underline {
   background-color: #1770ea;
