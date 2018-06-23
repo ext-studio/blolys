@@ -17,7 +17,7 @@
         <button class="menu-item" [ngClass]="{active: currentPage.indexOf('asset') >= 0 || currentPage.indexOf('nep5') >= 0}" routerLink="/{{netDo}}/assets" i18n>Assets</button>
       </div>
       <div mat-button class="pc-menu-btn" [matMenuTriggerFor]="pcwallet" style="text-align: right;"><span class="toggle-lang">{{dewallet}}</span><mat-icon style="margin-left: 8px;">keyboard_arrow_down</mat-icon></div>
-      <mat-menu #pcwallet="matMenu">
+      <mat-menu #pcwallet="matMenu" class="wallet-menu-pc">
         <a class="pc-menu-item" mat-menu-item href="https://iwallic.com" target="_blank"><span i18n>Wallet app</span><mat-icon>arrow_forward</mat-icon></a>
         <a class="pc-menu-item" mat-menu-item href="https://app.iwallic.com" target="_blank"><span i18n>Web wallet</span><mat-icon>arrow_forward</mat-icon></a>
       </mat-menu>
@@ -45,7 +45,7 @@
         <button class="pc-menu-item pc-phone-wide" mat-menu-item routerLink="/{{netDo}}/assets" i18n>Assets</button>
         <button class="pc-menu-item pc-phone-wide" mat-menu-item [matMenuTriggerFor]="wallet">{{dewallet}}</button>
       </mat-menu>
-      <mat-menu #wallet="matMenu" class="net-menu">
+      <mat-menu #wallet="matMenu" class="wallet-menu">
         <a class="pc-menu-item" mat-menu-item href="https://iwallic.com" i18n>Wallet app</a>
         <a class="pc-menu-item" mat-menu-item href="https://app.iwallic.com" target="_blank" i18n>Web wallet</a>
       </mat-menu>

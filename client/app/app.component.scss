@@ -169,10 +169,13 @@ footer {
     margin-bottom: 8px;
   }
 }
+::ng-deep .wallet-menu-pc {
+  right: -138px;
+}
 ::ng-deep .links-menu {
   right: -24px !important;
 }
-::ng-deep .lang-menu, ::ng-deep .net-menu {
+::ng-deep .wallet-menu {
   right: 121px !important;
   top: 6px !important;
 }
