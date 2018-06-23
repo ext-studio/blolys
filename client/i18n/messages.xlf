@@ -186,7 +186,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
-          <context context-type="linenumber">72</context>
+          <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9e039855072809fc6b11de145affb2d304d5633c" datatype="html">

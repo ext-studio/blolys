@@ -129,25 +129,38 @@ footer {
   border-top: 1px solid #132f5a;
   padding-top: 20px;
   height: 80px;
+  .footer {
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 36px;
+  }
   .footer-net {
-    margin-right: 20px;
+    width: 150px;
   }
   a {
     color: #1770ea;
     font-size: 14px;
   }
   .footer-logo {
-    img {
-      width: 36px;
-      height: 36px;
-      opacity: .5;
-    }
-  }
-  .pc-menu-item {
-    padding: 0 !important;
+    position: absolute;
+    left: 50%;
+    margin-left: -18px;
+    width: 36px;
+    height: 36px;
+    opacity: .5;
   }
   .footer-wallet-download {
-    margin-right: 20px;
+    position: absolute;
+    right: 0;
+    .pc-menu-item {
+      display: inline-block;
+      padding: 0 !important;
+      border: none;
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
   }
 }
 .footer-switch {

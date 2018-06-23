@@ -53,7 +53,7 @@
   </mat-toolbar>
   <router-outlet></router-outlet>
   <footer>
-    <div *ngIf="isWide" class="flex-center">
+    <div *ngIf="isWide" class="footer">
       <div class="footer-net">
         <label for="" i18n>Switch net: </label>
         <a href="javascript: ;" (click)="changenet()">{{tonet}}</a>
@@ -62,15 +62,15 @@
         <label for="" i18n>Switch language: </label>
         <a href="javascript: ;" (click)="changelang()">{{tolanguage}}</a>
       </div>
-      <div class="flex-1 flex-center footer-logo">
-        <img src="../assets/logo.png" alt="logo">
-      </div>
+      <!-- <div > -->
+        <img src="../assets/logo.png" alt="logo" class="footer-logo">
+      <!-- </div> -->
       <div class="footer-wallet-download">
         <a class="pc-menu-item" mat-menu-item href="https://iwallic.com" target="_blank"><span i18n>Wallet app</span><mat-icon>arrow_forward</mat-icon></a>
-      </div>
-      <div>
         <a class="pc-menu-item" mat-menu-item href="https://app.iwallic.com" target="_blank"><span i18n>Web wallet</span><mat-icon>arrow_forward</mat-icon></a>
       </div>
+      <!-- <div>
+      </div> -->
     </div>
     <div *ngIf="!isWide" class="flex footer-switch">
       <div class="footer-switch-net">
