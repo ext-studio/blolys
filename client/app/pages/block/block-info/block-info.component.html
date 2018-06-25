@@ -68,7 +68,7 @@
           <div class="col hidden">{{ item?.size | number }} Bytes</div>
           <div class="col hidden">{{ item?.version }}</div>
           <div class="col hidden">{{ item?.blockTime | unixTime }}</div> 
-          <div class="hidden col-icon" (click)="showInfo(index, item?.txid)"><img [ngClass]="{active: show[index]}" src="/assets/icon_drop_down_n1.png"></div>
+          <div class="hidden col-icon" (click)="showInfo(index, item?.txid)"><img [ngClass]="{active: show[index]}" src="assets/icon_drop_down_n1.png"></div>
         </div>
         <div class="tran-info" *ngIf="show[index] && (transfer[index] || transferNep5[index])">
           <div class="tran-info-from">
@@ -92,7 +92,7 @@
               </div>
             </div>
           </div>
-          <div class="tran-info-icon"><img src="/assets/img-arrow.png" alt=""></div>
+          <div class="tran-info-icon"><img src="assets/img-arrow.png" alt=""></div>
           <div class="tran-info-to">
             <p class="info-title" *ngIf="(transfer[index] && transfer[index]?.TxVouts !== null) || (transferNep5[index] && transferNep5[index][0]?.to !== '')" i18n>Sent to</p>
             <div *ngIf="transfer[index] && transfer[index]?.TxVouts !== null">

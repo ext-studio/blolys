@@ -2,11 +2,11 @@
   <mat-toolbar class="top-nav" [ngClass]="{isSearch: !isSearch}">
     <mat-toolbar-row *ngIf="isWide">
       <div class="wide-title" routerLink="/{{netDo}}">
-        <img src="../assets/logo.svg" alt="logo">
+        <img src="assets/logo.svg" alt="logo">
       </div>    
       <div class="flex-1 search">
         <div class="search-content" (click)="isSearch = !isSearch" [ngClass]="{search_bg: isSearch}">
-          <img src="../assets/icon_search@2x.png" alt="search">
+          <img src="assets/icon_search@2x.png" alt="search">
         </div>
       </div> 
       <div class="menu">
@@ -23,7 +23,7 @@
       </mat-menu>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="isSearch" class="nav-search">
-      <div class="example-container">
+      <div class="example-container" style="transition: all 3s linear;">
         <mat-form-field >
           <mat-label i18n>Block Height, Hash, Address or Transaction id</mat-label>
           <input matInput [formControl]="searchText" (keyup)="navApplyFilter($event)" required>
@@ -33,7 +33,7 @@
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="!isWide">
       <div class="wide-title" routerLink="/{{netDo}}">
-        <img src="../assets/logo.svg" alt="logo">
+        <img src="assets/logo.svg" alt="logo">
       </div>
       <div class="flex-1"></div>
       <div mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></div>
@@ -63,7 +63,7 @@
         <a href="javascript: ;" (click)="changelang()">{{tolanguage}}</a>
       </div>
       <!-- <div > -->
-        <img src="../assets/logo.png" alt="logo" class="footer-logo">
+        <img src="assets/logo.png" alt="logo" class="footer-logo">
       <!-- </div> -->
       <div class="footer-wallet-download">
         <a class="pc-menu-item" mat-menu-item href="https://iwallic.com" target="_blank"><span i18n>Wallet app</span><mat-icon>arrow_forward</mat-icon></a>
