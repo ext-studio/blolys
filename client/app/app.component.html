@@ -25,7 +25,7 @@
     <mat-toolbar-row *ngIf="isSearch" class="nav-search">
       <div class="example-container">
         <mat-form-field >
-          <mat-label><span i18n>Block Height, Hash, Address or Transaction id </span></mat-label>
+          <mat-label i18n>Block Height, Hash, Address or Transaction id</mat-label>
           <input matInput [formControl]="searchText" (keyup)="navApplyFilter($event)" required>
         </mat-form-field>
       </div>

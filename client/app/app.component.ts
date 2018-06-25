@@ -20,9 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
   total: any = [];
   currentPage: String = this.router.url;
   dropContentOpened: Boolean = false;
-  // delanguage: String = '中文简体';
   tolanguage: String = 'English';
-  // denet: String = '主网';
   tonet: String = '测试网';
   dewallet: String = '关于钱包';
   apiDo: String;

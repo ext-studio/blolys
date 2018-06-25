@@ -29,6 +29,9 @@ html, body {
   color: #fff;
   font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", "WenQuanYi Micro Hei", sans-serif;
 }
+html {
+  overflow-y: scroll;
+}
 body {
   background-color: #151e40;
   background-size: cover;

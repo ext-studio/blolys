@@ -202,21 +202,13 @@
           <context context-type="linenumber">70 </context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9e039855072809fc6b11de145affb2d304d5633c" datatype="html">
-        <source>Block Height, Hash, Address or Transaction id </source>        
-        <target>区块高度、哈希、地址或者交易 id </target>  
+      <trans-unit id="bb96e4bedba67f6addb6f32b903f4bd1cf063d6f" datatype="html">
+        <source>Block Height, Hash, Address or Transaction id</source>        
+        <target>区块高度、哈希、地址或者交易 id</target>  
         <context-group purpose="location">
           <context context-type="sourcefile">app/app.component.ts</context>
           <context context-type="linenumber">28</context>
         </context-group>      
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/home/home.component.ts</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/notsearch/notsearch.component.ts</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="6bec7734cb3740b324966b003c0f45f0148a70e8" datatype="html">
         <source>search</source>
@@ -264,6 +256,18 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
           <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9e039855072809fc6b11de145affb2d304d5633c" datatype="html">
+        <source>Block Height, Hash, Address or Transaction id </source>
+        <target>区块高度、哈希、地址或者交易 id </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/home/home.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/notsearch/notsearch.component.ts</context>
+          <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ba513500826bc7e409b5faf5f8b89f25c1e3e888" datatype="html">
