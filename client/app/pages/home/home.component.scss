@@ -39,11 +39,11 @@
         height: 20px;        
       }
       input {
-        height: 20px;     
-        width: calc(100% - 90px);
+        width: calc(100% - 20px);
       }
       .search-btn {
         float: right;
+        cursor: pointer;
       }
     }    
   }
@@ -93,7 +93,7 @@
   color: #1770ea;
 }
 :host ::ng-deep .mat-form-field-label {
-  height: 20px;
+  width: calc(100% - 18px);
 }
 :host ::ng-deep .mat-input-underline {
   background-color: #1770ea;
@@ -120,6 +120,9 @@
     .line-first {
       font-size: 22px !important;
     }
+  }
+  :host ::ng-deep mat-label {
+    font-size: 12px;
   }
 }
 @media screen and (min-width: 870px) {

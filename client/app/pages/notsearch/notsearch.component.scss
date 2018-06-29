@@ -28,11 +28,11 @@
         height: 20px;        
       }
       input {
-        height: 20px; 
         width: calc(100% - 90px);
       }
       .search-btn {
         float: right;
+        cursor: pointer;
       }
     }    
   }
@@ -70,7 +70,7 @@
   color: #1770ea;
 }
 :host ::ng-deep .mat-form-field-label {
-  height: 20px;
+  width: calc(100% - 18px);
 }
 :host ::ng-deep .mat-input-underline {
   background-color: #1770ea;
@@ -89,6 +89,11 @@
 }
 :host ::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-form-field-ripple{
   background-color: #1770ea;
+}
+@media screen and (max-width: 700px) {
+  :host ::ng-deep mat-label {
+    font-size: 12px;
+  }
 }
 @media screen and (min-width: 420px) {
   .welcome {
