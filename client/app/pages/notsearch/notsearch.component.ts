@@ -1,5 +1,4 @@
 import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GlobalService } from '../../core';
 
@@ -16,10 +15,8 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class NotsearchComponent implements OnInit, OnDestroy {
   total: any = [];
-  searchForm: FormGroup;
   apiDo: String;
   netDo: String;
-  searchIsFocus: Boolean;
   searchVal: String = '';
 
   conditionSub: Subscription = null;
@@ -29,7 +26,6 @@ export class NotsearchComponent implements OnInit, OnDestroy {
   allcountsSub: Subscription = null;
 
   constructor(
-    private builder: FormBuilder,
     private router: Router,
     private blockService: BlockService,
     private addressService: AddressService,
@@ -40,9 +36,6 @@ export class NotsearchComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.checkLangNet();
-    this.searchForm = this.builder.group({
-      searchName: ['', [Validators.required]]
-    });
     this.allcountsSub = this.blockService.Allcounts(this.apiDo).subscribe((res: any) => {
       if (res.result) {
         this.total = res.result;
@@ -69,7 +62,7 @@ export class NotsearchComponent implements OnInit, OnDestroy {
   @HostListener('window:load') public onReload() {
     let value: any;
     value = this.router.url.split('/')[3];
-    this.search(value);
+    this.search();
   }
   checkLangNet() {
     if (this.router.url.indexOf('/testnet') < 0) {
@@ -82,12 +75,12 @@ export class NotsearchComponent implements OnInit, OnDestroy {
   }
   applyFilter($event) {
     if ($event.keyCode === 13) {
-      this.search(this.searchVal);
+      this.search();
     }
   }
-  search(value) {
+  search() {
+    let value = this.searchVal, isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
     value = value.trim(); // Remove whitespace
-    let isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
     isHashPattern = /^(0x)([0-9a-f]{64})$/;
     isAssetPattern = /^([0-9a-f]{40})$/;
     isAddressPattern = /^A([0-9a-zA-Z]{33})$/;
@@ -127,9 +120,8 @@ export class NotsearchComponent implements OnInit, OnDestroy {
       value = value.replace(/[,，]/g, '');
       let isNumberPattern: any;
       isNumberPattern = /^\d+$/;
-      if (!isNaN(value) && isNumberPattern.test(value)) {
-        value = Number(value);
-        if (Number.isInteger(value)) {
+      if (!isNaN(Number(value)) && isNumberPattern.test(value)) {
+        if (Number.isInteger(Number(value)) && value <= this.total.blockCounts) {
           this.router.navigate([`${this.netDo}/block/${value}`]);
           return;
         }
@@ -141,11 +133,5 @@ export class NotsearchComponent implements OnInit, OnDestroy {
       }
       this.router.navigate([`${this.netDo}/search/${value}`]);
     }
-  }
-  searchFocus() {
-    this.searchIsFocus = true;
-  }
-  searchBlur() {
-    this.searchIsFocus = false;
   }
 }

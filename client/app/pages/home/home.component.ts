@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { BlockService } from '../block/block.service';
@@ -16,11 +15,9 @@ import { GlobalService } from '../../core';
 
 export class HomeComponent implements OnInit, OnDestroy {
   total: any = [];
-  searchForm: FormGroup;
   queryCountTime: any;
   apiDo: String;
   netDo: String;
-  searchIsFocus: Boolean;
   searchVal: String = '';
 
   conditionSub: Subscription = null;
@@ -31,9 +28,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.checkLangNet();
-    this.searchForm = this.builder.group({
-      searchText: ['', [Validators.required]]
-    });
     this.allcountsSub = this.blockService.Allcounts(this.apiDo).subscribe((res: any) => {
       if (res.result) {
         this.total = res.result;
@@ -67,7 +61,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private builder: FormBuilder,
     private router: Router,
     private blockService: BlockService,
     private addressService: AddressService,
@@ -91,71 +84,60 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  searchClick() {
-    this.search();
-  }
-
   search() {
     let value = this.searchVal, isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
-      value = value.trim(); // Remove whitespace
-      isHashPattern = /^(0x)([0-9a-f]{64})$/;
-      isAssetPattern = /^([0-9a-f]{40})$/;
-      isAddressPattern = /^A([0-9a-zA-Z]{33})$/;
-      if (isHashPattern.test(value)) {
-        this.conditionSub = this.notsearchService.Condition(this.apiDo, value).subscribe((res: any) => {
-          if (res.code === 200) {
-            if (res.result === '1') {
-              this.router.navigate([`${this.netDo}/transaction/${value}`]);
-            } else if (res.result === '0') {
-              this.router.navigate([`${this.netDo}/asset/${value}`]);
-            }
-          } else {
-            this.router.navigate([`${this.netDo}/search/${value}`]);
+    value = value.trim(); // Remove whitespace
+    isHashPattern = /^(0x)([0-9a-f]{64})$/;
+    isAssetPattern = /^([0-9a-f]{40})$/;
+    isAddressPattern = /^A([0-9a-zA-Z]{33})$/;
+    if (isHashPattern.test(value)) {
+      this.conditionSub = this.notsearchService.Condition(this.apiDo, value).subscribe((res: any) => {
+        if (res.code === 200) {
+          if (res.result === '1') {
+            this.router.navigate([`${this.netDo}/transaction/${value}`]);
+          } else if (res.result === '0') {
+            this.router.navigate([`${this.netDo}/asset/${value}`]);
           }
-        });
-      } else if (isAssetPattern.test(value)) {
-        this.nep5InfoSub = this.assetService.Nep5Info(this.apiDo, value).subscribe((res: any) => {
-          if (res.code === 200) {
-            if (typeof res.result === 'string') {
-              this.router.navigate([`${this.netDo}/transaction/${res.result}`]);
-            } else if (typeof res.result === 'object') {
-              this.router.navigate([`${this.netDo}/nep5/${value}`]);
-            }
-          } else {
-            this.router.navigate([`${this.netDo}/search/${value}`]);
-          }
-        });
-      } else if (isAddressPattern.test(value)) {
-        this.addrAssetsSub = this.addressService.AddrAssets(this.apiDo, value).subscribe((res: any) => {
-          if (res.code === 200) {
-            this.router.navigate([`${this.netDo}/address/${value}`]);
-          } else {
-            this.router.navigate([`${this.netDo}/search/${value}`]);
-          }
-        });
-      } else if (Number(value[0]) >= 0) {
-        value = value.replace(/[,，]/g, '');
-        let isNumberPattern: any;
-        isNumberPattern = /^\d+$/;
-        if (!isNaN(Number(value)) && isNumberPattern.test(value)) {
-          if (Number.isInteger(Number(value)) && value <= this.total.blockCounts) {
-            this.router.navigate([`${this.netDo}/block/${value}`]);
-            return;
-          }
+        } else {
+          this.router.navigate([`${this.netDo}/search/${value}`]);
         }
-        this.router.navigate([`${this.netDo}/search/${value}`]);
-      } else {
-        if (value === '') {
+      });
+    } else if (isAssetPattern.test(value)) {
+      this.nep5InfoSub = this.assetService.Nep5Info(this.apiDo, value).subscribe((res: any) => {
+        if (res.code === 200) {
+          if (typeof res.result === 'string') {
+            this.router.navigate([`${this.netDo}/transaction/${res.result}`]);
+          } else if (typeof res.result === 'object') {
+            this.router.navigate([`${this.netDo}/nep5/${value}`]);
+          }
+        } else {
+          this.router.navigate([`${this.netDo}/search/${value}`]);
+        }
+      });
+    } else if (isAddressPattern.test(value)) {
+      this.addrAssetsSub = this.addressService.AddrAssets(this.apiDo, value).subscribe((res: any) => {
+        if (res.code === 200) {
+          this.router.navigate([`${this.netDo}/address/${value}`]);
+        } else {
+          this.router.navigate([`${this.netDo}/search/${value}`]);
+        }
+      });
+    } else if (Number(value[0]) >= 0) {
+      value = value.replace(/[,，]/g, '');
+      let isNumberPattern: any;
+      isNumberPattern = /^\d+$/;
+      if (!isNaN(Number(value)) && isNumberPattern.test(value)) {
+        if (Number.isInteger(Number(value)) && value <= this.total.blockCounts) {
+          this.router.navigate([`${this.netDo}/block/${value}`]);
           return;
         }
-        this.router.navigate([`${this.netDo}/search/${value}`]);
       }
-  }
-
-  searchFocus() {
-    this.searchIsFocus = true;
-  }
-  searchBlur() {
-    this.searchIsFocus = false;
+      this.router.navigate([`${this.netDo}/search/${value}`]);
+    } else {
+      if (value === '') {
+        return;
+      }
+      this.router.navigate([`${this.netDo}/search/${value}`]);
+    }
   }
 }

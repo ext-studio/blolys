@@ -6,7 +6,7 @@
       <div class="example-container">
         <mat-form-field >
           <mat-label i18n>Block Height, Hash, Address or Transaction id </mat-label>
-          <input matInput [(ngModel)]="searchVal" (keyup)="applyFilter($event)" (focus)="searchFocus()" (blur)="searchBlur()">
+          <input matInput [(ngModel)]="searchVal" (keyup)="applyFilter($event)">
             <img class="search-btn" src="assets/icon_search@2x.png" (click)="search()">
         </mat-form-field>
       </div>
