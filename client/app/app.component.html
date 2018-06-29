@@ -23,10 +23,10 @@
       </mat-menu>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="isSearch" class="nav-search">
-      <div class="example-container" style="transition: all 3s linear;">
+      <div class="example-container">
         <mat-form-field >
           <mat-label i18n>Block Height, Hash, Address or Transaction id</mat-label>
-          <input matInput [formControl]="searchText" (keyup)="navApplyFilter($event)" required>
+          <input matInput [formControl]="searchText" (keyup)="navApplyFilter($event)">
         </mat-form-field>
       </div>
       <button (click)="navSearch()" i18n>search</button>

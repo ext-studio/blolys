@@ -203,6 +203,9 @@ export class AppComponent implements OnInit, OnDestroy {
       }
       this.router.navigate([`${this.netDo}/search/${value}`]);
     } else {
+      if (value === '') {
+        return;
+      }
       this.router.navigate([`${this.netDo}/search/${value}`]);
     }
   }

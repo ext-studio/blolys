@@ -39,12 +39,11 @@
         height: 20px;        
       }
       input {
-        height: 20px;        
+        height: 20px;     
         width: calc(100% - 90px);
       }
       .search-btn {
         float: right;
-        margin-bottom: -5px;
       }
     }    
   }
@@ -92,10 +91,9 @@
 }
 :host ::ng-deep mat-label {
   color: #1770ea;
-  span {
-    font-size: 14px;
-    position: relative;
-  }
+}
+:host ::ng-deep .mat-form-field-label {
+  height: 20px;
 }
 :host ::ng-deep .mat-input-underline {
   background-color: #1770ea;
@@ -160,9 +158,6 @@
 @media screen and (min-width: 420px) {
   .welcome {
     margin-bottom: 70px;
-    img {
-      margin-left: 20px;
-    }
   }
   .links{
     margin-bottom: 70px;
@@ -174,10 +169,7 @@
 @media screen and (max-width: 419px) {
   .welcome {
     margin-bottom: 30px;
-    img {
-      margin-left: 5px;
     }
-  }
   .links {
     margin-bottom: 30px;
   }

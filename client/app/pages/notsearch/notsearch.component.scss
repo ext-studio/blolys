@@ -28,11 +28,11 @@
         height: 20px;        
       }
       input {
+        height: 20px; 
         width: calc(100% - 90px);
       }
       .search-btn {
         float: right;
-        margin-bottom: -5px;
       }
     }    
   }
@@ -68,10 +68,9 @@
 }
 :host ::ng-deep mat-label {
   color: #1770ea;
-  span {
-    font-size: 14px;
-    position: relative;
-  }
+}
+:host ::ng-deep .mat-form-field-label {
+  height: 20px;
 }
 :host ::ng-deep .mat-input-underline {
   background-color: #1770ea;
@@ -95,9 +94,6 @@
   .welcome {
     padding: 0 10%;
     margin-bottom: 38px;
-    img {
-      margin-left: 20px;
-    }
   }
   .view-all {
     text-align: right;
@@ -114,9 +110,6 @@
   .welcome {
     padding: 0 10px;
     margin-bottom: 30px;
-    img {
-      margin-left: 5px;
-    }
   }
   .view-all {
     text-align: center;

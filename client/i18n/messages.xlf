@@ -254,28 +254,28 @@
         <source>Total blocks</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2764f12254124b81c7a902430e69c624fbc3b105" datatype="html">
         <source>Total assets</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3a945b9c247a742576ad46e135d94a7f6b857508" datatype="html">
         <source>Total transactions</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b21f612eecee79739b6b64bd039a00b2a6d5885e" datatype="html">
         <source>Total addresses</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="729754dd19eb9ce0670b0aeb5a6ae60574c2c563" datatype="html">

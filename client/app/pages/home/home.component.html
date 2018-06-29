@@ -5,12 +5,10 @@
       <div class="line-second" i18n>Fast, correct, handy NEO blockchain information platform</div>
       <div class="example-container">
         <mat-form-field >
-          <mat-label><span i18n>Block Height, Hash, Address or Transaction id </span></mat-label>
-          <input matInput [(ngModel)]="searchVal"  (keyup)="applyFilter($event)" (focus)="searchFocus()" (blur)="searchBlur()">
-            <img class="search-btn" src="assets/icon_search@2x.png"
-            (click)="search()">
+          <mat-label i18n>Block Height, Hash, Address or Transaction id </mat-label>
+          <input matInput [(ngModel)]="searchVal" (keyup)="applyFilter($event)" (focus)="searchFocus()" (blur)="searchBlur()">
+            <img class="search-btn" src="assets/icon_search@2x.png" (click)="search()">
         </mat-form-field>
-      
       </div>
     </div>
   </div>

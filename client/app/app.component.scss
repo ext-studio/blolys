@@ -211,10 +211,9 @@ footer {
 }
 :host ::ng-deep mat-label {
   color: #1770ea;
-  span {
-    font-size: 14px;
-    position: relative;
-  }
+}
+:host ::ng-deep .mat-form-field-label {
+  height: 20px;
 }
 :host ::ng-deep .mat-form-field {
   line-height: 1;
