@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   queryCountTime: any;
   apiDo: String;
   netDo: String;
+  searchIsFocus: Boolean;
+  searchVal: String = '';
 
   conditionSub: Subscription = null;
   nep5InfoSub: Subscription = null;
@@ -85,7 +87,16 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
   applyFilter($event) {
     if ($event.keyCode === 13) {
-      let value = $event.target.value, isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
+      this.search();
+    }
+  }
+
+  searchClick() {
+    this.search();
+  }
+
+  search() {
+    let value = this.searchVal, isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
       value = value.trim(); // Remove whitespace
       isHashPattern = /^(0x)([0-9a-f]{64})$/;
       isAssetPattern = /^([0-9a-f]{40})$/;
@@ -126,17 +137,25 @@ export class HomeComponent implements OnInit, OnDestroy {
         value = value.replace(/[,，]/g, '');
         let isNumberPattern: any;
         isNumberPattern = /^\d+$/;
-        if (!isNaN(value) && isNumberPattern.test(value)) {
-          value = Number(value);
-          if (Number.isInteger(value) && value <= this.total.blockCounts) {
+        if (!isNaN(Number(value)) && isNumberPattern.test(value)) {
+          if (Number.isInteger(Number(value)) && value <= this.total.blockCounts) {
             this.router.navigate([`${this.netDo}/block/${value}`]);
             return;
           }
         }
         this.router.navigate([`${this.netDo}/search/${value}`]);
       } else {
+        if (value === '') {
+          return;
+        }
         this.router.navigate([`${this.netDo}/search/${value}`]);
       }
-    }
+  }
+
+  searchFocus() {
+    this.searchIsFocus = true;
+  }
+  searchBlur() {
+    this.searchIsFocus = false;
   }
 }

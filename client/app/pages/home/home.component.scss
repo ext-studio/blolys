@@ -38,6 +38,14 @@
         width: 20px;
         height: 20px;        
       }
+      input {
+        height: 20px;        
+        width: calc(100% - 90px);
+      }
+      .search-btn {
+        float: right;
+        margin-bottom: -5px;
+      }
     }    
   }
 }
@@ -87,7 +95,6 @@
   span {
     font-size: 14px;
     position: relative;
-    top: -5px;
   }
 }
 :host ::ng-deep .mat-input-underline {

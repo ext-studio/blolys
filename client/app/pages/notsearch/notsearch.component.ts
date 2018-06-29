@@ -19,6 +19,8 @@ export class NotsearchComponent implements OnInit, OnDestroy {
   searchForm: FormGroup;
   apiDo: String;
   netDo: String;
+  searchIsFocus: Boolean;
+  searchVal: String = '';
 
   conditionSub: Subscription = null;
   nep5InfoSub: Subscription = null;
@@ -80,7 +82,7 @@ export class NotsearchComponent implements OnInit, OnDestroy {
   }
   applyFilter($event) {
     if ($event.keyCode === 13) {
-      this.search($event.target.value);
+      this.search(this.searchVal);
     }
   }
   search(value) {
@@ -134,7 +136,16 @@ export class NotsearchComponent implements OnInit, OnDestroy {
       }
       this.router.navigate([`${this.netDo}/search/${value}`]);
     } else {
+      if (value === '') {
+        return;
+      }
       this.router.navigate([`${this.netDo}/search/${value}`]);
     }
+  }
+  searchFocus() {
+    this.searchIsFocus = true;
+  }
+  searchBlur() {
+    this.searchIsFocus = false;
   }
 }
