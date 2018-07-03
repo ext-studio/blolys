@@ -82,6 +82,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   search() {
     let value = this.searchVal, isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
     value = value.trim(); // Remove whitespace
+    if (value === '') {
+      return;
+    }
     isHashPattern = /^(0x)([0-9a-f]{64})$/;
     isAssetPattern = /^([0-9a-f]{40})$/;
     isAddressPattern = /^A([0-9a-zA-Z]{33})$/;
@@ -129,9 +132,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
       this.router.navigate([`${this.netDo}/search/${value}`]);
     } else {
-      if (value === '') {
-        return;
-      }
       this.router.navigate([`${this.netDo}/search/${value}`]);
     }
   }
