@@ -210,6 +210,9 @@ footer {
 ::ng-deep mat-toolbar-row {
   padding: 0 !important;
 }
+:host ::ng-deep mat-form-field * {
+  color: #1770ea;
+}
 :host ::ng-deep mat-label {
   color: #1770ea;
 }

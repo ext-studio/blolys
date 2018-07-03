@@ -73,11 +73,6 @@ export class NotsearchComponent implements OnInit, OnDestroy {
       this.netDo = this.global.netDotest;
     }
   }
-  applyFilter($event) {
-    if ($event.keyCode === 13) {
-      this.search();
-    }
-  }
   search() {
     let value = this.searchVal, isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
     value = value.trim(); // Remove whitespace

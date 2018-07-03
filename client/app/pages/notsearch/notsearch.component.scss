@@ -27,11 +27,7 @@
         width: 20px;
         height: 20px;        
       }
-      input {
-        width: calc(100% - 90px);
-      }
       .search-btn {
-        float: right;
         cursor: pointer;
       }
     }    
@@ -62,15 +58,13 @@
 }
 :host ::ng-deep mat-form-field * {
   text-align: center !important;
+  color: #1770ea;
 }
 :host ::ng-deep .mat-form-field {
   line-height: 1;
 }
 :host ::ng-deep mat-label {
   color: #1770ea;
-}
-:host ::ng-deep .mat-form-field-label {
-  width: calc(100% - 18px);
 }
 :host ::ng-deep .mat-input-underline {
   background-color: #1770ea;

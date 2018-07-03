@@ -2,7 +2,6 @@ import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { GlobalService } from './core';
-import { FormControl, Validators } from '@angular/forms';
 
 import { BlockService } from './pages/block/block.service';
 import { AddressService } from './pages/address/address.service';
@@ -25,7 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
   dewallet: String = '关于钱包';
   apiDo: String;
   netDo: String;
-  searchText = new FormControl('', [Validators.required]);
+  searchVal: String = '';
 
   routerSub: Subscription = null;
   conditionSub: Subscription = null;
@@ -141,19 +140,8 @@ export class AppComponent implements OnInit, OnDestroy {
     }
     this.router.navigate([url]);
   }
-  navSearch() {
-    if (!this.searchText.valid) {
-      return ;
-    }
-    this.search(this.searchText.value);
-  }
-  navApplyFilter($event) {
-    if ($event.keyCode === 13) {
-      this.search($event.target.value);
-    }
-  }
-  search(value) {
-    let isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
+  search() {
+    let value = this.searchVal, isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
     value = value.trim(); // Remove whitespace
     isHashPattern = /^(0x)([0-9a-f]{64})$/;
     isAssetPattern = /^([0-9a-f]{40})$/;
@@ -194,9 +182,8 @@ export class AppComponent implements OnInit, OnDestroy {
       value = value.replace(/[,，]/g, '');
       let isNumberPattern: any;
       isNumberPattern = /^\d+$/;
-      if (!isNaN(value) && isNumberPattern.test(value)) {
-        value = Number(value);
-        if (Number.isInteger(value) && value <= this.total.blockCounts) {
+      if (!isNaN(Number(value)) && isNumberPattern.test(value)) {
+        if (Number.isInteger(Number(value)) && value <= this.total.blockCounts) {
           this.router.navigate([`${this.netDo}/block/${value}`]);
           return;
         }

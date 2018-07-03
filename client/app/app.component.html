@@ -26,10 +26,10 @@
       <div class="example-container">
         <mat-form-field>
           <mat-label i18n>Block Height, Hash, Address or Transaction id</mat-label>
-          <input matInput [formControl]="searchText" (keyup)="navApplyFilter($event)">
+          <input matInput [(ngModel)]="searchVal" (keyup.enter)="search()">
         </mat-form-field>
       </div>
-      <button (click)="navSearch()" i18n>search</button>
+      <button (click)="search()" i18n>search</button>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="!isWide">
       <div class="wide-title" routerLink="/{{netDo}}">
