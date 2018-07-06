@@ -1,41 +1,41 @@
 <div class="block">
-  <div class="welcome flex-center">
-    <div class="welcome-content">
-      <div class="line-first" i18n>Welcome to Blolys</div>
-      <div class="line-second" i18n>Fast, correct, handy NEO blockchain information platform</div>
-      <div class="example-container">
-        <mat-form-field >
-          <mat-label i18n>Block Height, Hash, Address or Transaction id </mat-label>
-          <input matInput [(ngModel)]="searchVal" (keyup.enter)="search()">
-          <img matSuffix class="search-btn" src="assets/icon_search@2x.png" (click)="search()">
-        </mat-form-field>
-      </div>
-    </div>
-  </div>
-  <ul class="links">
-    <li>
-      <div>
-        <p i18n>Total blocks</p>
-        <span class="link-btn" routerLink="/{{netDo}}/blocks">{{ total?.blockCounts | number }}</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <p i18n>Total assets</p>
-        <span class="link-btn" routerLink="/{{netDo}}/assets">{{ total?.assetCounts | unlimitedNumber }}</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <p i18n>Total transactions</p>
-        <span class="link-btn" routerLink="/{{netDo}}/transactions">{{ total?.txCounts | number }}</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <p i18n>Total addresses</p>
-        <span class="link-btn" routerLink="/{{netDo}}/addresses">{{ total?.addressCounts | number }}</span>
-      </div>
-    </li>
-  </ul>
+	<div class="welcome flex-center">
+		<div class="welcome-content">
+			<div class="line-first" i18n>Welcome to Blolys</div>
+			<div class="line-second" i18n>Fast, correct, handy NEO blockchain information platform</div>
+			<div class="example-container">
+				<mat-form-field >
+					<mat-label i18n>Block Height, Hash, Address or Transaction id </mat-label>
+					<input matInput [(ngModel)]="searchVal" (keyup.enter)="search()">
+					<img matSuffix class="search-btn" src="assets/icon_search@2x.png" (click)="search()">
+				</mat-form-field>
+			</div>
+		</div>
+	</div>
+	<ul class="links">
+		<li>
+			<div>
+				<p i18n>Total blocks</p>
+				<span class="link-btn" routerLink="/{{netDo}}/blocks">{{ total?.blockCounts | number }}</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<p i18n>Total assets</p>
+				<span class="link-btn" routerLink="/{{netDo}}/assets">{{ total?.assetCounts | unlimitedNumber }}</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<p i18n>Total transactions</p>
+				<span class="link-btn" routerLink="/{{netDo}}/transactions">{{ total?.txCounts | number }}</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<p i18n>Total addresses</p>
+				<span class="link-btn" routerLink="/{{netDo}}/addresses">{{ total?.addressCounts | number }}</span>
+			</div>
+		</li>
+	</ul>
 </div>

@@ -9,10 +9,10 @@ import { GlobalService } from './services/global';
  */
 
 @NgModule({
-  imports: [
-    HttpClientModule, BrowserAnimationsModule
-  ],
-  exports: [],
-  providers: [GlobalService]
+    imports: [
+        HttpClientModule, BrowserAnimationsModule
+    ],
+    exports: [],
+    providers: [GlobalService]
 })
 export class CoreModule { }

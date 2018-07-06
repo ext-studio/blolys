@@ -1,123 +1,123 @@
 .block {
-  width: 100%;
-  position: relative;
+	width: 100%;
+	position: relative;
 }
 .welcome {
-  flex-direction: column;
-  text-align: center;
-  min-height: 380px;
-  background: #18244f;
-  box-shadow: 3px 3px 18px #101938;
-  border-radius: 3px;
-  div.welcome-content {
-    width: 100%;
-    margin-top: 20px;
-    .line-first {
-      margin-bottom: 15px;
-      color: #fff;
-    }
-    .line-second {
-      color: #fff;
-      margin-bottom: 25px;
-    }
-    .example-container {
-      display: flex;
-      flex-direction: column;
-      img {
-        width: 20px;
-        height: 20px;        
-      }
-      .search-btn {
-        cursor: pointer;
-      }
-    }    
-  }
+	flex-direction: column;
+	text-align: center;
+	min-height: 380px;
+	background: #18244f;
+	box-shadow: 3px 3px 18px #101938;
+	border-radius: 3px;
+	div.welcome-content {
+		width: 100%;
+		margin-top: 20px;
+		.line-first {
+			margin-bottom: 15px;
+			color: #fff;
+		}
+		.line-second {
+			color: #fff;
+			margin-bottom: 25px;
+		}
+		.example-container {
+			display: flex;
+			flex-direction: column;
+			img {
+				width: 20px;
+				height: 20px;        
+			}
+			.search-btn {
+				cursor: pointer;
+			}
+		}    
+	}
 }
 .view-all {
-  width: 100%;
-  button {
-    background-color: #18244f;
-    color: #fff;
-    height: 48px;
-    cursor: pointer;
-    border-radius: 3px;
-    border: solid 1px #1770ea;
-    &:hover {
-      background:  #1c2b5d;
-    }
-    img {
-      width: 30px;
-      height: 30px;
-      margin-left: 16px;
-      display: inline-block;
-    }
-  }
+	width: 100%;
+	button {
+		background-color: #18244f;
+		color: #fff;
+		height: 48px;
+		cursor: pointer;
+		border-radius: 3px;
+		border: solid 1px #1770ea;
+		&:hover {
+			background:  #1c2b5d;
+		}
+		img {
+			width: 30px;
+			height: 30px;
+			margin-left: 16px;
+			display: inline-block;
+		}
+	}
 }
 :host {
-  display: block;
+	display: block;
 }
 :host ::ng-deep mat-form-field * {
-  text-align: center !important;
-  color: #1770ea;
+	text-align: center !important;
+	color: #1770ea;
 }
 :host ::ng-deep .mat-form-field {
-  line-height: 1;
+	line-height: 1;
 }
 :host ::ng-deep mat-label {
-  color: #1770ea;
+	color: #1770ea;
 }
 :host ::ng-deep .mat-input-underline {
-  background-color: #1770ea;
+	background-color: #1770ea;
 }
 :host ::ng-deep .mat-form-field-ripple{
-  background-color: #1770ea;
+	background-color: #1770ea;
 }
 :host ::ng-deep .mat-focused:not(.mat-form-field-invalid) mat-form-field * {
-  color: #1770ea;
+	color: #1770ea;
 }
 :host ::ng-deep .mat-input-element {
-  caret-color: #fff;
+	caret-color: #fff;
 }
 :host ::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-input-underline {
-  background-color: #1770ea;
+	background-color: #1770ea;
 }
 :host ::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-form-field-ripple{
-  background-color: #1770ea;
+	background-color: #1770ea;
 }
 @media screen and (max-width: 700px) {
-  :host ::ng-deep mat-label {
-    font-size: 12px;
-  }
+	:host ::ng-deep mat-label {
+		font-size: 12px;
+	}
 }
 @media screen and (min-width: 420px) {
-  .welcome {
-    padding: 0 10%;
-    margin-bottom: 38px;
-  }
-  .view-all {
-    text-align: right;
-    margin-bottom: 70px;
-    button {
-      width: 300px;
-    }
-  }
-  .welcome .line-first, .welcome .line-second {
-    font-size: 24px;
-  }
+	.welcome {
+		padding: 0 10%;
+		margin-bottom: 38px;
+	}
+	.view-all {
+		text-align: right;
+		margin-bottom: 70px;
+		button {
+			width: 300px;
+		}
+	}
+	.welcome .line-first, .welcome .line-second {
+		font-size: 24px;
+	}
 }
 @media screen and (max-width: 419px) {
-  .welcome {
-    padding: 0 10px;
-    margin-bottom: 30px;
-  }
-  .view-all {
-    text-align: center;
-    margin-bottom: 30px;
-    button {
-      width: 200px;
-    }
-  }
-  .welcome .line-first, .welcome .line-second {
-    font-size: 18px;
-  }
+	.welcome {
+		padding: 0 10px;
+		margin-bottom: 30px;
+	}
+	.view-all {
+		text-align: center;
+		margin-bottom: 30px;
+		button {
+			width: 200px;
+		}
+	}
+	.welcome .line-first, .welcome .line-second {
+		font-size: 18px;
+	}
 }

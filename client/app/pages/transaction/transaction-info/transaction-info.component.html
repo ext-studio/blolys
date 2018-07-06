@@ -1,104 +1,104 @@
 <div class="block">
-  <div class="header-title" [appTransBorderColor]="txInfo?.type">
-    <p class="header-title-info">{{ txInfo?.type | transType}} <span i18n>transaction</span></p>
-    <p class="header-title-address"><span i18n>Transaction hash</span>: {{ txInfo?.txid }}</p>
-    <p class="header-title-time"><span i18n>Time</span>: {{ txInfo?.blockTime | unixTime }}</p>
-  </div>
-  <div class="tran-info" *ngIf="(transfer || transferNep5)">
-    <div class="tran-info-from">
-      <p class="info-title" *ngIf="(transfer && transfer?.TxUTXO !== null) || (transferNep5 && transferNep5[0]?.from !== '')" i18n>Sent from</p>
-      <div *ngIf="transfer && transfer?.TxUTXO !== null">
-        <div *ngFor="let txUTXO of transfer?.TxUTXO">
-          <div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txUTXO?.address}}">{{ txUTXO?.address }}</a></div>
-          <div class="info-amount">
-            <span>{{ txUTXO?.value | unlimitedNumber }}</span>
-            <span class="link-btn" routerLink="/{{netDo}}/asset/{{txUTXO?.assetId}}">{{ txUTXO?.name }}</span>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="transferNep5 && transferNep5[0]?.from !== ''">
-        <div *ngFor="let txfrom of transferNep5">
-          <div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txfrom?.from}}">{{ txfrom?.from }}</a></div>
-          <div class="info-amount">
-            <span>{{ txfrom?.value | unlimitedNumber }}</span>
-            <span class="link-btn" routerLink="/{{netDo}}/nep5/{{txfrom?.assetId}}">{{ txfrom?.name }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="tran-info-icon"><img src="assets/img-arrow.png" alt=""></div>
-    <div class="tran-info-to">
-      <p class="info-title" *ngIf="(transfer && transfer?.TxVouts !== null) || (transferNep5 && transferNep5[0]?.to !== '')" i18n>Sent to</p>
-      <div *ngIf="transfer && transfer?.TxVouts !== null">
-        <div *ngFor="let txVout of transfer?.TxVouts">
-          <div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txVout?.address}}">{{ txVout?.address }}</a></div>
-          <div class="info-amount">
-            <span>{{ txVout?.value | unlimitedNumber }}</span>
-            <span class="link-btn" routerLink="/{{netDo}}/asset/{{txVout?.assetId}}">{{ txVout?.name }}</span>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="transferNep5 && transferNep5[0]?.to !== ''">
-        <div *ngFor="let txto of transferNep5">
-          <div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txto?.to}}">{{ txto?.to }}</a></div>
-          <div class="info-amount">
-            <span>{{ txto?.value | unlimitedNumber }}</span>
-            <span class="link-btn" routerLink="/{{netDo}}/nep5/{{txto?.assetId}}">{{ txto?.name }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <ul class="info">
-    <li>
-      <div>
-        <p class="big-font-size">{{ txInfo?.blockTime | unixTime }}</p>
-        <span i18n>Time</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <p class="big-font-size">{{ txInfo?.type | transType }}</p>
-        <span i18n>Type</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <p class="big-font-size">{{ txInfo?.netFee | unlimitedNumber }}</p>
-        <span i18n>NetworkFee</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <p class="big-font-size">{{ txInfo?.sysFee | unlimitedNumber }}</p>
-        <span i18n>SystemFee</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <p class="big-font-size link-btn" routerLink="/{{netDo}}/block/{{txInfo?.blockIndex}}">{{ txInfo?.blockIndex | number }}</p>
-        <span i18n>Index</span>
-      </div>
-    </li>
-    <li>
-      <div>
-        <p class="big-font-size">{{ txInfo?.size | number}} Bytes</p>
-        <span i18n>Size</span>
-      </div>
-    </li>
-  </ul>
-  <div class="script" *ngIf="scripts?.invocation">
-    <div class="header-title-info" i18n>Invocation script</div>
-    <div class="script-info">
-      <p>PUSHBYTES64:</p>
-      <p class="break-word">{{scripts?.invocation}}</p>
-    </div>
-  </div>
-  <div class="script" *ngIf="scripts?.verification">
-    <div class="header-title-info" i18n>Verification script</div>
-    <div class="script-info">
-      <p>PUSHBYTES32:</p>
-      <p class="break-word">{{scripts?.verification}}</p>
-    </div>
-  </div>
+	<div class="header-title" [appTransBorderColor]="txInfo?.type">
+		<p class="header-title-info">{{ txInfo?.type | transType}} <span i18n>transaction</span></p>
+		<p class="header-title-address"><span i18n>Transaction hash</span>: {{ txInfo?.txid }}</p>
+		<p class="header-title-time"><span i18n>Time</span>: {{ txInfo?.blockTime | unixTime }}</p>
+	</div>
+	<div class="tran-info" *ngIf="(transfer || transferNep5)">
+		<div class="tran-info-from">
+			<p class="info-title" *ngIf="(transfer && transfer?.TxUTXO !== null) || (transferNep5 && transferNep5[0]?.from !== '')" i18n>Sent from</p>
+			<div *ngIf="transfer && transfer?.TxUTXO !== null">
+				<div *ngFor="let txUTXO of transfer?.TxUTXO">
+					<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txUTXO?.address}}">{{ txUTXO?.address }}</a></div>
+					<div class="info-amount">
+						<span>{{ txUTXO?.value | unlimitedNumber }}</span>
+						<span class="link-btn" routerLink="/{{netDo}}/asset/{{txUTXO?.assetId}}">{{ txUTXO?.name }}</span>
+					</div>
+				</div>
+			</div>
+			<div *ngIf="transferNep5 && transferNep5[0]?.from !== ''">
+				<div *ngFor="let txfrom of transferNep5">
+					<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txfrom?.from}}">{{ txfrom?.from }}</a></div>
+					<div class="info-amount">
+						<span>{{ txfrom?.value | unlimitedNumber }}</span>
+						<span class="link-btn" routerLink="/{{netDo}}/nep5/{{txfrom?.assetId}}">{{ txfrom?.name }}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tran-info-icon"><img src="assets/img-arrow.png" alt=""></div>
+		<div class="tran-info-to">
+			<p class="info-title" *ngIf="(transfer && transfer?.TxVouts !== null) || (transferNep5 && transferNep5[0]?.to !== '')" i18n>Sent to</p>
+			<div *ngIf="transfer && transfer?.TxVouts !== null">
+				<div *ngFor="let txVout of transfer?.TxVouts">
+					<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txVout?.address}}">{{ txVout?.address }}</a></div>
+					<div class="info-amount">
+						<span>{{ txVout?.value | unlimitedNumber }}</span>
+						<span class="link-btn" routerLink="/{{netDo}}/asset/{{txVout?.assetId}}">{{ txVout?.name }}</span>
+					</div>
+				</div>
+			</div>
+			<div *ngIf="transferNep5 && transferNep5[0]?.to !== ''">
+				<div *ngFor="let txto of transferNep5">
+					<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txto?.to}}">{{ txto?.to }}</a></div>
+					<div class="info-amount">
+						<span>{{ txto?.value | unlimitedNumber }}</span>
+						<span class="link-btn" routerLink="/{{netDo}}/nep5/{{txto?.assetId}}">{{ txto?.name }}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<ul class="info">
+		<li>
+			<div>
+				<p class="big-font-size">{{ txInfo?.blockTime | unixTime }}</p>
+				<span i18n>Time</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<p class="big-font-size">{{ txInfo?.type | transType }}</p>
+				<span i18n>Type</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<p class="big-font-size">{{ txInfo?.netFee | unlimitedNumber }}</p>
+				<span i18n>NetworkFee</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<p class="big-font-size">{{ txInfo?.sysFee | unlimitedNumber }}</p>
+				<span i18n>SystemFee</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<p class="big-font-size link-btn" routerLink="/{{netDo}}/block/{{txInfo?.blockIndex}}">{{ txInfo?.blockIndex | number }}</p>
+				<span i18n>Index</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<p class="big-font-size">{{ txInfo?.size | number}} Bytes</p>
+				<span i18n>Size</span>
+			</div>
+		</li>
+	</ul>
+	<div class="script" *ngIf="scripts?.invocation">
+		<div class="header-title-info" i18n>Invocation script</div>
+		<div class="script-info">
+			<p>PUSHBYTES64:</p>
+			<p class="break-word">{{scripts?.invocation}}</p>
+		</div>
+	</div>
+	<div class="script" *ngIf="scripts?.verification">
+		<div class="header-title-info" i18n>Verification script</div>
+		<div class="script-info">
+			<p>PUSHBYTES32:</p>
+			<p class="break-word">{{scripts?.verification}}</p>
+		</div>
+	</div>
 </div>

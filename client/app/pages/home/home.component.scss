@@ -1,189 +1,189 @@
 .block {
-  width: 100%;
-  position: relative;
+	width: 100%;
+	position: relative;
 }
 .header-title-info {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 .link-btn {
-  color: #1770ea;
-  cursor: pointer;
+	color: #1770ea;
+	cursor: pointer;
 }
 .data-right {
-  text-align: right;
+	text-align: right;
 }
 .welcome {
-  text-align: center;
-  flex-direction: column;
-  min-height: 190px;
-  background: #18244f;
-  box-shadow: 3px 3px 18px #101938;
-  border-radius: 3px;
-  div.welcome-content {
-    width: 100%;
-    margin-top: 20px;
-    .line-first {
-      margin-bottom: 10px;
-      color: #fff;
-    }
-    .line-second {
-      font-size: 14px;
-      color: #769acb;
-      margin-bottom: 20px;
-    }
-    .example-container {
-      display: flex;
-      flex-direction: column;
-      img {
-        width: 20px;
-        height: 20px;        
-      }
-      .search-btn {
-        cursor: pointer;
-      }
-    }    
-  }
+	text-align: center;
+	flex-direction: column;
+	min-height: 190px;
+	background: #18244f;
+	box-shadow: 3px 3px 18px #101938;
+	border-radius: 3px;
+	div.welcome-content {
+		width: 100%;
+		margin-top: 20px;
+		.line-first {
+			margin-bottom: 10px;
+			color: #fff;
+		}
+		.line-second {
+			font-size: 14px;
+			color: #769acb;
+			margin-bottom: 20px;
+		}
+		.example-container {
+			display: flex;
+			flex-direction: column;
+			img {
+				width: 20px;
+				height: 20px;        
+			}
+			.search-btn {
+				cursor: pointer;
+			}
+		}    
+	}
 }
 .links {
-  width: 100%;
-  display: block;
-  list-style: none;
-  letter-spacing: -5px;
-  li {
-    letter-spacing: normal;
-    border-radius: 3px;
-    text-align: center;
-    background-color: #18244f;
-    background-image: url('/assets/bg_Summary.png');
-    background-repeat: repeat-x;
-    background-position: bottom;
-    height: 190px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    div {
-      width: 100%;
-      padding: 0 15px;
-      p{
-        color: #fff;
-        font-size: 16px;
-        margin-bottom: 20px;
-      }
-      span {
-        color: #1770ea;
-      }
-    }
-  }
+	width: 100%;
+	display: block;
+	list-style: none;
+	letter-spacing: -5px;
+	li {
+		letter-spacing: normal;
+		border-radius: 3px;
+		text-align: center;
+		background-color: #18244f;
+		background-image: url('/assets/bg_Summary.png');
+		background-repeat: repeat-x;
+		background-position: bottom;
+		height: 190px;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		div {
+			width: 100%;
+			padding: 0 15px;
+			p{
+				color: #fff;
+				font-size: 16px;
+				margin-bottom: 20px;
+			}
+			span {
+				color: #1770ea;
+			}
+		}
+	}
 }
 :host {
-  display: block;
+	display: block;
 }
 :host ::ng-deep mat-form-field * {
-  text-align: center !important;
-  color: #1770ea;
+	text-align: center !important;
+	color: #1770ea;
 }
 :host ::ng-deep .mat-form-field {
-  line-height: 1;
+	line-height: 1;
 }
 :host ::ng-deep mat-label {
-  color: #1770ea;
+	color: #1770ea;
 }
 :host ::ng-deep .mat-input-underline {
-  background-color: #1770ea;
+	background-color: #1770ea;
 }
 :host ::ng-deep .mat-form-field-ripple{
-  background-color: #1770ea;
+	background-color: #1770ea;
 }
 :host ::ng-deep .mat-focused:not(.mat-form-field-invalid) mat-form-field * {
-  color: #1770ea;
+	color: #1770ea;
 }
 :host ::ng-deep .mat-input-element {
-  caret-color: #fff;
-  color: #fff;
+	caret-color: #fff;
+	color: #fff;
 }
 :host ::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-input-underline {
-  background-color: #1770ea;
+	background-color: #1770ea;
 }
 :host ::ng-deep .mat-focused:not(.mat-form-field-invalid) .mat-form-field-ripple{
-  background-color: #1770ea;
+	background-color: #1770ea;
 }
 
 @media screen and (max-width: 700px) {
-  .welcome {
-    .line-first {
-      font-size: 22px !important;
-    }
-  }
-  :host ::ng-deep mat-label {
-    font-size: 12px;
-  }
+	.welcome {
+		.line-first {
+			font-size: 22px !important;
+		}
+	}
+	:host ::ng-deep mat-label {
+		font-size: 12px;
+	}
 }
 @media screen and (min-width: 870px) {
-  .links {
-    li {
-      width: 24.25%;
-      &:not(:last-child) {
-        margin-right: 1%;
-      }
-    }
-  }
+	.links {
+		li {
+			width: 24.25%;
+			&:not(:last-child) {
+				margin-right: 1%;
+			}
+		}
+	}
 }
 @media screen and (max-width: 869px) {
-  .links {
-    li {
-      width: 49.2%;
-      &:nth-child(odd) {
-        margin-right: 1.6%;
-      }
-      &:nth-child(-n + 2) {
-        margin-bottom: 10px;
-      }
-    }
-  }
+	.links {
+		li {
+			width: 49.2%;
+			&:nth-child(odd) {
+				margin-right: 1.6%;
+			}
+			&:nth-child(-n + 2) {
+				margin-bottom: 10px;
+			}
+		}
+	}
 }
 @media screen and (min-width: 500px) {
-  .welcome {
-    padding: 0 10%;
-  }
+	.welcome {
+		padding: 0 10%;
+	}
 }
 @media screen and (max-width: 499px) {
-  .welcome {
-    padding: 0 10px;
-  }
+	.welcome {
+		padding: 0 10px;
+	}
 }
 @media screen and (min-width: 420px) {
-  .welcome {
-    margin-bottom: 70px;
-  }
-  .links{
-    margin-bottom: 70px;
-  }
-  .header-title-info, .welcome .line-first, .links li span {
-    font-size: 30px;
-  }
+	.welcome {
+		margin-bottom: 70px;
+	}
+	.links{
+		margin-bottom: 70px;
+	}
+	.header-title-info, .welcome .line-first, .links li span {
+		font-size: 30px;
+	}
 }
 @media screen and (max-width: 419px) {
-  .welcome {
-    margin-bottom: 30px;
-    }
-  .links {
-    margin-bottom: 30px;
-  }
-  .hidden {
-    display: none;
-  }
-  .header-title-info, .welcome .line-first, .links li span {
-    font-size: 22px;
-  }
+	.welcome {
+		margin-bottom: 30px;
+		}
+	.links {
+		margin-bottom: 30px;
+	}
+	.hidden {
+		display: none;
+	}
+	.header-title-info, .welcome .line-first, .links li span {
+		font-size: 22px;
+	}
 }
 @media screen and (max-width: 350px) {
-  .links {
-    li {
-      width: 100%;
-      &:not(:last-child) {
-        margin-bottom: 8px;
-      }
-    }
-  }
+	.links {
+		li {
+			width: 100%;
+			&:not(:last-child) {
+				margin-bottom: 8px;
+			}
+		}
+	}
 }

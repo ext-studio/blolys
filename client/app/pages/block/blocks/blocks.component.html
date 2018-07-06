@@ -1,30 +1,30 @@
 <div class="block">
-  <p class="header-title-info" i18n>Blocks</p>
-  <table>
-    <thead>
-      <tr>
-        <th i18n>Index</th>
-        <th i18n>Transactions</th>
-        <th class="hidden" i18n>Time</th>
-        <th class="hidden" i18n>Size</th>
-        <th class="addr-min-width hidden" i18n>Validator</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of blocks; index as index">
-        <td class="td-link-btn"><a class="link-btn" routerLink="/{{netDo}}/{{api}}/block/{{item?.index}}">{{item?.index | number}}</a></td>
-        <td>{{item?.txNum | number}}</td>
-        <td class="hidden">{{item?.time | unixTime}}</td>
-        <td class="hidden">{{item?.size | number}} Bytes</td>
-        <td class="hidden addr-min-width over-ellipsis-link"><a class="link-btn" routerLink="/{{netDo}}/{{api}}/address/{{item?.nextConsensus}}">{{item?.nextConsensus}}</a></td>
-      </tr>
-    </tbody>
-  </table>
-  <mat-progress-bar mode="indeterminate" *ngIf="isProgress"></mat-progress-bar>
-  <app-paginator 
-    [pageIndex]="pageIndex"
-    [pageSize]="pageSize"
-    [pageLength]="pageLength"
-    (onpageGo)="onpageGo($event)">
-  </app-paginator>
+	<p class="header-title-info" i18n>Blocks</p>
+	<table>
+		<thead>
+			<tr>
+				<th i18n>Index</th>
+				<th i18n>Transactions</th>
+				<th class="hidden" i18n>Time</th>
+				<th class="hidden" i18n>Size</th>
+				<th class="addr-min-width hidden" i18n>Validator</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of blocks; index as index">
+				<td class="td-link-btn"><a class="link-btn" routerLink="/{{netDo}}/{{api}}/block/{{item?.index}}">{{item?.index | number}}</a></td>
+				<td>{{item?.txNum | number}}</td>
+				<td class="hidden">{{item?.time | unixTime}}</td>
+				<td class="hidden">{{item?.size | number}} Bytes</td>
+				<td class="hidden addr-min-width over-ellipsis-link"><a class="link-btn" routerLink="/{{netDo}}/{{api}}/address/{{item?.nextConsensus}}">{{item?.nextConsensus}}</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<mat-progress-bar mode="indeterminate" *ngIf="isProgress"></mat-progress-bar>
+	<app-paginator 
+		[pageIndex]="pageIndex"
+		[pageSize]="pageSize"
+		[pageLength]="pageLength"
+		(onpageGo)="onpageGo($event)">
+	</app-paginator>
 </div>

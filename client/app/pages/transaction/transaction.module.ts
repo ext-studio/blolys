@@ -8,10 +8,10 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { TransactionInfoComponent } from './transaction-info/transaction-info.component';
 
 @NgModule({
-  imports: [
-    CommonModule, SharedModule, TransactionRoutingModule
-  ],
-  declarations: [TransactionsComponent, TransactionInfoComponent],
-  providers: [TransactionService]
+    imports: [
+        CommonModule, SharedModule, TransactionRoutingModule
+    ],
+    declarations: [TransactionsComponent, TransactionInfoComponent],
+    providers: [TransactionService]
 })
 export class TransactionModule { }

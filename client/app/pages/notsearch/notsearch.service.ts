@@ -4,11 +4,11 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class NotsearchService {
-  constructor(
-    private http: HttpClient,
-  ) { }
-  public Condition(apiDo, hash): Observable<any> {
-    return this.http.post(`${apiDo}/api/index`,
-      { 'method': 'checkcondition', 'params': [hash] });
-  }
+    constructor(
+        private http: HttpClient,
+    ) { }
+    public Condition(apiDo, hash): Observable<any> {
+        return this.http.post(`${apiDo}/api/index`,
+            { 'method': 'checkcondition', 'params': [hash] });
+    }
 }

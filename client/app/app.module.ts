@@ -15,22 +15,22 @@ import { AssetModule } from './pages/asset';
 import { TransactionModule } from './pages/transaction';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent
-  ],
-  imports: [
-    BrowserModule,
-    SharedModule,
-    AppRoutingModule,
-    CoreModule,
-    AddressModule,
-    BlockModule,
-    AssetModule,
-    TransactionModule,
-    NotsearchModule,
-    NotFoundModule // NotFoundModule must placed at the end
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent
+    ],
+    imports: [
+        BrowserModule,
+        SharedModule,
+        AppRoutingModule,
+        CoreModule,
+        AddressModule,
+        BlockModule,
+        AssetModule,
+        TransactionModule,
+        NotsearchModule,
+        NotFoundModule // NotFoundModule must placed at the end
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

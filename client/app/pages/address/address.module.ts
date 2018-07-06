@@ -8,10 +8,10 @@ import { AddressesComponent } from './addresses/addresses.component';
 import { AddressInfoComponent } from './address-info/address-info.component';
 
 @NgModule({
-  imports: [
-    CommonModule, SharedModule, AddressRoutingModule
-  ],
-  declarations: [AddressesComponent, AddressInfoComponent],
-  providers: [AddressService]
+    imports: [
+        CommonModule, SharedModule, AddressRoutingModule
+    ],
+    declarations: [AddressesComponent, AddressInfoComponent],
+    providers: [AddressService]
 })
 export class AddressModule { }
