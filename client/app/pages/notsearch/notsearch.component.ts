@@ -60,8 +60,7 @@ export class NotsearchComponent implements OnInit, OnDestroy {
         }
     }
     @HostListener('window:load') public onReload() {
-        let value: any;
-        value = this.router.url.split('/')[3];
+        this.searchVal = this.router.url.split('/')[3];
         this.search();
     }
     checkLangNet() {
