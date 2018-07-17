@@ -7,7 +7,7 @@
 		<li *ngFor="let item of addrAssets">
 			<div>
 				<p class="data">{{ item?.balance | unlimitedNumber }}</p>
-				<p class="name">{{ item?.name }}</p>
+				<p class="name">{{ item?.symbol }}</p>
 			</div>
 		</li>
 	</ul>
