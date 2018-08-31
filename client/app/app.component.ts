@@ -39,7 +39,8 @@ export class AppComponent implements OnInit, OnDestroy {
         private addressService: AddressService,
         private notsearchService: NotsearchService,
         private assetService: AssetService,
-    ) {}
+    ) { }
+
     public ngOnInit() {
         this.checkLangNet();
         this.allcountsSub = this.blockService.Allcounts(this.apiDo).subscribe((res: any) => {
@@ -112,7 +113,7 @@ export class AppComponent implements OnInit, OnDestroy {
             return;
         }
     }
-    changelang () {
+    changelang() {
         let href;
         href = window.location.href;
         if (href.indexOf('/en/') < 0) {
@@ -139,6 +140,15 @@ export class AppComponent implements OnInit, OnDestroy {
             }
         }
         this.router.navigate([url]);
+    }
+    searchIcon() {
+        this.isSearch = !this.isSearch;
+        setTimeout(() => {
+            if (document.getElementsByClassName('main')[0]
+                .getElementsByTagName('mat-toolbar')[0].getElementsByTagName('input')[0]) {
+                document.getElementsByClassName('main')[0].getElementsByTagName('mat-toolbar')[0].getElementsByTagName('input')[0].focus();
+            }
+        }, 100);
     }
     search() {
         let value = this.searchVal, isHashPattern: any, isAssetPattern: any, isAddressPattern: any;

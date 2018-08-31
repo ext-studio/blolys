@@ -5,7 +5,7 @@
 				<img src="assets/logo.svg" alt="logo">
 			</div>    
 			<div class="flex-1 search">
-				<div class="search-content" (click)="isSearch = !isSearch" [ngClass]="{search_bg: isSearch}">
+				<div class="search-content" (click)="searchIcon()" [ngClass]="{search_bg: isSearch}">
 					<img src="assets/icon_search@2x.png" alt="search">
 				</div>
 			</div> 
@@ -26,7 +26,7 @@
 			<div class="example-container">
 				<mat-form-field>
 					<mat-label i18n>Block Height, Hash, Address or Transaction id</mat-label>
-					<input matInput [(ngModel)]="searchVal" (keyup.enter)="search()">
+					<input matInput [(ngModel)]="searchVal" (keyup.enter)="search" autofocus>
 				</mat-form-field>
 			</div>
 			<button (click)="search()" i18n>search</button>
@@ -55,11 +55,11 @@
 	<footer>
 		<div *ngIf="isWide" class="footer">
 			<div class="footer-net">
-				<label for="" i18n>Switch net: </label>
+				<label i18n>Switch net: </label>
 				<a href="javascript: ;" (click)="changenet()">{{tonet}}</a>
 			</div>
 			<div>
-				<label for="" i18n>Switch language: </label>
+				<label i18n>Switch language: </label>
 				<a href="javascript: ;" (click)="changelang()">{{tolanguage}}</a>
 			</div>
 			<!-- <div > -->
@@ -74,11 +74,11 @@
 		</div>
 		<div *ngIf="!isWide" class="flex footer-switch">
 			<div class="footer-switch-net">
-				<label for="" i18n>Switch net: </label>
+				<label i18n>Switch net: </label>
 				<a href="javascript: ;" (click)="changenet()">{{tonet}}</a>
 			</div>
 			<div>
-				<label for="" i18n>Switch language: </label>
+				<label i18n>Switch language: </label>
 				<a href="javascript: ;" (click)="changelang()">{{tolanguage}}</a>
 			</div>
 		</div>
