@@ -8,7 +8,7 @@ const routes: Routes = [
     // { path: '', component: HomeComponent },
     // { path: 'home', component: HomeComponent }
     { path: 'mainnet', component: HomeComponent },
-    { path: 'testnet', component: HomeComponent },
+    // { path: 'testnet', component: HomeComponent },
     { path: '', redirectTo: 'mainnet', pathMatch: 'full' },
     {
         path: 'mainnet',
@@ -16,12 +16,12 @@ const routes: Routes = [
             { path: 'home', component: HomeComponent }
         ]
     },
-    {
-        path: 'testnet',
-        children: [
-            { path: 'home', component: HomeComponent }
-        ]
-    }
+    // {
+    //     path: 'testnet',
+    //     children: [
+    //         { path: 'home', component: HomeComponent }
+    //     ]
+    // }
 ];
 
 @NgModule({
