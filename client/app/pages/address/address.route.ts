@@ -12,13 +12,13 @@ const routes: Routes = [
             { path: 'address/:id', component: AddressInfoComponent }
         ]
     },
-    {
-        path: 'testnet',
-        children: [
-            { path: 'addresses', component: AddressesComponent },
-            { path: 'address/:id', component: AddressInfoComponent }
-        ]
-    }
+    // {
+    //     path: 'testnet',
+    //     children: [
+    //         { path: 'addresses', component: AddressesComponent },
+    //         { path: 'address/:id', component: AddressInfoComponent }
+    //     ]
+    // }
 ];
 
 @NgModule({

@@ -9,12 +9,12 @@ const routes: Routes = [
             { path: 'search/:id', component: NotsearchComponent}
         ]
     },
-    {
-        path: 'testnet',
-        children: [
-            { path: 'search/:id', component: NotsearchComponent}
-        ]
-    }
+    // {
+    //     path: 'testnet',
+    //     children: [
+    //         { path: 'search/:id', component: NotsearchComponent}
+    //     ]
+    // }
 ];
 
 @NgModule({

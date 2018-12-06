@@ -14,13 +14,13 @@ const routes: Routes = [
             { path: 'block/:id', component: BlockInfoComponent },
         ]
     },
-    {
-        path: 'testnet',
-        children: [
-            { path: 'blocks', component: BlocksComponent },
-            { path: 'block/:id', component: BlockInfoComponent },
-        ]
-    }
+    // {
+    //     path: 'testnet',
+    //     children: [
+    //         { path: 'blocks', component: BlocksComponent },
+    //         { path: 'block/:id', component: BlockInfoComponent },
+    //     ]
+    // }
 ];
 
 @NgModule({
