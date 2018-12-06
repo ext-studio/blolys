@@ -13,13 +13,13 @@ const routes: Routes = [
             { path: 'transaction/:id', component: TransactionInfoComponent }
         ]
     },
-    {
-        path: 'testnet',
-        children: [
-            { path: 'transactions', component: TransactionsComponent },
-            { path: 'transaction/:id', component: TransactionInfoComponent }
-        ]
-    }
+    // {
+    //     path: 'testnet',
+    //     children: [
+    //         { path: 'transactions', component: TransactionsComponent },
+    //         { path: 'transaction/:id', component: TransactionInfoComponent }
+    //     ]
+    // }
 ];
 
 @NgModule({

@@ -54,10 +54,10 @@
 	<router-outlet></router-outlet>
 	<footer>
 		<div *ngIf="isWide" class="footer">
-			<div class="footer-net">
+			<!-- <div class="footer-net">
 				<label i18n>Switch net: </label>
 				<a href="javascript: ;" (click)="changenet()">{{tonet}}</a>
-			</div>
+			</div> -->
 			<div>
 				<label i18n>Switch language: </label>
 				<a href="javascript: ;" (click)="changelang()">{{tolanguage}}</a>
@@ -73,10 +73,10 @@
 			</div> -->
 		</div>
 		<div *ngIf="!isWide" class="flex footer-switch">
-			<div class="footer-switch-net">
+			<!-- <div class="footer-switch-net">
 				<label i18n>Switch net: </label>
 				<a href="javascript: ;" (click)="changenet()">{{tonet}}</a>
-			</div>
+			</div> -->
 			<div>
 				<label i18n>Switch language: </label>
 				<a href="javascript: ;" (click)="changelang()">{{tolanguage}}</a>
