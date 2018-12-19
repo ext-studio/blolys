@@ -125,28 +125,36 @@
 footer {
 	font-size: 14px;
 	border-top: 1px solid #132f5a;
-	padding-top: 20px;
-	height: 80px;
+	height: 100px;
 	.footer {
 		display: flex;
 		position: relative;
 		align-items: center;
-		height: 36px;
+		height: 100px;
 	}
-	.footer-net {
-		width: 150px;
-	}
+	// .footer-net {
+	// 	width: 150px;
+	// }
 	a {
 		color: #1770ea;
 		font-size: 14px;
 	}
-	.footer-logo {
+	.footer-copyright {
 		position: absolute;
 		left: 50%;
-		margin-left: -18px;
+		margin-left: -100px;
+		width: 200px;
+		height: 100px;
+		opacity: .5;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+	.footer-logo {
 		width: 36px;
 		height: 36px;
-		opacity: .5;
+		margin-bottom: 3px;
 	}
 	.footer-wallet-download {
 		position: absolute;
