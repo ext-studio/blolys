@@ -25,6 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
     apiDo: String;
     netDo: String;
     searchVal: String = '';
+    currentYear: number;
 
     routerSub: Subscription = null;
     conditionSub: Subscription = null;
@@ -42,6 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ) { }
 
     public ngOnInit() {
+        this.currentYear = new Date().getFullYear();
         this.checkLangNet();
         this.allcountsSub = this.blockService.Allcounts(this.apiDo).subscribe((res: any) => {
             if (res.result) {
