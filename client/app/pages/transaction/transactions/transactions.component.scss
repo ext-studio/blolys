@@ -142,6 +142,9 @@
 	}
 }
 @media screen and (min-width: 870px) {
+    .addr-min-width {
+		min-width: 350px;
+	}
 	.tran-info {
 		display: flex;  
 		flex-direction: row;
