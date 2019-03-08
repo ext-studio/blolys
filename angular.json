@@ -1,0 +1,187 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "blolys": {
+            "root": "",
+            "sourceRoot": "client",
+            "projectType": "application",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist",
+                        "index": "client/index.html",
+                        "main": "client/main.ts",
+                        "tsConfig": "client/tsconfig.app.json",
+                        "polyfills": "client/polyfills.ts",
+                        "assets": [
+                            "client/assets"
+                        ],
+                        "styles": [
+                            "client/styles/var.scss",
+                            "client/styles/global.scss"
+                        ],
+                        "scripts": []
+                    },
+                    "configurations": {
+                        "production": {
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "fileReplacements": [{
+                                "replace": "client/environments/environment.ts",
+                                "with": "client/environments/environment.prod.ts"
+                            }]
+                        },
+                        "default": {
+                            "fileReplacements": [{
+                                "replace": "client/environments/environment.ts",
+                                "with": "client/environments/environment.prod.ts"
+                            }],
+                            "baseHref": "/",
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [{
+                                "type": "initial",
+                                "maximumWarning": "2mb",
+                                "maximumError": "5mb"
+                            }],
+                            "outputPath": "dist",
+                            "i18nFile": "client/i18n/messages.cn.xlf",
+                            "i18nFormat": "xlf",
+                            "i18nLocale": "zh",
+                            "i18nMissingTranslation": "error"
+                        },
+                        "cn": {
+                            "fileReplacements": [{
+                                "replace": "client/environments/environment.ts",
+                                "with": "client/environments/environment.prod.ts"
+                            }],
+                            "baseHref": "/cn/",
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [{
+                                "type": "initial",
+                                "maximumWarning": "2mb",
+                                "maximumError": "5mb"
+                            }],
+                            "outputPath": "dist/cn/",
+                            "i18nFile": "client/i18n/messages.cn.xlf",
+                            "i18nFormat": "xlf",
+                            "i18nLocale": "zh",
+                            "i18nMissingTranslation": "error"
+                        },
+                        "en": {
+                            "fileReplacements": [{
+                                "replace": "client/environments/environment.ts",
+                                "with": "client/environments/environment.prod.ts"
+                            }],
+                            "baseHref": "/en/",
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [{
+                                "type": "initial",
+                                "maximumWarning": "2mb",
+                                "maximumError": "5mb"
+                            }],
+                            "outputPath": "dist/en/",
+                            "i18nFile": "client/i18n/messages.en.xlf",
+                            "i18nFormat": "xlf",
+                            "i18nLocale": "en",
+                            "i18nMissingTranslation": "error"
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "blolys:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "blolys:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "blolys:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "client/tsconfig.app.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                }
+            }
+        },
+        "blolys-e2e": {
+            "root": "e2e",
+            "sourceRoot": "e2e",
+            "projectType": "application"
+        }
+    },
+    "defaultProject": "blolys",
+    "schematics": {
+        "@schematics/angular:class": {
+            "spec": false
+        },
+        "@schematics/angular:component": {
+            "spec": false,
+            "prefix": "app",
+            "styleext": "scss"
+        },
+        "@schematics/angular:directive": {
+            "spec": false,
+            "prefix": "app"
+        },
+        "@schematics/angular:guard": {
+            "spec": false
+        },
+        "@schematics/angular:module": {
+            "spec": false
+        },
+        "@schematics/angular:pipe": {
+            "spec": false
+        },
+        "@schematics/angular:service": {
+            "spec": false
+        }
+    }
+}
