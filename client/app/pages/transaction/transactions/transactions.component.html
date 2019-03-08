@@ -41,7 +41,7 @@
 						<div *ngFor="let txUTXO of transfer[index]?.TxUTXO">
 							<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txUTXO?.address}}">{{ txUTXO?.address }}</a></div>
 							<div class="info-amount">
-								<span>{{ txUTXO?.value | unlimitedNumber }}</span>
+								<span>{{ txUTXO?.value | unlimitedNumber }}</span>&nbsp;
 								<span class="link-btn" routerLink="/{{netDo}}/asset/{{txUTXO?.assetId}}">{{ txUTXO?.name }}</span>
 							</div>
 						</div>
@@ -50,7 +50,7 @@
 						<div *ngFor="let txfrom of transferNep5[index]">
 							<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txfrom?.from}}">{{ txfrom?.from }}</a></div>
 							<div class="info-amount">
-								<span>{{ txfrom?.value | unlimitedNumber }}</span>
+								<span>{{ txfrom?.value | unlimitedNumber }}</span>&nbsp;
 								<span class="link-btn" routerLink="/{{netDo}}/nep5/{{txfrom?.assetId}}">{{ txfrom?.name }}</span>
 							</div>
 						</div>
@@ -63,7 +63,7 @@
 						<div *ngFor="let txVout of transfer[index]?.TxVouts">
 							<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txVout?.address}}">{{ txVout?.address }}</a></div>
 							<div class="info-amount">
-								<span>{{ txVout?.value | unlimitedNumber }}</span>
+								<span>{{ txVout?.value | unlimitedNumber }}</span>&nbsp;
 								<span class="link-btn" routerLink="/{{netDo}}/asset/{{txVout?.assetId}}">{{ txVout?.name }}</span>
 							</div>
 						</div>
@@ -72,7 +72,7 @@
 						<div *ngFor="let txto of transferNep5[index]">
 							<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txto?.to}}">{{ txto?.to }}</a></div>
 							<div class="info-amount">
-								<span>{{ txto?.value | unlimitedNumber }}</span>
+								<span>{{ txto?.value | unlimitedNumber }}</span>&nbsp;
 								<span class="link-btn" routerLink="/{{netDo}}/nep5/{{txto?.assetId}}">{{ txto?.name }}</span>
 							</div>
 						</div>
