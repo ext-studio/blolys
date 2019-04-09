@@ -85,10 +85,13 @@ export class HomeComponent implements OnInit, OnDestroy {
         if (value === '') {
             return;
         }
-        isHashPattern = /^(0x)([0-9a-f]{64})$/;
+        isHashPattern = /^((0x)?)([0-9a-f]{64})$/;
         isAssetPattern = /^([0-9a-f]{40})$/;
         isAddressPattern = /^A([0-9a-zA-Z]{33})$/;
         if (isHashPattern.test(value)) {
+            if (value.length === 64) {
+                value = '0x' + value;
+            }
             this.conditionSub = this.notsearchService.Condition(this.apiDo, value).subscribe((res: any) => {
                 if (res.code === 200) {
                     if (res.result === '1') {
