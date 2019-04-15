@@ -19,7 +19,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
     totalBlocks: Number = 0;
     show: any = [];
     height: number = Number(this.router.url.split('/')[3]);
-    pageIndex: any = 0;
+    pageIndex = 1;
     pageSize: any = 5;
     pageLength: any = 0;
     isProgress: Boolean = true;
@@ -65,6 +65,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
         if (this.isNumberPattern.test(this.height)) {
             this.checkLangNet();
             this.initPage();
+            this.onpageGo(1);
             this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
                 if (res instanceof NavigationEnd) {
                     let newHeight: any;
@@ -157,6 +158,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
         }
     }
     onpageGo(num: number) {
+        this.pageIndex = num;
         this.initShow();
         this.getTxByHeight(num, this.pageSize);
     }

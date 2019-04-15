@@ -10,7 +10,7 @@ import { GlobalService } from '../../../core';
 })
 export class BlocksComponent implements OnInit, OnDestroy {
     blocks: any = [];
-    pageIndex: any = 1;
+    pageIndex = 1;
     pageSize: any = 16;
     pageLength: number;
     isProgress: Boolean = true;
@@ -27,7 +27,7 @@ export class BlocksComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.checkLangNet();
-        this.getIssues(1, this.pageSize);
+        this.onpageGo(1);
     }
     ngOnDestroy() {
         if (this.blockSub) {

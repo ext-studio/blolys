@@ -18,7 +18,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
     show: any = [];
     isVisible: Boolean = false;
     address: String = this.router.url.split('/')[3];
-    pageIndex: any = 0;
+    pageIndex = 1;
     pageSize: any = 5;
     pageLength: any = 0;
     isProgress: Boolean = true;
@@ -60,6 +60,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
         if (this.isAddressPattern.test(this.address)) {
             this.checkLangNet();
             this.getAddrAssets();
+            this.onpageGo(1);
             this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
                 if (res instanceof NavigationEnd) {
                     let newAddress: any;
@@ -163,6 +164,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
     }
     onpageGo(num: number) {
         this.initShow();
+        this.pageIndex = num;
         this.getTxByAddr(num, this.pageSize);
     }
 }

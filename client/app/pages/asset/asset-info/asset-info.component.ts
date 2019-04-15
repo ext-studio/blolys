@@ -17,7 +17,8 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
     assetInfo: any = [];
     assetRegisterInfo: any = [];
     page: Number = 0;  // rank
-    pageIndex: any = 0; // paginator
+    addrPageIndex = 1; // paginator
+    rankPageIndex = 1; // paginator
     addrPageSize: any = 5; // paginator
     rankPageSize: any = 5; // paginator
     addrPageLength: Number = 0; // paginator
@@ -48,6 +49,8 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
             || (this.assetType === 'nep5' && this.isNep5Pattern.test(this.assetId))) {
             this.checkLangNet();
             this.checkCondition();
+            this.onaddrPageGo(1);
+            this.onrankPageGo(1);
             this.routerSub = this.router.events.subscribe((res: RouterEvent) => { // url
                 if (res instanceof NavigationEnd) {
                     let newAssetId: any;
@@ -151,10 +154,12 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
         });
     }
     onaddrPageGo(num: number) {
+        this.addrPageIndex = num;
         this.getAddrByAssetid(num, this.addrPageSize);
     }
     onrankPageGo(num: number) {
         this.page = num - 1;
+        this.rankPageIndex = num;
         this.getRankByAssetid(num, this.rankPageSize);
     }
 }

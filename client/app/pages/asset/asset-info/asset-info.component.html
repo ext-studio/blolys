@@ -45,7 +45,7 @@
 		</table>
 		<mat-progress-bar mode="indeterminate" *ngIf="isRankProgress"></mat-progress-bar>
 		<app-paginator
-			[pageIndex]="pageIndex"
+			[pageIndex]="rankPageIndex"
 			[pageSize]="rankPageSize"
 			[pageLength]="rankPageLength"
 			(onpageGo)="onrankPageGo($event)">
@@ -73,7 +73,7 @@
 		</table>
 		<mat-progress-bar mode="indeterminate" *ngIf="isAddrProgress"></mat-progress-bar>
 		<app-paginator 
-			[pageIndex]="pageIndex"
+			[pageIndex]="addrPageIndex"
 			[pageSize]="addrPageSize"
 			[pageLength]="addrPageLength"
 			(onpageGo)="onaddrPageGo($event)">

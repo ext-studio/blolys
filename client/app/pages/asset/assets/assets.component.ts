@@ -10,7 +10,7 @@ import { GlobalService } from '../../../core';
 })
 export class AssetsComponent implements OnInit, OnDestroy {
     assets: any = [];
-    pageIndex: Number = 0;
+    pageIndex = 1;
     pageSize: any = 16;
     pageLength: number;
     isProgress: Boolean = true;
@@ -30,6 +30,7 @@ export class AssetsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.checkLangNet();
+        this.onpageGo(1);
     }
     ngOnDestroy() {
         if (this.assetsSub) {
@@ -60,6 +61,7 @@ export class AssetsComponent implements OnInit, OnDestroy {
         });
     }
     onpageGo(num: number) {
+        this.pageIndex = num;
         this.getAssets(num, this.pageSize);
     }
     // getNep5Assets (pageIndex, pageSize) {

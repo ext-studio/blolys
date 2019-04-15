@@ -18,7 +18,7 @@ export class PaginatorComponent implements OnChanges, OnInit {
     public list: number[] = [];
     public groupBase = 0;
     public maxGroup = 1;
-    @Input() pageIndex: any; // 当前页数
+    @Input() pageIndex: number; // 当前页数
     @Input() pageSize: number; // 没用到
     @Input() pageLength: number;
     @Output() onpageGo = new EventEmitter < number > ();

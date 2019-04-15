@@ -16,7 +16,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     transType: String = 'all';
     pageSize: any = 16;
     pageLength: number;
-    pageIndex: any = 0;
+    pageIndex = 1;
     isProgress: Boolean = true;
     apiDo: String;
     netDo: String;
@@ -33,6 +33,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.checkLangNet();
+        this.onpageGo(1);
     }
     ngOnDestroy() {
         if (this.transSub) {
@@ -108,6 +109,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
         // this.onpageGo(1);
     }
     onpageGo(num: number) {
+        this.pageIndex = num;
         this.initShow();
         this.getTrans(num, this.pageSize);
     }

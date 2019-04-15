@@ -10,7 +10,7 @@ import { GlobalService } from '../../../core';
 })
 export class AddressesComponent implements OnInit, OnDestroy {
     addresses: any = [];
-    pageIndex: any = 0;
+    pageIndex = 1;
     pageSize: any = 16;
     pageLength: any = 0;
     isProgress: Boolean = true;
@@ -26,6 +26,7 @@ export class AddressesComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.checkLangNet();
+        this.onpageGo(1);
     }
     ngOnDestroy() {
         if (this.addressesSub) {
@@ -55,6 +56,7 @@ export class AddressesComponent implements OnInit, OnDestroy {
         });
     }
     onpageGo(num: number) {
+        this.pageIndex = num;
         this.getAddresses(num, this.pageSize);
     }
 }
