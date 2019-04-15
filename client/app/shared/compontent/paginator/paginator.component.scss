@@ -3,48 +3,50 @@
 	font-size: 14px;
 	.pager-info {
 		color: #769acb;
-		margin-bottom: 10px;
+        margin-bottom: 10px;
+        display: block;
 		span {
 			font-weight: bold;
 		}
-	}
-	ul {
-		display: inline;
-		li {
-			list-style: none;
-			display: inline-block;
-			text-align: center;
-			cursor: pointer;
-			height: 26px;
-			line-height: 26px;
-			background: #1c2b5d;
-			border-radius: 3px;
-			margin-right: 8px;
-			min-width: 26px;
-			a {
-				padding: 0 6px;
-				text-decoration: none;
-				display: inline-block;
-				width: 100%;
-				height: 100%;
-			}
-			&:hover {
-				background: #1770ea;
-			}
-		}
-		li.active {
-			background: #1770ea;
-		}
-	}
-	ul.pager-right li:last-child {
+    }
+    div {
+        display: inline-block;
+    }
+    .pager-item {
+        border: none;
+        list-style: none;
+        display: inline-block;
+        text-align: center;
+        height: 26px;
+        line-height: 26px;
+        background: #1c2b5d;
+        color: #fff;
+        border-radius: 3px;
+        margin-right: 8px;
+        min-width: 26px;
+        padding: 0 6px;
+        &.active {
+            background: #1770ea;
+        }
+    }
+	.pager-right .pager-main:last-child {
 		margin-right: 0;
 	}
-	ul.pager {
-		li {
-			width: 90px;
-		}
-	}
+	.pager {
+        width: 90px;
+    }
+    .pointer {
+        cursor: pointer;
+        &:hover {
+            background: #1770ea;
+        }
+    }
+    .notAllowed {
+        cursor: default;
+        opacity: .4;
+    }
 }
+
 @media screen and (min-width: 420px) {
 	.paginator {
 		margin: 70px 0;

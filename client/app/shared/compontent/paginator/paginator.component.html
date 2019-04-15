@@ -1,16 +1,17 @@
 <div class="paginator">
-	<div class="pager-info" disabled="disabled"><label i18n>Page</label><span>&nbsp;{{clickPage}}&nbsp;</span> <label i18n>of</label><span>&nbsp;{{pageLength}}</span></div>
-	<ul class="pager" *ngIf="pageLength > 1">
-		<!-- <li class="hidden"><a href="javascript: ;" (click)="pageGo(1)">First Page</a></li> -->
-		<li><a href="javascript: ;" (click)="pagePre()" i18n>Previous</a></li>
-	</ul>
-	<ul class="hidden" *ngIf="pageLength > 1">
-		<li><a href="javascript: ;" (click)="pagePreList()">&lt;&lt;</a></li>
-		<li *ngFor="let num of pageShowList" [ngClass]="{active: clickPage === num}"><a href="javascript: ;" (click)="pageGo(num)">{{ num }}</a></li>
-		<li><a href="javascript: ;" (click)="pageNextList()">&gt;&gt;</a></li>
-	</ul>
-	<ul class="pager pager-right" *ngIf="pageLength > 1">
-		<li><a href="javascript: ;" (click)="pageNext()" i18n>Next</a></li>
-		<!-- <li class="hidden"><a href="javascript: ;" (click)="pageGo(pageLength)">Last Page</a></li> -->
-	</ul>
+    <div class="pager-info" disabled="disabled"><label i18n>Page</label><span>&nbsp;{{pageIndex}}&nbsp;</span> <label
+            i18n>of</label><span>&nbsp;{{pageLength}}</span></div>
+    <button class="pager pager-item" [disabled]="pageIndex <= 1 || pageLength <= 1"
+        [ngClass]="(pageIndex <= 1 || pageLength <= 1) ? 'notAllowed' : 'pointer'" (click)="prev()"
+        i18n>Previous</button>
+    <div class="hidden">
+        <button class="pager-item" [disabled]="groupBase <= 1" [ngClass]="groupBase <= 1 ? 'notAllowed' : 'pointer'"
+            (click)="groupPrev()">&lt;&lt;</button>
+        <div class="pager-main pointer pager-item" *ngFor="let num of list" [ngClass]="{active: pageIndex === num}"
+            (click)="jump(num)">{{ num }}</div>
+        <button class="pager-item" [disabled]="groupBase >= maxGroup"
+            [ngClass]="groupBase >= maxGroup ? 'notAllowed' : 'pointer'" (click)="groupNext()">&gt;&gt;</button>
+    </div>
+    <button class="pager pager-item pager-right" [disabled]="pageIndex >= pageLength"
+        [ngClass]="pageIndex >= pageLength ? 'notAllowed' : 'pointer'" (click)="next()" i18n>Next</button>
 </div>

@@ -1,6 +1,12 @@
-import { Component, Input, EventEmitter, Output, OnChanges, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { GlobalService } from '../../../core';
+import {
+    Component,
+    Input,
+    EventEmitter,
+    Output,
+    OnChanges,
+    OnInit,
+    SimpleChanges
+} from '@angular/core';
 
 @Component({
     selector: 'app-paginator',
@@ -9,88 +15,66 @@ import { GlobalService } from '../../../core';
 })
 
 export class PaginatorComponent implements OnChanges, OnInit {
-    clickPage: any = 1;
-    pageShowList: any = [];
-    @Input() pageIndex: any;
-    @Input() pageSize: number;
+    public list: number[] = [];
+    public groupBase = 0;
+    public maxGroup = 1;
+    @Input() pageIndex: any; // 当前页数
+    @Input() pageSize: number; // 没用到
     @Input() pageLength: number;
-    @Output() onpageGo = new EventEmitter<number>();
+    @Output() onpageGo = new EventEmitter < number > ();
 
-    constructor(
-        private http: HttpClient,
-        private global: GlobalService
-    ) { }
-    ngOnInit () {
-        this.pageGo(1);
-    }
+    constructor() {}
+    ngOnInit() {}
     ngOnChanges() {
-        if (this.pageIndex > 0) {
-            this.pageGo(1);
-            this.pageIndex = 0;
-        }
-        if (this.pageIndex === 0) {
-            this.initShow();
-        }
-    }
-    initShow () {
-        if (this.pageLength >= 3) {
-            this.pageShowList = [1, 2, 3];
-        } else if (this.pageLength === 2) {
-            this.pageShowList = [1, 2];
+        if (this.pageIndex >= 0) {
+            this.groupBase = Math.ceil(this.pageIndex / 3);
         } else {
-            this.pageShowList = [1];
+            this.list = [];
+        }
+        if (this.pageLength) {
+            this.maxGroup = Math.ceil(this.pageLength / 3);
+            this.resolveList();
         }
     }
-    pageGo(num: number) {
-        this.onpageGo.emit(num);
-        if (num !== 1) {
-            this.pageIndex = -1;
-        }
-        this.clickPage = num;
-    }
-    pagePreList() {
-        if (this.pageShowList[0] - this.pageShowList.length > 0) {
-            for (let i = 0; i < this.pageShowList.length; i++) {
-                this.pageShowList[i] -= this.pageShowList.length;
-            }
-        } else {
-            for (let i = 0; i < this.pageShowList.length; i++) {
-                this.pageShowList[i] = i + 1;
-            }
+    public groupPrev() {
+        if (this.groupBase > 1) {
+            this.groupBase--;
+            this.resolveList();
         }
     }
-    pageNextList() {
-        if (this.pageShowList[this.pageShowList.length - 1] + this.pageShowList.length <= this.pageLength) {
-            for (let i = 0; i < this.pageShowList.length; i++) {
-                this.pageShowList[i] += this.pageShowList.length;
-            }
-        } else {
-            for (let i = 0; i < this.pageShowList.length; i++) {
-                this.pageShowList[i] = this.pageLength - this.pageShowList.length + i + 1;
-            }
+    public groupNext() {
+        if (this.groupBase < this.maxGroup) {
+            this.groupBase++;
+            this.resolveList();
         }
     }
-    pagePre() {
-        if (this.clickPage > 1) {
-            this.clickPage -= 1;
-            if (this.pageShowList[0] > this.clickPage) {
-                for (let i = 0; i < this.pageShowList.length; i++) {
-                    this.pageShowList[i]--;
-                }
-            }
-            this.pageGo(this.clickPage);
+    public jump(value: number) {
+        if (value !== this.pageIndex) {
+            this.onpageGo.emit(value);
         }
     }
-    pageNext() {
-        if (this.clickPage < this.pageLength) {
-            this.clickPage += 1;
-            if (this.pageShowList[this.pageShowList.length - 1] < this.clickPage) {
-                for (let i = 0; i < this.pageShowList.length; i++) {
-                    this.pageShowList[i]++;
-                }
-            }
-            this.pageGo(this.clickPage);
+    public prev() {
+        if (this.pageIndex - 1 >= 1) {
+            this.onpageGo.emit(this.pageIndex - 1);
         }
+        this.groupBase = Math.ceil((this.pageIndex - 1) / 3);
+        this.resolveList();
+    }
+    public next() {
+        if (this.pageIndex + 1 <= this.pageLength) {
+            this.onpageGo.emit(this.pageIndex + 1);
+        }
+        this.groupBase = Math.ceil((this.pageIndex + 1) / 3);
+        this.resolveList();
     }
 
+    private resolveList() {
+        this.list = [];
+        for (let i = 1; i <= 3; i++) {
+            const p = (this.groupBase - 1) * 3 + i;
+            if (p >= 1 && p <= this.pageLength) {
+                this.list.push(p);
+            }
+        }
+    }
 }
