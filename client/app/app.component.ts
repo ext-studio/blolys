@@ -161,6 +161,8 @@ export class AppComponent implements OnInit, OnDestroy {
         isHashPattern = /^((0x)?)([0-9a-f]{64})$/;
         isAssetPattern = /^([0-9a-f]{40})$/;
         isAddressPattern = /^A([0-9a-zA-Z]{33})$/;
+        this.isSearch = false;
+        this.searchVal = '';
         if (isHashPattern.test(value)) {
             if (value.length === 64) {
                 value = '0x' + value;
@@ -203,7 +205,6 @@ export class AppComponent implements OnInit, OnDestroy {
             if (!isNaN(Number(value)) && isNumberPattern.test(value)) {
                 if (Number.isInteger(Number(value)) && value <= this.total.blockCounts) {
                     this.router.navigate([`${this.netDo}/block/${value}`]);
-                    return;
                 }
             }
             this.router.navigate([`${this.netDo}/search/${value}`]);
