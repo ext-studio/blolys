@@ -28,6 +28,7 @@ export class AddressesComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.checkLangNet();
         this.aRouter.params.subscribe(params => {
+            // this.checkLangNet();
             const page = Number(params.page);
             this.pageIndex = page;
             this.getAddresses(page, this.pageSize);
