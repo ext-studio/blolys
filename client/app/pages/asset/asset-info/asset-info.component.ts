@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, RouterEvent, NavigationEnd } from '@angular/router';
+import { Router, RouterEvent, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../../../core';
 import { AssetService } from '../asset.service';
@@ -17,8 +17,8 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
     assetInfo: any = [];
     assetRegisterInfo: any = [];
     page: Number = 0;  // rank
-    addrPageIndex = 1; // paginator
-    rankPageIndex = 1; // paginator
+    addrPageIndex = 0; // paginator
+    rankPageIndex = 0; // paginator
     addrPageSize: any = 5; // paginator
     rankPageSize: any = 5; // paginator
     addrPageLength: Number = 0; // paginator
@@ -43,37 +43,44 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
         private assetService: AssetService,
         private http: HttpClient,
         private global: GlobalService,
+        private aRouter: ActivatedRoute
     ) { }
     ngOnInit() {
-        if ((this.assetType === 'asset' && this.isAssetPattern.test(this.assetId))
-            || (this.assetType === 'nep5' && this.isNep5Pattern.test(this.assetId))) {
+        if ((this.assetType === 'asset' && this.isAssetPattern.test(this.assetId)) || (this.assetType === 'nep5' && this.isNep5Pattern.test(this.assetId))) {
             this.checkLangNet();
             this.checkCondition();
-            this.onaddrPageGo(1);
-            this.onrankPageGo(1);
-            this.routerSub = this.router.events.subscribe((res: RouterEvent) => { // url
-                if (res instanceof NavigationEnd) {
-                    let newAssetId: any;
-                    newAssetId = res.url.split('/')[3];
-                    if (this.assetId !== newAssetId) {
-                        if ((this.assetType === 'asset' && this.isAssetPattern.test(newAssetId))
-                            || (this.assetType === 'nep5' && this.isNep5Pattern.test(newAssetId))) {
-                            this.assetType = res.url.split('/')[2];
-                            this.assetId = newAssetId;
-                            this.checkCondition();
-                            this.recentAddress = [];
-                            this.rankAddr = [];
-                            this.onaddrPageGo(1);
-                            this.onrankPageGo(1);
-                        } else {
-                            this.router.navigate(['/notfound']);
-                        }
-                    }
-                }
-            });
         } else {
             this.router.navigate(['/notfound']);
         }
+        this.aRouter.params.subscribe(params => {
+            if ((this.assetType === 'asset' && this.isAssetPattern.test(params.id)) || (this.assetType === 'nep5' && this.isNep5Pattern.test(params.id))) {
+                this.assetType = this.router.url.split('/')[2];
+                const rankPage = Number(params.balancePage);
+                const addrPage = Number(params.addressPage);
+                this.page = rankPage - 1;
+                if (params.id !== this.assetId) {
+                    this.assetId = params.id;
+                    this.checkCondition();
+                    this.rankAddr = [];
+                    this.recentAddress = [];
+                    this.getRankByAssetid(rankPage, this.rankPageSize);
+                    this.getAddrByAssetid(addrPage, this.addrPageSize);
+                } else {
+                    if (rankPage !== this.rankPageIndex) {
+                        this.rankAddr = [];
+                        this.getRankByAssetid(rankPage, this.rankPageSize);
+                    }
+                    if (addrPage !== this.addrPageIndex) {
+                        this.recentAddress = [];
+                        this.getAddrByAssetid(addrPage, this.addrPageSize);
+                    }
+                }
+                this.rankPageIndex = rankPage;
+                this.addrPageIndex = addrPage;
+            } else {
+                this.router.navigate(['/notfound']);
+            }
+        });
     }
     ngOnDestroy() {
         if (this.routerSub) {
@@ -154,12 +161,15 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
         });
     }
     onaddrPageGo(num: number) {
-        this.addrPageIndex = num;
-        this.getAddrByAssetid(num, this.addrPageSize);
+        const oldUrl = this.router.url;
+        const oldPage = `/recent-addr/${this.addrPageIndex}`;
+        const newUrl = oldUrl.replace(oldPage, `/recent-addr/${num}`);
+        this.router.navigateByUrl(newUrl);
     }
     onrankPageGo(num: number) {
-        this.page = num - 1;
-        this.rankPageIndex = num;
-        this.getRankByAssetid(num, this.rankPageSize);
+        const oldUrl = this.router.url;
+        const oldPage = `/rank-bala/${this.rankPageIndex}`;
+        const newUrl = oldUrl.replace(oldPage, `/rank-bala/${num}`);
+        this.router.navigateByUrl(newUrl);
     }
 }

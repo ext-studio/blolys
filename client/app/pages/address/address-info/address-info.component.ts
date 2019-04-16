@@ -61,38 +61,23 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
         if (this.isAddressPattern.test(this.address)) {
             this.checkLangNet();
             this.getAddrAssets();
-            this.aRouter.params.subscribe(params => {
-                if (this.isAddressPattern.test(params.id)) {
-                    if (params.id !== this.address) {
-                        this.address = params.id;
-                        this.getAddrAssets();
-                    }
-                    const page = Number(params.page);
-                    this.pageIndex = page;
-                    this.initShow();
-                    this.getTxByAddr(page, this.pageSize);
-                } else {
-                    this.router.navigate(['/notfound']);
-                }
-            });
-            // this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
-            //     if (res instanceof NavigationEnd) {
-            //         let newAddress: any;
-            //         newAddress = res.url.split('/')[3];
-            //         if (this.address !== newAddress) {
-            //             if (this.isAddressPattern.test(newAddress)) {
-            //                 this.address = newAddress;
-            //                 this.getAddrAssets();
-            //                 this.onpageGo(1);
-            //             } else {
-            //                 this.router.navigate(['/notfound']);
-            //             }
-            //         }
-            //     }
-            // });
         } else {
             this.router.navigate(['/notfound']);
         }
+        this.aRouter.params.subscribe(params => {
+            if (this.isAddressPattern.test(params.id)) {
+                if (params.id !== this.address) {
+                    this.address = params.id;
+                    this.getAddrAssets();
+                }
+                const page = Number(params.page);
+                this.pageIndex = page;
+                this.initShow();
+                this.getTxByAddr(page, this.pageSize);
+            } else {
+                this.router.navigate(['/notfound']);
+            }
+        });
     }
     checkLangNet() {
         if (this.router.url.indexOf('/testnet') < 0) {

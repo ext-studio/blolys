@@ -26,11 +26,10 @@ export class PaginatorComponent implements OnChanges, OnInit {
     constructor() {}
     ngOnInit() {}
     ngOnChanges() {
-        if (this.pageIndex >= 0) {
-            this.groupBase = Math.ceil(this.pageIndex / 3);
-        } else {
-            this.list = [];
+        if (this.pageIndex <= 0) {
+            this.pageIndex = 1;
         }
+        this.groupBase = Math.ceil(this.pageIndex / 3);
         if (this.pageLength) {
             this.maxGroup = Math.ceil(this.pageLength / 3);
             this.resolveList();

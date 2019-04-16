@@ -8,7 +8,7 @@
 		<li class="color-one width-half"><label i18n>Total supply</label>{{assetInfo?.amount | unlimitedNumber}}</li>
 		<li class="color-two width-half"><label i18n>Type</label>{{assetInfo?.type}}</li>
 		<li class="color-two width-half"><label i18n>Addresses</label>{{assetInfo?.addresses | number}}</li>
-		<li class="color-one width-half"><label i18n>Blocks</label><span class="link-btn" routerLink="/{{netDo}}/block/{{assetInfo?.blockIndex}}">{{assetInfo?.blockIndex | number}}</span></li>
+		<li class="color-one width-half"><label i18n>Blocks</label><span class="link-btn" routerLink="/{{netDo}}/block/{{assetInfo?.blockIndex}}/page/1">{{assetInfo?.blockIndex | number}}</span></li>
 		<li class="color-one width-half"><label i18n>Transactions</label>{{assetInfo?.transactions | number}}</li>
 		<li class="color-two width-half"><label i18n>Precision</label>{{assetInfo?.precision}}</li>
 		<li class="color-two width-half" *ngIf="assetInfo?.type === 'nep5'"><label i18n>Symbol</label>{{assetInfo?.symbol}}</li>

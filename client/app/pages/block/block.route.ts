@@ -11,7 +11,7 @@ const routes: Routes = [
         path: 'mainnet',
         children: [
             { path: 'blocks/page/:page', component: BlocksComponent },
-            { path: 'block/:id', component: BlockInfoComponent },
+            { path: 'block/:id/page/:page', component: BlockInfoComponent },
         ]
     },
     // {

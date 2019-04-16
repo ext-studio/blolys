@@ -12,7 +12,7 @@
 					<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txUTXO?.address}}/page/1">{{ txUTXO?.address }}</a></div>
 					<div class="info-amount">
 						<span>{{ txUTXO?.value | unlimitedNumber }}</span>&nbsp;
-						<span class="link-btn" routerLink="/{{netDo}}/asset/{{txUTXO?.assetId}}">{{ txUTXO?.name }}</span>
+						<span class="link-btn" routerLink="/{{netDo}}/asset/{{txUTXO?.assetId}}/rank-bala/1/recent-addr/1">{{ txUTXO?.name }}</span>
 					</div>
 				</div>
 			</div>
@@ -21,7 +21,7 @@
 					<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txfrom?.from}}/page/1">{{ txfrom?.from }}</a></div>
 					<div class="info-amount">
 						<span>{{ txfrom?.value | unlimitedNumber }}</span>&nbsp;
-						<span class="link-btn" routerLink="/{{netDo}}/nep5/{{txfrom?.assetId}}">{{ txfrom?.name }}</span>
+						<span class="link-btn" routerLink="/{{netDo}}/nep5/{{txfrom?.assetId}}/rank-bala/1/recent-addr/1">{{ txfrom?.name }}</span>
 					</div>
 				</div>
 			</div>
@@ -34,7 +34,7 @@
 					<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txVout?.address}}/page/1">{{ txVout?.address }}</a></div>
 					<div class="info-amount">
 						<span>{{ txVout?.value | unlimitedNumber }}</span>&nbsp;
-						<span class="link-btn" routerLink="/{{netDo}}/asset/{{txVout?.assetId}}">{{ txVout?.name }}</span>
+						<span class="link-btn" routerLink="/{{netDo}}/asset/{{txVout?.assetId}}/rank-bala/1/recent-addr/1">{{ txVout?.name }}</span>
 					</div>
 				</div>
 			</div>
@@ -43,7 +43,7 @@
 					<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txto?.to}}/page/1">{{ txto?.to }}</a></div>
 					<div class="info-amount">
 						<span>{{ txto?.value | unlimitedNumber }}</span>&nbsp;
-						<span class="link-btn" routerLink="/{{netDo}}/nep5/{{txto?.assetId}}">{{ txto?.name }}</span>
+						<span class="link-btn" routerLink="/{{netDo}}/nep5/{{txto?.assetId}}/rank-bala/1/recent-addr/1">{{ txto?.name }}</span>
 					</div>
 				</div>
 			</div>
@@ -76,7 +76,7 @@
 		</li>
 		<li>
 			<div>
-				<p class="big-font-size link-btn" routerLink="/{{netDo}}/block/{{txInfo?.blockIndex}}">{{ txInfo?.blockIndex | number }}</p>
+				<p class="big-font-size link-btn" routerLink="/{{netDo}}/block/{{txInfo?.blockIndex}}/page/1">{{ txInfo?.blockIndex | number }}</p>
 				<span i18n>Index</span>
 			</div>
 		</li>
