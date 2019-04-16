@@ -161,6 +161,8 @@ export class AppComponent implements OnInit, OnDestroy {
         isHashPattern = /^((0x)?)([0-9a-f]{64})$/;
         isAssetPattern = /^([0-9a-f]{40})$/;
         isAddressPattern = /^A([0-9a-zA-Z]{33})$/;
+        this.isSearch = false;
+        this.searchVal = '';
         if (isHashPattern.test(value)) {
             if (value.length === 64) {
                 value = '0x' + value;
@@ -170,7 +172,7 @@ export class AppComponent implements OnInit, OnDestroy {
                     if (res.result === '1') {
                         this.router.navigate([`${this.netDo}/transaction/${value}`]);
                     } else if (res.result === '0') {
-                        this.router.navigate([`${this.netDo}/asset/${value}`]);
+                        this.router.navigate([`${this.netDo}/asset/${value}/rank-bala/1/recent-addr/1`]);
                     }
                 } else {
                     this.router.navigate([`${this.netDo}/search/${value}`]);
@@ -182,7 +184,7 @@ export class AppComponent implements OnInit, OnDestroy {
                     if (typeof res.result === 'string') {
                         this.router.navigate([`${this.netDo}/transaction/${res.result}`]);
                     } else if (typeof res.result === 'object') {
-                        this.router.navigate([`${this.netDo}/nep5/${value}`]);
+                        this.router.navigate([`${this.netDo}/nep5/${value}/rank-bala/1/recent-addr/1`]);
                     }
                 } else {
                     this.router.navigate([`${this.netDo}/search/${value}`]);
@@ -191,7 +193,7 @@ export class AppComponent implements OnInit, OnDestroy {
         } else if (isAddressPattern.test(value)) {
             this.addrAssetsSub = this.addressService.AddrAssets(this.apiDo, value).subscribe((res: any) => {
                 if (res.code === 200) {
-                    this.router.navigate([`${this.netDo}/address/${value}`]);
+                    this.router.navigate([`${this.netDo}/address/${value}/page/1`]);
                 } else {
                     this.router.navigate([`${this.netDo}/search/${value}`]);
                 }
@@ -202,8 +204,7 @@ export class AppComponent implements OnInit, OnDestroy {
             isNumberPattern = /^\d+$/;
             if (!isNaN(Number(value)) && isNumberPattern.test(value)) {
                 if (Number.isInteger(Number(value)) && value <= this.total.blockCounts) {
-                    this.router.navigate([`${this.netDo}/block/${value}`]);
-                    return;
+                    this.router.navigate([`${this.netDo}/block/${value}/page/1`]);
                 }
             }
             this.router.navigate([`${this.netDo}/search/${value}`]);

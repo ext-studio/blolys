@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AssetService } from '../asset.service';
 import { Subscription } from 'rxjs/Subscription';
 import { GlobalService } from '../../../core';
@@ -10,7 +10,7 @@ import { GlobalService } from '../../../core';
 })
 export class AssetsComponent implements OnInit, OnDestroy {
     assets: any = [];
-    pageIndex: Number = 0;
+    pageIndex = 1;
     pageSize: any = 16;
     pageLength: number;
     isProgress: Boolean = true;
@@ -25,11 +25,17 @@ export class AssetsComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private assetService: AssetService,
-        private global: GlobalService
+        private global: GlobalService,
+        private aRouter: ActivatedRoute
     ) { }
 
     ngOnInit() {
         this.checkLangNet();
+        this.aRouter.params.subscribe(params => {
+            const page = Number(params.page);
+            this.pageIndex = page;
+            this.getAssets(page, this.pageSize);
+        });
     }
     ngOnDestroy() {
         if (this.assetsSub) {
@@ -60,7 +66,10 @@ export class AssetsComponent implements OnInit, OnDestroy {
         });
     }
     onpageGo(num: number) {
-        this.getAssets(num, this.pageSize);
+        const oldUrl = this.router.url;
+        const preEndUrl = oldUrl.lastIndexOf(String(this.pageIndex));
+        const newUrl = oldUrl.slice(0, preEndUrl) + num;
+        this.router.navigateByUrl(newUrl);
     }
     // getNep5Assets (pageIndex, pageSize) {
     //   this.assets = [];

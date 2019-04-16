@@ -22,13 +22,13 @@
 		</thead>
 		<tbody>
 			<tr *ngFor="let item of assets; index as index">
-				<td class="td-link-btn" *ngIf="item?.type !== 'nep5'"><a class="link-btn" routerLink="/{{netDo}}/asset/{{item?.assetId}}">{{item?.name}}</a></td>
-				<td class="td-link-btn" *ngIf="item?.type === 'nep5'"><a class="link-btn" routerLink="/{{netDo}}/nep5/{{item?.assetId}}">{{item?.name}}</a></td>
+				<td class="td-link-btn" *ngIf="item?.type !== 'nep5'"><a class="link-btn" routerLink="/{{netDo}}/asset/{{item?.assetId}}/rank-bala/1/recent-addr/1">{{item?.name}}</a></td>
+				<td class="td-link-btn" *ngIf="item?.type === 'nep5'"><a class="link-btn" routerLink="/{{netDo}}/nep5/{{item?.assetId}}/rank-bala/1/recent-addr/1">{{item?.name}}</a></td>
 				<td [appAssetColor]="item?.type">{{item?.type}}</td>
 				<td class="hidden">{{item?.supply | unlimitedNumber}}</td>
 				<td class="hidden">{{item?.addresses | number}}</td>
 				<td class="hidden">{{item?.transactions | number}}</td>
-				<td class="hidden td-link-btn"><a class="link-btn" routerLink="/{{netDo}}/address/{{item?.registered}}">{{item?.registered}}</a></td>
+				<td class="hidden td-link-btn"><a class="link-btn" routerLink="/{{netDo}}/address/{{item?.registered}}/page/1">{{item?.registered}}</a></td>
 			</tr>
 		</tbody>
 	</table>

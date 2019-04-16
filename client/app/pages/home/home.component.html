@@ -16,25 +16,25 @@
 		<li>
 			<div>
 				<p i18n>Total blocks</p>
-				<span class="link-btn" routerLink="/{{netDo}}/blocks">{{ total?.blockCounts | number }}</span>
+				<span class="link-btn" routerLink="/{{netDo}}/blocks/page/1">{{ total?.blockCounts | number }}</span>
 			</div>
 		</li>
 		<li>
 			<div>
 				<p i18n>Total assets</p>
-				<span class="link-btn" routerLink="/{{netDo}}/assets">{{ total?.assetCounts | unlimitedNumber }}</span>
+				<span class="link-btn" routerLink="/{{netDo}}/assets/page/1">{{ total?.assetCounts | unlimitedNumber }}</span>
 			</div>
 		</li>
 		<li>
 			<div>
 				<p i18n>Total transactions</p>
-				<span class="link-btn" routerLink="/{{netDo}}/transactions">{{ total?.txCounts | number }}</span>
+				<span class="link-btn" routerLink="/{{netDo}}/transactions/page/1">{{ total?.txCounts | number }}</span>
 			</div>
 		</li>
 		<li>
 			<div>
 				<p i18n>Total addresses</p>
-				<span class="link-btn" routerLink="/{{netDo}}/addresses">{{ total?.addressCounts | number }}</span>
+				<span class="link-btn" routerLink="/{{netDo}}/addresses/page/1">{{ total?.addressCounts | number }}</span>
 			</div>
 		</li>
 	</ul>

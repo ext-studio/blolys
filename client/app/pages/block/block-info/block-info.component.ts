@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, RouterEvent, NavigationEnd } from '@angular/router';
+import { Router, RouterEvent, NavigationEnd, ActivatedRoute } from '@angular/router';
 
 import { BlockService } from '../block.service';
 import { TransactionService } from '../../transaction/transaction.service';
@@ -19,7 +19,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
     totalBlocks: Number = 0;
     show: any = [];
     height: number = Number(this.router.url.split('/')[3]);
-    pageIndex: any = 0;
+    pageIndex = 1;
     pageSize: any = 5;
     pageLength: any = 0;
     isProgress: Boolean = true;
@@ -38,7 +38,8 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
         private router: Router,
         private blockService: BlockService,
         private transactionService: TransactionService,
-        private global: GlobalService
+        private global: GlobalService,
+        private aRouter: ActivatedRoute
     ) { }
 
     ngOnDestroy() {
@@ -65,24 +66,24 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
         if (this.isNumberPattern.test(this.height)) {
             this.checkLangNet();
             this.initPage();
-            this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
-                if (res instanceof NavigationEnd) {
-                    let newHeight: any;
-                    newHeight = Number(res.url.split('/')[3]);
-                    if (this.height !== newHeight) {
-                        if (this.isNumberPattern.test(newHeight)) {
-                            this.height = newHeight;
-                            this.initPage();
-                            this.onpageGo(1);
-                        } else {
-                            this.router.navigate(['/notfound']);
-                        }
-                    }
-                }
-            });
         } else {
             this.router.navigate(['/notfound']);
         }
+        this.aRouter.params.subscribe(params => {
+            if (this.isNumberPattern.test(params.id)) {
+                const height = Number(params.id);
+                if (height !== this.height) {
+                    this.height = height;
+                    this.initPage();
+                }
+                const page = Number(params.page);
+                this.pageIndex = page;
+                this.initShow();
+                this.getTxByHeight(page, this.pageSize);
+            } else {
+                this.router.navigate(['/notfound']);
+            }
+        });
     }
     checkLangNet() {
         if (this.router.url.indexOf('/testnet') < 0) {
@@ -157,7 +158,9 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
         }
     }
     onpageGo(num: number) {
-        this.initShow();
-        this.getTxByHeight(num, this.pageSize);
+        const oldUrl = this.router.url;
+        const preEndUrl = oldUrl.lastIndexOf(String(this.pageIndex));
+        const newUrl = oldUrl.slice(0, preEndUrl) + num;
+        this.router.navigateByUrl(newUrl);
     }
 }

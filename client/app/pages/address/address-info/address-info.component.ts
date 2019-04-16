@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, RouterEvent, NavigationEnd } from '@angular/router';
+import { Router, RouterEvent, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { AddressService } from '../address.service';
 import { TransactionService } from '../../transaction/transaction.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -18,7 +18,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
     show: any = [];
     isVisible: Boolean = false;
     address: String = this.router.url.split('/')[3];
-    pageIndex: any = 0;
+    pageIndex = 1;
     pageSize: any = 5;
     pageLength: any = 0;
     isProgress: Boolean = true;
@@ -36,7 +36,8 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
         private router: Router,
         private addressService: AddressService,
         private transactionService: TransactionService,
-        private global: GlobalService
+        private global: GlobalService,
+        private aRouter: ActivatedRoute
     ) { }
 
     ngOnDestroy() {
@@ -60,24 +61,23 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
         if (this.isAddressPattern.test(this.address)) {
             this.checkLangNet();
             this.getAddrAssets();
-            this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
-                if (res instanceof NavigationEnd) {
-                    let newAddress: any;
-                    newAddress = res.url.split('/')[3];
-                    if (this.address !== newAddress) {
-                        if (this.isAddressPattern.test(newAddress)) {
-                            this.address = newAddress;
-                            this.getAddrAssets();
-                            this.onpageGo(1);
-                        } else {
-                            this.router.navigate(['/notfound']);
-                        }
-                    }
-                }
-            });
         } else {
             this.router.navigate(['/notfound']);
         }
+        this.aRouter.params.subscribe(params => {
+            if (this.isAddressPattern.test(params.id)) {
+                if (params.id !== this.address) {
+                    this.address = params.id;
+                    this.getAddrAssets();
+                }
+                const page = Number(params.page);
+                this.pageIndex = page;
+                this.initShow();
+                this.getTxByAddr(page, this.pageSize);
+            } else {
+                this.router.navigate(['/notfound']);
+            }
+        });
     }
     checkLangNet() {
         if (this.router.url.indexOf('/testnet') < 0) {
@@ -162,7 +162,9 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
         return target;
     }
     onpageGo(num: number) {
-        this.initShow();
-        this.getTxByAddr(num, this.pageSize);
+        const oldUrl = this.router.url;
+        const preEndUrl = oldUrl.lastIndexOf(String(this.pageIndex));
+        const newUrl = oldUrl.slice(0, preEndUrl) + num;
+        this.router.navigateByUrl(newUrl);
     }
 }

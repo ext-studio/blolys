@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AddressService } from '../address.service';
 import { Subscription } from 'rxjs/Subscription';
 import { GlobalService } from '../../../core';
@@ -10,7 +10,7 @@ import { GlobalService } from '../../../core';
 })
 export class AddressesComponent implements OnInit, OnDestroy {
     addresses: any = [];
-    pageIndex: any = 0;
+    pageIndex = 1;
     pageSize: any = 16;
     pageLength: any = 0;
     isProgress: Boolean = true;
@@ -21,11 +21,17 @@ export class AddressesComponent implements OnInit, OnDestroy {
     constructor(
         private addressService: AddressService,
         private global: GlobalService,
-        private router: Router
+        private router: Router,
+        private aRouter: ActivatedRoute
     ) { }
 
     ngOnInit() {
         this.checkLangNet();
+        this.aRouter.params.subscribe(params => {
+            const page = Number(params.page);
+            this.pageIndex = page;
+            this.getAddresses(page, this.pageSize);
+        });
     }
     ngOnDestroy() {
         if (this.addressesSub) {
@@ -55,6 +61,9 @@ export class AddressesComponent implements OnInit, OnDestroy {
         });
     }
     onpageGo(num: number) {
-        this.getAddresses(num, this.pageSize);
+        const oldUrl = this.router.url;
+        const preEndUrl = oldUrl.lastIndexOf(String(this.pageIndex));
+        const newUrl = oldUrl.slice(0, preEndUrl) + num;
+        this.router.navigateByUrl(newUrl);
     }
 }

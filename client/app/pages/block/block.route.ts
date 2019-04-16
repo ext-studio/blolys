@@ -10,8 +10,8 @@ const routes: Routes = [
     {
         path: 'mainnet',
         children: [
-            { path: 'blocks', component: BlocksComponent },
-            { path: 'block/:id', component: BlockInfoComponent },
+            { path: 'blocks/page/:page', component: BlocksComponent },
+            { path: 'block/:id/page/:page', component: BlockInfoComponent },
         ]
     },
     // {

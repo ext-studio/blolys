@@ -8,8 +8,8 @@
 			<button><a routerLink="/{{netDo}}/blocks" i18n>back</a></button>
 		</div>
 		<div class="option-right">
-			<button class="pre-button" *ngIf="height > 0"><a routerLink="/{{netDo}}/block/{{height-1}}" i18n>Previous block</a></button>
-			<button class="next-button" *ngIf="height < totalBlocks"><a routerLink="/{{netDo}}/block/{{height+1}}" i18n>Next block</a></button>
+			<button class="pre-button" *ngIf="height > 0"><a routerLink="/{{netDo}}/block/{{height-1}}/page/1" i18n>Previous block</a></button>
+			<button class="next-button" *ngIf="height < totalBlocks"><a routerLink="/{{netDo}}/block/{{height+1}}/page/1" i18n>Next block</a></button>
 		</div>
 	</div>
 	<ul class="info">
@@ -75,19 +75,19 @@
 						<p class="info-title" *ngIf="(transfer[index] && transfer[index]?.TxUTXO !== null) || (transferNep5[index] && transferNep5[index][0]?.from !== '')" i18n>Sent from</p>
 						<div *ngIf="transfer[index] && transfer[index]?.TxUTXO !== null">
 							<div *ngFor="let txUTXO of transfer[index]?.TxUTXO">
-								<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txUTXO?.address}}">{{ txUTXO?.address }}</a></div>
+								<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txUTXO?.address}}/page/1">{{ txUTXO?.address }}</a></div>
 								<div class="info-amount">
 									<span>{{ txUTXO?.value | unlimitedNumber }}</span>&nbsp;
-									<span class="link-btn" routerLink="/{{netDo}}/asset/{{txUTXO?.assetId}}">{{ txUTXO?.name }}</span>
+									<span class="link-btn" routerLink="/{{netDo}}/asset/{{txUTXO?.assetId}}/rank-bala/1/recent-addr/1">{{ txUTXO?.name }}</span>
 								</div>
 							</div>
 						</div>
 						<div *ngIf="transferNep5[index] && transferNep5[index][0]?.from !== ''">
 							<div *ngFor="let txfrom of transferNep5[index]">
-								<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txfrom?.from}}">{{ txfrom?.from }}</a></div>
+								<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txfrom?.from}}/page/1">{{ txfrom?.from }}</a></div>
 								<div class="info-amount">
 									<span>{{ txfrom?.value | unlimitedNumber }}</span>&nbsp;
-									<span class="link-btn" routerLink="/{{netDo}}/nep5/{{txfrom?.assetId}}">{{ txfrom?.name }}</span>
+									<span class="link-btn" routerLink="/{{netDo}}/nep5/{{txfrom?.assetId}}/rank-bala/1/recent-addr/1">{{ txfrom?.name }}</span>
 								</div>
 							</div>
 						</div>
@@ -97,19 +97,19 @@
 						<p class="info-title" *ngIf="(transfer[index] && transfer[index]?.TxVouts !== null) || (transferNep5[index] && transferNep5[index][0]?.to !== '')" i18n>Sent to</p>
 						<div *ngIf="transfer[index] && transfer[index]?.TxVouts !== null">
 							<div *ngFor="let txVout of transfer[index]?.TxVouts">
-								<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txVout?.address}}">{{ txVout?.address }}</a></div>
+								<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txVout?.address}}/page/1">{{ txVout?.address }}</a></div>
 								<div class="info-amount">
 									<span>{{ txVout?.value | unlimitedNumber }}</span>&nbsp;
-									<span class="link-btn" routerLink="/{{netDo}}/asset/{{txVout?.assetId}}">{{ txVout?.name }}</span>
+									<span class="link-btn" routerLink="/{{netDo}}/asset/{{txVout?.assetId}}/rank-bala/1/recent-addr/1">{{ txVout?.name }}</span>
 								</div>
 							</div>
 						</div>
 						<div *ngIf="transferNep5[index] && transferNep5[index][0]?.to !== ''">
 							<div *ngFor="let txto of transferNep5[index]">
-								<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txto?.to}}">{{ txto?.to }}</a></div>
+								<div class="info-address"><a class="link-btn" routerLink="/{{netDo}}/address/{{txto?.to}}/page/1">{{ txto?.to }}</a></div>
 								<div class="info-amount">
 									<span>{{ txto?.value | unlimitedNumber }}</span>&nbsp;
-									<span class="link-btn" routerLink="/{{netDo}}/nep5/{{txto?.assetId}}">{{ txto?.name }}</span>
+									<span class="link-btn" routerLink="/{{netDo}}/nep5/{{txto?.assetId}}/rank-bala/1/recent-addr/1">{{ txto?.name }}</span>
 								</div>
 							</div>
 						</div>
