@@ -133,9 +133,9 @@ footer {
 		align-items: center;
 		height: 100px;
 	}
-	// .footer-net {
-	// 	width: 150px;
-	// }
+	.footer-net {
+		width: 150px;
+	}
 	a {
 		color: #1770ea;
 		font-size: 14px;
@@ -170,15 +170,11 @@ footer {
 		}
     }
     .footer-item {
-        height: 50px;
-        line-height: 50px;
+        margin-top: 20px;
     }
 }
 .footer-switch {
 	flex-direction: column;
-	.footer-switch-net {
-		margin-bottom: 8px;
-	}
 }
 ::ng-deep .wallet-menu-pc {
 	right: -138px;
