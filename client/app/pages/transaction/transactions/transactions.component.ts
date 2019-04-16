@@ -112,7 +112,9 @@ export class TransactionsComponent implements OnInit, OnDestroy {
         this.transType = type;
         this.pageIndex += 1;
         this.initShow();
-        // this.onpageGo(1);
+        this.pageIndex = 1;
+        this.initShow();
+        this.getTrans(1, this.pageSize);
     }
     onpageGo(num: number) {
         const oldUrl = this.router.url;

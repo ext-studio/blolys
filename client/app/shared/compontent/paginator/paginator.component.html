@@ -1,6 +1,6 @@
 <div class="paginator">
-    <div class="pager-info" disabled="disabled"><label i18n>Page</label><span>&nbsp;{{pageIndex}}&nbsp;</span> <label
-            i18n>of</label><span>&nbsp;{{pageLength}}</span></div>
+    <div class="pager-info" disabled="disabled"><label i18n>Page</label><span>&nbsp;{{pageIndex | number}}&nbsp;</span> <label
+            i18n>of</label><span>&nbsp;{{pageLength | number}}</span></div>
     <button class="pager pager-item" [disabled]="pageIndex <= 1 || pageLength <= 1"
         [ngClass]="(pageIndex <= 1 || pageLength <= 1) ? 'notAllowed' : 'pointer'" (click)="prev()"
         i18n>Previous</button>
