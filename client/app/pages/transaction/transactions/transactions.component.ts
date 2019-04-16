@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TransactionService } from '../transaction.service';
 import { Subscription } from 'rxjs/Subscription';
 import { GlobalService } from '../../../core';
@@ -28,12 +28,18 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     constructor(
         private transactionService: TransactionService,
         private global: GlobalService,
-        private router: Router
+        private router: Router,
+        private aRouter: ActivatedRoute
     ) { }
 
     ngOnInit() {
         this.checkLangNet();
-        this.onpageGo(1);
+        this.aRouter.params.subscribe(params => {
+            const page = Number(params.page);
+            this.pageIndex = page;
+            this.initShow();
+            this.getTrans(page, this.pageSize);
+        });
     }
     ngOnDestroy() {
         if (this.transSub) {
@@ -109,8 +115,9 @@ export class TransactionsComponent implements OnInit, OnDestroy {
         // this.onpageGo(1);
     }
     onpageGo(num: number) {
-        this.pageIndex = num;
-        this.initShow();
-        this.getTrans(num, this.pageSize);
+        const oldUrl = this.router.url;
+        const preEndUrl = oldUrl.lastIndexOf(String(this.pageIndex));
+        const newUrl = oldUrl.slice(0, preEndUrl) + num;
+        this.router.navigateByUrl(newUrl);
     }
 }

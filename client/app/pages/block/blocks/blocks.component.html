@@ -16,7 +16,7 @@
 				<td>{{item?.txNum | number}}</td>
 				<td class="hidden">{{item?.time | unixTime}}</td>
 				<td class="hidden">{{item?.size | number}} Bytes</td>
-				<td class="hidden addr-min-width over-ellipsis-link"><a class="link-btn" routerLink="/{{netDo}}/{{api}}/address/{{item?.nextConsensus}}">{{item?.nextConsensus}}</a></td>
+				<td class="hidden addr-min-width over-ellipsis-link"><a class="link-btn" routerLink="/{{netDo}}/{{api}}/address/{{item?.nextConsensus}}/page/1">{{item?.nextConsensus}}</a></td>
 			</tr>
 		</tbody>
 	</table>

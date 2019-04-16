@@ -8,8 +8,8 @@ const routes: Routes = [
     {
         path: 'mainnet',
         children: [
-            { path: 'addresses', component: AddressesComponent },
-            { path: 'address/:id', component: AddressInfoComponent }
+            { path: 'addresses/page/:page', component: AddressesComponent },
+            { path: 'address/:id/page/:page', component: AddressInfoComponent }
         ]
     },
     // {

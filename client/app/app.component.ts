@@ -193,7 +193,7 @@ export class AppComponent implements OnInit, OnDestroy {
         } else if (isAddressPattern.test(value)) {
             this.addrAssetsSub = this.addressService.AddrAssets(this.apiDo, value).subscribe((res: any) => {
                 if (res.code === 200) {
-                    this.router.navigate([`${this.netDo}/address/${value}`]);
+                    this.router.navigate([`${this.netDo}/address/${value}/page/1`]);
                 } else {
                     this.router.navigate([`${this.netDo}/search/${value}`]);
                 }

@@ -9,7 +9,7 @@ const routes: Routes = [
     {
         path: 'mainnet',
         children: [
-            { path: 'transactions', component: TransactionsComponent },
+            { path: 'transactions/page/:page', component: TransactionsComponent },
             { path: 'transaction/:id', component: TransactionInfoComponent }
         ]
     },

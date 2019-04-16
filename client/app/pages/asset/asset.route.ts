@@ -8,7 +8,7 @@ const routes: Routes = [
     {
         path: 'mainnet',
         children: [
-            { path: 'assets', component: AssetsComponent },
+            { path: 'assets/page/:page', component: AssetsComponent },
             { path: 'asset/:id', component: AssetInfoComponent },
             { path: 'nep5/:id', component: AssetInfoComponent }
         ]
