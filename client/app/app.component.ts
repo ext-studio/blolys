@@ -27,6 +27,8 @@ export class AppComponent implements OnInit, OnDestroy {
     searchVal: String = '';
     currentYear: number;
 
+    public is404 = false;
+
     routerSub: Subscription = null;
     conditionSub: Subscription = null;
     nep5InfoSub: Subscription = null;
@@ -52,6 +54,10 @@ export class AppComponent implements OnInit, OnDestroy {
         });
         this.renderMenu();
         this.routerSub = this.router.events.subscribe((res: RouterEvent) => {
+            this.is404 = false;
+            this.global.NotFoundSub$.subscribe(() => {
+                this.is404 = true;
+            });
             if (res instanceof NavigationEnd) {
                 this.currentPage = res.url;
                 this.checkLangNet();
