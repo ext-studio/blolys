@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
+import { GlobalService } from '../../core';
+
 @Component({
     templateUrl: 'notfound.component.html',
     styleUrls: ['notfound.component.scss']
 })
 export class NotFoundComponent implements OnInit {
-    constructor() { }
+    constructor(
+        private global: GlobalService
+    ) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.global.pushNotFound();
+    }
 }

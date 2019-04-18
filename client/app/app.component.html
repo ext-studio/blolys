@@ -1,5 +1,5 @@
 <div class="main">
-	<mat-toolbar class="top-nav">
+	<mat-toolbar class="top-nav" *ngIf="!is404">
 		<mat-toolbar-row *ngIf="isWide" [ngClass]="{isSearch: !isSearch}">
 			<div class="wide-title" routerLink="/{{netDo}}">
 				<img src="assets/logo.svg" alt="logo">
@@ -52,7 +52,7 @@
 		</mat-toolbar-row>
 	</mat-toolbar>
 	<router-outlet></router-outlet>
-	<footer>
+	<footer *ngIf="!is404">
 		<div *ngIf="isWide" class="footer">
 			<div class="footer-net">
 				<label i18n>Switch net: </label>
