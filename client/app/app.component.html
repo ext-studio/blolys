@@ -3,12 +3,12 @@
 		<mat-toolbar-row *ngIf="isWide" [ngClass]="{isSearch: !isSearch}">
 			<div class="wide-title" routerLink="/{{netDo}}">
 				<img src="assets/logo.svg" alt="logo">
-			</div>    
+			</div>
 			<div class="flex-1 search">
 				<div class="search-content" (click)="searchIcon()" [ngClass]="{search_bg: isSearch}">
 					<img src="assets/icon_search@2x.png" alt="search">
 				</div>
-			</div> 
+			</div>
 			<div class="menu">
 				<button class="menu-item" [ngClass]="{active: currentPage.indexOf('home') >= 0 || currentPage === '/' || currentPage === '/mainnet' || currentPage === '/testnet'}" routerLink="/{{netDo}}/home" i18n>Home</button>
 				<button class="menu-item" [ngClass]="{active: currentPage.indexOf('block') >= 0}" routerLink="/{{netDo}}/blocks/page/1" i18n>Blocks</button>
@@ -50,8 +50,8 @@
 				<a class="pc-menu-item" mat-menu-item href="https://app.iwallic.com" target="_blank" i18n>Web wallet</a>
 			</mat-menu> -->
 		</mat-toolbar-row>
-	</mat-toolbar>
-	<router-outlet></router-outlet>
+    </mat-toolbar>
+    <div class="container"><router-outlet></router-outlet></div>
 	<footer *ngIf="!is404">
 		<div *ngIf="isWide" class="footer">
 			<div class="footer-net">
