@@ -285,11 +285,17 @@ footer {
 	footer {
 		margin-top: 30px;
     }
+    .top-nav {
+        margin-bottom: 30px !important;
+    }
 }
 
 @media screen and (max-width: 1029px) {
-    .top-nav .nav-search {
-        height: 0;
+    .top-nav {
+        margin-bottom: 70px;
+        .nav-search {
+            height: 0;
+        }
     }
 }
 
