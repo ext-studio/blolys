@@ -17,7 +17,7 @@
 		<li class="color-two width-all"><label i18n>AssetId</label><span class="over-ellipsis">{{assetInfo?.assetId}}</span></li>
 		<li class="color-one width-all" *ngIf="assetInfo?.type === 'nep5'"><label i18n>TransactionId</label><span class="link-btn over-ellipsis" routerLink="/{{netDo}}/transaction/{{assetInfo?.txid}}">{{assetInfo?.txid}}</span></li>
 	</ul>
-	<p class="header-title-info"  *ngIf="assetInfo?.type === 'nep5'" i18n>Asset register information</p>
+	<p class="header-title-info content-title-info"  *ngIf="assetInfo?.type === 'nep5'" i18n>Asset register information</p>
 	<ul class="address-info" *ngIf="assetInfo?.type === 'nep5'">
 		<li class="color-one width-half"><label i18n>Name</label>{{assetRegisterInfo?.name}}</li>
 		<li class="color-one width-half"><label i18n>Version</label>{{assetRegisterInfo?.version}}</li>
@@ -26,7 +26,7 @@
 		<li class="color-one width-all"><label i18n>Description</label><span class="des-content">{{assetRegisterInfo?.description}}</span></li>
 	</ul>
 	<div *ngIf="rankAddr">
-		<p class="header-title-info"><span i18n>Balance rank</span> ({{100 > rankPageTotal ? rankPageTotal : 100}})</p>
+		<p class="header-title-info content-title-info"><span i18n>Balance rank</span> ({{100 > rankPageTotal ? rankPageTotal : 100}})</p>
 		<table>
 			<thead>
 				<tr>
@@ -52,7 +52,7 @@
 		</app-paginator>
 	</div>
 	<div *ngIf="recentAddress">
-		<p class="header-title-info" i18n>Recent addresses</p>
+		<p class="header-title-info content-title-info" i18n>Recent addresses</p>
 		<table>
 			<thead>
 				<tr>
@@ -72,7 +72,7 @@
 			</tbody>
 		</table>
 		<mat-progress-bar mode="indeterminate" *ngIf="isAddrProgress"></mat-progress-bar>
-		<app-paginator 
+		<app-paginator
 			[pageIndex]="addrPageIndex"
 			[pageSize]="addrPageSize"
 			[pageLength]="addrPageLength"

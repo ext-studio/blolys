@@ -15,7 +15,7 @@
 		<li class="textmiddle" i18n>The balance of this address is 0</li>
 	</ul>
 	<div *ngIf="addrTransactions">
-		<p class="header-title-info"><span i18n>Transactions</span> ({{ transTotal | number }})</p>
+		<p class="header-title-info content-title-info"><span i18n>Transactions</span> ({{ transTotal | number }})</p>
 		<div class="tran-list">
 			<div class="row-head">
 				<div class="col" i18n>TXID</div>
@@ -31,7 +31,7 @@
 					<div class="col" [appTransColor]="item?.type">{{ item?.type | transType }}</div>
 					<div class="col hidden">{{ item?.size | number }} Bytes</div>
 					<div class="col hidden">{{ item?.version }}</div>
-					<div class="col hidden">{{ item?.blockTime | unixTime }}</div> 
+					<div class="col hidden">{{ item?.blockTime | unixTime }}</div>
 					<div class="hidden col-icon" (click)="showInfo(index, item?.txid)"><img [ngClass]="{active: show[index]}" src="assets/icon_drop_down_n1.png"></div>
 				</div>
 				<div class="tran-info" *ngIf="show[index] && (transfer[index] || transferNep5[index])">
@@ -81,8 +81,8 @@
 				</div>
 			</div>
 		</div>
-		<mat-progress-bar mode="indeterminate" *ngIf="isProgress"></mat-progress-bar> 
-		<app-paginator 
+		<mat-progress-bar mode="indeterminate" *ngIf="isProgress"></mat-progress-bar>
+		<app-paginator
 			[pageIndex]="pageIndex"
 			[pageSize]="pageSize"
 			[pageLength]="pageLength"
