@@ -13,9 +13,9 @@ export class AssetsComponent implements OnInit, OnDestroy {
     pageIndex = 1;
     pageSize: any = 16;
     pageLength: number;
-    isProgress: Boolean = true;
-    apiDo: String;
-    netDo: String;
+    isProgress: boolean = true;
+    apiDo: string;
+    netDo: string;
     // assetType: String = 'Assets'; // 0 => assets, 1 => nep5Assets
     // showSortTran: Boolean = false;
     // showSortAddr: Boolean = false;
@@ -27,7 +27,7 @@ export class AssetsComponent implements OnInit, OnDestroy {
         private assetService: AssetService,
         private global: GlobalService,
         private aRouter: ActivatedRoute
-    ) { }
+    ) {}
 
     ngOnInit() {
         this.checkLangNet();
@@ -51,11 +51,11 @@ export class AssetsComponent implements OnInit, OnDestroy {
             this.netDo = this.global.netDotest;
         }
     }
-    getAssets (pageIndex, pageSize) {
+    getAssets(pageIndex, pageSize) {
         this.assets = [];
         this.isProgress = true;
         pageIndex = Number(pageIndex);
-        this.assetsSub =  this.assetService.Assets(this.apiDo, pageIndex, pageSize).subscribe((res: any) => {
+        this.assetsSub = this.assetService.Assets(this.apiDo, pageIndex, pageSize).subscribe((res: any) => {
             if (res.code === 200) {
                 if (res.result.total > 0) {
                     this.assets = res.result.data;

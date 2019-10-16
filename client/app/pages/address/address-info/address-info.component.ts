@@ -14,16 +14,16 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
     transfer: any = [];
     transferNep5: any = [];
     addrAssets: any = ['0'];
-    transTotal: Number = 0;
+    transTotal: number = 0;
     show: any = [];
-    isVisible: Boolean = false;
-    address: String = this.router.url.split('/')[3];
+    isVisible: boolean = false;
+    address: string = this.router.url.split('/')[3];
     pageIndex = 1;
     pageSize: any = 5;
     pageLength: any = 0;
-    isProgress: Boolean = true;
-    apiDo: String;
-    netDo: String;
+    isProgress: boolean = true;
+    apiDo: string;
+    netDo: string;
     isAddressPattern: any = /^A([0-9a-zA-Z]{33})$/;
 
     routerSub: Subscription = null;
@@ -38,7 +38,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
         private transactionService: TransactionService,
         private global: GlobalService,
         private aRouter: ActivatedRoute
-    ) { }
+    ) {}
 
     ngOnDestroy() {
         if (this.routerSub) {
@@ -88,14 +88,14 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
             this.netDo = this.global.netDotest;
         }
     }
-    initShow () {
+    initShow() {
         for (let i = 0; i < this.pageSize; i++) {
             this.show[i] = false;
             this.transfer[i] = 0;
             this.transferNep5[i] = 0;
         }
     }
-    showInfo (index, txid) {
+    showInfo(index, txid) {
         this.show[index] = !this.show[index];
         if (this.show[index] && this.transfer[index] === 0 && this.transferNep5[index] === 0) {
             this.transfer[index] = '';
@@ -108,7 +108,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
     //   this.getTxByAddr(1, this.transTotal);
     //   this.isVisible = true;
     // }
-    getAddrAssets () {
+    getAddrAssets() {
         this.addrAssetsSub = this.addressService.AddrAssets(this.apiDo, this.address).subscribe((res: any) => {
             if (res.code === 200) {
                 this.addrAssets = this.balanceFilter(res.result);
@@ -119,7 +119,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
             }
         });
     }
-    getTxByAddr (pageIndex, pageSize) {
+    getTxByAddr(pageIndex, pageSize) {
         this.addrTransactions = [];
         this.isProgress = true;
         this.txByAddrSub = this.addressService.TxByAddr(this.apiDo, pageIndex, pageSize, this.address).subscribe((res: any) => {
@@ -133,7 +133,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
             }
         });
     }
-    getTransferByTxid (index, txid) {
+    getTransferByTxid(index, txid) {
         this.transferByTxidSub = this.transactionService.TransferByTxid(this.apiDo, txid).subscribe((res: any) => {
             if (res.code === 200) {
                 if (res.result.TxUTXO != null || res.result.TxVouts != null) {
@@ -142,7 +142,7 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
             }
         });
     }
-    getNep5TransferByTxid (index, txid) {
+    getNep5TransferByTxid(index, txid) {
         this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid(this.apiDo, txid).subscribe((res: any) => {
             if (res.code === 200) {
                 if (res.result.length > 0) {
@@ -151,12 +151,14 @@ export class AddressInfoComponent implements OnInit, OnDestroy {
             }
         });
     }
-    balanceFilter(balance) { // remove balance = 0
-        let target: any, j = 0;
+    balanceFilter(balance) {
+        // remove balance = 0
+        let target: any;
+        let j = 0;
         target = [];
-        for (let i = 0; i < balance.length; i++) {
-            if (balance[i].balance !== '0') {
-                target[j++] = balance[i];
+        for (const item of balance) {
+            if (item.balance !== '0') {
+                target[j++] = item;
             }
         }
         return target;

@@ -8,10 +8,8 @@ import { BlocksComponent } from './blocks/blocks.component';
 import { BlockInfoComponent } from './block-info/block-info.component';
 
 @NgModule({
-    imports: [
-        CommonModule, SharedModule, BlockRoutingModule
-    ],
+    imports: [CommonModule, SharedModule, BlockRoutingModule],
     declarations: [BlocksComponent, BlockInfoComponent],
     providers: [BlockService]
 })
-export class BlockModule { }
+export class BlockModule {}

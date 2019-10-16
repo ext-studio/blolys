@@ -1,13 +1,13 @@
 .paginator {
-	text-align: center;
-	font-size: 14px;
-	.pager-info {
-		color: #769acb;
+    text-align: center;
+    font-size: 14px;
+    .pager-info {
+        color: #769acb;
         margin-bottom: 10px;
         display: block;
-		span {
-			font-weight: bold;
-		}
+        span {
+            font-weight: bold;
+        }
     }
     div {
         display: inline-block;
@@ -29,10 +29,10 @@
             background: #1770ea;
         }
     }
-	.pager-right .pager-main:last-child {
-		margin-right: 0;
-	}
-	.pager {
+    .pager-right .pager-main:last-child {
+        margin-right: 0;
+    }
+    .pager {
         width: 90px;
     }
     .pointer {
@@ -43,20 +43,20 @@
     }
     .notAllowed {
         cursor: default;
-        opacity: .4;
+        opacity: 0.4;
     }
 }
 
 @media screen and (min-width: 420px) {
-	.paginator {
-		margin: 70px 0;
-	}
+    .paginator {
+        margin: 70px 0;
+    }
 }
 @media screen and (max-width: 419px) {
-	.paginator {
-		margin: 30px 0;
-	}
-	.hidden {
-		display: none !important;
-	}
+    .paginator {
+        margin: 30px 0;
+    }
+    .hidden {
+        display: none !important;
+    }
 }

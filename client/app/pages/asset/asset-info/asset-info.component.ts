@@ -10,24 +10,24 @@ import { Subscription } from 'rxjs/Subscription';
     styleUrls: ['./asset-info.component.scss']
 })
 export class AssetInfoComponent implements OnInit, OnDestroy {
-    isAddrProgress: Boolean = true;
-    isRankProgress: Boolean = true;
+    isAddrProgress: boolean = true;
+    isRankProgress: boolean = true;
     recentAddress: any = [];
     rankAddr: any = [];
     assetInfo: any = [];
     assetRegisterInfo: any = [];
-    page: Number = 0;  // rank
+    page: number = 0; // rank
     addrPageIndex = 0; // paginator
     rankPageIndex = 0; // paginator
     addrPageSize: any = 5; // paginator
     rankPageSize: any = 5; // paginator
-    addrPageLength: Number = 0; // paginator
-    rankPageLength: Number = 0; // paginator
-    rankPageTotal: Number = 0; // paginator
-    assetType: String = this.router.url.split('/')[2];
-    assetId: String = this.router.url.split('/')[3];
-    apiDo: String;
-    netDo: String;
+    addrPageLength: number = 0; // paginator
+    rankPageLength: number = 0; // paginator
+    rankPageTotal: number = 0; // paginator
+    assetType: string = this.router.url.split('/')[2];
+    assetId: string = this.router.url.split('/')[3];
+    apiDo: string;
+    netDo: string;
     isAssetPattern: any = /^(0x)([0-9a-f]{64})$/;
     isNep5Pattern: any = /^([0-9a-f]{40})$/;
 
@@ -44,16 +44,22 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
         private http: HttpClient,
         private global: GlobalService,
         private aRouter: ActivatedRoute
-    ) { }
+    ) {}
     ngOnInit() {
-        if ((this.assetType === 'asset' && this.isAssetPattern.test(this.assetId)) || (this.assetType === 'nep5' && this.isNep5Pattern.test(this.assetId))) {
+        if (
+            (this.assetType === 'asset' && this.isAssetPattern.test(this.assetId)) ||
+            (this.assetType === 'nep5' && this.isNep5Pattern.test(this.assetId))
+        ) {
             this.checkLangNet();
             this.checkCondition();
         } else {
             this.router.navigate(['/notfound']);
         }
         this.aRouter.params.subscribe(params => {
-            if ((this.assetType === 'asset' && this.isAssetPattern.test(params.id)) || (this.assetType === 'nep5' && this.isNep5Pattern.test(params.id))) {
+            if (
+                (this.assetType === 'asset' && this.isAssetPattern.test(params.id)) ||
+                (this.assetType === 'nep5' && this.isNep5Pattern.test(params.id))
+            ) {
                 this.assetType = this.router.url.split('/')[2];
                 const rankPage = Number(params.balancePage);
                 const addrPage = Number(params.addressPage);
@@ -111,7 +117,7 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
             this.netDo = this.global.netDotest;
         }
     }
-    checkCondition () {
+    checkCondition() {
         this.assetInfo = [];
         this.assetRegisterInfo = [];
         if (this.assetType !== 'nep5') {
@@ -137,18 +143,18 @@ export class AssetInfoComponent implements OnInit, OnDestroy {
             });
         }
     }
-    getAddrByAssetid (pageIndex, pageSize) {
-        this.recentAddress = [];
-        this.isAddrProgress = true;
-        this.addrByAssetidSub = this.assetService.AddrByAssetid(this.apiDo, pageIndex, pageSize, this.assetId).subscribe((res: any) => {
-            if (res.result) {
-                this.recentAddress = res.result.data;
-                this.addrPageLength = Math.ceil(res.result.total / pageSize);
-                this.isAddrProgress = false;
-            }
-        });
+    getAddrByAssetid(pageIndex, pageSize) {
+        // this.recentAddress = [];
+        // this.isAddrProgress = true;
+        // this.addrByAssetidSub = this.assetService.AddrByAssetid(this.apiDo, pageIndex, pageSize, this.assetId).subscribe((res: any) => {
+        //     if (res.result) {
+        //         this.recentAddress = res.result.data;
+        //         this.addrPageLength = Math.ceil(res.result.total / pageSize);
+        //         this.isAddrProgress = false;
+        //     }
+        // });
     }
-    getRankByAssetid (pageIndex, pageSize) {
+    getRankByAssetid(pageIndex, pageSize) {
         this.rankAddr = [];
         this.isRankProgress = true;
         this.rankByAssetidSub = this.assetService.RankByAssetid(this.apiDo, pageIndex, pageSize, this.assetId).subscribe((res: any) => {

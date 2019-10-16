@@ -5,20 +5,16 @@ import { NotsearchComponent } from './notsearch.component';
 const routes: Routes = [
     {
         path: 'mainnet',
-        children: [
-            { path: 'search/:id', component: NotsearchComponent}
-        ]
+        children: [{ path: 'search/:id', component: NotsearchComponent }]
     },
     {
         path: 'testnet',
-        children: [
-            { path: 'search/:id', component: NotsearchComponent}
-        ]
+        children: [{ path: 'search/:id', component: NotsearchComponent }]
     }
 ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
+    exports: [RouterModule]
 })
-export class NotsearchRoutingModule { }
+export class NotsearchRoutingModule {}

@@ -33,7 +33,7 @@ export class UnixTimePipe implements PipeTransform {
             }
         }
     }
-    getTime (time: any) {
+    getTime(time: any) {
         time = new Date(time);
         const year = time.getFullYear();
         let month = time.getMonth() + 1;

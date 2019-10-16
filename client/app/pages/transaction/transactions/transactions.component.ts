@@ -13,13 +13,13 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     transfer: any = [];
     transferNep5: any = [];
     show: any = [];
-    transType: String = 'all';
+    transType: string = 'all';
     pageSize: any = 16;
     pageLength: number;
     pageIndex = 1;
-    isProgress: Boolean = true;
-    apiDo: String;
-    netDo: String;
+    isProgress: boolean = true;
+    apiDo: string;
+    netDo: string;
 
     transSub: Subscription = null;
     transferByTxidSub: Subscription = null;
@@ -30,7 +30,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
         private global: GlobalService,
         private router: Router,
         private aRouter: ActivatedRoute
-    ) { }
+    ) {}
 
     ngOnInit() {
         this.checkLangNet();
@@ -61,14 +61,14 @@ export class TransactionsComponent implements OnInit, OnDestroy {
             this.netDo = this.global.netDotest;
         }
     }
-    initShow () {
+    initShow() {
         for (let i = 0; i < this.pageSize; i++) {
             this.show[i] = false;
             this.transfer[i] = 0;
             this.transferNep5[i] = 0;
         }
     }
-    getTrans (pageIndex, pageSize) {
+    getTrans(pageIndex, pageSize) {
         this.transactions = [];
         this.isProgress = true;
         this.transSub = this.transactionService.Trans(this.apiDo, pageIndex, pageSize, this.transType).subscribe((res: any) => {
@@ -81,7 +81,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
             }
         });
     }
-    getTransferByTxid (index, txid) {
+    getTransferByTxid(index, txid) {
         this.transferByTxidSub = this.transactionService.TransferByTxid(this.apiDo, txid).subscribe((res: any) => {
             if (res.code === 200) {
                 if (res.result.TxUTXO != null || res.result.TxVouts != null) {
@@ -90,7 +90,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
             }
         });
     }
-    getNep5TransferByTxid (index, txid) {
+    getNep5TransferByTxid(index, txid) {
         this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid(this.apiDo, txid).subscribe((res: any) => {
             if (res.code === 200) {
                 if (res.result.length > 0) {
@@ -99,7 +99,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
             }
         });
     }
-    showInfo (index, txid) {
+    showInfo(index, txid) {
         this.show[index] = !this.show[index];
         if (this.show[index] && this.transfer[index] === 0 && this.transferNep5[index] === 0) {
             this.transfer[index] = '';
@@ -108,7 +108,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
             this.getNep5TransferByTxid(index, txid);
         }
     }
-    changeTransType (type: string) {
+    changeTransType(type: string) {
         this.transType = type;
         this.pageIndex += 1;
         this.initShow();

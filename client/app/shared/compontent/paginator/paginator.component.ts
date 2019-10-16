@@ -1,19 +1,10 @@
-import {
-    Component,
-    Input,
-    EventEmitter,
-    Output,
-    OnChanges,
-    OnInit,
-    SimpleChanges
-} from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
     selector: 'app-paginator',
     templateUrl: './paginator.component.html',
     styleUrls: ['./paginator.component.scss']
 })
-
 export class PaginatorComponent implements OnChanges, OnInit {
     public list: number[] = [];
     public groupBase = 0;
@@ -21,7 +12,7 @@ export class PaginatorComponent implements OnChanges, OnInit {
     @Input() pageIndex: number; // 当前页数
     @Input() pageSize: number; // 没用到
     @Input() pageLength: number;
-    @Output() onpageGo = new EventEmitter < number > ();
+    @Output() onpageGo = new EventEmitter<number>();
 
     constructor() {}
     ngOnInit() {}
