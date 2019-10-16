@@ -12,13 +12,12 @@ import { GlobalService } from '../../core';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })
-
 export class HomeComponent implements OnInit, OnDestroy {
     total: any = [];
     queryCountTime: any;
-    apiDo: String;
-    netDo: String;
-    searchVal: String = '';
+    apiDo: string;
+    netDo: string;
+    searchVal: string = '';
 
     conditionSub: Subscription = null;
     nep5InfoSub: Subscription = null;
@@ -67,7 +66,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         private notsearchService: NotsearchService,
         private assetService: AssetService,
         private global: GlobalService
-    ) { }
+    ) {}
 
     checkLangNet() {
         if (this.router.url.indexOf('/testnet') < 0) {
@@ -80,7 +79,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     search() {
-        let value = this.searchVal, isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
+        let value = this.searchVal;
+        let isHashPattern: any;
+        let isAssetPattern: any;
+        let isAddressPattern: any;
         value = value.trim(); // Remove whitespace
         if (value === '') {
             return;

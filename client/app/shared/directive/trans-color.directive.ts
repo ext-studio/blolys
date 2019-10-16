@@ -4,8 +4,8 @@ import { Directive, Input, ElementRef, OnChanges, SimpleChanges } from '@angular
     selector: '[appTransColor]'
 })
 export class TransColorDirective implements OnChanges {
-    constructor(private el: ElementRef) { }
-    @Input('appTransColor') appTransColor: String;
+    constructor(private el: ElementRef) {}
+    @Input() appTransColor: string;
 
     public ngOnChanges(changes: SimpleChanges) {
         this.addColor();

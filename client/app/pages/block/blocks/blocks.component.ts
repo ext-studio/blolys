@@ -13,9 +13,9 @@ export class BlocksComponent implements OnInit, OnDestroy {
     pageIndex = 1;
     pageSize: any = 16;
     pageLength: number;
-    isProgress: Boolean = true;
-    apiDo: String;
-    netDo: String;
+    isProgress: boolean = true;
+    apiDo: string;
+    netDo: string;
 
     blockSub: Subscription = null;
 
@@ -24,7 +24,7 @@ export class BlocksComponent implements OnInit, OnDestroy {
         private global: GlobalService,
         private router: Router,
         private aRouter: ActivatedRoute
-    ) { }
+    ) {}
 
     ngOnInit() {
         this.checkLangNet();

@@ -12,22 +12,18 @@ const routes: Routes = [
     { path: '', redirectTo: 'mainnet', pathMatch: 'full' },
     {
         path: 'mainnet',
-        children: [
-            { path: 'home', component: HomeComponent }
-        ]
+        children: [{ path: 'home', component: HomeComponent }]
     },
     {
         path: 'testnet',
-        children: [
-            { path: 'home', component: HomeComponent }
-        ]
+        children: [{ path: 'home', component: HomeComponent }]
     }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {useHash: true})],
-    exports: [RouterModule],
+    imports: [RouterModule.forRoot(routes, { useHash: true })],
+    exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
 
 export const routedComponents = [AppComponent];

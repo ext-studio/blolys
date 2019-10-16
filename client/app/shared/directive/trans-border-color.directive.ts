@@ -4,9 +4,8 @@ import { Directive, Input, ElementRef, OnChanges, SimpleChanges } from '@angular
     selector: '[appTransBorderColor]'
 })
 export class TransBorderColorDirective implements OnChanges {
-
-    constructor(private el: ElementRef) { }
-    @Input('appTransBorderColor') appTransBorderColor: String;
+    constructor(private el: ElementRef) {}
+    @Input() appTransBorderColor: string;
 
     public ngOnChanges(changes: SimpleChanges) {
         this.addColor();

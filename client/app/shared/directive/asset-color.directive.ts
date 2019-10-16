@@ -4,8 +4,8 @@ import { Directive, Input, ElementRef, OnChanges, SimpleChanges } from '@angular
     selector: '[appAssetColor]'
 })
 export class AssetColorDirective implements OnChanges {
-    constructor(private el: ElementRef) { }
-    @Input('appAssetColor') appAssetColor: String;
+    constructor(private el: ElementRef) {}
+    @Input() appAssetColor: string;
 
     public ngOnChanges(changes: SimpleChanges) {
         this.addColor();
@@ -29,5 +29,4 @@ export class AssetColorDirective implements OnChanges {
         }
         this.el.nativeElement.style.color = res;
     }
-
 }

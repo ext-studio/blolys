@@ -11,20 +11,20 @@ const routes: Routes = [
         path: 'mainnet',
         children: [
             { path: 'blocks/page/:page', component: BlocksComponent },
-            { path: 'block/:id/page/:page', component: BlockInfoComponent },
+            { path: 'block/:id/page/:page', component: BlockInfoComponent }
         ]
     },
     {
         path: 'testnet',
         children: [
             { path: 'blocks/page/:page', component: BlocksComponent },
-            { path: 'block/:id/page/:page', component: BlockInfoComponent },
+            { path: 'block/:id/page/:page', component: BlockInfoComponent }
         ]
     }
 ];
 
 @NgModule({
-        imports: [RouterModule.forChild(routes)],
-        exports: [RouterModule],
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
-export class BlockRoutingModule { }
+export class BlockRoutingModule {}

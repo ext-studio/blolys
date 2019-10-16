@@ -14,17 +14,17 @@ import { AssetService } from './pages/asset/asset.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-    isWide: Boolean = true;
-    isSearch: Boolean = false;
+    isWide: boolean = true;
+    isSearch: boolean = false;
     total: any = [];
-    currentPage: String = this.router.url;
-    dropContentOpened: Boolean = false;
-    tolanguage: String = 'English';
-    tonet: String = '测试网';
-    dewallet: String = '关于钱包';
-    apiDo: String;
-    netDo: String;
-    searchVal: String = '';
+    currentPage: string = this.router.url;
+    dropContentOpened: boolean = false;
+    tolanguage: string = 'English';
+    tonet: string = '测试网';
+    dewallet: string = '关于钱包';
+    apiDo: string;
+    netDo: string;
+    searchVal: string = '';
     currentYear: number;
 
     public is404 = false;
@@ -41,8 +41,8 @@ export class AppComponent implements OnInit, OnDestroy {
         private blockService: BlockService,
         private addressService: AddressService,
         private notsearchService: NotsearchService,
-        private assetService: AssetService,
-    ) { }
+        private assetService: AssetService
+    ) {}
 
     public ngOnInit() {
         this.currentYear = new Date().getFullYear();
@@ -152,14 +152,25 @@ export class AppComponent implements OnInit, OnDestroy {
     searchIcon() {
         this.isSearch = !this.isSearch;
         setTimeout(() => {
-            if (document.getElementsByClassName('main')[0]
-                .getElementsByTagName('mat-toolbar')[0].getElementsByTagName('input')[0]) {
-                document.getElementsByClassName('main')[0].getElementsByTagName('mat-toolbar')[0].getElementsByTagName('input')[0].focus();
+            if (
+                document
+                    .getElementsByClassName('main')[0]
+                    .getElementsByTagName('mat-toolbar')[0]
+                    .getElementsByTagName('input')[0]
+            ) {
+                document
+                    .getElementsByClassName('main')[0]
+                    .getElementsByTagName('mat-toolbar')[0]
+                    .getElementsByTagName('input')[0]
+                    .focus();
             }
         }, 100);
     }
     search() {
-        let value = this.searchVal, isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
+        let value = this.searchVal;
+        let isHashPattern: any;
+        let isAssetPattern: any;
+        let isAddressPattern: any;
         value = value.trim(); // Remove whitespace
         if (value === '') {
             return;

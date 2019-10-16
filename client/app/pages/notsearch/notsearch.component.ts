@@ -15,9 +15,9 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class NotsearchComponent implements OnInit, OnDestroy {
     total: any = [];
-    apiDo: String;
-    netDo: String;
-    searchVal: String = '';
+    apiDo: string;
+    netDo: string;
+    searchVal: string = '';
 
     conditionSub: Subscription = null;
     nep5InfoSub: Subscription = null;
@@ -32,7 +32,7 @@ export class NotsearchComponent implements OnInit, OnDestroy {
         private notsearchService: NotsearchService,
         private assetService: AssetService,
         private global: GlobalService
-    ) { }
+    ) {}
 
     ngOnInit() {
         this.checkLangNet();
@@ -73,7 +73,10 @@ export class NotsearchComponent implements OnInit, OnDestroy {
         }
     }
     search() {
-        let value = this.searchVal, isHashPattern: any, isAssetPattern: any, isAddressPattern: any;
+        let value = this.searchVal;
+        let isHashPattern: any;
+        let isAssetPattern: any;
+        let isAddressPattern: any;
         value = value.trim(); // Remove whitespace
         if (value === '') {
             return;

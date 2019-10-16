@@ -2,9 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {
-    MatFormFieldModule, MatTooltipModule, MatButtonModule,
-    MatToolbarModule, MatMenuModule, MatStepperModule,
-    MatIconModule, MatInputModule, MatProgressBarModule,
+    MatFormFieldModule,
+    MatTooltipModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatStepperModule,
+    MatIconModule,
+    MatInputModule,
+    MatProgressBarModule,
     MatDialogModule
 } from '@angular/material';
 import { PaginatorComponent } from './compontent/paginator/paginator.component';
@@ -18,29 +24,54 @@ import { UnlimitedNumberPipe } from './pipes/unlimited-number.pipe';
 
 @NgModule({
     imports: [
-        CommonModule, MatButtonModule, MatTooltipModule,
-        MatFormFieldModule, MatMenuModule, MatToolbarModule,
-        FormsModule, MatIconModule, MatInputModule,
-        MatProgressBarModule, ReactiveFormsModule,
-        MatStepperModule, MatDialogModule
+        CommonModule,
+        MatButtonModule,
+        MatTooltipModule,
+        MatFormFieldModule,
+        MatMenuModule,
+        MatToolbarModule,
+        FormsModule,
+        MatIconModule,
+        MatInputModule,
+        MatProgressBarModule,
+        ReactiveFormsModule,
+        MatStepperModule,
+        MatDialogModule
     ],
     exports: [
-        CommonModule, MatButtonModule, MatMenuModule,
-        MatFormFieldModule, MatToolbarModule, MatInputModule,
-        FormsModule, MatTooltipModule, MatProgressBarModule,
-        MatIconModule, ReactiveFormsModule, MatDialogModule,
+        CommonModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatFormFieldModule,
+        MatToolbarModule,
+        MatInputModule,
+        FormsModule,
+        MatTooltipModule,
+        MatProgressBarModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatDialogModule,
         MatStepperModule,
-        TransColorDirective, AlertComponent, AssetColorDirective,
-        TransBorderColorDirective, TransTypePipe, PaginatorComponent,
-        UnixTimePipe, UnlimitedNumberPipe
+        TransColorDirective,
+        AlertComponent,
+        AssetColorDirective,
+        TransBorderColorDirective,
+        TransTypePipe,
+        PaginatorComponent,
+        UnixTimePipe,
+        UnlimitedNumberPipe
     ],
     declarations: [
-        UnixTimePipe, TransColorDirective, AlertComponent,
-        AssetColorDirective, TransBorderColorDirective, TransTypePipe,
+        UnixTimePipe,
+        TransColorDirective,
+        AlertComponent,
+        AssetColorDirective,
+        TransBorderColorDirective,
+        TransTypePipe,
         PaginatorComponent,
         UnlimitedNumberPipe
- ],
+    ],
     entryComponents: [AlertComponent],
     providers: []
 })
-export class SharedModule { }
+export class SharedModule {}

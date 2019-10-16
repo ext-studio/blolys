@@ -15,10 +15,7 @@ import { AssetModule } from './pages/asset';
 import { TransactionModule } from './pages/transaction';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomeComponent
-    ],
+    declarations: [AppComponent, HomeComponent],
     imports: [
         BrowserModule,
         SharedModule,
@@ -33,4 +30,4 @@ import { TransactionModule } from './pages/transaction';
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

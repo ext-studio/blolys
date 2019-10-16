@@ -8,10 +8,8 @@ import { AssetsComponent } from './assets/assets.component';
 import { AssetInfoComponent } from './asset-info/asset-info.component';
 
 @NgModule({
-    imports: [
-        CommonModule, SharedModule, AssetRoutingModule
-    ],
+    imports: [CommonModule, SharedModule, AssetRoutingModule],
     declarations: [AssetsComponent, AssetInfoComponent],
     providers: [AssetService]
 })
-export class AssetModule { }
+export class AssetModule {}

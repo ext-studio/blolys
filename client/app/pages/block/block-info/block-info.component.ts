@@ -15,16 +15,16 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
     transfer: any = [];
     transferNep5: any = [];
     blockInfo: any = [];
-    transTotal: Number = 0;
-    totalBlocks: Number = 0;
+    transTotal: number = 0;
+    totalBlocks: number = 0;
     show: any = [];
     height: number = Number(this.router.url.split('/')[3]);
     pageIndex = 1;
     pageSize: any = 5;
     pageLength: any = 0;
-    isProgress: Boolean = true;
-    apiDo: String;
-    netDo: String;
+    isProgress: boolean = true;
+    apiDo: string;
+    netDo: string;
     isNumberPattern: any = /^\d+$/;
 
     routerSub: Subscription = null;
@@ -40,7 +40,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
         private transactionService: TransactionService,
         private global: GlobalService,
         private aRouter: ActivatedRoute
-    ) { }
+    ) {}
 
     ngOnDestroy() {
         if (this.routerSub) {
@@ -102,7 +102,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
             }
         });
     }
-    initShow () {
+    initShow() {
         for (let i = 0; i < this.pageSize; i++) {
             this.show[i] = false;
             this.transfer[i] = 0;
@@ -130,7 +130,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
             }
         });
     }
-    getTransferByTxid (index, txid) {
+    getTransferByTxid(index, txid) {
         this.transferByTxidSub = this.transactionService.TransferByTxid(this.apiDo, txid).subscribe((res: any) => {
             if (res.code === 200) {
                 if (res.result.TxUTXO != null || res.result.TxVouts != null) {
@@ -139,7 +139,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
             }
         });
     }
-    getNep5TransferByTxid (index, txid) {
+    getNep5TransferByTxid(index, txid) {
         this.nep5TransferByTxidSub = this.transactionService.Nep5TransferByTxid(this.apiDo, txid).subscribe((res: any) => {
             if (res.code === 200) {
                 if (res.result.length > 0) {
@@ -148,7 +148,7 @@ export class BlockInfoComponent implements OnInit, OnDestroy {
             }
         });
     }
-    showInfo (index, txid) {
+    showInfo(index, txid) {
         this.show[index] = !this.show[index];
         if (this.show[index] && this.transfer[index] === 0 && this.transferNep5[index] === 0) {
             this.transfer[index] = '';

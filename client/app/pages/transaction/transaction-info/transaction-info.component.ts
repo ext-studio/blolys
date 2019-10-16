@@ -13,10 +13,9 @@ export class TransactionInfoComponent implements OnInit, OnDestroy {
     transferNep5: any = [];
     txInfo: any = [];
     scripts: any = {};
-    txid: String = this.router.url.split('/')[2] === 'transaction' ? this.router.url.split('/')[3]
-        : this.router.url.split('/')[2];
-    apiDo: String;
-    netDo: String;
+    txid: string = this.router.url.split('/')[2] === 'transaction' ? this.router.url.split('/')[3] : this.router.url.split('/')[2];
+    apiDo: string;
+    netDo: string;
     isHashPattern: any = /^(0x)([0-9a-f]{64})$/;
 
     routerSub: Subscription = null;
@@ -25,11 +24,7 @@ export class TransactionInfoComponent implements OnInit, OnDestroy {
     transferByTxidSub: Subscription = null;
     nep5TransferByTxidSub: Subscription = null;
 
-    constructor(
-        private router: Router,
-        private transactionService: TransactionService,
-        private global: GlobalService
-    ) { }
+    constructor(private router: Router, private transactionService: TransactionService, private global: GlobalService) {}
 
     ngOnInit() {
         if (this.isHashPattern.test(this.txid)) {

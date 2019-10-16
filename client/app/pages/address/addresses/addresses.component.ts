@@ -13,9 +13,9 @@ export class AddressesComponent implements OnInit, OnDestroy {
     pageIndex = 1;
     pageSize: any = 16;
     pageLength: any = 0;
-    isProgress: Boolean = true;
-    apiDo: String;
-    netDo: String;
+    isProgress: boolean = true;
+    apiDo: string;
+    netDo: string;
     addressesSub: Subscription = null;
 
     constructor(

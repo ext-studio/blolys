@@ -11,7 +11,7 @@ export class GlobalService {
     public NotFoundSource = new Subject();
     public NotFoundSub$ = this.NotFoundSource.asObservable();
 
-    constructor() { }
+    constructor() {}
 
     public pushNotFound() {
         this.NotFoundSource.next('404');

@@ -31,7 +31,7 @@
 				<div class="col" [appTransColor]="item?.type">{{ item?.type | transType }}</div>
 				<div class="col hidden">{{ item?.size | number }} Bytes</div>
 				<div class="col hidden">{{ item?.version }}</div>
-				<div class="col hidden">{{ item?.blockTime | unixTime }}</div> 
+				<div class="col hidden">{{ item?.blockTime | unixTime }}</div>
 				<div class="hidden col-icon" (click)="showInfo(index, item?.txid)"><img [ngClass]="{active: show[index]}" src="assets/icon_drop_down_n1.png"></div>
 			</div>
 			<div class="tran-info" *ngIf="show[index] && (transfer[index] || transferNep5[index])">
@@ -81,8 +81,8 @@
 			</div>
 		</div>
 	</div>
-	<mat-progress-bar mode="indeterminate" *ngIf="isProgress"></mat-progress-bar>  
-	<app-paginator 
+	<mat-progress-bar mode="indeterminate" *ngIf="isProgress"></mat-progress-bar>
+	<app-paginator
 		[pageSize]="pageSize"
 		[pageIndex]="pageIndex"
 		[pageLength]="pageLength"
